@@ -297,10 +297,7 @@ a {
 }
 
 .highlight {
-    background: var(--gradient-bright);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--bright);
 }
 
 .hero-sub {
@@ -406,10 +403,7 @@ a {
     font-family: var(--font-heading);
     font-size: 2.8rem;
     font-weight: 700;
-    background: var(--gradient-bright);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--bright);
     margin-bottom: 6px;
 }
 
@@ -609,10 +603,7 @@ a {
     font-family: var(--font-heading);
     font-size: 1.2rem;
     font-weight: 700;
-    background: var(--gradient-bright);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--bright);
     opacity: 0.7;
 }
 
@@ -636,10 +627,7 @@ a {
     font-family: var(--font-heading);
     font-size: 2.2rem;
     font-weight: 700;
-    background: var(--gradient-bright);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--bright);
     margin-bottom: 4px;
 }
 
@@ -696,10 +684,7 @@ a {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     font-weight: 700;
-    background: var(--gradient-bright);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: var(--bright);
     margin-bottom: 6px;
 }
 
