@@ -239,32 +239,34 @@ a {
     overflow: hidden;
 }
 
-.hero::before {
-    content: '';
+.hero-bg-img {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(11, 110, 79, 0.25) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(8, 160, 69, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(11, 110, 79, 0.1) 0%, transparent 70%);
-    pointer-events: none;
+    background: url('hero-bg.jpg') center center / cover no-repeat;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(7, 59, 58, 0.3) 0%, rgba(7, 59, 58, 0.6) 100%);
+    z-index: 1;
+}
+
+.hero::before {
+    display: none;
 }
 
 /* Animated floating orbs */
 .hero::after {
-    content: '';
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(11, 110, 79, 0.12) 0%, transparent 70%);
-    top: -200px;
-    right: -200px;
-    animation: float 8s ease-in-out infinite;
-    pointer-events: none;
+    display: none;
 }
 
 @keyframes float {
@@ -771,7 +773,7 @@ a {
    CTA Section
    =========================== */
 .cta-section {
-    background: var(--gradient-hero);
+    background: var(--darkest);
     padding: 120px 0;
     text-align: center;
     position: relative;
@@ -785,15 +787,25 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-        radial-gradient(ellipse 50% 80% at 20% 80%, rgba(33, 211, 117, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 60% at 80% 20%, rgba(107, 191, 89, 0.1) 0%, transparent 60%);
+    background: url('cta-bg.jpg') center center / cover no-repeat;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+.cta-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(7, 59, 58, 0.4) 0%, rgba(7, 59, 58, 0.7) 100%);
     pointer-events: none;
 }
 
 .cta-section .container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .cta-section h2 {
@@ -933,6 +945,49 @@ a {
 .footer-copy {
     color: rgba(255, 255, 255, 0.35);
     font-size: 0.78rem;
+}
+
+/* ===========================
+   Photo Breaks
+   =========================== */
+.photo-break {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.photo-break-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(7, 59, 58, 0.3) 0%, rgba(7, 59, 58, 0.5) 100%);
+}
+
+.photo-break--workspace {
+    background-image: url('services-photo.jpg');
+}
+
+.photo-break--community {
+    background-image: url('impact-photo.jpg');
+    background-position: center 30%;
+}
+
+@media (max-width: 968px) {
+    .photo-break {
+        height: 300px;
+        background-attachment: scroll;
+    }
+}
+
+@media (max-width: 640px) {
+    .photo-break {
+        height: 220px;
+    }
 }
 
 /* ===========================
