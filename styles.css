@@ -16,8 +16,11 @@
     --text-dark-muted: rgba(7, 59, 58, 0.7);
     --font-heading: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-    --coral: #FF6B5B;
-    --coral-hover: #E85A4A;
+    --accent: #FACC15;
+    --accent-hover: #EAB308;
+    --teal: #2DD4BF;
+    --teal-dark: #0D9488;
+    --teal-darker: #115E59;
     --gradient-bright: linear-gradient(135deg, #21D375 0%, #6BBF59 50%, #08A045 100%);
     --gradient-dark: linear-gradient(135deg, #073B3A 0%, #0B6E4F 100%);
     --gradient-hero: linear-gradient(160deg, #073B3A 0%, #0B6E4F 40%, #08A045 100%);
@@ -88,8 +91,8 @@ a {
 }
 
 .navbar.scrolled .nav-cta {
-    background: var(--coral) !important;
-    color: var(--white) !important;
+    background: var(--accent) !important;
+    color: var(--darkest) !important;
 }
 
 .navbar.scrolled .nav-toggle span {
@@ -134,8 +137,8 @@ a {
 }
 
 .nav-cta {
-    background: var(--coral) !important;
-    color: var(--white) !important;
+    background: var(--accent) !important;
+    color: var(--darkest) !important;
     padding: 11px 28px;
     border-radius: 100px;
     font-weight: 600 !important;
@@ -143,9 +146,9 @@ a {
 }
 
 .nav-cta:hover {
-    background: var(--coral-hover) !important;
+    background: var(--accent-hover) !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(255, 107, 91, 0.35);
+    box-shadow: 0 4px 16px rgba(250, 204, 21, 0.4);
 }
 
 .nav-toggle {
@@ -182,14 +185,15 @@ a {
 }
 
 .btn-primary {
-    background: var(--coral);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--darkest);
+    font-weight: 700;
 }
 
 .btn-primary:hover {
-    background: var(--coral-hover);
+    background: var(--accent-hover);
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(255, 107, 91, 0.4);
+    box-shadow: 0 8px 30px rgba(250, 204, 21, 0.4);
 }
 
 .btn-outline {
@@ -231,7 +235,7 @@ a {
     justify-content: center;
     text-align: center;
     position: relative;
-    background: var(--gradient-hero);
+    background: #073B3A;
     overflow: hidden;
 }
 
@@ -243,9 +247,9 @@ a {
     right: 0;
     bottom: 0;
     background:
-        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(33, 211, 117, 0.15) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(107, 191, 89, 0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(8, 160, 69, 0.08) 0%, transparent 70%);
+        radial-gradient(ellipse 80% 60% at 20% 80%, rgba(11, 110, 79, 0.25) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 80% at 80% 20%, rgba(8, 160, 69, 0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 50%, rgba(11, 110, 79, 0.1) 0%, transparent 70%);
     pointer-events: none;
 }
 
@@ -256,7 +260,7 @@ a {
     width: 600px;
     height: 600px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(33, 211, 117, 0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(11, 110, 79, 0.12) 0%, transparent 70%);
     top: -200px;
     right: -200px;
     animation: float 8s ease-in-out infinite;
@@ -284,7 +288,7 @@ a {
     margin-bottom: 28px;
     font-weight: 600;
     padding: 8px 20px;
-    border: 1px solid rgba(33, 211, 117, 0.3);
+    border: 1px solid rgba(250, 204, 21, 0.4);
     border-radius: 100px;
     background: rgba(33, 211, 117, 0.08);
 }
@@ -809,13 +813,14 @@ a {
 }
 
 .cta-section .btn-primary {
-    background: var(--coral);
-    color: var(--white);
+    background: var(--accent);
+    color: var(--darkest);
+    font-weight: 700;
 }
 
 .cta-section .btn-primary:hover {
-    background: var(--coral-hover);
-    box-shadow: 0 8px 30px rgba(255, 107, 91, 0.4);
+    background: var(--accent-hover);
+    box-shadow: 0 8px 30px rgba(250, 204, 21, 0.4);
 }
 
 /* ===========================
