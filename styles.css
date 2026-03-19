@@ -16,6 +16,8 @@
     --text-dark-muted: rgba(7, 59, 58, 0.7);
     --font-heading: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --coral: #FF6B5B;
+    --coral-hover: #E85A4A;
     --gradient-bright: linear-gradient(135deg, #21D375 0%, #6BBF59 50%, #08A045 100%);
     --gradient-dark: linear-gradient(135deg, #073B3A 0%, #0B6E4F 100%);
     --gradient-hero: linear-gradient(160deg, #073B3A 0%, #0B6E4F 40%, #08A045 100%);
@@ -86,7 +88,7 @@ a {
 }
 
 .navbar.scrolled .nav-cta {
-    background: var(--darkest) !important;
+    background: var(--coral) !important;
     color: var(--white) !important;
 }
 
@@ -132,8 +134,8 @@ a {
 }
 
 .nav-cta {
-    background: var(--bright) !important;
-    color: var(--darkest) !important;
+    background: var(--coral) !important;
+    color: var(--white) !important;
     padding: 11px 28px;
     border-radius: 100px;
     font-weight: 600 !important;
@@ -141,9 +143,9 @@ a {
 }
 
 .nav-cta:hover {
-    background: var(--light) !important;
+    background: var(--coral-hover) !important;
     transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(33, 211, 117, 0.3);
+    box-shadow: 0 4px 16px rgba(255, 107, 91, 0.35);
 }
 
 .nav-toggle {
@@ -180,14 +182,14 @@ a {
 }
 
 .btn-primary {
-    background: var(--bright);
-    color: var(--darkest);
+    background: var(--coral);
+    color: var(--white);
 }
 
 .btn-primary:hover {
-    background: var(--light);
+    background: var(--coral-hover);
     transform: translateY(-3px);
-    box-shadow: 0 8px 30px rgba(33, 211, 117, 0.35);
+    box-shadow: 0 8px 30px rgba(255, 107, 91, 0.4);
 }
 
 .btn-outline {
@@ -807,13 +809,13 @@ a {
 }
 
 .cta-section .btn-primary {
-    background: var(--white);
-    color: var(--darkest);
+    background: var(--coral);
+    color: var(--white);
 }
 
 .cta-section .btn-primary:hover {
-    background: var(--near-white);
-    box-shadow: 0 8px 30px rgba(255, 255, 255, 0.25);
+    background: var(--coral-hover);
+    box-shadow: 0 8px 30px rgba(255, 107, 91, 0.4);
 }
 
 /* ===========================
