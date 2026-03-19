@@ -33,30 +33,35 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 // ===========================
 // Scroll-triggered fade-in animations
 // ===========================
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-        }
-    });
-}, observerOptions);
-
-// Add fade-in class to animatable elements
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.service-card, .case-study, .skill-tag, .about-text, .stat, .contact-content, .section-title, .section-subtitle'
+        '.service-card, .case-study, .skill-tag, .about-text, .stat, .contact-content, .section-title, .section-subtitle, .section-label, .result-item'
     );
 
-    animateElements.forEach((el, index) => {
-        el.classList.add('fade-in');
-        el.style.transitionDelay = `${(index % 6) * 0.08}s`;
-        observer.observe(el);
-    });
+    // Check if IntersectionObserver is supported and working
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.05,
+            rootMargin: '0px 0px -20px 0px'
+        });
+
+        animateElements.forEach((el, index) => {
+            el.classList.add('fade-in');
+            // Stagger within groups of similar elements
+            const siblings = el.parentElement.querySelectorAll(':scope > .fade-in');
+            const siblingIndex = Array.from(siblings).indexOf(el);
+            el.style.transitionDelay = `${siblingIndex * 0.1}s`;
+            observer.observe(el);
+        });
+    }
+    // If IntersectionObserver not available, show everything
 });
 
 // ===========================
