@@ -14,8 +14,8 @@
     --text-light: rgba(255, 255, 255, 0.9);
     --text-muted: rgba(255, 255, 255, 0.65);
     --text-dark-muted: rgba(7, 59, 58, 0.7);
-    --font-heading: 'Playfair Display', Georgia, serif;
-    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     --gradient-bright: linear-gradient(135deg, #21D375 0%, #6BBF59 50%, #08A045 100%);
     --gradient-dark: linear-gradient(135deg, #073B3A 0%, #0B6E4F 100%);
     --gradient-hero: linear-gradient(160deg, #073B3A 0%, #0B6E4F 40%, #08A045 100%);
