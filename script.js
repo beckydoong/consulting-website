@@ -3,11 +3,15 @@
 // ===========================
 const navbar = document.getElementById('navbar');
 
+const navLogoImg = document.querySelector('.nav-logo-img');
+
 window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
+        if (navLogoImg) navLogoImg.src = 'logo-dark.svg';
     } else {
         navbar.classList.remove('scrolled');
+        if (navLogoImg) navLogoImg.src = 'logo.svg';
     }
 });
 
