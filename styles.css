@@ -82,6 +82,10 @@ a {
     color: var(--darkest);
 }
 
+.navbar.scrolled .nav-logo-img {
+    filter: none;
+}
+
 .navbar.scrolled .nav-links a {
     color: var(--text-dark-muted);
 }
@@ -115,6 +119,13 @@ a {
     color: var(--white);
     letter-spacing: -0.02em;
     transition: color 0.3s;
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo-img {
+    height: 40px;
+    width: auto;
 }
 
 .nav-links {
@@ -1121,6 +1132,13 @@ a {
     font-weight: 700;
     color: var(--white);
     margin-bottom: 8px;
+}
+
+.footer-logo-img {
+    height: 50px;
+    width: auto;
+    margin-bottom: 8px;
+    color: var(--white);
 }
 
 .footer-tagline {
