@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Nonprofit Playbook | Rebecca Doong</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* ── Reset & Base ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; }
+
+        /* ── Navbar ── */
+        .lp-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 2rem; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .lp-nav-logo {
+            font-size: 1.25rem; font-weight: 700; color: #fff;
+            text-decoration: none; letter-spacing: -0.02em;
+        }
+        .lp-nav-back {
+            color: #6BBF59; text-decoration: none; font-size: 0.9rem; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .lp-nav-back:hover { color: #21D375; }
+
+        /* ── Hero ── */
+        .lp-hero {
+            background: #073B3A; color: #fff; padding: 8rem 2rem 5rem;
+            min-height: 90vh; display: flex; align-items: center; justify-content: center;
+        }
+        .lp-hero-inner {
+            max-width: 1100px; width: 100%; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 4rem; align-items: center;
+        }
+        .lp-hero-text h1 {
+            font-size: 2.8rem; font-weight: 700; line-height: 1.15;
+            margin-bottom: 1rem; letter-spacing: -0.02em;
+        }
+        .lp-hero-text .subtitle {
+            font-size: 1.15rem; color: #a8e6cf; margin-bottom: 2rem;
+            font-weight: 400; line-height: 1.5;
+        }
+        .lp-hero-right {
+            display: flex; flex-direction: column; align-items: center; gap: 2rem;
+        }
+
+        /* ── Mock Book Cover ── */
+        .book-wrapper { perspective: 800px; }
+        .book-cover {
+            width: 240px; height: 340px; position: relative;
+            background: linear-gradient(145deg, #0B6E4F 0%, #08A045 50%, #0B6E4F 100%);
+            border-radius: 4px 12px 12px 4px;
+            box-shadow: -6px 6px 20px rgba(0,0,0,0.4), inset -2px 0 4px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 2rem 1.5rem; text-align: center; transform: rotateY(-8deg);
+            transition: transform 0.4s ease;
+        }
+        .book-cover:hover { transform: rotateY(0deg); }
+        .book-cover::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 14px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.25), transparent);
+            border-radius: 4px 0 0 4px;
+        }
+        .book-cover .book-label {
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em;
+            color: #FACC15; font-weight: 600; margin-bottom: 1rem;
+        }
+        .book-cover .book-title {
+            font-size: 1.3rem; font-weight: 700; color: #fff; line-height: 1.25;
+            margin-bottom: 0.75rem;
+        }
+        .book-cover .book-divider {
+            width: 40px; height: 2px; background: #FACC15; margin-bottom: 0.75rem;
+        }
+        .book-cover .book-subtitle {
+            font-size: 0.7rem; color: rgba(255,255,255,0.85); line-height: 1.45;
+            margin-bottom: 1.25rem;
+        }
+        .book-cover .book-author {
+            font-size: 0.75rem; font-weight: 600; color: #FACC15;
+        }
+
+        /* ── Signup Form ── */
+        .lp-form {
+            width: 100%; max-width: 380px;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px; padding: 1.75rem;
+        }
+        .lp-form h3 {
+            font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #fff;
+            text-align: center;
+        }
+        .lp-form input {
+            width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff;
+            font-family: 'Work Sans', sans-serif; font-size: 0.95rem;
+            margin-bottom: 0.75rem; transition: border-color 0.2s;
+        }
+        .lp-form input::placeholder { color: rgba(255,255,255,0.5); }
+        .lp-form input:focus {
+            outline: none; border-color: #FACC15; background: rgba(255,255,255,0.15);
+        }
+        .lp-form .btn-cta {
+            width: 100%; padding: 0.85rem; border: none; border-radius: 8px;
+            background: #FACC15; color: #073B3A; font-family: 'Work Sans', sans-serif;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .lp-form .btn-cta:hover { background: #fde047; transform: translateY(-1px); }
+        .lp-form .form-note {
+            text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.5);
+            margin-top: 0.75rem;
+        }
+
+        /* ── What You'll Learn ── */
+        .lp-learn {
+            padding: 5rem 2rem; background: #f9fafb;
+        }
+        .lp-learn-inner {
+            max-width: 1000px; margin: 0 auto; text-align: center;
+        }
+        .lp-learn-inner h2 {
+            font-size: 2rem; font-weight: 700; color: #073B3A; margin-bottom: 0.5rem;
+        }
+        .lp-learn-inner .section-sub {
+            color: #555; font-size: 1.05rem; margin-bottom: 3rem;
+        }
+        .learn-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 1.75rem; text-align: left;
+        }
+        .learn-card {
+            background: #fff; border-radius: 12px; padding: 1.75rem;
+            border: 1px solid #e5e7eb; transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .learn-card:hover {
+            box-shadow: 0 8px 24px rgba(7,59,58,0.1); transform: translateY(-3px);
+        }
+        .learn-card .card-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: #0B6E4F; color: #fff; font-size: 0.85rem;
+            font-weight: 700; margin-bottom: 1rem;
+        }
+        .learn-card p {
+            font-size: 0.95rem; color: #333; line-height: 1.55;
+        }
+
+        /* ── About the Author ── */
+        .lp-author {
+            padding: 5rem 2rem; background: #fff;
+        }
+        .lp-author-inner {
+            max-width: 800px; margin: 0 auto; text-align: center;
+        }
+        .lp-author-inner h2 {
+            font-size: 2rem; font-weight: 700; color: #073B3A; margin-bottom: 1.5rem;
+        }
+        .author-card {
+            background: #f0fdf4; border-radius: 16px; padding: 2.5rem;
+            border: 1px solid #bbf7d0;
+        }
+        .author-avatar {
+            width: 90px; height: 90px; border-radius: 50%;
+            background: linear-gradient(135deg, #0B6E4F, #08A045);
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.25rem; font-size: 2rem; color: #fff; font-weight: 700;
+        }
+        .author-card h3 {
+            font-size: 1.25rem; font-weight: 600; color: #073B3A; margin-bottom: 0.75rem;
+        }
+        .author-card p {
+            font-size: 0.95rem; color: #444; line-height: 1.65; max-width: 600px; margin: 0 auto;
+        }
+
+        /* ── Bottom CTA ── */
+        .lp-bottom-cta {
+            padding: 5rem 2rem; background: #073B3A; color: #fff; text-align: center;
+        }
+        .lp-bottom-cta-inner {
+            max-width: 520px; margin: 0 auto;
+        }
+        .lp-bottom-cta h2 {
+            font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .lp-bottom-cta .cta-sub {
+            color: #a8e6cf; margin-bottom: 2rem; font-size: 1.05rem;
+        }
+        .lp-bottom-cta .lp-form {
+            max-width: 100%; background: rgba(255,255,255,0.06);
+        }
+
+        /* ── Footer ── */
+        .lp-footer {
+            background: #052726; color: rgba(255,255,255,0.5); text-align: center;
+            padding: 2.5rem 2rem; font-size: 0.85rem;
+        }
+        .lp-footer .footer-logo {
+            font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem;
+        }
+        .lp-footer .footer-tagline {
+            color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; font-size: 0.85rem;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .lp-hero-inner {
+                grid-template-columns: 1fr; gap: 2.5rem; text-align: center;
+            }
+            .lp-hero-text h1 { font-size: 2rem; }
+            .learn-grid { grid-template-columns: 1fr; }
+            .lp-hero { min-height: auto; padding: 7rem 1.5rem 3.5rem; }
+        }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .learn-grid { grid-template-columns: repeat(2, 1fr); }
+            .lp-hero-text h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="lp-nav">
+        <a href="index.html" class="lp-nav-logo">Rebecca Doong</a>
+        <a href="index.html" class="lp-nav-back">&larr; Back to Home</a>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="lp-hero">
+        <div class="lp-hero-inner">
+            <div class="lp-hero-text">
+                <h1>The AI Nonprofit Playbook</h1>
+                <p class="subtitle">A Practical Guide to Using AI for Fundraising, Content, and Growth</p>
+                <form class="lp-form" action="https://formspree.io/f/placeholder" method="POST">
+                    <h3>Get Your Free Copy</h3>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <button type="submit" class="btn-cta">Download the Playbook</button>
+                    <p class="form-note">Free download. No spam, ever.</p>
+                </form>
+            </div>
+            <div class="lp-hero-right">
+                <div class="book-wrapper">
+                    <div class="book-cover">
+                        <span class="book-label">Free Ebook</span>
+                        <span class="book-title">The AI Nonprofit Playbook</span>
+                        <span class="book-divider"></span>
+                        <span class="book-subtitle">A Practical Guide to Using AI for Fundraising, Content, and Growth</span>
+                        <span class="book-author">Rebecca Doong</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Learn -->
+    <section class="lp-learn">
+        <div class="lp-learn-inner">
+            <h2>What You'll Learn</h2>
+            <p class="section-sub">Six chapters of actionable strategies you can implement today.</p>
+            <div class="learn-grid">
+                <div class="learn-card">
+                    <span class="card-num">1</span>
+                    <p>How to use AI to write donor emails that convert — with real prompts and frameworks you can adapt immediately.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">2</span>
+                    <p>AI-powered social media strategies for nonprofits that drive engagement, awareness, and supporter growth.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">3</span>
+                    <p>Automating donor engagement without losing the personal touch — the balance every nonprofit needs to strike.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">4</span>
+                    <p>Data-driven fundraising: using AI to predict donor behavior, optimize ask amounts, and increase lifetime value.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">5</span>
+                    <p>Content creation at scale with AI tools — from blog posts to appeal letters to social campaigns.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">6</span>
+                    <p>Building an AI roadmap for your organization — a step-by-step plan to adopt AI responsibly and effectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Author -->
+    <section class="lp-author">
+        <div class="lp-author-inner">
+            <h2>About the Author</h2>
+            <div class="author-card">
+                <div class="author-avatar">RD</div>
+                <h3>Rebecca Doong</h3>
+                <p>Rebecca Doong is a digital marketing strategist with over 15 years of experience helping mission-driven organizations grow their reach and revenue. She has led content, social media, advertising, and digital fundraising teams for nonprofits with tens of millions of subscribers, generating measurable impact through dynamic storytelling, data-driven campaigns, and innovative technology adoption. Today, she consults exclusively with purpose-driven organizations to help them harness the power of AI and digital strategy.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bottom CTA -->
+    <section class="lp-bottom-cta">
+        <div class="lp-bottom-cta-inner">
+            <h2>Ready to Transform Your Nonprofit with AI?</h2>
+            <p class="cta-sub">Download the free playbook and start making an impact today.</p>
+            <form class="lp-form" action="https://formspree.io/f/placeholder" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <button type="submit" class="btn-cta">Get the Free Playbook</button>
+                <p class="form-note">Free download. No spam, ever.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="lp-footer">
+        <p class="footer-logo">Rebecca Doong</p>
+        <p class="footer-tagline">Digital Consulting for Christian Businesses &amp; Nonprofits</p>
+        <p>&copy; 2026 Rebecca Doong. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

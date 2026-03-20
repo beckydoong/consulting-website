@@ -35,7 +35,7 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 // ===========================
 document.addEventListener('DOMContentLoaded', () => {
     const animateElements = document.querySelectorAll(
-        '.service-card, .case-study, .skill-tag, .about-text, .stat, .contact-content, .section-title, .section-subtitle, .section-label, .result-item'
+        '.service-card, .case-study, .skill-tag, .about-text, .stat, .contact-content, .section-title, .section-subtitle, .section-label, .result-item, .resource-featured, .resource-card'
     );
 
     // Check if IntersectionObserver is supported and working
