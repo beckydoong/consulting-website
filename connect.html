@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work With Us | Seedscale Agency</title>
+    <meta name="description" content="Connect with Seedscale Agency — digital marketing consulting for mission-driven organizations. Content marketing, AI consulting, and direct response fundraising.">
+    <meta property="og:title" content="Work With Seedscale Agency">
+    <meta property="og:description" content="Digital marketing consulting for mission-driven organizations.">
+    <meta property="og:image" content="https://seedscale.agency/og-image.png">
+    <meta property="og:url" content="https://seedscale.agency/connect.html">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --darkest: #073B3A;
+            --dark: #0B6E4F;
+            --medium: #08A045;
+            --light: #6BBF59;
+            --bright: #21D375;
+            --accent: #FACC15;
+            --accent-hover: #fde047;
+        }
+
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: #1a1a1a;
+            line-height: 1.6;
+            background: #fff;
+        }
+
+        /* ── Nav ── */
+        .lp-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: var(--darkest); padding: 0 2rem; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .lp-nav-logo {
+            font-size: 1.25rem; font-weight: 700; color: #fff;
+            text-decoration: none; letter-spacing: -0.02em;
+        }
+        .lp-nav-link {
+            color: var(--light); text-decoration: none; font-size: 0.9rem; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .lp-nav-link:hover { color: var(--bright); }
+
+        /* ── Hero ── */
+        .hero {
+            background: var(--darkest); color: #fff;
+            padding: 8rem 2rem 4rem; text-align: center;
+        }
+        .hero-inner {
+            max-width: 720px; margin: 0 auto;
+        }
+        .hero-badge {
+            display: inline-block; padding: 0.35rem 1rem; border-radius: 100px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.8rem; font-weight: 500; color: var(--light);
+            letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem; font-weight: 700; line-height: 1.15;
+            letter-spacing: -0.02em; margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.1rem; color: #a8e6cf; line-height: 1.6; margin-bottom: 2rem;
+        }
+        .hero .scroll-cta {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--accent); text-decoration: none; font-weight: 600;
+            font-size: 0.95rem; transition: opacity 0.2s;
+        }
+        .hero .scroll-cta:hover { opacity: 0.8; }
+        .hero .scroll-cta svg {
+            width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 2;
+        }
+
+        /* ── About ── */
+        .about {
+            padding: 5rem 2rem; background: #f9fafb;
+        }
+        .about-inner {
+            max-width: 900px; margin: 0 auto;
+            display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start;
+        }
+        .about-photo img {
+            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--dark);
+        }
+        .about-text h2 {
+            font-size: 1.6rem; font-weight: 700; color: var(--darkest); margin-bottom: 1rem;
+        }
+        .about-text p {
+            font-size: 0.95rem; color: #444; line-height: 1.65; margin-bottom: 0.75rem;
+        }
+        .stats-row {
+            display: flex; gap: 2rem; margin-top: 1.5rem; padding-top: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+        }
+        .stat-item { text-align: center; }
+        .stat-num {
+            display: block; font-size: 1.5rem; font-weight: 700; color: var(--dark);
+        }
+        .stat-lbl {
+            font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em;
+        }
+
+        /* ── Services ── */
+        .services {
+            padding: 5rem 2rem; background: #fff;
+        }
+        .services-inner {
+            max-width: 900px; margin: 0 auto; text-align: center;
+        }
+        .services-inner h2 {
+            font-size: 1.8rem; font-weight: 700; color: var(--darkest); margin-bottom: 0.5rem;
+        }
+        .services-inner .sub {
+            color: #666; font-size: 1rem; margin-bottom: 2.5rem;
+        }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: left;
+        }
+        .svc-card {
+            background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px;
+            padding: 1.75rem; transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .svc-card:hover {
+            box-shadow: 0 8px 24px rgba(7,59,58,0.08); transform: translateY(-3px);
+        }
+        .svc-icon {
+            width: 44px; height: 44px; border-radius: 10px; background: var(--darkest);
+            display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
+        }
+        .svc-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
+        .svc-card h3 {
+            font-size: 1.05rem; font-weight: 600; color: var(--darkest); margin-bottom: 0.5rem;
+        }
+        .svc-card p {
+            font-size: 0.88rem; color: #555; line-height: 1.55;
+        }
+
+        /* ── Contact ── */
+        .contact {
+            padding: 5rem 2rem; background: var(--darkest); color: #fff;
+        }
+        .contact-inner {
+            max-width: 560px; margin: 0 auto; text-align: center;
+        }
+        .contact-inner h2 {
+            font-size: 1.8rem; font-weight: 700; margin-bottom: 0.5rem;
+        }
+        .contact-inner .sub {
+            color: #a8e6cf; font-size: 1rem; margin-bottom: 2rem;
+        }
+        .contact-form {
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 14px; padding: 2rem; text-align: left;
+        }
+        .form-row {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .contact-form label {
+            display: block; font-size: 0.8rem; font-weight: 500;
+            color: rgba(255,255,255,0.6); margin-bottom: 0.35rem;
+        }
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 8px; background: rgba(255,255,255,0.08); color: #fff;
+            font-family: 'Work Sans', sans-serif; font-size: 0.9rem;
+            transition: border-color 0.2s;
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder { color: rgba(255,255,255,0.35); }
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none; border-color: var(--accent); background: rgba(255,255,255,0.12);
+        }
+        .contact-form select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='rgba(255,255,255,0.5)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            padding-right: 2.5rem;
+        }
+        .contact-form select option { background: var(--darkest); color: #fff; }
+        .contact-form textarea {
+            min-height: 100px; resize: vertical; margin-bottom: 0.75rem;
+        }
+        .field-full { margin-bottom: 0.75rem; }
+        .btn-submit {
+            width: 100%; padding: 0.85rem; border: none; border-radius: 8px;
+            background: var(--accent); color: var(--darkest);
+            font-family: 'Work Sans', sans-serif; font-size: 1rem; font-weight: 700;
+            cursor: pointer; transition: background 0.2s, transform 0.15s;
+        }
+        .btn-submit:hover { background: var(--accent-hover); transform: translateY(-1px); }
+        .form-note {
+            text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.4);
+            margin-top: 0.75rem;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            background: #052726; color: rgba(255,255,255,0.4); text-align: center;
+            padding: 2rem; font-size: 0.82rem;
+        }
+        .footer a { color: var(--light); text-decoration: none; }
+        .footer a:hover { color: var(--bright); }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .about-inner { grid-template-columns: 1fr; text-align: center; }
+            .about-photo img { margin: 0 auto; }
+            .stats-row { justify-content: center; }
+            .services-grid { grid-template-columns: 1fr; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="lp-nav">
+        <a href="index.html" class="lp-nav-logo">Seedscale Agency</a>
+        <a href="index.html" class="lp-nav-link">&larr; Visit Full Site</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-badge">Digital Marketing for Mission-Driven Organizations</span>
+            <h1>Let's Grow Your Movement Together</h1>
+            <p>We help faith-based businesses and nonprofits scale their digital reach, grow their supporter base, and raise more revenue online.</p>
+            <a href="#contact" class="scroll-cta">
+                Get in Touch
+                <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about">
+        <div class="about-inner">
+            <div class="about-photo">
+                <img src="headshot.jpeg" alt="Rebecca — Founder of Seedscale Agency">
+            </div>
+            <div class="about-text">
+                <h2>Meet Rebecca</h2>
+                <p>Rebecca is the founder of Seedscale, a digital marketing agency that builds online movements for mission-driven organizations.</p>
+                <p>With 15+ years leading digital teams for organizations with tens of millions of supporters, she's driven billions of social media views, raised tens of millions in digital revenue, and grown subscriber bases by millions.</p>
+                <p>Today, she consults exclusively with faith-based businesses and nonprofits to help them expand their reach and amplify their message.</p>
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-num">15+</span>
+                        <span class="stat-lbl">Years</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">10M+</span>
+                        <span class="stat-lbl">Subscribers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-num">$15M+</span>
+                        <span class="stat-lbl">Revenue Raised</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="services-inner">
+            <h2>What We Do</h2>
+            <p class="sub">Strategic digital consulting tailored to your mission.</p>
+            <div class="services-grid">
+                <div class="svc-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                    </div>
+                    <h3>Content Marketing</h3>
+                    <p>Viral video, social media, email, and editorial strategy that drives engagement and grows your audience.</p>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.57-3.25 3.93"/><path d="M8.56 13.49A8 8 0 0 0 4 20h5"/><circle cx="19" cy="19" r="3"/></svg>
+                    </div>
+                    <h3>AI Consulting</h3>
+                    <p>Optimize workflows, automate donor engagement, and unlock data-driven insights with AI.</p>
+                </div>
+                <div class="svc-card">
+                    <div class="svc-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    </div>
+                    <h3>Direct Response</h3>
+                    <p>Fundraising and acquisition across email, SMS, and paid channels that convert supporters into donors.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
+        <div class="contact-inner">
+            <h2>Let's Talk</h2>
+            <p class="sub">Tell us about your organization and goals. We'll get back to you within 24 hours.</p>
+            <form class="contact-form" action="https://formspree.io/f/mreydzpq" method="POST">
+                <input type="hidden" name="_next" value="https://seedscale.agency/connect.html?submitted=true">
+                <input type="hidden" name="_subject" value="New Inquiry from Social Media Landing Page">
+                <div class="form-row">
+                    <div>
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
+                    </div>
+                    <div>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                </div>
+                <div class="field-full">
+                    <label for="org">Organization</label>
+                    <input type="text" id="org" name="organization" placeholder="Your organization name">
+                </div>
+                <div class="field-full">
+                    <label for="interest">What are you interested in?</label>
+                    <select id="interest" name="interest">
+                        <option value="" disabled selected>Select a service</option>
+                        <option value="Content Marketing">Content Marketing</option>
+                        <option value="AI Consulting">AI Consulting</option>
+                        <option value="Direct Response / Fundraising">Direct Response / Fundraising</option>
+                        <option value="Full Strategy">Full Digital Strategy</option>
+                        <option value="Not sure yet">Not sure yet — just exploring</option>
+                    </select>
+                </div>
+                <div class="field-full">
+                    <label for="message">How can we help?</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your goals, challenges, or questions..." required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message</button>
+                <p class="form-note">We respect your privacy. No spam, ever.</p>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 Seedscale Agency &middot; <a href="index.html">seedscale.agency</a></p>
+    </footer>
+
+    <script>
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Show success message if redirected back after form submit
+        if (window.location.search.includes('submitted=true')) {
+            const form = document.querySelector('.contact-form');
+            form.innerHTML = '<div style="text-align:center;padding:2rem 0"><svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#21D375" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="16 8 10 14 7 11"/></svg><h3 style="margin-top:1rem;color:#fff">Message Sent!</h3><p style="color:#a8e6cf;margin-top:0.5rem">Thanks for reaching out. We\'ll get back to you within 24 hours.</p></div>';
+        }
+    </script>
+
+</body>
+</html>
