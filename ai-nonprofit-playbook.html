@@ -169,9 +169,10 @@
         }
         .author-avatar {
             width: 90px; height: 90px; border-radius: 50%;
-            background: linear-gradient(135deg, #0B6E4F, #08A045);
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1.25rem; font-size: 2rem; color: #fff; font-weight: 700;
+            margin: 0 auto 1.25rem; overflow: hidden;
+        }
+        .author-avatar img {
+            width: 100%; height: 100%; object-fit: cover;
         }
         .author-card h3 {
             font-size: 1.25rem; font-weight: 600; color: #073B3A; margin-bottom: 0.75rem;
@@ -302,7 +303,7 @@
         <div class="lp-author-inner">
             <h2>About the Author</h2>
             <div class="author-card">
-                <div class="author-avatar">RD</div>
+                <div class="author-avatar"><img src="headshot.jpeg" alt="Rebecca"></div>
                 <h3>Rebecca</h3>
                 <p>Rebecca is a digital marketing strategist with over 15 years of experience helping mission-driven organizations grow their reach and revenue. She has led content, social media, advertising, and digital fundraising teams for nonprofits with tens of millions of subscribers, generating measurable impact through dynamic storytelling, data-driven campaigns, and innovative technology adoption. Today, she consults exclusively with purpose-driven organizations to help them harness the power of AI and digital strategy.</p>
             </div>
