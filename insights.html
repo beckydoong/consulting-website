@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights | Seedscale Agency</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:title" content="Insights | Seedscale Agency">
+    <meta property="og:description" content="Articles on digital fundraising, AI strategy, and content marketing for mission-driven organizations.">
+    <meta property="og:image" content="og-image.png">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .insights-hero {
+            background: var(--darkest);
+            color: #fff;
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+        }
+        .insights-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 0.75rem;
+        }
+        .insights-hero p {
+            color: #a8e6cf;
+            font-size: 1.1rem;
+            max-width: 550px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        .insights-grid-section {
+            padding: 4rem 2rem 5rem;
+            background: #f9fafb;
+        }
+        .insights-grid-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .insights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+        .insight-card {
+            background: #fff;
+            border: 1px solid rgba(7, 59, 58, 0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+        }
+        .insight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(7, 59, 58, 0.1);
+        }
+        .insight-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+        .insight-card-body {
+            padding: 24px 24px 28px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        .insight-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--medium);
+            font-weight: 700;
+            margin-bottom: 12px;
+            padding: 3px 10px;
+            background: rgba(8, 160, 69, 0.08);
+            border-radius: 100px;
+            align-self: flex-start;
+        }
+        .insight-card-body h3 {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--darkest);
+            line-height: 1.35;
+            margin-bottom: 10px;
+            letter-spacing: -0.01em;
+        }
+        .insight-card-body p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.6;
+            font-weight: 300;
+            flex-grow: 1;
+            margin-bottom: 14px;
+        }
+        .insight-meta {
+            font-size: 0.78rem;
+            color: #999;
+            font-weight: 400;
+        }
+        @media (max-width: 968px) {
+            .insights-grid { grid-template-columns: repeat(2, 1fr); }
+            .insights-hero h1 { font-size: 2.2rem; }
+        }
+        @media (max-width: 640px) {
+            .insights-grid { grid-template-columns: 1fr; }
+            .insights-hero { padding: 7rem 1.5rem 3rem; }
+            .insights-hero h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="logo.svg" alt="Seedscale Agency" class="nav-logo-img"></a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#impact">Impact</a></li>
+                <li><a href="insights.html" class="active">Insights</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="insights-hero">
+        <h1>Insights</h1>
+        <p>Articles on digital fundraising, AI strategy, and content marketing for mission-driven organizations.</p>
+    </section>
+
+    <!-- Blog Grid -->
+    <section class="insights-grid-section">
+        <div class="insights-grid-inner">
+            <div class="insights-grid">
+
+                <a href="blog-ai-wont-replace-fundraisers.html" class="insight-card">
+                    <img src="blog-img-ai-fundraiser.jpg" alt="AI and fundraising">
+                    <div class="insight-card-body">
+                        <span class="insight-tag">Digital Fundraising</span>
+                        <h3>AI Won't Replace You as a Fundraiser — But Here's What Will</h3>
+                        <p>92% of nonprofits use AI. Only 7% report major impact. The gap is an opportunity for fundraisers willing to close it.</p>
+                        <span class="insight-meta">April 1, 2026 · 5 min read</span>
+                    </div>
+                </a>
+
+                <a href="blog-content-strategy-views.html" class="insight-card">
+                    <img src="blog-img-content-strategy.jpg" alt="Content strategy">
+                    <div class="insight-card-body">
+                        <span class="insight-tag">Content Strategy</span>
+                        <h3>The Content Strategy Behind 100M+ Views</h3>
+                        <p>How we turned a video series into a viral movement with algorithm optimization and cross-platform distribution.</p>
+                        <span class="insight-meta">March 3, 2026 · 8 min read</span>
+                    </div>
+                </a>
+
+                <a href="blog-double-fundraising.html" class="insight-card">
+                    <img src="blog-img-fundraising.jpg" alt="Digital fundraising">
+                    <div class="insight-card-body">
+                        <span class="insight-tag">Fundraising</span>
+                        <h3>How to Double Your Digital Fundraising Revenue</h3>
+                        <p>Proven strategies for multi-channel optimization, donor retention, and building recurring giving programs that scale.</p>
+                        <span class="insight-meta">February 5, 2026 · 8 min read</span>
+                    </div>
+                </a>
+
+                <a href="blog-ai-tools-nonprofits.html" class="insight-card">
+                    <img src="blog-img-ai-tools.jpg" alt="AI tools">
+                    <div class="insight-card-body">
+                        <span class="insight-tag">AI &amp; Technology</span>
+                        <h3>5 AI Tools Every Nonprofit Should Be Using in 2026</h3>
+                        <p>From content creation to donor analytics, discover the AI tools that are transforming how nonprofits operate and grow.</p>
+                        <span class="insight-meta">January 15, 2026 · 7 min read</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">Seedscale Agency</p>
+                <p class="footer-tagline">Digital Consulting for Mission-Driven Organizations</p>
+                <div class="footer-links">
+                    <a href="connect.html">Connect</a>
+                    <a href="insights.html">Insights</a>
+                </div>
+                <p class="footer-copy">&copy; 2026 Seedscale Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
