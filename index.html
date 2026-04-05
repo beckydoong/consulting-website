@@ -412,13 +412,13 @@
             <h2 class="section-title">Start a Conversation</h2>
             <p class="section-subtitle">For inquiries, please reach out — I'd love to hear about your organization and how I can help.</p>
             <div class="contact-content">
-                <form class="contact-form" action="https://formspree.io/f/mreydzpq" method="POST">
+                <form class="contact-form" action="https://app.kit.com/forms/9289548/subscriptions" method="POST" data-kit-form="true">
                     <div class="form-row">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="text" name="fields[first_name]" placeholder="Your Name" required>
+                        <input type="email" name="email_address" placeholder="Your Email" required>
                     </div>
-                    <input type="text" name="organization" placeholder="Organization Name">
-                    <textarea name="message" placeholder="Tell me about your organization and how I can help..." rows="5" required></textarea>
+                    <input type="text" name="fields[organization]" placeholder="Organization Name">
+                    <textarea name="fields[message]" placeholder="Tell me about your organization and how I can help..." rows="5" required></textarea>
                     <button type="submit" class="btn btn-dark">Send Message</button>
                 </form>
             </div>
