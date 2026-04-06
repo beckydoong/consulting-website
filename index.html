@@ -412,9 +412,8 @@
             <h2 class="section-title">Start a Conversation</h2>
             <p class="section-subtitle">For inquiries, please reach out — I'd love to hear about your organization and how I can help.</p>
             <div class="contact-content">
-                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <form class="contact-form" id="contact-form">
                     <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                    <input type="hidden" name="redirect" value="https://seedscale.agency/">
                     <div class="form-row">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
@@ -423,7 +422,30 @@
                     <textarea name="message" placeholder="Tell me about your organization and how I can help..." rows="5" required></textarea>
                     <button type="submit" class="btn btn-dark">Send Message</button>
                 </form>
+                <div id="contact-success" style="display:none; text-align:center; padding: 3rem 2rem;">
+                    <div style="width:60px; height:60px; border-radius:50%; background:var(--medium); display:flex; align-items:center; justify-content:center; margin:0 auto 1.5rem;">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <h3 style="font-size:1.5rem; color:var(--darkest); margin-bottom:0.5rem;">Thank You!</h3>
+                    <p style="color:#555; font-size:1rem;">Your message has been sent. I'll get back to you within 24 hours.</p>
+                </div>
             </div>
+            <script>
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                var form = this;
+                var data = new FormData(form);
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: data
+                }).then(function(res) {
+                    if (res.ok) {
+                        form.style.display = 'none';
+                        document.getElementById('contact-success').style.display = 'block';
+                    }
+                });
+            });
+            </script>
         </div>
     </section>
 
