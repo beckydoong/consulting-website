@@ -317,24 +317,26 @@
         <div class="contact-inner">
             <h2>Let's Talk</h2>
             <p class="sub">Tell us about your organization and goals. We'll get back to you within 24 hours.</p>
-            <form class="contact-form" action="https://app.kit.com/forms/9289548/subscriptions" method="POST" data-kit-form="true">
+            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                <input type="hidden" name="redirect" value="https://seedscale.agency/connect.html">
                 <div class="form-row">
                     <div>
                         <label for="name">Name</label>
-                        <input type="text" id="name" name="fields[first_name]" placeholder="Your name" required>
+                        <input type="text" id="name" name="name" placeholder="Your name" required>
                     </div>
                     <div>
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email_address" placeholder="you@example.com" required>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
                     </div>
                 </div>
                 <div class="field-full">
                     <label for="org">Organization</label>
-                    <input type="text" id="org" name="fields[organization]" placeholder="Your organization name">
+                    <input type="text" id="org" name="organization" placeholder="Your organization name">
                 </div>
                 <div class="field-full">
                     <label for="interest">What are you interested in?</label>
-                    <select id="interest" name="fields[interest]">
+                    <select id="interest" name="interest">
                         <option value="" disabled selected>Select a service</option>
                         <option value="Content Marketing">Content Marketing</option>
                         <option value="AI Consulting">AI Consulting</option>
@@ -345,7 +347,7 @@
                 </div>
                 <div class="field-full">
                     <label for="message">How can we help?</label>
-                    <textarea id="message" name="fields[message]" placeholder="Tell us about your goals, challenges, or questions..." required></textarea>
+                    <textarea id="message" name="message" placeholder="Tell us about your goals, challenges, or questions..." required></textarea>
                 </div>
                 <button type="submit" class="btn-submit">Send Message</button>
                 <p class="form-note">We respect your privacy. No spam, ever.</p>
