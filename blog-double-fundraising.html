@@ -73,6 +73,28 @@
 
         <p>This is not complicated, but it requires intentional automation and content planning. Most CRM and email platforms can handle this workflow out of the box. The organizations that implement structured onboarding sequences typically see retention rates climb from 45 percent to 60 percent or higher within the first year. When you retain more donors, your revenue base compounds year over year instead of resetting.</p>
 
+        <!-- Work With Me CTA -->
+        <div class="blog-cta" style="background: linear-gradient(135deg, #0B6E4F 0%, #08A045 100%);">
+            <div class="blog-cta-content">
+                <h3>Work With Me</h3>
+                <p>I help nonprofit teams build multi-channel fundraising systems that drive real revenue growth. Let's talk about what that looks like for your organization.</p>
+                <form id="blog-contact-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                    <input type="email" name="email" placeholder="Your email address" required style="padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-family: 'Work Sans', sans-serif; font-size: 0.95rem; min-width: 250px; flex: 1;">
+                    <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Let's Connect</button>
+                </form>
+                <p id="blog-contact-success" style="display:none; color:#FACC15; font-weight:600; margin-top:1rem;">Thank you! I'll be in touch soon.</p>
+            </div>
+        </div>
+        <script>
+        document.getElementById('blog-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
+            .then(function(r) { if(r.ok) { form.style.display='none'; document.getElementById('blog-contact-success').style.display='block'; }});
+        });
+        </script>
+
         <h2>3. Optimize Email and SMS for Conversion</h2>
 
         <p>Email and SMS remain the highest-converting digital fundraising channels, but most organizations are not optimizing them effectively. Small improvements in open rates, click-through rates, and donation page conversion can compound into significant revenue gains.</p>

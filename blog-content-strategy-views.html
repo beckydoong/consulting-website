@@ -67,6 +67,28 @@
 
         <p>The concept needs to be simple enough to communicate in the first three seconds of a video. If your audience cannot immediately understand what they are watching and why it matters, they will scroll past before your message ever lands. Spend more time refining your hook than any other element of production.</p>
 
+        <!-- Work With Me CTA -->
+        <div class="blog-cta" style="background: linear-gradient(135deg, #0B6E4F 0%, #08A045 100%);">
+            <div class="blog-cta-content">
+                <h3>Work With Me</h3>
+                <p>I help mission-driven organizations build content strategies that drive massive reach and real impact. Let's talk about what that looks like for yours.</p>
+                <form id="blog-contact-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                    <input type="email" name="email" placeholder="Your email address" required style="padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-family: 'Work Sans', sans-serif; font-size: 0.95rem; min-width: 250px; flex: 1;">
+                    <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Let's Connect</button>
+                </form>
+                <p id="blog-contact-success" style="display:none; color:#FACC15; font-weight:600; margin-top:1rem;">Thank you! I'll be in touch soon.</p>
+            </div>
+        </div>
+        <script>
+        document.getElementById('blog-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
+            .then(function(r) { if(r.ok) { form.style.display='none'; document.getElementById('blog-contact-success').style.display='block'; }});
+        });
+        </script>
+
         <h2>2. Optimize for Platform Algorithms</h2>
 
         <p>Creating great content is necessary but not sufficient. You also need to understand how platform algorithms decide what to surface and amplify. In 2026, the major social platforms all prioritize similar signals: watch time, engagement velocity, share rate, and completion rate. Optimizing for these signals is not about gaming the system; it is about structuring your content in ways that align with how people naturally consume media.</p>

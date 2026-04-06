@@ -84,6 +84,7 @@ a {
 
 .navbar.scrolled .nav-logo-img {
     filter: none;
+    color: var(--darkest);
 }
 
 .navbar.scrolled .nav-links a {
@@ -126,6 +127,7 @@ a {
 .nav-logo-img {
     height: 40px;
     width: auto;
+    color: #fff;
 }
 
 .nav-links {
