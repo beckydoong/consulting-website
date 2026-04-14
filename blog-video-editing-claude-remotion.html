@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Edit Videos in Minutes with Claude Code + Remotion | Seedscale Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog-styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:title" content="How to Edit Videos in Minutes with Claude Code + Remotion">
+    <meta property="og:description" content="Go from raw footage to a polished, captioned short-form video in minutes — with your brand style baked in.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://seedscale.agency/blog-video-editing-claude-remotion.html">
+    <meta property="og:image" content="https://seedscale.agency/blog-img-video-editing.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://seedscale.agency/blog-img-video-editing.jpg">
+</head>
+<body class="blog-page">
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="logo.svg" alt="Seedscale Agency" class="nav-logo-img"></a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#impact">Impact</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="blog-header-content">
+            <span class="blog-category">AI &amp; Technology</span>
+            <h1>How to Edit Videos in Minutes with Claude Code + Remotion</h1>
+            <div class="blog-meta">
+                <span>Seedscale Agency</span>
+                <span class="blog-meta-dot"></span>
+                <span>April 13, 2026</span>
+                <span class="blog-meta-dot"></span>
+                <span>6 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Article -->
+    <article class="blog-article">
+
+        <p>Stop spending hours manually cutting out silences, retakes, and false starts from your talking-head videos. With Claude Code and Remotion, you can go from raw footage to a polished, captioned short-form video in minutes — with your brand style baked in.</p>
+
+        <h2>What You'll Need</h2>
+
+        <ul>
+            <li><strong>Claude Code</strong> — Anthropic's CLI tool</li>
+            <li><strong>Node.js</strong> v18+ installed</li>
+            <li>Raw video footage (<code>.mov</code> or <code>.mp4</code>)</li>
+            <li>~10 minutes for first-time setup, ~5 minutes per video after that</li>
+        </ul>
+
+        <h2>One-Time Setup (10 minutes)</h2>
+
+        <h3>Step 1: Install the Remotion Skill</h3>
+
+        <p>The Remotion skill gives Claude Code domain-specific knowledge about video editing with Remotion. Install it from GitHub:</p>
+
+        <pre><code># Clone the skill repo
+git clone --depth 1 https://github.com/remotion-dev/skills.git /tmp/remotion-skills
+
+# Copy to your Claude skills directory
+mkdir -p ~/.claude/skills
+cp -r /tmp/remotion-skills/skills/remotion ~/.claude/skills/remotion
+
+# Clean up
+rm -rf /tmp/remotion-skills</code></pre>
+
+        <p>That's it — Claude Code will automatically detect the skill whenever you work on Remotion projects.</p>
+
+        <h3>Step 2: Create Your Brand Guide</h3>
+
+        <p>Inside <code>~/.claude/skills/remotion/rules/</code>, create a <code>brand-guide.md</code> file that defines your visual style: fonts, colors, layout, title placement, caption styling, and platform safe zones for Instagram and TikTok.</p>
+
+        <p>You can ask Claude Code to help you build this — just show it a screenshot of your existing content and say "match this style."</p>
+
+        <!-- Work With Me CTA -->
+        <div class="blog-cta" style="background: linear-gradient(135deg, #0B6E4F 0%, #08A045 100%);">
+            <div class="blog-cta-content">
+                <h3>Work With Me</h3>
+                <p>I help mission-driven organizations leverage AI tools like Claude Code to streamline their content workflows. Let's talk about what that looks like for your team.</p>
+                <form id="blog-contact-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                    <input type="email" name="email" placeholder="Your email address" required style="padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-family: 'Work Sans', sans-serif; font-size: 0.95rem; min-width: 250px; flex: 1;">
+                    <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Let's Connect</button>
+                </form>
+                <p id="blog-contact-success" style="display:none; color:#FACC15; font-weight:600; margin-top:1rem;">Thank you! I'll be in touch soon.</p>
+            </div>
+        </div>
+        <script>
+        document.getElementById('blog-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
+            .then(function(r) { if(r.ok) { form.style.display='none'; document.getElementById('blog-contact-success').style.display='block'; }});
+        });
+        </script>
+
+        <h3>Step 3: Set Up Retake Detection Rules</h3>
+
+        <p>Create a <code>retake-detection.md</code> rule file that tells Claude how you signal retakes: a keyword like "retake," repeated sentences, false starts, or silence thresholds. Claude Code will follow these rules every time it processes your footage.</p>
+
+        <h2>Per-Video Workflow (5 minutes)</h2>
+
+        <h3>Step 1: Start a New Conversation</h3>
+
+        <p>Open Claude Code in your terminal. If you don't have a Remotion project yet, Claude will scaffold one for you.</p>
+
+        <h3>Step 2: Drop In Your Footage</h3>
+
+        <p>Tell Claude: <em>"New video — edit this with my brand style"</em> and reference your raw footage file. Claude will:</p>
+
+        <ol>
+            <li><strong>Copy</strong> your video into the project's <code>public/</code> folder</li>
+            <li><strong>Analyze</strong> the audio — measure loudness levels and detect all silent segments</li>
+            <li><strong>Transcribe</strong> your speech using Whisper (runs locally, no API needed)</li>
+            <li><strong>Detect cuts</strong> — find your "retake" markers, repeated sentences, false starts, and long pauses</li>
+            <li><strong>Build the composition</strong> — stitch together only the good segments</li>
+            <li><strong>Add branded titles</strong> — your fonts, colors, and layout, positioned within platform safe zones</li>
+            <li><strong>Generate captions</strong> — word-by-word with your brand highlight color, timed to your speech</li>
+            <li><strong>Start the preview</strong> — opens Remotion Studio so you can watch the result</li>
+        </ol>
+
+        <h3>Step 3: Review and Adjust</h3>
+
+        <p>Open <code>http://localhost:3000</code> to preview in Remotion Studio. Scrub through the timeline to check every cut. Tell Claude to adjust: "move the title up," "that cut at 12s is too early," "change the title text." Changes appear instantly via hot reload.</p>
+
+        <h3>Step 4: Render</h3>
+
+        <p>When you're happy, click <strong>Render</strong> in Remotion Studio or ask Claude to run the render command. Your finished video lands in the <code>out/</code> folder, ready to upload.</p>
+
+        <h2>What Gets Automated</h2>
+
+        <table style="width:100%; border-collapse:collapse; margin: 1.5rem 0;">
+            <thead>
+                <tr style="border-bottom: 2px solid #e5e7eb;">
+                    <th style="text-align:left; padding:0.75rem; font-size:0.9rem;">Task</th>
+                    <th style="text-align:left; padding:0.75rem; font-size:0.9rem;">Manual Time</th>
+                    <th style="text-align:left; padding:0.75rem; font-size:0.9rem;">With Claude Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:0.75rem; font-size:0.9rem;">Silence removal</td><td style="padding:0.75rem; font-size:0.9rem;">10-15 min</td><td style="padding:0.75rem; font-size:0.9rem; color:#08A045; font-weight:600;">Automatic</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:0.75rem; font-size:0.9rem;">Retake/false start detection</td><td style="padding:0.75rem; font-size:0.9rem;">15-20 min</td><td style="padding:0.75rem; font-size:0.9rem; color:#08A045; font-weight:600;">Automatic</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:0.75rem; font-size:0.9rem;">Transcription + captions</td><td style="padding:0.75rem; font-size:0.9rem;">20-30 min</td><td style="padding:0.75rem; font-size:0.9rem; color:#08A045; font-weight:600;">Automatic</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:0.75rem; font-size:0.9rem;">Brand title overlay</td><td style="padding:0.75rem; font-size:0.9rem;">5-10 min</td><td style="padding:0.75rem; font-size:0.9rem; color:#08A045; font-weight:600;">Automatic</td></tr>
+                <tr style="border-bottom:1px solid #f0f0f0;"><td style="padding:0.75rem; font-size:0.9rem;">Safe zone compliance</td><td style="padding:0.75rem; font-size:0.9rem;">5 min</td><td style="padding:0.75rem; font-size:0.9rem; color:#08A045; font-weight:600;">Built in</td></tr>
+                <tr style="border-top:2px solid #e5e7eb;"><td style="padding:0.75rem; font-weight:700; font-size:0.9rem;">Total</td><td style="padding:0.75rem; font-weight:700; font-size:0.9rem;">55-80 min</td><td style="padding:0.75rem; font-weight:700; color:#08A045; font-size:0.9rem;">~5 min of review</td></tr>
+            </tbody>
+        </table>
+
+        <h2>Tips</h2>
+
+        <ul>
+            <li><strong>Say "retake" clearly</strong> between takes — it's the most reliable cut signal</li>
+            <li><strong>Pause for 1-2 seconds</strong> when you mess up before restarting — this helps silence detection catch the boundary</li>
+            <li><strong>Keep your brand guide updated</strong> — the more specific it is, the less you'll need to adjust per video</li>
+            <li><strong>Render a single frame first</strong> to sanity-check layout before doing a full render</li>
+            <li>Your brand guide, retake rules, and all Remotion skill files persist across conversations — set them up once and they just work</li>
+        </ul>
+
+        <!-- Bottom CTA -->
+        <div class="blog-cta">
+            <div class="blog-cta-content">
+                <h3>Download The AI Nonprofit Playbook</h3>
+                <p>Get the complete guide to implementing AI across your nonprofit's digital strategy, with templates, prompts, and step-by-step workflows.</p>
+                <a href="ai-nonprofit-playbook.html" class="btn btn-primary">Get the Free Ebook</a>
+            </div>
+        </div>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">Seedscale Agency</p>
+                <p class="footer-tagline">Digital Consulting for Mission-Driven Organizations</p>
+                <div class="footer-links">
+                    <a href="connect.html">Connect</a>
+                    <a href="insights.html">Insights</a>
+                </div>
+                <p class="footer-copy">&copy; 2026 Seedscale Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
