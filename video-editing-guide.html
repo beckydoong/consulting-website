@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Edit Videos in Minutes with Claude Code + Remotion | Seedscale Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:title" content="How to Edit Videos in Minutes with Claude Code + Remotion">
+    <meta property="og:description" content="Go from raw footage to a polished, captioned short-form video in minutes — with your brand style baked in.">
+    <meta property="og:image" content="https://seedscale.agency/blog-img-video-editing.jpg">
+    <meta property="og:url" content="https://seedscale.agency/video-editing-guide.html">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; }
+
+        .lp-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 2rem; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .lp-nav-logo { text-decoration: none; display: flex; align-items: center; }
+        .lp-nav-back {
+            color: #6BBF59; text-decoration: none; font-size: 0.9rem; font-weight: 500;
+            transition: color 0.2s;
+        }
+        .lp-nav-back:hover { color: #21D375; }
+
+        .lp-hero {
+            background: #073B3A; color: #fff; padding: 8rem 2rem 5rem;
+            min-height: 90vh; display: flex; align-items: center; justify-content: center;
+        }
+        .lp-hero-inner {
+            max-width: 1100px; width: 100%; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 4rem; align-items: center;
+        }
+        .lp-hero-text h1 {
+            font-size: 2.8rem; font-weight: 700; line-height: 1.15;
+            margin-bottom: 1rem; letter-spacing: -0.02em;
+        }
+        .lp-hero-text .subtitle {
+            font-size: 1.15rem; color: #a8e6cf; margin-bottom: 2rem;
+            font-weight: 400; line-height: 1.5;
+        }
+        .lp-hero-right {
+            display: flex; flex-direction: column; align-items: center; gap: 2rem;
+        }
+
+        .guide-wrapper { perspective: 800px; }
+        .guide-cover {
+            width: 260px; height: 340px; position: relative;
+            background: linear-gradient(145deg, #0B6E4F 0%, #073B3A 50%, #0B6E4F 100%);
+            border-radius: 4px 12px 12px 4px;
+            box-shadow: -6px 6px 20px rgba(0,0,0,0.4), inset -2px 0 4px rgba(0,0,0,0.15);
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 2rem 1.5rem; text-align: center; transform: rotateY(-8deg);
+            transition: transform 0.4s ease;
+        }
+        .guide-cover:hover { transform: rotateY(0deg); }
+        .guide-cover::before {
+            content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 14px;
+            background: linear-gradient(90deg, rgba(0,0,0,0.25), transparent);
+            border-radius: 4px 0 0 4px;
+        }
+        .guide-cover .guide-label {
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.15em;
+            color: #FACC15; font-weight: 600; margin-bottom: 1rem;
+        }
+        .guide-cover .guide-icon {
+            font-size: 2.5rem; margin-bottom: 0.5rem; display: block;
+        }
+        .guide-cover .guide-title {
+            font-size: 1rem; font-weight: 700; color: #fff; line-height: 1.25;
+            margin-bottom: 0.75rem;
+        }
+        .guide-cover .guide-divider {
+            width: 40px; height: 2px; background: #FACC15; margin-bottom: 0.75rem;
+        }
+        .guide-cover .guide-subtitle {
+            font-size: 0.65rem; color: rgba(255,255,255,0.85); line-height: 1.45;
+            margin-bottom: 1.25rem;
+        }
+        .guide-cover .guide-author {
+            font-size: 0.75rem; font-weight: 600; color: #FACC15;
+        }
+
+        .lp-form {
+            width: 100%; max-width: 380px;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px; padding: 1.75rem;
+        }
+        .lp-form h3 {
+            font-size: 1.1rem; font-weight: 600; margin-bottom: 1rem; color: #fff;
+            text-align: center;
+        }
+        .lp-form input[type="text"],
+        .lp-form input[type="email"] {
+            width: 100%; padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff;
+            font-family: 'Work Sans', sans-serif; font-size: 0.95rem;
+            margin-bottom: 0.75rem; transition: border-color 0.2s;
+        }
+        .lp-form input::placeholder { color: rgba(255,255,255,0.5); }
+        .lp-form input:focus {
+            outline: none; border-color: #FACC15; background: rgba(255,255,255,0.15);
+        }
+        .lp-form .btn-cta {
+            width: 100%; padding: 0.85rem; border: none; border-radius: 8px;
+            background: #FACC15; color: #073B3A; font-family: 'Work Sans', sans-serif;
+            font-size: 1rem; font-weight: 700; cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .lp-form .btn-cta:hover { background: #fde047; transform: translateY(-1px); }
+        .lp-form .form-note {
+            text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.5);
+            margin-top: 0.75rem;
+        }
+
+        .lp-learn { padding: 5rem 2rem; background: #f9fafb; }
+        .lp-learn-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .lp-learn-inner h2 {
+            font-size: 2rem; font-weight: 700; color: #073B3A; margin-bottom: 0.5rem;
+        }
+        .lp-learn-inner .section-sub {
+            color: #555; font-size: 1.05rem; margin-bottom: 3rem;
+        }
+        .learn-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.75rem; text-align: left;
+        }
+        .learn-card {
+            background: #fff; border-radius: 12px; padding: 1.75rem;
+            border: 1px solid #e5e7eb; transition: box-shadow 0.25s, transform 0.25s;
+        }
+        .learn-card:hover {
+            box-shadow: 0 8px 24px rgba(7,59,58,0.1); transform: translateY(-3px);
+        }
+        .learn-card .card-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px; border-radius: 50%;
+            background: #0B6E4F; color: #fff; font-size: 0.85rem;
+            font-weight: 700; margin-bottom: 1rem;
+        }
+        .learn-card h4 {
+            font-size: 1.05rem; font-weight: 600; color: #073B3A;
+            margin-bottom: 0.5rem;
+        }
+        .learn-card p { font-size: 0.95rem; color: #333; line-height: 1.55; }
+
+        .lp-time { padding: 5rem 2rem; background: #fff; }
+        .lp-time-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .lp-time-inner h2 {
+            font-size: 2rem; font-weight: 700; color: #073B3A; margin-bottom: 2rem;
+        }
+        .time-table { width: 100%; border-collapse: collapse; }
+        .time-table th {
+            text-align: left; padding: 0.85rem 1rem; font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 0.08em; color: #555;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        .time-table td {
+            padding: 0.85rem 1rem; font-size: 0.95rem; border-bottom: 1px solid #f0f0f0;
+        }
+        .time-table .auto { color: #08A045; font-weight: 600; }
+        .time-table tr:last-child td {
+            border-top: 2px solid #e5e7eb; font-weight: 700;
+        }
+        .time-table tr:last-child .auto { color: #08A045; }
+
+        .lp-author { padding: 5rem 2rem; background: #f9fafb; }
+        .lp-author-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+        .lp-author-inner h2 {
+            font-size: 2rem; font-weight: 700; color: #073B3A; margin-bottom: 1.5rem;
+        }
+        .author-card {
+            background: #f0fdf4; border-radius: 16px; padding: 2.5rem;
+            border: 1px solid #bbf7d0;
+        }
+        .author-avatar {
+            width: 90px; height: 90px; border-radius: 50%;
+            margin: 0 auto 1.25rem; overflow: hidden;
+        }
+        .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .author-card h3 {
+            font-size: 1.25rem; font-weight: 600; color: #073B3A; margin-bottom: 0.75rem;
+        }
+        .author-card p {
+            font-size: 0.95rem; color: #444; line-height: 1.65; max-width: 600px; margin: 0 auto;
+        }
+
+        .lp-bottom-cta {
+            padding: 5rem 2rem; background: #073B3A; color: #fff; text-align: center;
+        }
+        .lp-bottom-cta-inner { max-width: 520px; margin: 0 auto; }
+        .lp-bottom-cta h2 { font-size: 2rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .lp-bottom-cta .cta-sub {
+            color: #a8e6cf; margin-bottom: 2rem; font-size: 1.05rem;
+        }
+        .lp-bottom-cta .lp-form {
+            max-width: 100%; background: rgba(255,255,255,0.06);
+        }
+
+        .lp-footer {
+            background: #052726; color: rgba(255,255,255,0.5); text-align: center;
+            padding: 2.5rem 2rem; font-size: 0.85rem;
+        }
+        .lp-footer .footer-logo {
+            font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem;
+        }
+        .lp-footer .footer-tagline {
+            color: rgba(255,255,255,0.45); margin-bottom: 0.5rem; font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            .lp-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
+            .lp-hero-text h1 { font-size: 2rem; }
+            .learn-grid { grid-template-columns: 1fr; }
+            .lp-hero { min-height: auto; padding: 7rem 1.5rem 3.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="lp-nav">
+        <a href="index.html" class="lp-nav-logo"><img src="logo.svg" alt="Seedscale Agency" style="height:36px;width:auto"></a>
+        <a href="index.html" class="lp-nav-back">&larr; Back to Home</a>
+    </nav>
+
+    <section class="lp-hero">
+        <div class="lp-hero-inner">
+            <div class="lp-hero-text">
+                <h1>How to Edit Videos in Minutes with Claude Code + Remotion</h1>
+                <p class="subtitle">Go from raw footage to a polished, captioned short-form video in minutes — with your brand style baked in.</p>
+                <form class="lp-form" id="hero-form">
+                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                    <input type="hidden" name="subject" value="New Download: Video Editing Guide">
+                    <h3>Get Your Free Copy</h3>
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <button type="submit" class="btn-cta">Download the Guide</button>
+                    <p class="form-note">Free download. No spam, ever.</p>
+                </form>
+                <p id="hero-success" style="display:none; color:#FACC15; font-weight:600; margin-top:1.5rem; text-align:center;">Thank you! Your guide is downloading now.</p>
+            </div>
+            <div class="lp-hero-right">
+                <div class="guide-wrapper">
+                    <div class="guide-cover">
+                        <span class="guide-label">Free Guide</span>
+                        <span class="guide-icon">&#9654;</span>
+                        <span class="guide-title">Edit Videos in Minutes with AI</span>
+                        <span class="guide-divider"></span>
+                        <span class="guide-subtitle">Claude Code + Remotion: From raw footage to polished video</span>
+                        <span class="guide-author">Seedscale Agency</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lp-learn">
+        <div class="lp-learn-inner">
+            <h2>What's Inside</h2>
+            <p class="section-sub">A complete setup guide plus a per-video workflow you can repeat in 5 minutes.</p>
+            <div class="learn-grid">
+                <div class="learn-card">
+                    <span class="card-num">1</span>
+                    <h4>One-Time Setup</h4>
+                    <p>Install the Remotion skill, create your brand guide (fonts, colors, safe zones), and configure retake detection rules.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">2</span>
+                    <h4>Automated Editing</h4>
+                    <p>Claude analyzes audio, transcribes speech, detects retakes and false starts, and stitches together only the good segments.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">3</span>
+                    <h4>Branded Titles &amp; Captions</h4>
+                    <p>Auto-generated word-by-word captions and title overlays using your exact brand fonts, colors, and layout.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">4</span>
+                    <h4>Platform-Ready Output</h4>
+                    <p>Built-in safe zone compliance for Instagram Reels, TikTok, and YouTube Shorts. Render and upload.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">5</span>
+                    <h4>Review &amp; Adjust</h4>
+                    <p>Preview in Remotion Studio, tell Claude to tweak cuts or titles, and see changes instantly via hot reload.</p>
+                </div>
+                <div class="learn-card">
+                    <span class="card-num">6</span>
+                    <h4>Time Savings Breakdown</h4>
+                    <p>See exactly how 55-80 minutes of manual editing gets compressed into ~5 minutes of review.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lp-time">
+        <div class="lp-time-inner">
+            <h2>Time Saved Per Video</h2>
+            <table class="time-table">
+                <thead>
+                    <tr><th>Task</th><th>Manual Time</th><th>With Claude Code</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Silence removal</td><td>10-15 min</td><td class="auto">Automatic</td></tr>
+                    <tr><td>Retake/false start detection</td><td>15-20 min</td><td class="auto">Automatic</td></tr>
+                    <tr><td>Transcription + captions</td><td>20-30 min</td><td class="auto">Automatic</td></tr>
+                    <tr><td>Brand title overlay</td><td>5-10 min</td><td class="auto">Automatic</td></tr>
+                    <tr><td>Safe zone compliance</td><td>5 min</td><td class="auto">Built in</td></tr>
+                    <tr><td>Total</td><td>55-80 min</td><td class="auto">~5 min of review</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="lp-author">
+        <div class="lp-author-inner">
+            <h2>About the Author</h2>
+            <div class="author-card">
+                <div class="author-avatar"><img src="headshot.jpeg" alt="Rebecca"></div>
+                <h3>Rebecca</h3>
+                <p>Rebecca is the founder of Seedscale Agency and has over 15 years of experience leading digital teams for organizations with tens of millions of supporters. She uses AI tools like Claude Code as core infrastructure across her content workflows — from video editing to donor communications to campaign automation.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="lp-bottom-cta">
+        <div class="lp-bottom-cta-inner">
+            <h2>Ready to Edit Videos in Minutes?</h2>
+            <p class="cta-sub">Download the free guide and start producing branded short-form video with AI.</p>
+            <form class="lp-form" id="bottom-form">
+                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                <input type="hidden" name="subject" value="New Download: Video Editing Guide">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <button type="submit" class="btn-cta">Get the Free Guide</button>
+                <p class="form-note">Free download. No spam, ever.</p>
+            </form>
+            <p id="bottom-success" style="display:none; color:#FACC15; font-weight:600; margin-top:1.5rem;">Thank you! Your guide is downloading now.</p>
+        </div>
+    </section>
+
+    <footer class="lp-footer">
+        <p class="footer-logo">Seedscale Agency</p>
+        <p class="footer-tagline">Digital Consulting for Mission-Driven Organizations</p>
+        <p>&copy; 2026 Seedscale Agency. All rights reserved.</p>
+    </footer>
+
+    <script>
+    function handleFormSubmit(formId, successId) {
+        document.getElementById(formId).addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
+            .then(function(r) {
+                if (r.ok) {
+                    form.style.display = 'none';
+                    document.getElementById(successId).style.display = 'block';
+                    // Trigger PDF download
+                    var link = document.createElement('a');
+                    link.href = 'video-editing-guide-claude-remotion.pdf';
+                    link.download = 'Video-Editing-Guide-Claude-Code-Remotion.pdf';
+                    link.click();
+                }
+            });
+        });
+    }
+    handleFormSubmit('hero-form', 'hero-success');
+    handleFormSubmit('bottom-form', 'bottom-success');
+    </script>
+
+</body>
+</html>
