@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Guide is Ready! | Seedscale Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            background: #073B3A;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            text-align: center;
+        }
+        .thank-you-container { max-width: 600px; width: 100%; }
+        .checkmark {
+            width: 80px; height: 80px; border-radius: 50%;
+            background: #08A045;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 2rem; animation: scaleIn 0.5s ease-out;
+        }
+        .checkmark svg {
+            width: 40px; height: 40px; stroke: #fff; stroke-width: 3; fill: none;
+        }
+        @keyframes scaleIn {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+        h1 {
+            font-size: 2.2rem; font-weight: 700;
+            margin-bottom: 1rem; letter-spacing: -0.02em;
+        }
+        .subtitle {
+            font-size: 1.1rem; color: #a8e6cf;
+            margin-bottom: 2.5rem; line-height: 1.6;
+        }
+        .download-btn {
+            display: inline-flex; align-items: center; gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            background: #FACC15; color: #073B3A;
+            font-family: 'Work Sans', sans-serif; font-size: 1.1rem; font-weight: 700;
+            border: none; border-radius: 10px; text-decoration: none; cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            margin-bottom: 1.5rem;
+        }
+        .download-btn:hover { background: #fde047; transform: translateY(-2px); }
+        .download-btn svg {
+            width: 22px; height: 22px; stroke: #073B3A; stroke-width: 2.5; fill: none;
+        }
+        .note {
+            font-size: 0.9rem; color: rgba(255,255,255,0.5);
+            margin-bottom: 3rem; line-height: 1.5;
+        }
+        .divider {
+            width: 60px; height: 2px; background: rgba(255,255,255,0.15);
+            margin: 0 auto 2rem;
+        }
+        .cta-text {
+            font-size: 1rem; color: rgba(255,255,255,0.7); margin-bottom: 1rem;
+        }
+        .home-link {
+            color: #FACC15; text-decoration: none; font-weight: 600;
+            transition: color 0.2s;
+        }
+        .home-link:hover { color: #fde047; }
+        .footer {
+            margin-top: 4rem; font-size: 0.8rem; color: rgba(255,255,255,0.3);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="thank-you-container">
+        <div class="checkmark">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+
+        <h1>Your Guide is Ready!</h1>
+        <p class="subtitle">Thank you for signing up. Click the button below to download your free copy of <strong>How to Build a Branded Copywriting Slackbot</strong>.</p>
+
+        <a href="build-a-branded-copywriting-slackbot.pdf" download class="download-btn">
+            <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            Download the Guide
+        </a>
+
+        <p class="note">We've also sent a copy to your email. If you don't see it, check your spam folder.</p>
+
+        <div class="divider"></div>
+
+        <p class="cta-text">Want help building this for your organization?</p>
+        <a href="index.html#contact" class="home-link">Schedule a Free Consultation &rarr;</a>
+    </div>
+
+    <p class="footer">&copy; 2026 Seedscale Agency. All rights reserved.</p>
+
+    <script>
+        setTimeout(function() {
+            var link = document.createElement('a');
+            link.href = 'build-a-branded-copywriting-slackbot.pdf';
+            link.download = 'Build-a-Branded-Copywriting-Slackbot.pdf';
+            link.click();
+        }, 1500);
+    </script>
+
+</body>
+</html>
