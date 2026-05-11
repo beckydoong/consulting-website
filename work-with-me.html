@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Work With Me | Seedscale Agency</title>
+    <meta name="description" content="Four ways to engage Seedscale Agency — Growth Audit, 90-Day Sprint, Growth Partner, and Embedded Partner.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --darkest: #073B3A;
+            --dark: #0B6E4F;
+            --medium: #08A045;
+            --light: #6BBF59;
+            --bright: #21D375;
+            --accent: #FACC15;
+            --text: #1a2e2c;
+            --text-muted: #5A7A79;
+            --border: #E2EAE9;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.55;
+            background: #fff;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        /* Header (same brand block) */
+        .doc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.25rem;
+            border-bottom: 2px solid var(--darkest);
+            margin-bottom: 2.5rem;
+        }
+        .doc-header .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .doc-header .brand-text {
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--darkest);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .doc-header .brand-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+        .doc-header .doc-type {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 2rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--darkest);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.9rem;
+        }
+        .hero h1 .highlight { color: var(--medium); }
+        .hero .lead {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            line-height: 1.55;
+        }
+
+        /* Section header */
+        section { margin-bottom: 2rem; }
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--medium);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 0.5rem;
+        }
+        h2.section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--darkest);
+            letter-spacing: -0.01em;
+            margin-bottom: 1rem;
+        }
+
+        /* Process flow */
+        .flow {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 1.25rem;
+            background: #f7faf9;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+        .flow-step {
+            text-align: center;
+        }
+        .flow-step .num {
+            display: inline-flex;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: var(--darkest);
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 700;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.4rem;
+        }
+        .flow-step .label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--darkest);
+            display: block;
+            margin-bottom: 0.15rem;
+        }
+        .flow-step .sub {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+        .flow-arrow {
+            color: var(--medium);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Tiers */
+        .tiers {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.85rem;
+        }
+        .tier {
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem 1rem;
+            background: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+        .tier.featured {
+            background: var(--darkest);
+            color: #fff;
+            border-color: var(--darkest);
+            position: relative;
+        }
+        .tier.featured .featured-badge {
+            position: absolute;
+            top: -10px;
+            right: 10px;
+            background: var(--accent);
+            color: var(--darkest);
+            font-size: 0.6rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            padding: 0.25rem 0.6rem;
+            border-radius: 100px;
+        }
+        .tier .tier-name {
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--medium);
+            margin-bottom: 0.35rem;
+        }
+        .tier.featured .tier-name { color: var(--bright); }
+        .tier h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--darkest);
+            margin-bottom: 0.6rem;
+            line-height: 1.15;
+        }
+        .tier.featured h3 { color: #fff; }
+        .tier .price {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--darkest);
+            line-height: 1;
+            margin-bottom: 0.2rem;
+        }
+        .tier.featured .price { color: var(--accent); }
+        .tier .price .unit {
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: block;
+            margin-top: 0.2rem;
+        }
+        .tier.featured .price .unit { color: rgba(255,255,255,0.7); }
+        .tier .duration {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 0.85rem;
+            padding-bottom: 0.85rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .tier.featured .duration {
+            color: rgba(255,255,255,0.6);
+            border-color: rgba(255,255,255,0.15);
+        }
+        .tier ul {
+            list-style: none;
+            font-size: 0.78rem;
+            line-height: 1.6;
+            color: var(--text);
+            flex: 1;
+        }
+        .tier.featured ul { color: rgba(255,255,255,0.85); }
+        .tier ul li {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 0.35rem;
+        }
+        .tier ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--medium);
+            font-weight: 700;
+        }
+        .tier.featured ul li:before { color: var(--bright); }
+
+        /* Outcomes grid */
+        .outcomes {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.6rem;
+        }
+        .outcome {
+            background: #f7faf9;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 0.9rem 0.75rem;
+            text-align: left;
+        }
+        .outcome .o-name {
+            font-size: 0.82rem;
+            font-weight: 700;
+            color: var(--darkest);
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+        .outcome .o-desc {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }
+
+        /* CTA footer */
+        .cta-footer {
+            margin-top: 2rem;
+            background: var(--darkest);
+            color: #fff;
+            border-radius: 16px;
+            padding: 1.75rem 2rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .cta-footer h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            color: #fff;
+        }
+        .cta-footer p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.9rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--darkest);
+            padding: 0.85rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .page-footer {
+            margin-top: 1.75rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        @media print {
+            body { font-size: 10pt; }
+            .page { padding: 1rem 1.25rem; max-width: 100%; }
+            .hero h1 { font-size: 1.5rem; }
+            h2.section-title { font-size: 1.05rem; }
+            section { margin-bottom: 1.25rem; page-break-inside: avoid; }
+            .tier { padding: 0.85rem 0.7rem; }
+            .tier .price { font-size: 1.2rem; }
+            .tier h3 { font-size: 0.95rem; }
+            .flow { padding: 0.85rem; }
+            .cta-footer { padding: 1rem 1.5rem; }
+            .cta-footer h3 { font-size: 1.05rem; }
+            @page { margin: 0.4in; }
+        }
+
+        @media (max-width: 900px) {
+            .tiers { grid-template-columns: repeat(2, 1fr); }
+            .outcomes { grid-template-columns: repeat(2, 1fr); }
+            .flow { grid-template-columns: 1fr; }
+            .flow-arrow { display: none; }
+            .cta-footer { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Header -->
+    <div class="doc-header">
+        <div class="brand">
+            <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                <circle cx="50" cy="50" r="36" stroke="#08A045" stroke-width="6" fill="none"/>
+                <path d="M50 60 L50 78" stroke="#08A045" stroke-width="4" stroke-linecap="round"/>
+                <path d="M50 48 Q65 32 78 42 Q68 28 50 38" fill="#08A045"/>
+                <path d="M50 56 Q35 44 24 52 Q34 38 50 48" fill="#08A045"/>
+            </svg>
+            <div>
+                <div class="brand-text">Seedscale Agency</div>
+                <div class="brand-sub">Digital Strategy · Mission-Driven Growth</div>
+            </div>
+        </div>
+        <div class="doc-type">How to Work With Me</div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>Four ways to <span class="highlight">work together</span>.</h1>
+        <p class="lead">Every engagement starts with a paid Growth Audit, then moves into a scoped retainer. No custom proposals, no surprises — just a clear ladder from "test the relationship" to "embedded growth partner."</p>
+    </div>
+
+    <!-- Process flow -->
+    <section>
+        <div class="section-label">Process</div>
+        <h2 class="section-title">How it works</h2>
+        <div class="flow">
+            <div class="flow-step">
+                <span class="num">1</span>
+                <span class="label">Discovery Call</span>
+                <span class="sub">30 min · free</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <span class="num">2</span>
+                <span class="label">Growth Audit</span>
+                <span class="sub">2 weeks · $1,497</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <span class="num">3</span>
+                <span class="label">Pick Engagement</span>
+                <span class="sub">Sprint or Partner</span>
+            </div>
+            <div class="flow-arrow">→</div>
+            <div class="flow-step">
+                <span class="num">4</span>
+                <span class="label">Execute & Optimize</span>
+                <span class="sub">3-12 months</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tiers -->
+    <section>
+        <div class="section-label">Engagements</div>
+        <h2 class="section-title">Pick the right tier for your stage</h2>
+        <div class="tiers">
+
+            <!-- Tier 1: Audit -->
+            <div class="tier">
+                <div class="tier-name">Tier 1 · Diagnostic</div>
+                <h3>Growth Audit</h3>
+                <div class="price">$1,497<span class="unit">one-time</span></div>
+                <div class="duration">2 weeks · ~12 hrs total</div>
+                <ul>
+                    <li>Full review of email, social, website, and donor data</li>
+                    <li>60-min strategy call + recorded walkthrough</li>
+                    <li>Written 30/60/90-day roadmap</li>
+                    <li>Yours to keep whether or not we continue</li>
+                </ul>
+            </div>
+
+            <!-- Tier 2: Sprint -->
+            <div class="tier">
+                <div class="tier-name">Tier 2 · Focused</div>
+                <h3>90-Day Sprint</h3>
+                <div class="price">$3,500<span class="unit">/mo for 3 months</span></div>
+                <div class="duration">~25 hrs/mo · 1 outcome</div>
+                <ul>
+                    <li>Pick 1 outcome (e.g., donor reactivation)</li>
+                    <li>Full execution by me</li>
+                    <li>Weekly strategy + monthly reporting</li>
+                    <li>Handoff docs at the end</li>
+                </ul>
+            </div>
+
+            <!-- Tier 3: Partner (FEATURED) -->
+            <div class="tier featured">
+                <div class="featured-badge">Most Common</div>
+                <div class="tier-name">Tier 3 · Growth</div>
+                <h3>Growth Partner</h3>
+                <div class="price">$4,500<span class="unit">/mo for 6 months</span></div>
+                <div class="duration">~30 hrs/mo · 2 outcomes</div>
+                <ul>
+                    <li>2 outcomes combined for compound effect</li>
+                    <li>Ongoing strategy + execution</li>
+                    <li>Bi-weekly working sessions</li>
+                    <li>Full monthly performance reporting</li>
+                </ul>
+            </div>
+
+            <!-- Tier 4: Embedded -->
+            <div class="tier">
+                <div class="tier-name">Tier 4 · Embedded</div>
+                <h3>Embedded Partner</h3>
+                <div class="price">$5,500<span class="unit">/mo for 12 months</span></div>
+                <div class="duration">~40 hrs/mo · 3+ outcomes</div>
+                <ul>
+                    <li>Fractional growth lead</li>
+                    <li>Full ownership of digital strategy</li>
+                    <li>3+ outcomes + ongoing optimization</li>
+                    <li>Limited to 2 clients per year</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Menu of Outcomes -->
+    <section>
+        <div class="section-label">Menu</div>
+        <h2 class="section-title">Pick your outcomes</h2>
+        <div class="outcomes">
+            <div class="outcome">
+                <div class="o-name">Donor Reactivation</div>
+                <div class="o-desc">Reactivate 5%+ of lapsed donors via coordinated email + SMS sequences.</div>
+            </div>
+            <div class="outcome">
+                <div class="o-name">Content Engine</div>
+                <div class="o-desc">Turn 1 piece of content into 8 platform-native outputs with a posting system.</div>
+            </div>
+            <div class="outcome">
+                <div class="o-name">AI Content System</div>
+                <div class="o-desc">Brand-trained prompts + automation for sustainable content velocity.</div>
+            </div>
+            <div class="outcome">
+                <div class="o-name">Email Lifecycle Build</div>
+                <div class="o-desc">Welcome, nurture, and win-back sequences with smart segmentation.</div>
+            </div>
+            <div class="outcome">
+                <div class="o-name">Major Gift Pipeline</div>
+                <div class="o-desc">Identify and cultivate the top 1% of your donor base through structured outreach.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Footer -->
+    <div class="cta-footer">
+        <div>
+            <h3>Start with a Growth Audit.</h3>
+            <p>Two weeks. $1,497. You walk away with a prioritized 90-day roadmap whether we continue working together or not.</p>
+        </div>
+        <a href="https://seedscale.agency/connect.html" class="cta-btn">Book a Discovery Call</a>
+    </div>
+
+    <!-- Page footer -->
+    <div class="page-footer">
+        <span>Seedscale Agency</span>
+        <span>seedscale.agency · rebecca@seedscale.agency</span>
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services & Capabilities | Seedscale Agency</title>
+    <meta name="description" content="Digital marketing services for mission-driven nonprofits — content marketing, AI consulting, and direct response strategy.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        :root {
+            --darkest: #073B3A;
+            --dark: #0B6E4F;
+            --medium: #08A045;
+            --light: #6BBF59;
+            --bright: #21D375;
+            --accent: #FACC15;
+            --text: #1a2e2c;
+            --text-muted: #5A7A79;
+            --border: #E2EAE9;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: var(--text);
+            line-height: 1.55;
+            background: #fff;
+            font-size: 15px;
+        }
+
+        .page {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 3rem 2.5rem;
+        }
+
+        /* Header */
+        .doc-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 1.25rem;
+            border-bottom: 2px solid var(--darkest);
+            margin-bottom: 2.5rem;
+        }
+        .doc-header .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .doc-header .brand-mark svg {
+            display: block;
+        }
+        .doc-header .brand-text {
+            font-family: 'Work Sans', sans-serif;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: var(--darkest);
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            line-height: 1;
+        }
+        .doc-header .brand-sub {
+            font-size: 0.65rem;
+            color: var(--text-muted);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            margin-top: 0.25rem;
+        }
+        .doc-header .doc-type {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        /* Hero */
+        .hero {
+            margin-bottom: 2.5rem;
+        }
+        .hero h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--darkest);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .hero h1 .highlight {
+            color: var(--medium);
+        }
+        .hero .lead {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 720px;
+            line-height: 1.55;
+        }
+
+        /* Stats bar */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            padding: 1.5rem;
+            background: var(--darkest);
+            border-radius: 12px;
+            margin-bottom: 2.5rem;
+        }
+        .stat {
+            text-align: center;
+            color: #fff;
+        }
+        .stat-num {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+            margin-bottom: 0.35rem;
+        }
+        .stat-label {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* Section */
+        section { margin-bottom: 2.25rem; }
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: var(--medium);
+            text-transform: uppercase;
+            letter-spacing: 0.16em;
+            margin-bottom: 0.5rem;
+        }
+        h2.section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--darkest);
+            letter-spacing: -0.01em;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .service {
+            background: #f7faf9;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem 1.25rem;
+        }
+        .service-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: var(--darkest);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.85rem;
+        }
+        .service-icon svg {
+            stroke: var(--accent);
+            fill: none;
+            stroke-width: 1.5;
+        }
+        .service h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--darkest);
+            margin-bottom: 0.5rem;
+        }
+        .service p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.55;
+        }
+
+        /* Case studies */
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        .case {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--medium);
+            border-radius: 8px;
+            padding: 1.25rem;
+        }
+        .case .number {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--darkest);
+            line-height: 1;
+            margin-bottom: 0.4rem;
+        }
+        .case .number .unit {
+            font-size: 0.9rem;
+            color: var(--medium);
+            font-weight: 700;
+        }
+        .case .label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 0.6rem;
+        }
+        .case p {
+            font-size: 0.83rem;
+            color: var(--text);
+            line-height: 1.5;
+        }
+
+        /* About strip */
+        .about-strip {
+            background: #f0f5f4;
+            border-left: 4px solid var(--medium);
+            padding: 1.25rem 1.5rem;
+            border-radius: 8px;
+        }
+        .about-strip p {
+            font-size: 0.95rem;
+            color: var(--text);
+            line-height: 1.65;
+        }
+        .about-strip p strong {
+            color: var(--darkest);
+        }
+
+        /* CTA footer */
+        .cta-footer {
+            margin-top: 2.5rem;
+            background: var(--darkest);
+            color: #fff;
+            border-radius: 16px;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .cta-footer h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.35rem;
+            color: #fff;
+        }
+        .cta-footer p {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.95rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--darkest);
+            padding: 0.85rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        /* Page footer */
+        .page-footer {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* Print */
+        @media print {
+            body { font-size: 11pt; }
+            .page { padding: 1.25rem 1.5rem; max-width: 100%; }
+            .hero h1 { font-size: 1.7rem; }
+            h2.section-title { font-size: 1.15rem; }
+            .stats { padding: 1rem; }
+            .stat-num { font-size: 1.5rem; }
+            section { margin-bottom: 1.5rem; page-break-inside: avoid; }
+            .cta-footer { padding: 1.25rem 1.5rem; }
+            .cta-footer h3 { font-size: 1.1rem; }
+            .service { padding: 1rem; }
+            @page { margin: 0.5in; }
+        }
+
+        @media (max-width: 720px) {
+            .services-grid, .cases-grid, .stats { grid-template-columns: 1fr; }
+            .cta-footer { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- Header -->
+    <div class="doc-header">
+        <div class="brand">
+            <div class="brand-mark">
+                <svg width="40" height="40" viewBox="0 0 100 100" fill="none">
+                    <circle cx="50" cy="50" r="36" stroke="#08A045" stroke-width="6" fill="none"/>
+                    <path d="M50 60 L50 78" stroke="#08A045" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M50 48 Q65 32 78 42 Q68 28 50 38" fill="#08A045"/>
+                    <path d="M50 56 Q35 44 24 52 Q34 38 50 48" fill="#08A045"/>
+                </svg>
+            </div>
+            <div>
+                <div class="brand-text">Seedscale Agency</div>
+                <div class="brand-sub">Digital Strategy · Mission-Driven Growth</div>
+            </div>
+        </div>
+        <div class="doc-type">Services & Capabilities</div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+        <h1>We scale your <span class="highlight">online movement</span> so you can focus on the mission.</h1>
+        <p class="lead">Seedscale is a digital marketing partner for faith-based and mission-driven nonprofits. We combine content marketing, AI consulting, and direct response to turn attention into action — and donors into recurring supporters.</p>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat">
+            <span class="stat-num">15+</span>
+            <span class="stat-label">Years Leading Digital Teams</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">10M+</span>
+            <span class="stat-label">Subscribers Managed</span>
+        </div>
+        <div class="stat">
+            <span class="stat-num">$15M+</span>
+            <span class="stat-label">Annual Digital Revenue Raised</span>
+        </div>
+    </div>
+
+    <!-- About -->
+    <section>
+        <div class="section-label">About</div>
+        <div class="about-strip">
+            <p><strong>Rebecca</strong> is the founder of Seedscale. She has over 15 years leading digital teams for organizations with tens of millions of supporters. She now works exclusively with faith-based and mission-driven nonprofits to expand digital reach, grow supporter bases, and amplify their messages.</p>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section>
+        <div class="section-label">What We Do</div>
+        <h2 class="section-title">Three core capabilities</h2>
+        <div class="services-grid">
+            <div class="service">
+                <div class="service-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                </div>
+                <h3>Content Marketing</h3>
+                <p>Storytelling, viral video concepts, social media strategy, email marketing, and editorial direction that drives engagement across every channel.</p>
+            </div>
+            <div class="service">
+                <div class="service-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.57-3.25 3.93"/><path d="M8.56 13.49A8 8 0 0 0 4 20h5"/><path d="M17.5 15.5l-1.5 1.5"/><circle cx="19" cy="19" r="3"/></svg>
+                </div>
+                <h3>AI Consulting</h3>
+                <p>AI systems that automate donor engagement, accelerate content velocity, and surface data-driven insights without losing the personal touch your supporters expect.</p>
+            </div>
+            <div class="service">
+                <div class="service-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                </div>
+                <h3>Direct Response</h3>
+                <p>Proven fundraising strategies across email, SMS, paid social, and advertising that convert one-time supporters into recurring donors and drive measurable revenue growth.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case studies -->
+    <section>
+        <div class="section-label">Recent Results</div>
+        <h2 class="section-title">Proof, not promises</h2>
+        <div class="cases-grid">
+            <div class="case">
+                <div class="number">$1.8<span class="unit">M</span></div>
+                <div class="label">Digital Fundraising Growth</div>
+                <p>A faith-based nonprofit grew from $400K to $1.8M in annual digital revenue in 14 months through donor segmentation, automated email lifecycle, and SMS prospecting.</p>
+            </div>
+            <div class="case">
+                <div class="number">100<span class="unit">M+</span></div>
+                <div class="label">Viral Awareness Campaign</div>
+                <p>A mission-driven video series surpassed 100 million views by combining algorithm-native production with cross-platform distribution and rapid response cycles.</p>
+            </div>
+            <div class="case">
+                <div class="number">3<span class="unit">x</span></div>
+                <div class="label">Recurring Donor Conversion</div>
+                <p>A reactivation campaign tripled the conversion rate from one-time donor to monthly sustainer using coordinated email + SMS sequences and personalized ask amounts.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Footer -->
+    <div class="cta-footer">
+        <div>
+            <h3>Ready to scale your mission?</h3>
+            <p>Every engagement starts with a Growth Audit — a 2-week diagnostic that gives you a prioritized roadmap whether we continue working together or not.</p>
+        </div>
+        <a href="https://seedscale.agency/connect.html" class="cta-btn">Book a Discovery Call</a>
+    </div>
+
+    <!-- Page footer -->
+    <div class="page-footer">
+        <span>Seedscale Agency</span>
+        <span>seedscale.agency · rebecca@seedscale.agency</span>
+    </div>
+
+</div>
+</body>
+</html>
