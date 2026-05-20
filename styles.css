@@ -278,7 +278,7 @@ a {
 .hero-content {
     position: relative;
     z-index: 2;
-    max-width: 860px;
+    max-width: 960px;
     padding: 0 32px;
 }
 
@@ -298,11 +298,22 @@ a {
 
 .hero h1 {
     font-family: var(--font-heading);
-    font-size: clamp(2.8rem, 5.5vw, 4.5rem);
+    font-size: clamp(2.4rem, 5vw, 4.2rem);
     font-weight: 700;
     line-height: 1.1;
     margin-bottom: 28px;
     color: var(--white);
+}
+
+/* Second line of hero — force to stay together so "you" doesn't orphan */
+.hero h1 .hero-line-2 {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+    /* On very narrow screens, allow wrapping again rather than overflow */
+    .hero h1 .hero-line-2 { white-space: normal; }
 }
 
 .highlight {
