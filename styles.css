@@ -252,25 +252,13 @@ a {
     overflow: hidden;
 }
 
-.hero-bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: url('hero-bg.jpg') center center / cover no-repeat;
-    opacity: 0.2;
-    z-index: 0;
+.hero-bg-img,
+.hero-overlay {
+    display: none; /* Removed nonprofit-coded photo, hero now uses solid brand gradient */
 }
 
-.hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(7, 59, 58, 0.3) 0%, rgba(7, 59, 58, 0.6) 100%);
-    z-index: 1;
+.hero {
+    background: radial-gradient(ellipse at 30% 20%, #0B6E4F 0%, #073B3A 50%, #042625 100%);
 }
 
 .hero::before {
@@ -1123,13 +1111,14 @@ a {
    CTA Section
    =========================== */
 .cta-section {
-    background: var(--darkest);
+    background: radial-gradient(ellipse at 70% 30%, #0B6E4F 0%, #073B3A 60%, #042625 100%);
     padding: 120px 0;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
+/* Subtle gold accent grid texture, brand-aligned */
 .cta-section::before {
     content: '';
     position: absolute;
@@ -1137,19 +1126,9 @@ a {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('cta-bg.jpg') center center / cover no-repeat;
-    opacity: 0.15;
-    pointer-events: none;
-}
-
-.cta-section::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(7, 59, 58, 0.4) 0%, rgba(7, 59, 58, 0.7) 100%);
+    background-image:
+        radial-gradient(circle at 20% 80%, rgba(250, 204, 21, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 80% 20%, rgba(33, 211, 117, 0.06) 0%, transparent 40%);
     pointer-events: none;
 }
 
@@ -1325,46 +1304,57 @@ a {
 }
 
 /* ===========================
-   Photo Breaks
+   Brand Dividers (replaced photo-breaks)
    =========================== */
-.photo-break {
-    height: 400px;
+.brand-divider {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(ellipse at 30% 50%, #0B6E4F 0%, #073B3A 60%, #042625 100%);
     position: relative;
     overflow: hidden;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 }
 
-.photo-break-overlay {
+.brand-divider::before {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(180deg, rgba(7, 59, 58, 0.3) 0%, rgba(7, 59, 58, 0.5) 100%);
+    inset: 0;
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(33, 211, 117, 0.08) 0%, transparent 35%),
+        radial-gradient(circle at 85% 80%, rgba(250, 204, 21, 0.06) 0%, transparent 40%);
+    pointer-events: none;
 }
 
-.photo-break--workspace {
-    background-image: url('services-photo.jpg');
+.brand-divider--alt {
+    background: radial-gradient(ellipse at 70% 50%, #0B6E4F 0%, #073B3A 60%, #042625 100%);
 }
 
-.photo-break--community {
-    background-image: url('impact-photo.jpg');
-    background-position: center 30%;
+.brand-divider .container {
+    position: relative;
+    z-index: 1;
 }
 
-@media (max-width: 968px) {
-    .photo-break {
-        height: 300px;
-        background-attachment: scroll;
-    }
+.divider-tagline {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 8px 0;
+}
+
+.divider-line {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--accent, #FACC15);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0;
 }
 
 @media (max-width: 640px) {
-    .photo-break {
-        height: 220px;
-    }
+    .brand-divider { padding: 70px 0; }
 }
 
 /* ===========================
