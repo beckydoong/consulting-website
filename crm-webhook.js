@@ -1,8 +1,18 @@
-// Seedscale CRM webhook bridge + inline thank-you handler
-// 1. Forwards every Web3Forms submission to the Seedscale CRM
-// 2. Replaces the form with an inline "thank you" message instead of redirecting
+// Seedscale form bridge
+// 1. Subscribes every Web3Forms submission to the correct Klaviyo list
+// 2. Lets the original Web3Forms POST continue (preserves email notification)
+// 3. Replaces the form with an inline "thank you" message instead of redirecting
 (function () {
-  var CRM_WEBHOOK = 'https://seedscale-crm.beckydoong.workers.dev/api/webhooks/web3forms';
+  // Klaviyo public API key (account id) — safe to expose client-side
+  var KLAVIYO_COMPANY_ID = 'TipqN2';
+
+  // Maps Web3Forms access_key → Klaviyo list ID
+  // (each list has a Live flow that auto-enrolls new subscribers)
+  var ACCESS_KEY_TO_LIST = {
+    '61c52105-cc39-4b02-a45f-8481b8d1f3b8': 'QZnsL7', // 7 Prompts → 7 Prompts Subscribers
+    'fcd69f57-99cf-4b2f-88a9-688d2ef53a58': 'TjASvt', // Playbook  → Playbook Subscribers
+    '7e064b64-247c-457d-8d17-0412ec87a48b': 'TDhpPe', // Contact   → Contact Form Inquiries
+  };
 
   function showInlineThankYou(form) {
     var thankYou = document.createElement('div');
@@ -28,22 +38,65 @@
     form.parentNode.replaceChild(thankYou, form);
   }
 
-  function forwardToCRM(form) {
+  function subscribeToKlaviyo(form) {
     try {
       var formData = new FormData(form);
-      var json = {};
-      formData.forEach(function (value, key) {
-        if (key === 'webhook' || key === 'redirect') return;
-        json[key] = value;
-      });
+      var accessKey = formData.get('access_key') || '';
+      var listId = ACCESS_KEY_TO_LIST[accessKey];
+      if (!listId) return; // Unknown form — skip Klaviyo, let Web3Forms handle it
+
+      var email = formData.get('email') || formData.get('Email') || '';
+      if (!email) return;
+
+      var firstName = formData.get('name') || formData.get('Name') || '';
+      // Split on first space to get first name only (matches Resend behavior)
+      var firstNameOnly = firstName.trim().split(/\s+/)[0] || '';
+
+      var organization = formData.get('organization') || formData.get('Organization') || '';
+      var message = formData.get('message') || formData.get('Message') || '';
+      var interest = formData.get('interest') || '';
+
+      var payload = {
+        data: {
+          type: 'subscription',
+          attributes: {
+            custom_source: 'Seedscale website form',
+            profile: {
+              data: {
+                type: 'profile',
+                attributes: {
+                  email: email,
+                  first_name: firstNameOnly,
+                  properties: {
+                    full_name: firstName,
+                    organization: organization || null,
+                    last_form_message: message || null,
+                    last_form_interest: interest || null,
+                    last_form_source: accessKey,
+                  },
+                  subscriptions: {
+                    email: { marketing: { consent: 'SUBSCRIBED' } },
+                  },
+                },
+              },
+            },
+          },
+          relationships: {
+            list: { data: { type: 'list', id: listId } },
+          },
+        },
+      };
+
       // Fire-and-forget — don't block the user
-      fetch(CRM_WEBHOOK, {
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=' + encodeURIComponent(KLAVIYO_COMPANY_ID), {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(json),
+        headers: {
+          'Content-Type': 'application/json',
+          'revision': '2024-10-15',
+        },
+        body: JSON.stringify(payload),
         keepalive: true,
-        mode: 'no-cors',
-      }).catch(function () {});
+      }).catch(function () { /* ignore — Web3Forms still captured it */ });
     } catch (e) { /* ignore */ }
   }
 
@@ -73,12 +126,11 @@
         }
 
         // Fire both submissions in parallel
-        forwardToCRM(form);
+        subscribeToKlaviyo(form);
         submitToWeb3Forms(form)
           .then(function () { showInlineThankYou(form); })
           .catch(function () {
-            // Even if web3forms request fails (network glitch), the CRM
-            // still has it — show success so user knows their info was captured
+            // Even if web3forms request fails, Klaviyo still has the subscriber
             showInlineThankYou(form);
           });
       });
