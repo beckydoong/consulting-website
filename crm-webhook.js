@@ -56,6 +56,9 @@
       var message = formData.get('message') || formData.get('Message') || '';
       var interest = formData.get('interest') || '';
 
+      // Note: Klaviyo's /client/subscriptions/ endpoint implies SUBSCRIBED consent
+      // by virtue of being called; don't pass a 'subscriptions' field on the profile
+      // (Klaviyo rejects it as invalid).
       var payload = {
         data: {
           type: 'subscription',
@@ -73,9 +76,6 @@
                     last_form_message: message || null,
                     last_form_interest: interest || null,
                     last_form_source: accessKey,
-                  },
-                  subscriptions: {
-                    email: { marketing: { consent: 'SUBSCRIBED' } },
                   },
                 },
               },
