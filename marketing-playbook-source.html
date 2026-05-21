@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The AI Marketing Playbook for Founders and Lean Teams — Seedscale Agency</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.65;
+    font-size: 11pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+  .page {
+    max-width: 7.5in;
+    margin: 0 auto;
+    padding: 0.7in;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Cover */
+  .cover {
+    min-height: 9.5in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #073B3A;
+    background: linear-gradient(135deg, #073B3A 0%, #0B6E4F 100%);
+    color: #fff;
+    padding: 0.7in;
+  }
+  .cover .eyebrow {
+    font-size: 11pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FACC15;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .cover h1 {
+    font-family: 'Lora', serif;
+    font-weight: 700;
+    font-size: 36pt;
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+    color: #FACC15;
+  }
+  .cover h1 em {
+    color: #ffffff;
+    font-style: italic;
+    font-weight: 700;
+  }
+  .cover .subtitle {
+    font-size: 14pt;
+    color: #ffffff;
+    font-weight: 400;
+    max-width: 5.5in;
+    margin: 0 auto 2.5rem;
+    line-height: 1.5;
+  }
+  .cover .author {
+    margin-top: 2rem;
+    color: #ffffff;
+    font-size: 10pt;
+  }
+  .cover .author strong { color: #FACC15; font-weight: 700; }
+
+  /* Section + headings */
+  h2 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22pt;
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    color: #073B3A;
+  }
+  h2 .num {
+    display: inline-block;
+    color: #FACC15;
+    font-weight: 700;
+    margin-right: 0.3em;
+  }
+  h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #0B6E4F;
+    margin: 1.8rem 0 0.6rem;
+  }
+  .chapter-eyebrow {
+    color: #FACC15;
+    font-size: 9pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  p { margin: 0 0 1rem; }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+  li { margin-bottom: 0.4rem; }
+  strong { color: #073B3A; }
+  em { font-style: italic; }
+
+  /* Callout box */
+  .callout {
+    background: #f7f9f8;
+    border-left: 4px solid #FACC15;
+    padding: 1.2rem 1.4rem;
+    margin: 1.2rem 0;
+    border-radius: 4px;
+    font-size: 10.5pt;
+    line-height: 1.6;
+    color: #2a2a2a;
+  }
+  .callout .tag {
+    display: inline-block;
+    background: #073B3A;
+    color: #FACC15;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-bottom: 0.6rem;
+  }
+
+  /* Example/case study box */
+  .case {
+    background: #fffdf4;
+    border: 1px solid #f3e7b8;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    font-size: 10pt;
+    color: #444;
+  }
+  .case::before {
+    content: 'Case in point';
+    display: block;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 8.5pt;
+    color: #b48a00;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  /* CTA */
+  .cta {
+    background: #073B3A;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  .cta h2 { color: #fff; }
+  .cta .btn {
+    display: inline-block;
+    background: #FACC15;
+    color: #073B3A;
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 11pt;
+    margin-top: 0.8rem;
+  }
+
+  /* TOC */
+  .toc {
+    background: #f7f9f8;
+    padding: 1.5rem 1.75rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+  }
+  .toc h3 {
+    margin: 0 0 1rem;
+    color: #073B3A;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 10pt;
+    border-bottom: 1px solid #d9e5e3;
+    padding-bottom: 0.6rem;
+  }
+  .toc ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    counter-reset: toc;
+  }
+  .toc li {
+    counter-increment: toc;
+    padding: 0.4rem 0;
+    border-bottom: 1px dotted #d9e5e3;
+    color: #1a1a1a;
+    font-size: 11pt;
+  }
+  .toc li:last-child { border-bottom: none; }
+  .toc li::before {
+    content: counter(toc, decimal-leading-zero) '. ';
+    color: #FACC15;
+    font-weight: 700;
+    margin-right: 0.4em;
+  }
+
+  /* Footer signature */
+  .signature {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 10pt;
+  }
+  .signature strong { color: #073B3A; }
+
+  /* Print tweaks */
+  @media print {
+    body { font-size: 10.5pt; }
+    .page { padding: 0.5in; }
+    .cover { min-height: 10in; }
+    h2 { page-break-after: avoid; }
+    .callout, .case { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="eyebrow">Seedscale Agency</div>
+  <h1>The AI Marketing Playbook for Founders and <em>Lean Teams</em></h1>
+  <p class="subtitle">Six chapters of practical strategies to build an AI-powered marketing engine that scales digital revenue without scaling headcount.</p>
+  <div class="author">
+    By <strong>Rebecca</strong>, Founder · Seedscale Agency<br>
+    seedscale.agency
+  </div>
+</section>
+
+<!-- INTRO + TOC -->
+<section class="page">
+  <h2>A note before you start.</h2>
+  <p>You probably picked this up because you're running marketing solo — or as one half of a two-person team — and you've felt the pressure of trying to do the work of a full department.</p>
+  <p>You've heard AI can help. You've maybe tried ChatGPT a few times. The output was generic, the time savings unclear, and you went back to writing emails by hand on Sundays.</p>
+  <p>This playbook is the bridge between "I've tried AI" and "AI is now a core piece of my marketing engine." It's six chapters, each tackling one bottleneck where lean teams burn the most hours: email, content, social, audience research, automation, and roadmapping the whole stack.</p>
+  <p>I've spent 15+ years leading digital teams that built marketing engines at scale — programs with tens of millions of subscribers, billions of social views, tens of millions in digital revenue. The frameworks here are the ones that scaled those programs, distilled and adapted for teams of one to five.</p>
+  <p><strong>How to read this:</strong> the chapters build on each other but each is self-contained. Start with whichever chapter matches your biggest current bottleneck. Most readers finish in 25 minutes and have one implementation in flight by the end of the week.</p>
+  <p><strong>One ground rule:</strong> AI is not a replacement for thinking. It's a multiplier. The frameworks here only work when you bring your audience, your voice, your actual data. Generic input produces generic output. Specific input — your real customer reviews, your real campaign history, your actual brand voice — is where the magic happens.</p>
+  <p>Let's get into it.</p>
+  <div class="signature">
+    <strong>Rebecca</strong><br>
+    Founder, Seedscale Agency<br>
+    <a href="mailto:rebecca@seedscale.agency" style="color:#0B6E4F;">rebecca@seedscale.agency</a>
+  </div>
+
+  <div class="toc">
+    <h3>Table of Contents</h3>
+    <ol>
+      <li>AI for Email That Actually Converts</li>
+      <li>AI-Powered Social That Drives Real Engagement</li>
+      <li>Automating Customer Engagement Without Going Robotic</li>
+      <li>Data-Driven Growth: Predicting What Customers Will Do</li>
+      <li>Content Creation at Scale</li>
+      <li>Your AI Marketing Roadmap</li>
+    </ol>
+  </div>
+</section>
+
+<!-- CHAPTER 1: EMAIL -->
+<section class="page">
+  <div class="chapter-eyebrow">Chapter One</div>
+  <h2><span class="num">1.</span>AI for Email That Actually Converts</h2>
+  <p>Email is still the highest-ROI channel for almost every business — typically returning $36-$42 for every $1 spent. But most lean teams either don't run a lifecycle program at all, or they batch one panicked campaign at a time, in a rush, before each launch.</p>
+  <p>The reason isn't laziness. It's that writing emails the old way takes hours, and most founders don't have a repeatable system. AI fixes this — but only if you stop using it the way most people do.</p>
+
+  <h3>The three mistakes that make AI emails feel generic</h3>
+  <ol>
+    <li><strong>No context loaded.</strong> Asking ChatGPT "write me a launch email" gives you the same email it gives everyone. It hasn't met your audience, your voice, or your offer.</li>
+    <li><strong>One-shot prompting.</strong> Treating AI like a search engine. You ask, get an answer, copy-paste, send. You never iterate, never refine, never train it.</li>
+    <li><strong>Starting from scratch every time.</strong> Each session begins with re-explaining who you are. The context evaporates between sessions, so the AI never gets sharper.</li>
+  </ol>
+
+  <h3>The fix: a "voice & context" block you load once</h3>
+  <p>Before you ask AI to write anything, give it a block of context it can reference for every prompt. This is the single highest-leverage move you can make. Build this once, save it, reuse it in every email session:</p>
+
+  <div class="callout">
+    <span class="tag">Voice + Context Block</span>
+    <strong>My business:</strong> [1 sentence — what you sell, who for]<br>
+    <strong>My voice:</strong> [3 adjectives + 1 thing I never say]<br>
+    <strong>My audience:</strong> [their main pain points in their own words — pull from reviews, DMs, support tickets]<br>
+    <strong>What's worked (top 3 emails by open rate):</strong> [subject + first 100 words of each]<br>
+    <strong>What's flopped (bottom 3):</strong> [same]
+  </div>
+
+  <p>Paste this block at the top of every new chat. AI now has the working memory of someone who knows your business — and it'll write copy that actually sounds like you wrote it.</p>
+
+  <h3>The sequence that converts: 5-email welcome series</h3>
+  <p>If you're going to build one thing this week, build a 5-email welcome sequence. Welcome emails get 4× higher open rates and 5× higher click rates than promotional emails. They're also the easiest place to start.</p>
+
+  <p>The pattern that works:</p>
+  <ol>
+    <li><strong>Email 1 (immediately):</strong> Deliver what they signed up for + set expectations for what's next.</li>
+    <li><strong>Email 2 (2 days):</strong> Personal — ask them why they're here. Single question. Replies become gold.</li>
+    <li><strong>Email 3 (3 days later):</strong> Story or case study that demonstrates transformation.</li>
+    <li><strong>Email 4 (4 days later):</strong> Address the biggest objection your audience has about your category.</li>
+    <li><strong>Email 5 (5 days later):</strong> Soft offer or invitation to work together.</li>
+  </ol>
+
+  <p>Use the voice + context block above, then prompt AI to generate all 5 emails at once. Edit Email 1 carefully by hand (the AI is still learning your voice). Then ask AI to "rewrite emails 2-5 to match the rhythm and voice of my edit of email 1." This is the biggest unlock — AI gets dramatically better when it's mimicking your own work, not its defaults.</p>
+
+  <div class="case">
+    One client used to spend 14 hours a week writing customer and partnership emails. After building the voice block and a sequence template, she dropped to 2 hours a week. Same conversion rates. Twelve hours back to spend on strategy instead of typing.
+  </div>
+</section>
+
+<!-- CHAPTER 2: SOCIAL -->
+<section class="page">
+  <div class="chapter-eyebrow">Chapter Two</div>
+  <h2><span class="num">2.</span>AI-Powered Social That Drives Real Engagement</h2>
+  <p>Social media for lean teams is brutal. Each platform demands its own native format. Algorithms reward consistency. Your competitors with bigger teams post 10x more than you can keep up with.</p>
+  <p>The good news: AI completely changes the math here. One pillar piece of content — a blog post, podcast episode, talk, or even a long-form LinkedIn essay — can be turned into 10-15 platform-native pieces in 20 minutes instead of 8 hours.</p>
+
+  <h3>The pillar-to-pieces framework</h3>
+  <p>Stop trying to generate net-new content on each platform. Start with one substantive piece and let AI translate it. Each platform has a native voice:</p>
+  <ul>
+    <li><strong>LinkedIn</strong> rewards long-form story structure, 150-250 word posts with hooks in line 1, single CTAs, no hashtag spam.</li>
+    <li><strong>X (Twitter)</strong> rewards compressed insight — a single sharp claim in &lt;240 chars, then a thread that delivers the goods.</li>
+    <li><strong>Instagram</strong> rewards visual narrative — short caption, line breaks, a question to drive comments.</li>
+    <li><strong>YouTube/TikTok shorts</strong> reward a hook in the first 3 seconds, then 45 seconds of payoff.</li>
+  </ul>
+  <p>AI can do all of these in one pass. Just give it the pillar piece + a prompt that lists each platform's format requirements.</p>
+
+  <h3>The subject line / hook generator</h3>
+  <p>The first 5 words of any social post matter more than the next 500. AI is shockingly good at generating hook variants — if you give it your historical data to learn from.</p>
+
+  <div class="callout">
+    <span class="tag">The Hook Lab</span>
+    Give AI your top 10 highest-engagement posts and your bottom 10 lowest. Then prompt:<br>
+    <em>"Generate 20 hook variants for this post: [content]. Rank them by predicted engagement based on the patterns from my historical winners. Flag any that match the patterns from my losers."</em><br>
+    <br>
+    Pick the top 3, A/B test in your platform's split-test feature, learn what your audience actually clicks. Refresh the historical data quarterly.
+  </div>
+
+  <h3>The 80/10/10 posting rule</h3>
+  <p>For lean teams running solo, you don't need to post every day. You need to post consistently — and post the right mix. The rule that works:</p>
+  <ul>
+    <li><strong>80% educational/inspirational</strong> — give value, build authority, no pitch</li>
+    <li><strong>10% behind-the-scenes</strong> — humanize the brand, show the work, share the journey</li>
+    <li><strong>10% promotional</strong> — clear offers, with social proof, asking for the sale</li>
+  </ul>
+  <p>If you batch-create 4 weeks of content in one Saturday session using the pillar-to-pieces framework above, you can post 3-5x a week across 2 platforms without ever feeling like social media is eating your life.</p>
+
+  <div class="case">
+    A video campaign one of my clients produced crossed 100 million views across social platforms — not because they had a big team, but because they built ONE pillar piece (a documentary-style video), translated it into 30+ native social cuts, and scheduled them across 6 weeks. The team was 4 people.
+  </div>
+</section>
+
+<!-- CHAPTER 3: AUTOMATION -->
+<section class="page">
+  <div class="chapter-eyebrow">Chapter Three</div>
+  <h2><span class="num">3.</span>Automating Customer Engagement Without Going Robotic</h2>
+  <p>Automation is what unlocks scale for lean teams. The problem is that most automation either feels like spam (generic blasts to your whole list) or like surveillance (overly-personalized triggered messages that feel creepy).</p>
+  <p>The sweet spot — emails that feel like a thoughtful friend remembered something about you — is where the highest ROI lives. AI is what makes that sweet spot reachable for teams of one.</p>
+
+  <h3>The three automation tracks every business needs</h3>
+  <p>If you only build three automated email tracks in your first quarter, build these:</p>
+
+  <ol>
+    <li><strong>Welcome sequence</strong> — fires when someone subscribes. 5 emails over 10 days. Highest engagement window of any customer relationship. (See Chapter 1.)</li>
+    <li><strong>Engagement-based segmentation</strong> — automatically tags people based on what they click, what they buy, and what they ignore. Used to send relevant follow-ups instead of one-size-fits-all blasts.</li>
+    <li><strong>Win-back sequence</strong> — fires after 60-90 days of no engagement. Often recovers 10-20% of a "dead" list with a single thoughtful message.</li>
+  </ol>
+
+  <h3>The "thoughtful friend" personalization principle</h3>
+  <p>Don't personalize on data points that look creepy. Personalize on context that feels considerate. The rule:</p>
+  <ul>
+    <li><strong>✅ Reference what they downloaded</strong> ("since you grabbed the playbook last week...")</li>
+    <li><strong>✅ Reference their stated goal</strong> ("you mentioned you're focused on email — here's what I'd do next")</li>
+    <li><strong>❌ Don't reference their behavior in detail</strong> ("I saw you scrolled to the bottom of our pricing page" = creepy)</li>
+    <li><strong>❌ Don't use first name in the subject 5+ times in a row</strong> (loses meaning, signals automation)</li>
+  </ul>
+
+  <h3>How AI helps you scale this without losing the human touch</h3>
+  <p>For each automation, write the email YOURSELF first in your real voice. Then ask AI to generate 5 variants that all sound like the original — just adapted for different audience segments. That way you scale the personalization without the messaging feeling assembly-line.</p>
+
+  <div class="callout">
+    <span class="tag">Pro tip</span>
+    Schedule your automated emails to send at <strong>off-hour times</strong> — Tuesday 7:14am, Thursday 3:47pm — instead of round-number times. Cleaner inbox positioning (less competition with other automated sends) and a subtle signal that this isn't a mass blast.
+  </div>
+
+  <div class="case">
+    A client moved from monthly newsletter blasts to a 3-track automation system (welcome + engagement + win-back) in a single quarter. Email revenue increased 4.3x with zero increase in send volume. The list didn't grow — the engagement did.
+  </div>
+</section>
+
+<!-- CHAPTER 4: DATA -->
+<section class="page">
+  <div class="chapter-eyebrow">Chapter Four</div>
+  <h2><span class="num">4.</span>Data-Driven Growth: Predicting What Customers Will Do</h2>
+  <p>Most lean teams treat their analytics dashboards as a rear-view mirror — checking what happened last month. That's a waste. The teams that scale fastest use data to predict what's about to happen, so they can act before the curve.</p>
+  <p>AI makes predictive analytics — historically a six-figure data science budget — accessible to anyone with a CRM and 30 minutes.</p>
+
+  <h3>The three predictions worth making</h3>
+  <ol>
+    <li><strong>Who's most likely to churn in the next 30 days?</strong> Build a win-back campaign specifically for this segment. Often recovers 20-30% before they leave.</li>
+    <li><strong>Who's most likely to upgrade in the next 60 days?</strong> Build a high-intent nurture sequence for them. Conversion rate is typically 3-5x your baseline.</li>
+    <li><strong>Which content topics drive the most downstream revenue?</strong> Not the most views — the most BUYERS. Most teams over-invest in the wrong content because they look at the wrong metric.</li>
+  </ol>
+
+  <h3>The "show me the patterns" prompt</h3>
+  <p>Export your last 6 months of customer data — purchases, email opens, page views, support tickets, anything you have. Paste it (anonymized) into AI and ask:</p>
+
+  <div class="callout">
+    <span class="tag">Pattern Finder Prompt</span>
+    <em>"You're a customer analytics consultant. Here's anonymized data on my last 6 months of customers. Find the 5 strongest patterns predicting who buys vs. who doesn't. For each pattern, give me a specific action I could take this month to amplify it. Format the actions by effort (S/M/L) and predicted impact (low/medium/high)."</em>
+  </div>
+
+  <p>What comes back will surprise you. Usually 1-2 of the patterns are things you suspected but couldn't prove. The other 3-4 are completely non-obvious and become your top priorities for the next quarter.</p>
+
+  <h3>The lifetime value question</h3>
+  <p>Most lean teams under-invest in retention because acquisition feels more visible. The math doesn't support that. Increasing customer LTV by 20% has the same revenue impact as growing your customer count by 20% — usually at a fraction of the cost.</p>
+  <p>Ask AI: <em>"Based on this customer data, what 3 things could I do in the next 90 days to increase average customer LTV by 20%?"</em> The answers are usually some combination of: better onboarding, upsell sequences at the right moment, or a referral program that activates existing customers.</p>
+
+  <div class="case">
+    One client went from $7M to $14M in annual revenue in 12 months. The lever wasn't more customers — it was deeper engagement with the existing list. Behavior-based segmentation + a 3-touch upgrade sequence increased average customer value by 64%.
+  </div>
+</section>
+
+<!-- CHAPTER 5: CONTENT -->
+<section class="page">
+  <div class="chapter-eyebrow">Chapter Five</div>
+  <h2><span class="num">5.</span>Content Creation at Scale</h2>
+  <p>The single biggest constraint for lean teams isn't strategy — it's production. You know what to write. You just don't have hours to write it. AI doesn't replace your strategic thinking; it removes the production bottleneck.</p>
+
+  <h3>The content engine, not the content schedule</h3>
+  <p>Most teams approach content as a calendar problem ("we need to post on Tuesday and Friday"). That's the wrong frame. Build a content ENGINE — a system that turns one pillar piece into many derivatives — and the calendar becomes trivial.</p>
+
+  <p>The engine has 5 components:</p>
+  <ol>
+    <li><strong>One pillar piece per week.</strong> A long-form blog, podcast episode, or essay. This is your one substantive output.</li>
+    <li><strong>10 derivatives per pillar.</strong> Cut the pillar into LinkedIn, X, Instagram, email, YouTube shorts. AI does the translation.</li>
+    <li><strong>1 lead magnet per quarter.</strong> Repackage the best 5-10 pillar pieces into a downloadable resource. (This playbook is an example.)</li>
+    <li><strong>1 case study per month.</strong> Document a real client outcome — short, specific, with numbers. Use across sales pages, social posts, and pitches.</li>
+    <li><strong>1 founder story per quarter.</strong> Tell your why, your origin, what you learned the hard way. Use in About pages, email sequences, podcast intros.</li>
+  </ol>
+
+  <h3>The "one pillar, many pieces" prompt</h3>
+
+  <div class="callout">
+    <span class="tag">Content Multiplier Prompt</span>
+    <em>"You are a multi-channel content strategist. Here's a pillar piece: [paste full content].<br>
+    My audience: [who].<br>
+    My voice: [3 adjectives].<br>
+    <br>
+    Generate ALL of the following, each clearly labeled:<br>
+    1. LinkedIn post (150-200 words, hook in line 1, story structure, single CTA)<br>
+    2. LinkedIn carousel outline (10 slides, headline + 2-sentence body each)<br>
+    3. X thread (7-10 tweets, hook tweet under 240 chars)<br>
+    4. Email newsletter (350 words, conversational, one CTA)<br>
+    5. Instagram caption (under 150 words, question to drive comments)<br>
+    6. YouTube/TikTok script (45-60 seconds, hook in first 3 seconds)<br>
+    7. 3 quote graphics (each ≤20 words)<br>
+    8. 1 follow-up post for next week that builds on the pillar"</em>
+  </div>
+
+  <h3>The voice-preservation rule</h3>
+  <p>AI content that doesn't sound like you is worse than no content. Every time you use AI to generate copy, run it through a final pass:</p>
+  <ol>
+    <li>Read the AI output out loud.</li>
+    <li>Cut every sentence that doesn't sound like something you'd actually say.</li>
+    <li>Rewrite the openings — first 1-2 sentences — in your real voice every time. The middle can stay AI-generated; the opening can't.</li>
+    <li>Add ONE specific detail from your real life or business that wouldn't be in anyone else's content. This is your fingerprint.</li>
+  </ol>
+
+  <div class="case">
+    One creator I worked with went from 1 pillar post per month to 1 per week using this engine. Within 6 months her LinkedIn following 4x'd and her inbound consult requests doubled. She didn't hire anyone. She just stopped trying to generate net-new content per platform.
+  </div>
+</section>
+
+<!-- CHAPTER 6: ROADMAP -->
+<section class="page">
+  <div class="chapter-eyebrow">Chapter Six</div>
+  <h2><span class="num">6.</span>Your AI Marketing Roadmap</h2>
+  <p>Reading a playbook isn't the same as implementing it. Most readers will close this PDF, feel inspired for 24 hours, and end up doing nothing. Don't be that reader.</p>
+  <p>Here's a 90-day plan to take what's in these chapters and actually integrate it into your marketing engine. If you do nothing else from this playbook, do this.</p>
+
+  <h3>Days 1-30: Foundation</h3>
+  <p>The first month is about removing the highest-friction bottleneck so AI can become a daily tool, not an occasional experiment.</p>
+  <ul>
+    <li><strong>Week 1.</strong> Build your "voice + context block" (Chapter 1). Save it somewhere persistent — a Claude project, ChatGPT custom instructions, or a Notion doc you paste from every session.</li>
+    <li><strong>Week 2.</strong> Build OR rebuild your welcome email sequence (Chapter 1). 5 emails. Use AI for first drafts, edit in your real voice.</li>
+    <li><strong>Week 3.</strong> Run the "Pattern Finder" prompt on your customer data (Chapter 4). Pick the top 1-2 patterns and start a small experiment.</li>
+    <li><strong>Week 4.</strong> Pick ONE pillar piece and run it through the Content Multiplier (Chapter 5). Post the derivatives over the next 3 weeks.</li>
+  </ul>
+
+  <h3>Days 31-60: Systems</h3>
+  <p>The second month is about turning one-off wins into automated systems that run without you.</p>
+  <ul>
+    <li><strong>Week 5.</strong> Build engagement-based segmentation in your email platform (Chapter 3). Tag people by behavior, not demographics.</li>
+    <li><strong>Week 6.</strong> Launch your win-back sequence (Chapter 3). Aim for anyone inactive 60+ days.</li>
+    <li><strong>Week 7.</strong> Pick a second pillar piece and rerun the Content Multiplier. You should now have a rhythm — one pillar per week, derivatives auto-generated.</li>
+    <li><strong>Week 8.</strong> Audit your top landing page using the Sales Page Diagnostic frame. Ship 3 fixes.</li>
+  </ul>
+
+  <h3>Days 61-90: Compound</h3>
+  <p>The third month is about layering the systems so they compound. This is where most teams get the most surprising lifts.</p>
+  <ul>
+    <li><strong>Week 9.</strong> Refresh your "voice + context block" with new customer data. Quarterly tune-up.</li>
+    <li><strong>Week 10.</strong> Layer SMS into your highest-converting email moments (welcome, abandoned cart, post-purchase). Even 1-2 SMS touches can lift conversion 20-40%.</li>
+    <li><strong>Week 11.</strong> Run a Competitor Teardown on your top 2 competitors. Find 1 specific gap you can exploit in your next campaign.</li>
+    <li><strong>Week 12.</strong> Sit down for 90 minutes and write the next quarter's roadmap. What experiments worked? What scaled? What didn't? Repeat the 90-day cycle.</li>
+  </ul>
+
+  <h3>The minimum viable AI marketing stack</h3>
+  <p>If you're starting from scratch, this is the smallest tech stack that lets you run everything in this playbook:</p>
+  <ul>
+    <li><strong>AI:</strong> ChatGPT Plus, Claude Pro, or Gemini Advanced — one is enough, ~$20/mo</li>
+    <li><strong>Email platform:</strong> Klaviyo, ConvertKit, Beehiiv, or whatever you're already on — needs support for behavior-triggered automations</li>
+    <li><strong>CRM:</strong> If you don't have one, start with HubSpot's free tier or even a Google Sheet. Don't over-engineer.</li>
+    <li><strong>Analytics:</strong> GA4 + your platform's native analytics is enough for months 1-3. Add Mixpanel or similar only when you've outgrown them.</li>
+  </ul>
+  <p>Total cost: ~$50-200/mo depending on list size. Compare that to a junior marketing hire at $5,000+/mo and the math is obvious.</p>
+
+  <div class="callout">
+    <span class="tag">The 80/20 of this playbook</span>
+    If you skip everything else, just do this: build the voice + context block (Chapter 1), use it to generate your welcome sequence, and run one Content Multiplier session per week. Those three things alone will save 10+ hours weekly and meaningfully grow engagement. Everything else is amplification.
+  </div>
+</section>
+
+<!-- CLOSING + CTA -->
+<section class="page">
+  <h2>What to do next.</h2>
+  <p>You've got the playbook. The frameworks are real. The question now is whether you put it down and let inspiration fade, or whether you open your calendar and block 2 hours this week to build the voice + context block from Chapter 1.</p>
+  <p>If you want to go deeper:</p>
+  <ul>
+    <li><strong>Free:</strong> grab <a href="https://seedscale.agency/7-ai-prompts.html" style="color:#0B6E4F;">The Marketing Starter Kit</a> — 7 specific AI prompts that operationalize the frameworks in this playbook.</li>
+    <li><strong>Coaching:</strong> if you want a thinking partner to walk through this with you — single 90-min sessions or ongoing monthly coaching. Built for founders running marketing solo.</li>
+    <li><strong>Consulting:</strong> if you want me embedded as a fractional partner to build the systems with you — engagements from 3 to 12 months. For teams ready to scale beyond what coaching alone can do.</li>
+  </ul>
+
+  <div class="cta">
+    <h2>Want help building this for your business?</h2>
+    <p style="color:rgba(255,255,255,0.85); max-width:5.5in; margin:0.5rem auto 1.5rem;">Coaching and consulting are two distinct services. On the call we figure out which one — if any — is the right fit for where you are.</p>
+    <a href="https://seedscale.agency/connect.html" class="btn">Book a free 30-min discovery call</a>
+  </div>
+
+  <div class="signature">
+    <strong>Rebecca</strong> · Founder, Seedscale Agency<br>
+    <a href="mailto:rebecca@seedscale.agency" style="color:#0B6E4F;">rebecca@seedscale.agency</a> · <a href="https://seedscale.agency" style="color:#0B6E4F;">seedscale.agency</a><br>
+    <em>Marketing systems for founders and lean teams.</em>
+  </div>
+</section>
+
+</body>
+</html>
