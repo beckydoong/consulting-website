@@ -13,6 +13,13 @@
     color: #1a1a1a;
     line-height: 1.65;
     font-size: 11pt;
+    /* Force backgrounds + colors to print as designed (bypasses "Save ink" mode) */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
   .page {
     max-width: 7.5in;
@@ -29,6 +36,8 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    /* Solid color fallback first so even if gradient fails to print, background is dark */
+    background-color: #073B3A;
     background: linear-gradient(135deg, #073B3A 0%, #0B6E4F 100%);
     color: #fff;
     padding: 0.7in;
@@ -38,35 +47,38 @@
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: #FACC15;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 1rem;
   }
   .cover h1 {
     font-family: 'Lora', serif;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 36pt;
     line-height: 1.15;
     margin: 0 0 1.5rem;
-    color: #fff;
+    /* Gold for max printability — high contrast against dark green AND visible if background prints lighter than intended */
+    color: #FACC15;
+    text-shadow: 0 0 1px rgba(0,0,0,0.2);
   }
   .cover h1 em {
-    color: #FACC15;
+    color: #ffffff;
     font-style: italic;
+    font-weight: 700;
   }
   .cover .subtitle {
     font-size: 14pt;
-    color: rgba(255,255,255,0.85);
-    font-weight: 300;
+    color: #ffffff;
+    font-weight: 400;
     max-width: 5.5in;
     margin: 0 auto 2.5rem;
     line-height: 1.5;
   }
   .cover .author {
     margin-top: 2rem;
-    color: rgba(255,255,255,0.7);
+    color: #ffffff;
     font-size: 10pt;
   }
-  .cover .author strong { color: #fff; font-weight: 600; }
+  .cover .author strong { color: #FACC15; font-weight: 700; }
 
   /* Section + headings */
   h2 {
@@ -218,7 +230,7 @@
   <h1>The Marketing Starter Kit<br>for Founders and <em>Lean Teams</em></h1>
   <p class="subtitle">Seven AI prompts that replace a $5,000/month marketing hire — built for the founder running marketing solo or the team of two doing the work of ten.</p>
   <div class="author">
-    By <strong>Rebecca Doong</strong>, Founder · Seedscale Agency<br>
+    By <strong>Rebecca</strong>, Founder · Seedscale Agency<br>
     seedscale.agency
   </div>
 </section>
@@ -623,7 +635,7 @@
   </div>
 
   <div class="signature">
-    <strong>Rebecca Doong</strong> · Founder, Seedscale Agency<br>
+    <strong>Rebecca</strong> · Founder, Seedscale Agency<br>
     <a href="mailto:rebecca@seedscale.agency" style="color:#0B6E4F;">rebecca@seedscale.agency</a> · <a href="https://seedscale.agency" style="color:#0B6E4F;">seedscale.agency</a><br>
     <em>Marketing systems for founders and lean teams.</em>
   </div>

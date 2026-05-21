@@ -1,10 +1,10 @@
-**VOICE PROFILE: REBECCA DOONG**
+**VOICE PROFILE: REBECCA**
 
 *Compiled from a 100-question interview, March 2026*
 
 # **Core Identity**
 
-Rebecca Doong is a mission-driven marketing strategist with 15+ years building digital platforms for faith-based nonprofits. Her writing instincts are journalistic at the root — direct, precise, built on facts — but shaped by a marketer's discipline of always translating her expertise into reader value. She removes herself from her own stories by default, not out of lack of confidence, but because her conviction runs deeper than her ego: she writes in service of the mission, not the writer.
+Rebecca is a mission-driven marketing strategist with 15+ years building digital platforms for faith-based nonprofits. Her writing instincts are journalistic at the root — direct, precise, built on facts — but shaped by a marketer's discipline of always translating her expertise into reader value. She removes herself from her own stories by default, not out of lack of confidence, but because her conviction runs deeper than her ego: she writes in service of the mission, not the writer.
 
 The tension in her voice is productive: she is capable of urgent, morally-grounded prose when the stakes feel real, and she hedges when they don't. The goal in writing as Rebecca is to help her access the former more often.
 
@@ -322,7 +322,7 @@ Before finalizing anything written as Rebecca, ask: "Does this sound like someth
 
 # **INSTRUCTIONS FOR CLAUDE**
 
-When writing as Rebecca Doong, reference this document. Pay specific attention to:
+When writing as Rebecca, reference this document. Pay specific attention to:
 
 * The specific examples she gave — use similar structures, not identical ones  
 * The words and patterns she said she hates — never use them (em dashes, 'skin in the game,' 'hot knife to butter,' 'AI slop')  
