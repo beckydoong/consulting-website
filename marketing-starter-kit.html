@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Marketing Starter Kit for Founders and Lean Teams — Seedscale Agency</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1a1a1a;
+    line-height: 1.65;
+    font-size: 11pt;
+  }
+  .page {
+    max-width: 7.5in;
+    margin: 0 auto;
+    padding: 0.7in;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* Cover */
+  .cover {
+    min-height: 9.5in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(135deg, #073B3A 0%, #0B6E4F 100%);
+    color: #fff;
+    padding: 0.7in;
+  }
+  .cover .eyebrow {
+    font-size: 11pt;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #FACC15;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .cover h1 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 36pt;
+    line-height: 1.15;
+    margin: 0 0 1.5rem;
+    color: #fff;
+  }
+  .cover h1 em {
+    color: #FACC15;
+    font-style: italic;
+  }
+  .cover .subtitle {
+    font-size: 14pt;
+    color: rgba(255,255,255,0.85);
+    font-weight: 300;
+    max-width: 5.5in;
+    margin: 0 auto 2.5rem;
+    line-height: 1.5;
+  }
+  .cover .author {
+    margin-top: 2rem;
+    color: rgba(255,255,255,0.7);
+    font-size: 10pt;
+  }
+  .cover .author strong { color: #fff; font-weight: 600; }
+
+  /* Section + headings */
+  h2 {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 22pt;
+    line-height: 1.2;
+    margin: 0 0 0.5rem;
+    color: #073B3A;
+  }
+  h2 .num {
+    display: inline-block;
+    color: #FACC15;
+    font-weight: 700;
+    margin-right: 0.3em;
+  }
+  h3 {
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600;
+    font-size: 11pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #0B6E4F;
+    margin: 1.8rem 0 0.6rem;
+  }
+  .prompt-eyebrow {
+    color: #FACC15;
+    font-size: 9pt;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  p { margin: 0 0 1rem; }
+  ul, ol { margin: 0 0 1rem; padding-left: 1.4rem; }
+  li { margin-bottom: 0.4rem; }
+  strong { color: #073B3A; }
+  em { font-style: italic; }
+
+  /* Prompt template box */
+  .prompt-box {
+    background: #f7f9f8;
+    border-left: 4px solid #FACC15;
+    padding: 1.2rem 1.4rem;
+    margin: 1rem 0 1.5rem;
+    border-radius: 4px;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 10.5pt;
+    line-height: 1.65;
+    color: #2a2a2a;
+  }
+  .prompt-box .tag {
+    display: inline-block;
+    background: #073B3A;
+    color: #FACC15;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 8.5pt;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    margin-bottom: 0.7rem;
+  }
+  .prompt-box .placeholder {
+    background: #FFF6D6;
+    color: #5a4a00;
+    padding: 0 0.2rem;
+    border-radius: 2px;
+    font-style: italic;
+  }
+
+  /* Example output */
+  .example {
+    background: #fffdf4;
+    border: 1px solid #f3e7b8;
+    padding: 1rem 1.2rem;
+    margin: 1rem 0 1.5rem;
+    border-radius: 4px;
+    font-size: 10pt;
+    color: #444;
+    font-style: italic;
+  }
+  .example::before {
+    content: 'Example output';
+    display: block;
+    font-style: normal;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 8.5pt;
+    color: #b48a00;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+  }
+
+  /* CTA */
+  .cta {
+    background: #073B3A;
+    color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 1.5rem;
+  }
+  .cta h2 { color: #fff; }
+  .cta .btn {
+    display: inline-block;
+    background: #FACC15;
+    color: #073B3A;
+    text-decoration: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 11pt;
+    margin-top: 0.8rem;
+  }
+
+  /* Footer signature */
+  .signature {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e5e5;
+    color: #666;
+    font-size: 10pt;
+  }
+  .signature strong { color: #073B3A; }
+
+  /* Page break utility */
+  .page-break { page-break-before: always; }
+
+  /* Print tweaks */
+  @media print {
+    body { font-size: 10.5pt; }
+    .page { padding: 0.5in; }
+    .cover { min-height: 10in; }
+    h2 { page-break-after: avoid; }
+    .prompt-box, .example { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============================================== -->
+<!-- COVER PAGE                                     -->
+<!-- ============================================== -->
+<section class="cover">
+  <div class="eyebrow">Seedscale Agency</div>
+  <h1>The Marketing Starter Kit<br>for Founders and <em>Lean Teams</em></h1>
+  <p class="subtitle">Seven AI prompts that replace a $5,000/month marketing hire — built for the founder running marketing solo or the team of two doing the work of ten.</p>
+  <div class="author">
+    By <strong>Rebecca Doong</strong>, Founder · Seedscale Agency<br>
+    seedscale.agency
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- INTRO LETTER                                   -->
+<!-- ============================================== -->
+<section class="page">
+  <h2>A note before you dive in.</h2>
+  <p>If you're reading this, you're probably wearing five hats and one of them is marketing.</p>
+  <p>That's the situation almost every founder I work with is in. The product is built or the service is real. Sales are happening. But marketing — the engine that's supposed to bring you predictable, growing demand — keeps getting deprioritized because there's no one full-time to own it.</p>
+  <p>So you do what you can on Sundays. You write a few LinkedIn posts. You send an email blast every couple weeks. You try to figure out which platform deserves the next hour of your time.</p>
+  <p>I've spent 15+ years leading digital teams for organizations with tens of millions of subscribers. The teams that <em>scaled</em> their marketing didn't always have bigger budgets. They had <strong>systems</strong> — repeatable workflows that compounded.</p>
+  <p>The seven prompts in this kit are extracted from those systems. Each one tackles a specific bottleneck that lean teams hit: not enough content, weak conversion copy, no time to research the audience, no way to keep up with competitors. Each prompt produces output that would normally cost you $500 to $3,000 if you hired it out.</p>
+  <p>Use them solo, hand them to a junior teammate, or run them every quarter as a tune-up. They're designed to be returned to, not used once and forgotten.</p>
+  <p>One ground rule: <strong>don't just copy and paste.</strong> The prompts are scaffolds. The magic comes from feeding them your real customer language, your real campaign data, your real product. The output is only as good as the context you give it.</p>
+  <p>If you only try one this week, make it <strong>Prompt #2 — the Revenue Email Machine</strong>. It's the one my clients consistently say saves them the most hours.</p>
+  <p>Now let's get into it.</p>
+  <div class="signature">
+    <strong>Rebecca</strong><br>
+    Founder, Seedscale Agency<br>
+    <a href="mailto:rebecca@seedscale.agency" style="color:#0B6E4F;">rebecca@seedscale.agency</a>
+  </div>
+</section>
+
+<!-- ============================================== -->
+<!-- PROMPT 1: Audience Voice Decoder               -->
+<!-- ============================================== -->
+<section class="page">
+  <div class="prompt-eyebrow">Prompt 01 · Customer Research</div>
+  <h2><span class="num">1.</span>The Audience Voice Decoder</h2>
+  <h3>The problem</h3>
+  <p>Most marketing copy fails for one reason: <strong>it doesn't sound like the customer.</strong> Founders write copy that sounds like the founder. AI writes copy that sounds like AI. Both lose.</p>
+  <p>The fastest way to fix this isn't a copywriting course — it's mining the language your customers already use. Their words live in your support tickets, product reviews, social DMs, sales call transcripts, and survey responses. You just need a way to extract the patterns.</p>
+  <h3>Why it works</h3>
+  <p>Voice-of-customer copy converts 2-5x better than founder-voiced copy on the same offer. When prospects see their own pain in your headline, they don't have to translate. They feel understood — which is the precondition for trust.</p>
+  <h3>The prompt</h3>
+  <div class="prompt-box">
+    <span class="tag">Audience Voice Decoder</span>
+    You are a customer research analyst. I will paste below a collection of <span class="placeholder">[reviews / support tickets / DMs / survey responses]</span> from my customers.
+    <br><br>
+    Analyze them and extract:
+    <br><br>
+    1. <strong>The top 5 pain points</strong> in the customer's own words — quote them verbatim where possible.<br>
+    2. <strong>The top 3 transformation outcomes</strong> they describe (what life looks like AFTER the problem is solved).<br>
+    3. <strong>The exact phrases and metaphors</strong> they repeat (these become your headlines).<br>
+    4. <strong>The objections</strong> they raise about products like mine — and the reasons they finally said yes.<br>
+    5. <strong>The competitors or alternatives</strong> they mention by name.
+    <br><br>
+    For each insight, give me the verbatim quote that supports it. Don't paraphrase.
+    <br><br>
+    My product/service: <span class="placeholder">[describe in 2 sentences]</span><br>
+    Here's the data:
+    <br>—<br>
+    <span class="placeholder">[paste 20-100 pieces of customer text]</span>
+  </div>
+  <div class="example">
+    Pain point: "I'm spending 14 hours a week writing emails and most of them get ignored."<br>
+    Transformation: "I want to wake up to qualified leads in my inbox, not have to chase every one of them."<br>
+    Repeated phrase: "marketing engine" (used by 7 of 23 customers)<br>
+    Objection → resolution: "I thought AI would make my emails sound robotic. What sold me was seeing a sample that sounded like me."
+  </div>
+  <h3>Pro tips</h3>
+  <ul>
+    <li><strong>Don't summarize first.</strong> Paste raw data. AI's value is finding patterns YOU missed.</li>
+    <li><strong>Aim for 50+ data points.</strong> Anything less and the patterns are noise.</li>
+    <li><strong>Run it quarterly.</strong> Customer language drifts as your audience evolves.</li>
+    <li><strong>Use the verbatim quotes</strong> as headline tests. Don't rewrite them.</li>
+  </ul>
+</section>
+
+<!-- ============================================== -->
+<!-- PROMPT 2: Revenue Email Machine                -->
+<!-- ============================================== -->
+<section class="page">
+  <div class="prompt-eyebrow">Prompt 02 · Email Marketing</div>
+  <h2><span class="num">2.</span>The Revenue Email Machine</h2>
+  <h3>The problem</h3>
+  <p>Email is still the highest-ROI channel for almost every business. A solid lifecycle program — welcome, nurture, sales, win-back — can do six figures of revenue without a single new lead. But most lean teams either don't write email sequences at all or write generic ones that get ignored.</p>
+  <p>The reason: writing emails takes hours, and most founders don't have a system. So they batch one campaign at a time, in a panic, before a launch.</p>
+  <h3>Why it works</h3>
+  <p>This prompt loads your <em>voice</em>, <em>audience</em>, and <em>past campaign data</em> into one persistent context. After that initial setup, you generate full sequences in 20 minutes instead of 20 hours. The first draft is 80% there. You edit, you send.</p>
+  <p>One of my clients went from 14 hours/week on customer emails to 2 hours/week using this prompt as a foundation. Same conversion rates. 12 hours back.</p>
+  <h3>The prompt</h3>
+  <div class="prompt-box">
+    <span class="tag">Revenue Email Machine</span>
+    You are my email copywriter. You write in MY voice and for MY audience. Here's the context — keep it loaded:
+    <br><br>
+    <strong>My business:</strong> <span class="placeholder">[1 sentence what you sell + who for]</span><br>
+    <strong>Voice:</strong> <span class="placeholder">[3 adjectives + 1 thing I never say]</span><br>
+    <strong>Audience pain points:</strong> <span class="placeholder">[paste output from Prompt #1]</span><br>
+    <strong>Last 3 high-performing emails I sent:</strong> <span class="placeholder">[paste subject lines + opening 100 words of each]</span><br>
+    <strong>Last 3 emails that flopped:</strong> <span class="placeholder">[same]</span>
+    <br><br>
+    Now write me a <span class="placeholder">[welcome / nurture / sales / win-back]</span> sequence with the following structure:
+    <br><br>
+    Email 1: <span class="placeholder">[goal — e.g., deliver the lead magnet + set expectations]</span><br>
+    Email 2: <span class="placeholder">[goal]</span><br>
+    Email 3: <span class="placeholder">[goal]</span><br>
+    Email 4: <span class="placeholder">[goal]</span><br>
+    Email 5: <span class="placeholder">[goal]</span>
+    <br><br>
+    For each email give me: subject line (under 50 chars), preview text (under 100 chars), full body (250-400 words), and a single clear CTA. Match my voice exactly — don't add corporate fluff or buzzwords.
+  </div>
+  <div class="example">
+    Subject: <strong>How a $7M client doubled in 12 months</strong> (32 chars, curiosity + proof)<br>
+    Preview: A small in-house team, no expansion, no new tools. Here's what we changed.<br>
+    Body opens: "Hi [first name], Want to share a story I think will encourage you. One of my clients came to me sitting at $7M..."
+  </div>
+  <h3>Pro tips</h3>
+  <ul>
+    <li><strong>Build the context once.</strong> Save your voice + audience block as a Claude project, GPT custom instructions, or a snippet you paste at the top of every chat.</li>
+    <li><strong>Always feed it your historical opens/clicks data.</strong> AI generates dramatically better subject lines when it can pattern-match your past wins.</li>
+    <li><strong>Edit the first email by hand.</strong> Then ask the AI to "rewrite emails 2-5 to match the voice and rhythm of my edit." This is the biggest unlock.</li>
+  </ul>
+</section>
+
+<!-- ============================================== -->
+<!-- PROMPT 3: Content Repurposer                   -->
+<!-- ============================================== -->
+<section class="page">
+  <div class="prompt-eyebrow">Prompt 03 · Content Strategy</div>
+  <h2><span class="num">3.</span>The Content Repurposer</h2>
+  <h3>The problem</h3>
+  <p>You spend three hours writing a great blog post or recording a 40-minute podcast. Then it lives on one channel and dies. Meanwhile your competitors who post less <em>insightful</em> content are everywhere, because they post it everywhere.</p>
+  <p>The bottleneck isn't ideas — it's translation. Turning one pillar piece into platform-native posts (LinkedIn, X, Instagram, email, threads, shorts scripts) used to take half a day. Now it takes 20 minutes.</p>
+  <h3>Why it works</h3>
+  <p>Each platform rewards different formats: LinkedIn wants long-form storytelling, X wants compressed hooks, Instagram wants visual narrative, email wants 1:1 voice. This prompt does the translation in parallel, preserving your core idea while reshaping for each medium.</p>
+  <p>One pillar piece = 10 derivative posts = three weeks of content from one afternoon of work.</p>
+  <h3>The prompt</h3>
+  <div class="prompt-box">
+    <span class="tag">Content Repurposer</span>
+    You are a multi-channel content strategist. I'm giving you ONE pillar piece of content. Turn it into 10 platform-native posts.
+    <br><br>
+    <strong>Pillar piece:</strong> <span class="placeholder">[paste full blog post, podcast transcript, video script, OR detailed outline of a talk]</span><br>
+    <strong>My audience:</strong> <span class="placeholder">[founders + lean teams growing X / SaaS marketers / etc.]</span><br>
+    <strong>My voice:</strong> <span class="placeholder">[3 adjectives]</span>
+    <br><br>
+    Produce ALL of these, each clearly labeled:
+    <br><br>
+    1. <strong>LinkedIn post</strong> (150-200 words, hook in line 1, story structure, no hashtags spam, single CTA)<br>
+    2. <strong>LinkedIn carousel outline</strong> (10 slides, headline + 2-sentence body each)<br>
+    3. <strong>X thread</strong> (7-10 tweets, hook tweet under 240 chars, payoff at the end)<br>
+    4. <strong>Email newsletter</strong> (350 words, conversational tone, one CTA at the end)<br>
+    5. <strong>Instagram caption + hook</strong> (under 150 words, line breaks, 1 question to drive comments)<br>
+    6. <strong>YouTube Short / TikTok script</strong> (45-60 seconds, hook in first 3 seconds)<br>
+    7. <strong>Lead magnet idea</strong> (1-paragraph pitch for a free PDF or template based on this content)<br>
+    8. <strong>Sales objection rebuttal</strong> (how this content addresses a real buyer hesitation)<br>
+    9. <strong>3 quote graphics</strong> (each quote ≤ 20 words, designed to stand alone)<br>
+    10. <strong>1 follow-up post for next week</strong> that builds on the pillar without repeating it
+    <br><br>
+    Don't soften the original insight. Each format should feel native to its platform, not like a recycled snippet.
+  </div>
+  <div class="example">
+    Pillar piece: "Why most lean teams fail at email marketing"<br>
+    LinkedIn post output: "I worked with a founder who was sending 4 emails a month and getting nowhere. We ran an audit. The emails weren't bad. The problem was she didn't have a system. Here's the 3-step fix that took her from 8% open rate to 41%..."<br>
+    X thread output: "Lean teams don't fail at email because they can't write. They fail because they don't have a system. Here's the one I give every client. 🧵"
+  </div>
+  <h3>Pro tips</h3>
+  <ul>
+    <li><strong>Start from the BEST pillar you have.</strong> Repurposing weak content makes 10 weak posts.</li>
+    <li><strong>Schedule the outputs over 3 weeks</strong>, not all in one day. Algorithms reward consistency.</li>
+    <li><strong>Hand to a VA or junior teammate.</strong> The AI does the translation; a human does the publishing.</li>
+  </ul>
+</section>
+
+<!-- ============================================== -->
+<!-- PROMPT 4: Subject Line Lab                     -->
+<!-- ============================================== -->
+<section class="page">
+  <div class="prompt-eyebrow">Prompt 04 · Email Optimization</div>
+  <h2><span class="num">4.</span>The Subject Line Lab</h2>
+  <h3>The problem</h3>
+  <p>The single biggest determinant of whether your email gets read isn't the body — it's the subject line. A 5% lift on open rate compounds into thousands of dollars over the year. But most teams write one subject line, send the email, and never test alternatives.</p>
+  <p>The reason isn't laziness. It's that subject line writing feels like guesswork. You don't know what'll work until it's too late to change.</p>
+  <h3>Why it works</h3>
+  <p>This prompt generates 20 subject line variants <em>based on your historical data</em>, then scores each one by predicted open rate using the patterns from your past wins. You pick the top 3, A/B test, and learn what works for YOUR audience.</p>
+  <p>Done quarterly, this alone can lift your email revenue 20-40%.</p>
+  <h3>The prompt</h3>
+  <div class="prompt-box">
+    <span class="tag">Subject Line Lab</span>
+    You are an email subject line strategist. I'm sending an email with the following details:
+    <br><br>
+    <strong>Email body summary:</strong> <span class="placeholder">[2-3 sentence summary]</span><br>
+    <strong>Email goal:</strong> <span class="placeholder">[drive clicks to X / get replies / book calls / sell Y]</span><br>
+    <strong>Audience:</strong> <span class="placeholder">[who they are + what they care about]</span>
+    <br><br>
+    <strong>My historical top-10 subject lines by open rate:</strong><br>
+    <span class="placeholder">[paste 10 subject lines + their open rate %]</span>
+    <br><br>
+    <strong>My historical bottom-10 subject lines by open rate:</strong><br>
+    <span class="placeholder">[same — what FAILED]</span>
+    <br><br>
+    Generate 20 subject line variants. For each one, include:<br>
+    — Character count (target under 50 for mobile)<br>
+    — Predicted open rate range (low / mid / high based on patterns from my historical data)<br>
+    — Why it'll work (1 sentence — what pattern it matches from my winners)<br>
+    — One variant that's a "risk" — counter-intuitive but with high upside if it lands
+    <br><br>
+    Rank them in a table from highest predicted open rate to lowest. Don't include emoji unless my historical winners use them.
+  </div>
+  <div class="example">
+    | Subject | Chars | Predicted | Pattern match |<br>
+    | "Why are you here, Becky?" | 24 | HIGH | Matches your top winner's personalization pattern |<br>
+    | "The prompt that gave one team 12 hours back" | 45 | HIGH | Story + specific number — your audience clicks these |<br>
+    | "I owe you an apology" | 22 | RISK | Curiosity gap; could underperform if seen as clickbait |
+  </div>
+  <h3>Pro tips</h3>
+  <ul>
+    <li><strong>Always test the top 2.</strong> Use your email platform's A/B test feature with 20% of the list.</li>
+    <li><strong>Keep a running spreadsheet</strong> of subject + open rate. The AI gets exponentially better with more data.</li>
+    <li><strong>Watch for fatigue.</strong> A formula that wins for 6 months can suddenly stop working. Refresh quarterly.</li>
+  </ul>
+</section>
+
+<!-- ============================================== -->
+<!-- PROMPT 5: Sales Page Diagnostic                -->
+<!-- ============================================== -->
+<section class="page">
+  <div class="prompt-eyebrow">Prompt 05 · Conversion Optimization</div>
+  <h2><span class="num">5.</span>The Sales Page Diagnostic</h2>
+  <h3>The problem</h3>
+  <p>You're driving traffic to a landing page. You can see the visitor count. But you can't see WHY most of them leave without converting. A CRO consultant charges $3-5K for one audit. Most founders never get one.</p>
+  <p>The fix isn't redesigning the page from scratch. It's identifying the 3-5 highest-leverage fixes — the friction points, the missing proof, the weak hooks — and addressing those first.</p>
+  <h3>Why it works</h3>
+  <p>This prompt walks through your page using the same checklist a senior conversion strategist would: scan-ability, value clarity, social proof placement, objection handling, CTA hierarchy. It outputs a prioritized fix list with effort/impact estimates so you know what to do this week vs. this quarter.</p>
+  <h3>The prompt</h3>
+  <div class="prompt-box">
+    <span class="tag">Sales Page Diagnostic</span>
+    You are a conversion rate optimization specialist with 15 years of experience auditing landing pages. I'm pasting my page below. Audit it as if I'd paid you $3,000.
+    <br><br>
+    <strong>Page URL:</strong> <span class="placeholder">[url]</span><br>
+    <strong>What I'm selling:</strong> <span class="placeholder">[product/service + price]</span><br>
+    <strong>Target visitor:</strong> <span class="placeholder">[who, where they came from, what stage]</span><br>
+    <strong>Current conversion rate:</strong> <span class="placeholder">[X%, or "I don't know"]</span><br>
+    <strong>Goal CR:</strong> <span class="placeholder">[Y%]</span>
+    <br><br>
+    <strong>Page copy and structure:</strong><br>
+    <span class="placeholder">[paste full page text in order, or paste a screenshot description]</span>
+    <br><br>
+    Audit against these 8 dimensions and give me a score 1-10 for each, with specific evidence:
+    <br><br>
+    1. <strong>Headline clarity</strong> — does it pass the "5-second test"?<br>
+    2. <strong>Hook strength</strong> — does the first 100 words make me want to keep reading?<br>
+    3. <strong>Value clarity</strong> — do I know what I'm getting and what changes for me?<br>
+    4. <strong>Social proof</strong> — testimonials, case studies, logos, results — placed where they matter?<br>
+    5. <strong>Objection handling</strong> — what doubts does the page leave unanswered?<br>
+    6. <strong>CTA hierarchy</strong> — is the primary action obvious and frictionless?<br>
+    7. <strong>Trust signals</strong> — credentials, guarantees, refund policy, security?<br>
+    8. <strong>Scan-ability</strong> — does someone skimming get the core message?
+    <br><br>
+    Then give me a PRIORITIZED FIX LIST with effort (S/M/L) and predicted impact (low/medium/high) for each fix. Start with the highest-leverage 5 changes I could ship this week.
+  </div>
+  <div class="example">
+    Headline clarity: 6/10 — "Marketing Systems for Founders" is clear but generic. Add specificity: "...that pay for themselves in 90 days."<br><br>
+    Top 3 fixes this week:<br>
+    1. <strong>Add a single hero proof point</strong> (S effort, HIGH impact) — visitors leave because there's no signal of who else trusted you.<br>
+    2. <strong>Move the FAQ above the final CTA</strong> (S effort, MEDIUM impact) — your page raises questions you don't answer until they've already decided.<br>
+    3. <strong>Shorten the bio paragraph</strong> from 4 paragraphs to 1 + a "more about me" link (S effort, MEDIUM impact).
+  </div>
+  <h3>Pro tips</h3>
+  <ul>
+    <li><strong>Run this on your top 3 pages</strong> — homepage, top lead magnet page, top sales page.</li>
+    <li><strong>Re-audit after every major copy change.</strong> Small wins compound.</li>
+    <li><strong>Take the "risk" recommendations seriously.</strong> The biggest CR lifts usually come from changes that feel counter-intuitive.</li>
+  </ul>
+</section>
+
+<!-- ============================================== -->
+<!-- PROMPT 6: Competitor Teardown                  -->
+<!-- ============================================== -->
+<section class="page">
+  <div class="prompt-eyebrow">Prompt 06 · Competitive Intelligence</div>
+  <h2><span class="num">6.</span>The Competitor Teardown</h2>
+  <h3>The problem</h3>
+  <p>You vaguely know who your competitors are. You've probably visited their website. But you don't have a clear picture of their funnel — what lead magnets they offer, what their email sequences do, what their pricing strategy is, where they're winning and where they're weak.</p>
+  <p>Without that view, you're guessing at positioning. With it, you can find gaps you can exploit in days, not months.</p>
+  <h3>Why it works</h3>
+  <p>This prompt is a structured reverse-engineering exercise. You feed it publicly available info — their homepage, pricing page, opt-in flow, social presence — and it returns a teardown organized by funnel stage, with specific gaps and opportunities you can use.</p>
+  <p>Run it on your top 3 competitors. You'll come out with positioning angles your team can ship in a week.</p>
+  <h3>The prompt</h3>
+  <div class="prompt-box">
+    <span class="tag">Competitor Teardown</span>
+    You are a competitive strategy analyst. I want a teardown of a competitor's marketing funnel based on what I've gathered publicly.
+    <br><br>
+    <strong>Competitor:</strong> <span class="placeholder">[name + URL]</span><br>
+    <strong>What I do:</strong> <span class="placeholder">[your business + ideal customer]</span><br>
+    <strong>Where we overlap:</strong> <span class="placeholder">[product category, audience, etc.]</span>
+    <br><br>
+    <strong>What I've collected on the competitor:</strong><br>
+    — Homepage hero copy: <span class="placeholder">[paste]</span><br>
+    — Pricing or main offer: <span class="placeholder">[paste]</span><br>
+    — Lead magnet name + what they do with the lead: <span class="placeholder">[describe]</span><br>
+    — Email sequence I got from them (subjects + first lines if possible): <span class="placeholder">[paste]</span><br>
+    — Their primary social channel + last 5 posts: <span class="placeholder">[summarize]</span><br>
+    — Visible customer testimonials / case study patterns: <span class="placeholder">[describe]</span>
+    <br><br>
+    Now give me:
+    <br><br>
+    1. <strong>Their positioning in 1 sentence</strong> — what specific buyer + problem do they own?<br>
+    2. <strong>Their funnel architecture</strong> — top-of-funnel through paid offer, walked step by step.<br>
+    3. <strong>Their 3 strongest moves</strong> — what's working that I should be aware of.<br>
+    4. <strong>Their 3 biggest weaknesses</strong> — gaps in the offer, messaging, or experience.<br>
+    5. <strong>3 specific moves I can make this month</strong> to win prospects who are evaluating us both.
+  </div>
+  <div class="example">
+    Positioning: "They own the 'agency for nonprofits over $5M' niche."<br><br>
+    Weaknesses:<br>
+    1. Their welcome sequence is generic — same copy regardless of which lead magnet you grabbed.<br>
+    2. No founder voice. Feels corporate. Buyers buying lean marketing want a human.<br>
+    3. Pricing isn't published — adds friction for self-serve evaluators.<br><br>
+    Counter-moves:<br>
+    1. Personalize your welcome sequences based on lead source (which we do for ours).<br>
+    2. Lead with the founder voice in all comms.<br>
+    3. Publish pricing transparently with a "what you get" breakdown.
+  </div>
+  <h3>Pro tips</h3>
+  <ul>
+    <li><strong>Subscribe to your competitors' email lists.</strong> One day of data → months of strategy.</li>
+    <li><strong>Don't copy. Differentiate.</strong> The point is to find what they CAN'T or WON'T do well.</li>
+    <li><strong>Refresh annually.</strong> Funnels evolve. Last year's gaps may be filled.</li>
+  </ul>
+</section>
+
+<!-- ============================================== -->
+<!-- PROMPT 7: Founder Story Polisher               -->
+<!-- ============================================== -->
+<section class="page">
+  <div class="prompt-eyebrow">Prompt 07 · Brand Narrative</div>
+  <h2><span class="num">7.</span>The Founder Story Polisher</h2>
+  <h3>The problem</h3>
+  <p>If you're a founder-led business, your story IS your marketing. The "why" behind the company is what makes prospects remember you, refer you, and trust you with money — especially in a saturated market where every competitor sounds the same.</p>
+  <p>But most founders tell their story badly. Either too modestly ("oh, I just kind of fell into this") or too pitch-y ("our world-class team has 30+ years..."). The version that converts is structured, specific, and emotionally honest.</p>
+  <h3>Why it works</h3>
+  <p>This prompt takes the raw materials of your origin story and shapes it into the narrative form that consistently drives trust: a specific moment, a turning point, a hard-won insight, and an offer to help others avoid the same pain.</p>
+  <p>Use the output on your About page, in your podcast intros, at the top of cold pitches, and inside your welcome sequence Email #2.</p>
+  <h3>The prompt</h3>
+  <div class="prompt-box">
+    <span class="tag">Founder Story Polisher</span>
+    You are a brand strategist who specializes in founder-led businesses. I want to turn my origin story into a magnetic brand narrative I can use across my website, sales pitches, and content.
+    <br><br>
+    Answer these for me, then I'll give you my raw material:
+    <br><br>
+    <strong>1. The "before" moment</strong> — what were you doing or feeling before you started this business? Be specific (not "I was unhappy" but "I was sending my 4th cold pitch that morning at 6am while my coffee got cold").<br>
+    <strong>2. The trigger</strong> — what specific event, conversation, or realization made you act?<br>
+    <strong>3. The hard period</strong> — what nearly killed it in the first year?<br>
+    <strong>4. The insight</strong> — what did you learn that contrarians wouldn't have figured out?<br>
+    <strong>5. The "now"</strong> — what are you doing today that the "before" you wouldn't have believed?<br>
+    <strong>6. The "you" promise</strong> — what specific outcome do you help OTHER people get because of what you learned?
+    <br><br>
+    My raw answers:<br>
+    <span class="placeholder">[paste your answers — or paste a transcript of you telling the story to a friend]</span>
+    <br><br>
+    Now give me 3 versions of my story:<br>
+    — <strong>150-word version</strong> (for About page hero, podcast bios)<br>
+    — <strong>400-word version</strong> (for About page full, Email #2 of welcome sequence)<br>
+    — <strong>50-word elevator version</strong> (for cold outreach, LinkedIn DMs, intros at events)
+    <br><br>
+    Use specific sensory detail. Avoid clichés like "I'm passionate about..." and "I've always loved..."  Lead with the moment, not the credentials.
+  </div>
+  <div class="example">
+    50-word version: "I spent 15 years running digital teams that raised $300M for organizations with millions of subscribers. Then I started seeing founders burn out trying to do the same with three people. So I built Seedscale — to give lean teams the systems that used to need a 10-person department."
+  </div>
+  <h3>Pro tips</h3>
+  <ul>
+    <li><strong>The best stories include a specific number.</strong> "$300M raised" beats "tons of revenue."</li>
+    <li><strong>Skip the credentials until paragraph 3.</strong> Lead with the human moment.</li>
+    <li><strong>Re-record your story to a friend</strong> and transcribe it. The way you tell it in conversation is usually better than what you write at a keyboard.</li>
+    <li><strong>Iterate every 6 months.</strong> As your business grows, the story changes.</li>
+  </ul>
+</section>
+
+<!-- ============================================== -->
+<!-- CLOSING + CTA                                  -->
+<!-- ============================================== -->
+<section class="page">
+  <h2>What to do next.</h2>
+  <p>You now have 7 systems that can collectively replace tens of thousands of dollars of marketing services and hundreds of hours of guesswork.</p>
+  <p>Here's how to actually use them:</p>
+  <h3>This week</h3>
+  <ul>
+    <li><strong>Pick Prompt #1 (Audience Voice Decoder).</strong> Gather 30-50 pieces of customer text. Run it. Save the output — every other prompt builds on it.</li>
+    <li><strong>Run Prompt #2 (Revenue Email Machine)</strong> on your next email send. Compare to your usual workflow. Notice the time saved.</li>
+  </ul>
+  <h3>This month</h3>
+  <ul>
+    <li>Run Prompt #5 (Sales Page Diagnostic) on your top landing page. Ship the top 3 fixes.</li>
+    <li>Run Prompt #6 (Competitor Teardown) on your top 2 competitors. Identify 1 angle to take.</li>
+    <li>Use Prompt #3 (Content Repurposer) on one pillar piece. See how far it stretches.</li>
+  </ul>
+  <h3>Once a quarter</h3>
+  <ul>
+    <li>Re-run the Audience Voice Decoder with fresh customer data.</li>
+    <li>Refresh your Subject Line Lab patterns with new historical data.</li>
+    <li>Polish your founder story (Prompt #7) as the business evolves.</li>
+  </ul>
+
+  <div class="cta">
+    <h2>Want me to build this for you?</h2>
+    <p style="color:rgba(255,255,255,0.85); max-width:5.5in; margin:0.5rem auto;">If reading this kit makes you think "I'd rather have someone build the full system" — that's what I do. I work with a small number of founders and lean teams every quarter to build the marketing engine: content, email, AI, conversion — all integrated.</p>
+    <a href="https://seedscale.agency/connect.html" class="btn">Book a free 30-min strategy call</a>
+  </div>
+
+  <div class="signature">
+    <strong>Rebecca Doong</strong> · Founder, Seedscale Agency<br>
+    <a href="mailto:rebecca@seedscale.agency" style="color:#0B6E4F;">rebecca@seedscale.agency</a> · <a href="https://seedscale.agency" style="color:#0B6E4F;">seedscale.agency</a><br>
+    <em>Marketing systems for founders and lean teams.</em>
+  </div>
+</section>
+
+</body>
+</html>
