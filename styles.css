@@ -312,7 +312,13 @@ a {
 }
 
 @media (max-width: 640px) {
-    /* On very narrow screens, allow wrapping again rather than overflow */
+    /* On mobile, keep "that runs without you." on a single line by shrinking the font
+       enough that nowrap fits inside the viewport. Total H1 stays at 2 lines. */
+    .hero h1 .hero-line-2 { white-space: nowrap; }
+}
+@media (max-width: 360px) {
+    /* On the very smallest phones (<= 360px wide), allow wrap as fallback so it
+       doesn't overflow the viewport. Will become 3 lines, acceptable at that size. */
     .hero h1 .hero-line-2 { white-space: normal; }
 }
 
@@ -1470,7 +1476,8 @@ a {
     }
 
     .hero h1 {
-        font-size: 2.4rem;
+        /* Smaller mobile font so "that runs without you." fits on one line with nowrap */
+        font-size: 1.95rem;
     }
 
     .hero-buttons {
