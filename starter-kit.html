@@ -16,7 +16,9 @@
     <meta property="og:url" content="https://seedscale.agency/starter-kit.html">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
         body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; }
+        img { max-width: 100%; height: auto; }
 
         .lp-nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -39,6 +41,7 @@
             display: grid; grid-template-columns: 1fr 1fr;
             gap: 4rem; align-items: center;
         }
+        .lp-hero-inner > * { min-width: 0; }
         .lp-hero-text h1 {
             font-size: 2.8rem; font-weight: 700; line-height: 1.15;
             margin-bottom: 1rem; letter-spacing: -0.02em;
@@ -204,10 +207,30 @@
         }
 
         @media (max-width: 768px) {
+            .lp-nav { padding: 0 1rem; }
+            .lp-nav-back { font-size: 0.85rem; }
             .lp-hero-inner { grid-template-columns: 1fr; gap: 2.5rem; text-align: center; }
             .lp-hero-text h1 { font-size: 2rem; }
+            .lp-hero-text .subtitle { font-size: 1.05rem; }
             .learn-grid { grid-template-columns: 1fr; }
-            .lp-hero { min-height: auto; padding: 7rem 1.5rem 3.5rem; }
+            .lp-hero { min-height: auto; padding: 6rem 1.25rem 3rem; }
+            .lp-learn, .lp-author, .lp-bottom-cta { padding: 3.5rem 1.25rem; }
+            .lp-learn-inner h2, .lp-author-inner h2, .lp-bottom-cta h2 { font-size: 1.6rem; }
+            .author-card { padding: 1.75rem 1.25rem; }
+            .learn-card { padding: 1.5rem; }
+            .lp-form { padding: 1.25rem; }
+            .lp-hero-text .subtitle a { word-break: break-word; }
+            /* Inline coaching/consulting CTA */
+            .lp-cta-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+            .lp-cta-section { padding: 3.5rem 1.25rem !important; }
+            .lp-cta-section h2 { font-size: 1.7rem !important; }
+            .lp-cta-section .lp-cta-eyebrow { font-size: 0.75rem !important; }
+        }
+        @media (max-width: 480px) {
+            .lp-hero-text h1 { font-size: 1.7rem; }
+            .guide-cover { width: 220px; height: 290px; padding: 1.5rem 1rem; }
+            .guide-cover .guide-number { font-size: 3rem; }
+            .guide-cover .guide-title { font-size: 1rem; }
         }
     </style>
     <!-- Klaviyo Onsite Tracking -->
@@ -304,12 +327,12 @@
     </section>
 
     <!-- Coaching + Consulting CTA -->
-    <section style="background:linear-gradient(135deg, #0B6E4F 0%, #073B3A 100%); padding:5rem 2rem; color:#fff;">
+    <section class="lp-cta-section" style="background:linear-gradient(135deg, #0B6E4F 0%, #073B3A 100%); padding:5rem 2rem; color:#fff;">
         <div style="max-width:900px; margin:0 auto; text-align:center;">
-            <p style="color:#FACC15; letter-spacing:0.15em; font-size:0.85rem; text-transform:uppercase; font-weight:700; margin-bottom:1rem;">Want help applying these?</p>
+            <p class="lp-cta-eyebrow" style="color:#FACC15; letter-spacing:0.15em; font-size:0.85rem; text-transform:uppercase; font-weight:700; margin-bottom:1rem;">Want help applying these?</p>
             <h2 style="font-size:2.4rem; font-weight:700; line-height:1.2; margin-bottom:1.5rem;">Run the prompts with me, not by yourself.</h2>
             <p style="font-size:1.1rem; color:rgba(255,255,255,0.85); max-width:640px; margin:0 auto 2.5rem; line-height:1.6;">The kit gives you the scaffolds. Coaching and consulting give you a thinking partner who's deployed these systems for organizations with tens of millions of subscribers — and can do it with you.</p>
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:780px; margin:0 auto 2.5rem; text-align:left;">
+            <div class="lp-cta-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; max-width:780px; margin:0 auto 2.5rem; text-align:left;">
                 <div style="background:rgba(255,255,255,0.08); padding:1.75rem; border-radius:12px; border:1px solid rgba(255,255,255,0.12);">
                     <p style="color:#FACC15; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; font-weight:700; margin-bottom:0.5rem;">Coaching</p>
                     <h3 style="font-size:1.3rem; font-weight:700; margin-bottom:0.5rem;">For DIY founders</h3>

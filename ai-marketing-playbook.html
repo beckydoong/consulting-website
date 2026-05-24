@@ -15,7 +15,9 @@
     <style>
         /* ── Reset & Base ── */
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
         body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; }
+        img { max-width: 100%; height: auto; }
 
         /* ── Navbar ── */
         .lp-nav {
@@ -43,6 +45,7 @@
             display: grid; grid-template-columns: 1fr 1fr;
             gap: 4rem; align-items: center;
         }
+        .lp-hero-inner > * { min-width: 0; }
         .lp-hero-text h1 {
             font-size: 2.8rem; font-weight: 700; line-height: 1.15;
             margin-bottom: 1rem; letter-spacing: -0.02em;
@@ -218,12 +221,25 @@
 
         /* ── Responsive ── */
         @media (max-width: 768px) {
+            .lp-nav { padding: 0 1rem; }
+            .lp-nav-back { font-size: 0.85rem; }
             .lp-hero-inner {
                 grid-template-columns: 1fr; gap: 2.5rem; text-align: center;
             }
             .lp-hero-text h1 { font-size: 2rem; }
+            .lp-hero-text .subtitle { font-size: 1.05rem; }
             .learn-grid { grid-template-columns: 1fr; }
-            .lp-hero { min-height: auto; padding: 7rem 1.5rem 3.5rem; }
+            .lp-hero { min-height: auto; padding: 6rem 1.25rem 3rem; }
+            .lp-learn, .lp-author, .lp-bottom-cta { padding: 3.5rem 1.25rem; }
+            .lp-learn-inner h2, .lp-author-inner h2, .lp-bottom-cta h2 { font-size: 1.6rem; }
+            .author-card { padding: 1.75rem 1.25rem; }
+            .learn-card { padding: 1.5rem; }
+            .lp-form { padding: 1.25rem; }
+        }
+        @media (max-width: 480px) {
+            .lp-hero-text h1 { font-size: 1.75rem; }
+            .book-cover { width: 220px; height: 290px; padding: 1.5rem 1rem; }
+            .book-cover .book-title { font-size: 1.15rem; }
         }
         @media (min-width: 769px) and (max-width: 1024px) {
             .learn-grid { grid-template-columns: repeat(2, 1fr); }

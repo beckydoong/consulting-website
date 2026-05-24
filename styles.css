@@ -1529,7 +1529,12 @@ a {
     width: 100%;
     max-width: 480px;
     margin: 0;
+    overflow: hidden;
 }
 .lp-bottom-cta .klaviyo-form-wrapper {
     margin: 0 auto;
+}
+.klaviyo-form-wrapper > div,
+.klaviyo-form-wrapper iframe {
+    max-width: 100% !important;
 }
