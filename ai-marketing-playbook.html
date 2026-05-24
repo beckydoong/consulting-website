@@ -123,6 +123,18 @@
             margin-top: 0.75rem;
         }
 
+        /* Klaviyo embedded form wrapper — replaces .lp-form for the new Klaviyo signup */
+        .klaviyo-form-wrapper {
+            width: 100%; max-width: 420px;
+            background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px; padding: 1.25rem;
+        }
+        .klaviyo-form-wrapper > div {
+            background: #fff; border-radius: 8px; overflow: hidden;
+        }
+        /* Center the wrapper inside the bottom-CTA section */
+        .lp-bottom-cta .klaviyo-form-wrapper { margin: 0 auto; }
+
         /* ── What You'll Learn ── */
         .lp-learn {
             padding: 5rem 2rem; background: #f9fafb;
@@ -248,14 +260,9 @@
             <div class="lp-hero-text">
                 <h1>The AI Marketing Playbook</h1>
                 <p class="subtitle">A practical guide for founders and lean teams who want to scale digital revenue without scaling headcount.</p>
-                <form class="lp-form" action="https://api.web3forms.com/submit" method="POST">
-                    <input type="hidden" name="access_key" value="fcd69f57-99cf-4b2f-88a9-688d2ef53a58">
-                    <h3>Get Your Free Copy</h3>
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                    <button type="submit" class="btn-cta">Download the Playbook</button>
-                    <p class="form-note">Free download. No spam, ever.</p>
-                </form>
+                <div class="klaviyo-form-wrapper">
+                    <div class="klaviyo-form-RjtUDN"></div>
+                </div>
             </div>
             <div class="lp-hero-right">
                 <div class="book-wrapper">
@@ -322,13 +329,9 @@
         <div class="lp-bottom-cta-inner">
             <h2>Ready to scale your marketing without scaling your team?</h2>
             <p class="cta-sub">Download the free playbook and start putting it to work this week.</p>
-            <form class="lp-form" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="fcd69f57-99cf-4b2f-88a9-688d2ef53a58">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <button type="submit" class="btn-cta">Get the Free Playbook</button>
-                <p class="form-note">Free download. No spam, ever.</p>
-            </form>
+            <div class="klaviyo-form-wrapper">
+                <div class="klaviyo-form-RjtUDN"></div>
+            </div>
         </div>
     </section>
 
