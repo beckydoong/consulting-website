@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Here — Free Resources, Coaching & Consulting | Seedscale Agency</title>
+    <meta name="description" content="Free marketing resources, a 1:1 coaching call, a custom growth audit, or fractional consulting — built for founders, solopreneurs, nonprofits, and lean teams.">
+    <meta property="og:title" content="Start Here — Seedscale Agency">
+    <meta property="og:description" content="Proven marketing systems for small businesses, solopreneurs, nonprofits, and lean teams. Free resources + ways to work with Rebecca.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seedscale.agency/start.html">
+    <meta property="og:image" content="https://seedscale.agency/og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
+        body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; background: #fafaf9; }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; }
+
+        /* Nav */
+        .s-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 1.5rem; height: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .s-nav-logo { display: flex; align-items: center; }
+        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
+        .s-nav-back:hover { color: #21D375; }
+
+        /* Hero — warm welcome + photo */
+        .hero {
+            background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
+            color: #fff; padding: 5.5rem 1.5rem 3.5rem;
+            text-align: center;
+        }
+        .hero-inner { max-width: 640px; margin: 0 auto; }
+        .hero-photo {
+            width: 110px; height: 110px; border-radius: 50%; overflow: hidden;
+            margin: 0 auto 1.25rem; border: 3px solid #FACC15;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+        }
+        .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+        .hero-eyebrow {
+            color: #FACC15; font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.5rem;
+        }
+        .hero h1 {
+            font-size: 1.85rem; font-weight: 700; line-height: 1.15;
+            margin-bottom: 1.1rem; letter-spacing: -0.02em;
+            word-wrap: break-word; overflow-wrap: break-word;
+        }
+        .hero-note {
+            font-size: 1.02rem; color: rgba(255,255,255,0.92);
+            line-height: 1.65; margin-bottom: 0.75rem;
+        }
+        .hero-note strong { color: #FACC15; font-weight: 600; }
+        .hero-sig {
+            font-size: 0.9rem; color: rgba(255,255,255,0.7);
+            margin-top: 1.25rem; font-style: italic;
+        }
+
+        /* Scroll cue */
+        .scroll-cue {
+            display: inline-block; margin-top: 1.75rem; color: rgba(255,255,255,0.6);
+            font-size: 0.8rem; letter-spacing: 0.1em;
+        }
+        .scroll-cue::after { content: ' ↓'; }
+
+        /* Section base */
+        section { padding: 3.5rem 1.25rem; }
+        .section-inner { max-width: 760px; margin: 0 auto; }
+        .section-label {
+            text-align: center; color: #0B6E4F; font-size: 0.7rem;
+            font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .section-h {
+            text-align: center; font-size: 1.75rem; font-weight: 700;
+            color: #073B3A; line-height: 1.2; margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .section-sub {
+            text-align: center; color: #555; font-size: 1rem;
+            max-width: 560px; margin: 0 auto 2.25rem;
+        }
+
+        /* Card grid (1 col mobile, 2 col tablet+) */
+        .card-grid {
+            display: grid; grid-template-columns: 1fr;
+            gap: 1rem; max-width: 720px; margin: 0 auto;
+        }
+        @media (min-width: 640px) {
+            .card-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        /* Resource cards */
+        .resources { background: #fff; }
+        .res-card {
+            display: flex; align-items: center; gap: 1rem;
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+            padding: 1.1rem 1.25rem; transition: all 0.2s;
+            min-height: 88px;
+        }
+        .res-card:hover {
+            border-color: #21D375; transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(7,59,58,0.08);
+        }
+        .res-icon {
+            flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
+            background: #f0fdf4; display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+        }
+        .res-text { flex: 1; min-width: 0; }
+        .res-tag {
+            font-size: 0.65rem; color: #0B6E4F; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase;
+        }
+        .res-title {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            line-height: 1.2; margin: 0.15rem 0;
+        }
+        .res-desc { font-size: 0.85rem; color: #666; line-height: 1.45; }
+        .res-arrow {
+            flex-shrink: 0; color: #0B6E4F; font-size: 1.4rem; font-weight: 700;
+        }
+
+        /* Work-with-me offers */
+        .work { background: #f9fafb; }
+        .offer-grid {
+            display: grid; grid-template-columns: 1fr;
+            gap: 1.25rem; max-width: 720px; margin: 0 auto;
+        }
+        .offer-card {
+            background: #fff; border-radius: 16px; padding: 1.75rem 1.5rem;
+            border: 1px solid #e5e7eb; text-align: left;
+            display: flex; flex-direction: column;
+        }
+        .offer-card.featured {
+            border-color: #FACC15; border-width: 2px;
+            box-shadow: 0 12px 32px rgba(7,59,58,0.08);
+            position: relative;
+        }
+        .offer-card.featured::before {
+            content: '★ Most Popular';
+            position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+            background: #073B3A; color: #FACC15; padding: 0.3rem 0.9rem;
+            border-radius: 100px; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap;
+        }
+        .offer-eyebrow {
+            color: #0B6E4F; font-size: 0.7rem; font-weight: 700;
+            letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 0.6rem;
+        }
+        .offer-title {
+            font-size: 1.35rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.5rem; line-height: 1.2;
+        }
+        .offer-fit {
+            font-size: 0.88rem; color: #555; line-height: 1.5;
+            margin-bottom: 1rem;
+        }
+        .offer-list {
+            list-style: none; padding: 0; margin: 0 0 1.5rem;
+        }
+        .offer-list li {
+            font-size: 0.9rem; color: #1a1a1a; line-height: 1.5;
+            padding: 0.35rem 0 0.35rem 1.5rem; position: relative;
+        }
+        .offer-list li::before {
+            content: '→'; position: absolute; left: 0; color: #0B6E4F;
+            font-weight: 700;
+        }
+        .offer-cta {
+            display: block; text-align: center; padding: 0.95rem 1.25rem;
+            border-radius: 10px; font-weight: 700; font-size: 0.95rem;
+            transition: all 0.2s; margin-top: auto;
+        }
+        .offer-cta-primary {
+            background: #FACC15; color: #073B3A;
+        }
+        .offer-cta-primary:hover { background: #fde047; transform: translateY(-1px); }
+        .offer-cta-secondary {
+            background: #073B3A; color: #fff;
+        }
+        .offer-cta-secondary:hover { background: #0B6E4F; }
+        .offer-cta-tertiary {
+            background: transparent; color: #073B3A;
+            border: 2px solid #073B3A;
+        }
+        .offer-cta-tertiary:hover { background: #073B3A; color: #fff; }
+
+        /* Inquire / quick contact */
+        .inquire {
+            background: linear-gradient(135deg, #0B6E4F 0%, #073B3A 100%);
+            color: #fff; text-align: center;
+        }
+        .inquire h2 { color: #fff; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.6rem; }
+        .inquire p { color: rgba(255,255,255,0.85); margin-bottom: 1.5rem; font-size: 0.98rem; }
+        .inquire-row {
+            display: flex; flex-direction: column; gap: 0.75rem;
+            max-width: 360px; margin: 0 auto;
+        }
+        .inquire-btn {
+            display: block; padding: 0.95rem 1.5rem; border-radius: 10px;
+            font-weight: 700; font-size: 0.95rem; transition: all 0.2s;
+            text-align: center;
+        }
+        .inquire-btn-yellow {
+            background: #FACC15; color: #073B3A;
+        }
+        .inquire-btn-yellow:hover { background: #fde047; transform: translateY(-1px); }
+        .inquire-btn-outline {
+            background: rgba(255,255,255,0.08); color: #fff;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+        .inquire-btn-outline:hover {
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* Footer */
+        .s-footer {
+            background: #052726; color: rgba(255,255,255,0.5);
+            text-align: center; padding: 2.25rem 1.25rem; font-size: 0.82rem;
+        }
+        .s-footer-logo {
+            font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem;
+        }
+        .s-footer a { color: rgba(255,255,255,0.7); text-decoration: underline; }
+
+        /* Larger screens — punch up the hero */
+        @media (min-width: 768px) {
+            .hero { padding: 7rem 2rem 4.5rem; }
+            .hero-photo { width: 130px; height: 130px; }
+            .hero h1 { font-size: 2.6rem; }
+            .hero-note { font-size: 1.1rem; }
+            .section-h { font-size: 2.2rem; }
+            section { padding: 5rem 2rem; }
+            .inquire-row { flex-direction: row; max-width: 540px; }
+            .inquire-row .inquire-btn { flex: 1; }
+        }
+    </style>
+    <!-- Klaviyo Onsite Tracking -->
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
+    <script type="text/javascript">
+      !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+    </script>
+</head>
+<body>
+
+    <nav class="s-nav">
+        <a href="index.html" class="s-nav-logo"><img src="logo.svg" alt="Seedscale Agency" style="height:32px;width:auto"></a>
+        <a href="index.html" class="s-nav-back">← Home</a>
+    </nav>
+
+    <!-- HERO: warm welcome -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-photo">
+                <img src="headshot.jpeg" alt="Rebecca, founder of Seedscale Agency">
+            </div>
+            <p class="hero-eyebrow">Hi, I'm Rebecca</p>
+            <h1>Welcome to Seedscale.</h1>
+            <p class="hero-note">I spent <strong>15+ years</strong> building the digital systems behind organizations with millions of subscribers. One thing kept bothering me: most of that playbook was locked inside companies that could afford a 10-person marketing team.</p>
+            <p class="hero-note">Seedscale exists to give that same playbook to <strong>small businesses, solopreneurs, nonprofits, and lean teams</strong> — proven marketing advice at your disposal, without the agency invoice.</p>
+            <p class="hero-sig">Poke around. Take what's useful. — Rebecca</p>
+            <a href="#resources" class="scroll-cue">Start here</a>
+        </div>
+    </section>
+
+    <!-- FREE RESOURCES -->
+    <section id="resources" class="resources">
+        <p class="section-label">Free Resources</p>
+        <h2 class="section-h">Start with what's free.</h2>
+        <p class="section-sub">Two complete guides + a stack of articles. No email required to browse — but yes, the downloads ask for one.</p>
+        <div class="card-grid">
+
+            <a href="starter-kit.html" class="res-card">
+                <div class="res-icon">✦</div>
+                <div class="res-text">
+                    <span class="res-tag">Starter Kit</span>
+                    <h3 class="res-title">Build a Digital Business</h3>
+                    <p class="res-desc">7 AI prompts that replace a $5K/mo marketing hire.</p>
+                </div>
+                <span class="res-arrow">→</span>
+            </a>
+
+            <a href="ai-marketing-playbook.html" class="res-card">
+                <div class="res-icon">📘</div>
+                <div class="res-text">
+                    <span class="res-tag">Free Ebook</span>
+                    <h3 class="res-title">The AI Marketing Playbook</h3>
+                    <p class="res-desc">6 chapters. Scale marketing without scaling headcount.</p>
+                </div>
+                <span class="res-arrow">→</span>
+            </a>
+
+            <a href="insights.html" class="res-card">
+                <div class="res-icon">📝</div>
+                <div class="res-text">
+                    <span class="res-tag">Articles</span>
+                    <h3 class="res-title">Insights & Essays</h3>
+                    <p class="res-desc">Tactical breakdowns on AI, content, and revenue systems.</p>
+                </div>
+                <span class="res-arrow">→</span>
+            </a>
+
+            <a href="video-editing-guide.html" class="res-card">
+                <div class="res-icon">🎬</div>
+                <div class="res-text">
+                    <span class="res-tag">Free Guide</span>
+                    <h3 class="res-title">Short-Form Video Editing</h3>
+                    <p class="res-desc">The frame-by-frame system behind viral organic content.</p>
+                </div>
+                <span class="res-arrow">→</span>
+            </a>
+
+        </div>
+    </section>
+
+    <!-- WORK WITH ME -->
+    <section class="work">
+        <p class="section-label">Work With Me</p>
+        <h2 class="section-h">Want a thinking partner?</h2>
+        <p class="section-sub">Three ways in, depending on where you are. Pick the one that fits.</p>
+
+        <div class="offer-grid">
+
+            <!-- COACHING CALL -->
+            <div class="offer-card featured">
+                <p class="offer-eyebrow">Coaching Call</p>
+                <h3 class="offer-title">90-min 1:1 Deep Dive</h3>
+                <p class="offer-fit">For founders running marketing solo who need a sharp second brain for one specific problem.</p>
+                <ul class="offer-list">
+                    <li>Bring one challenge — sequence, launch, positioning, funnel</li>
+                    <li>Walk away with a written action plan</li>
+                    <li>Pay + book your time in one step</li>
+                    <li>Calendar invite lands on your iPhone automatically</li>
+                </ul>
+                <!-- TODO(Rebecca): swap href with your $225 Stripe Payment Link from dashboard -->
+                <a href="STRIPE_LINK_HERE" class="offer-cta offer-cta-primary">Book a coaching call →</a>
+            </div>
+
+            <!-- GROWTH AUDIT -->
+            <div class="offer-card">
+                <p class="offer-eyebrow">Growth Audit</p>
+                <h3 class="offer-title">Custom Marketing Audit</h3>
+                <p class="offer-fit">For teams who don't need ongoing help yet — but want an outside read on what's actually working and what's leaking revenue.</p>
+                <ul class="offer-list">
+                    <li>I review your funnel, email, content, and offer</li>
+                    <li>Written report with prioritized fixes in 5 business days</li>
+                    <li>30-min walkthrough call to answer questions</li>
+                </ul>
+                <a href="#inquire" class="offer-cta offer-cta-secondary">Request an audit →</a>
+            </div>
+
+            <!-- CONSULTING -->
+            <div class="offer-card">
+                <p class="offer-eyebrow">Consulting</p>
+                <h3 class="offer-title">Fractional Growth Partner</h3>
+                <p class="offer-fit">For teams ready to embed a senior operator into their marketing — running strategy and execution as if I were on your team.</p>
+                <ul class="offer-list">
+                    <li>3-, 6-, or 12-month engagements</li>
+                    <li>Starts with a paid Growth Audit</li>
+                    <li>Limited slots per year</li>
+                </ul>
+                <a href="connect.html" class="offer-cta offer-cta-tertiary">Inquire about consulting →</a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INQUIRE / QUICK CONTACT -->
+    <section id="inquire" class="inquire">
+        <div class="section-inner">
+            <h2>Not sure where to start?</h2>
+            <p>Send a quick note. I read every one and reply within a business day.</p>
+            <div class="inquire-row">
+                <a href="connect.html#contact" class="inquire-btn inquire-btn-yellow">Send a message</a>
+                <a href="mailto:rebecca@seedscale.agency?subject=Audit%20request" class="inquire-btn inquire-btn-outline">Email me directly</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="s-footer">
+        <p class="s-footer-logo">Seedscale Agency</p>
+        <p>Marketing systems for founders, solopreneurs, nonprofits, and lean teams.</p>
+        <p style="margin-top:0.5rem;">&copy; 2026 Seedscale Agency. <a href="index.html">Home</a> · <a href="connect.html">Connect</a></p>
+    </footer>
+
+    <script src="crm-webhook.js"></script>
+</body>
+</html>
