@@ -36,34 +36,26 @@
         /* Hero — warm welcome + photo */
         .hero {
             background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
-            color: #fff; padding: 5.5rem 1.5rem 3.5rem;
+            color: #fff; padding: 5rem 1.25rem 3rem;
             text-align: center;
         }
         .hero-inner { max-width: 640px; margin: 0 auto; }
         .hero-photo {
-            width: 110px; height: 110px; border-radius: 50%; overflow: hidden;
-            margin: 0 auto 1.25rem; border: 3px solid #FACC15;
+            width: 120px; height: 120px; border-radius: 50%; overflow: hidden;
+            margin: 0 auto 1.5rem; border: 3px solid #FACC15;
             box-shadow: 0 6px 20px rgba(0,0,0,0.25);
         }
         .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
-        .hero-eyebrow {
-            color: #FACC15; font-size: 0.7rem; font-weight: 700;
-            letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 0.5rem;
-        }
         .hero h1 {
-            font-size: 1.85rem; font-weight: 700; line-height: 1.15;
-            margin-bottom: 1.1rem; letter-spacing: -0.02em;
+            font-size: 2.1rem; font-weight: 700; line-height: 1.1;
+            margin-bottom: 1.25rem; letter-spacing: -0.02em;
             word-wrap: break-word; overflow-wrap: break-word;
         }
         .hero-note {
-            font-size: 1.02rem; color: rgba(255,255,255,0.92);
-            line-height: 1.65; margin-bottom: 0.75rem;
+            font-size: 1rem; color: rgba(255,255,255,0.92);
+            line-height: 1.6; margin-bottom: 0.85rem;
         }
         .hero-note strong { color: #FACC15; font-weight: 600; }
-        .hero-sig {
-            font-size: 0.9rem; color: rgba(255,255,255,0.7);
-            margin-top: 1.25rem; font-style: italic;
-        }
 
         /* Scroll cue */
         .scroll-cue {
@@ -99,36 +91,73 @@
             .card-grid { grid-template-columns: 1fr 1fr; }
         }
 
-        /* Resource cards */
+        /* Resource cards — image-led */
         .resources { background: #fff; }
         .res-card {
-            display: flex; align-items: center; gap: 1rem;
-            background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
-            padding: 1.1rem 1.25rem; transition: all 0.2s;
-            min-height: 88px;
+            display: block; background: #fff;
+            border: 1px solid #e5e7eb; border-radius: 16px;
+            overflow: hidden; transition: all 0.25s;
         }
         .res-card:hover {
-            border-color: #21D375; transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(7,59,58,0.08);
+            border-color: #21D375; transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(7,59,58,0.1);
         }
-        .res-icon {
-            flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px;
-            background: #f0fdf4; display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem;
+        .res-visual {
+            width: 100%; aspect-ratio: 16 / 10; position: relative;
+            overflow: hidden; background: #073B3A;
+            display: flex; align-items: center; justify-content: center;
         }
-        .res-text { flex: 1; min-width: 0; }
+        .res-visual img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+        }
+        /* Inline branded cover for the ebooks */
+        .res-cover {
+            width: 100%; height: 100%; padding: 1.5rem 1.25rem;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            color: #fff;
+        }
+        .res-cover.kit { background: linear-gradient(145deg, #073B3A 0%, #0B6E4F 50%, #073B3A 100%); }
+        .res-cover.playbook { background: linear-gradient(145deg, #0B6E4F 0%, #08A045 50%, #0B6E4F 100%); }
+        .res-cover-label {
+            font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.22em; text-transform: uppercase;
+            color: #FACC15; margin-bottom: 0.6rem;
+        }
+        .res-cover-mark {
+            color: #FACC15; letter-spacing: 0.4em;
+            font-size: 0.9rem; margin-bottom: 0.4rem;
+        }
+        .res-cover-title {
+            font-size: 1.1rem; font-weight: 700; line-height: 1.15;
+            margin-bottom: 0.5rem;
+        }
+        .res-cover-divider {
+            width: 32px; height: 2px; background: #FACC15; margin: 0.4rem 0 0.6rem;
+        }
+        .res-cover-foot {
+            font-size: 0.55rem; color: #FACC15; font-weight: 700;
+            letter-spacing: 0.18em; text-transform: uppercase;
+        }
+        .res-body { padding: 1.1rem 1.25rem 1.25rem; }
         .res-tag {
-            font-size: 0.65rem; color: #0B6E4F; font-weight: 700;
-            letter-spacing: 0.12em; text-transform: uppercase;
+            display: inline-block; font-size: 0.62rem; color: #0B6E4F;
+            font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+            margin-bottom: 0.4rem;
         }
         .res-title {
-            font-size: 1.05rem; font-weight: 700; color: #073B3A;
-            line-height: 1.2; margin: 0.15rem 0;
+            font-size: 1.1rem; font-weight: 700; color: #073B3A;
+            line-height: 1.25; margin-bottom: 0.4rem;
         }
-        .res-desc { font-size: 0.85rem; color: #666; line-height: 1.45; }
-        .res-arrow {
-            flex-shrink: 0; color: #0B6E4F; font-size: 1.4rem; font-weight: 700;
+        .res-desc {
+            font-size: 0.88rem; color: #555; line-height: 1.5;
+            margin-bottom: 0.85rem;
         }
+        .res-link {
+            font-size: 0.85rem; color: #0B6E4F;
+            font-weight: 700;
+        }
+        .res-link::after { content: ' →'; }
 
         /* Work-with-me offers */
         .work { background: #f9fafb; }
@@ -233,16 +262,29 @@
         }
         .s-footer a { color: rgba(255,255,255,0.7); text-decoration: underline; }
 
+        /* Narrow phones */
+        @media (max-width: 380px) {
+            .hero { padding: 4.5rem 1rem 2.5rem; }
+            .hero-photo { width: 100px; height: 100px; }
+            .hero h1 { font-size: 1.85rem; }
+            .hero-note { font-size: 0.95rem; }
+            section { padding: 3rem 1rem; }
+            .res-body { padding: 1rem; }
+            .offer-card { padding: 1.5rem 1.25rem; }
+        }
+
         /* Larger screens — punch up the hero */
         @media (min-width: 768px) {
             .hero { padding: 7rem 2rem 4.5rem; }
-            .hero-photo { width: 130px; height: 130px; }
-            .hero h1 { font-size: 2.6rem; }
+            .hero-photo { width: 150px; height: 150px; border-width: 4px; }
+            .hero h1 { font-size: 3rem; }
             .hero-note { font-size: 1.1rem; }
             .section-h { font-size: 2.2rem; }
             section { padding: 5rem 2rem; }
             .inquire-row { flex-direction: row; max-width: 540px; }
             .inquire-row .inquire-btn { flex: 1; }
+            .res-cover-title { font-size: 1.35rem; }
+            .res-cover-label { font-size: 0.7rem; }
         }
     </style>
     <!-- Klaviyo Onsite Tracking -->
@@ -264,8 +306,7 @@
             <div class="hero-photo">
                 <img src="headshot.jpeg" alt="Rebecca, founder of Seedscale Agency">
             </div>
-            <p class="hero-eyebrow">Hi, I'm Rebecca</p>
-            <h1>Welcome to Seedscale.</h1>
+            <h1>Hi, I'm Rebecca.</h1>
             <p class="hero-note">I spent <strong>15+ years</strong> building the digital systems behind organizations with millions of subscribers. One thing kept bothering me: most of that playbook was locked inside companies that could afford a 10-person marketing team.</p>
             <p class="hero-note">Seedscale exists to give that same playbook to <strong>small businesses, solopreneurs, nonprofits, and lean teams</strong> — proven marketing advice at your disposal, without the agency invoice.</p>
             <a href="#resources" class="scroll-cue">Start here</a>
@@ -276,47 +317,54 @@
     <section id="resources" class="resources">
         <p class="section-label">Free Resources</p>
         <h2 class="section-h">Start with what's free.</h2>
-        <p class="section-sub">Two complete guides + a stack of articles. No email required to browse — but yes, the downloads ask for one.</p>
+        <p class="section-sub">Two complete guides plus a library of essays — proven systems, no fluff. The downloads ask for an email so I can stay in touch.</p>
         <div class="card-grid">
 
             <a href="starter-kit.html" class="res-card">
-                <div class="res-icon">✦</div>
-                <div class="res-text">
+                <div class="res-visual">
+                    <div class="res-cover kit">
+                        <span class="res-cover-label">Starter Kit</span>
+                        <span class="res-cover-mark">✦ ✦ ✦</span>
+                        <span class="res-cover-title">Build a Digital Business</span>
+                        <span class="res-cover-divider"></span>
+                        <span class="res-cover-foot">Seedscale Agency</span>
+                    </div>
+                </div>
+                <div class="res-body">
                     <span class="res-tag">Starter Kit</span>
                     <h3 class="res-title">Build a Digital Business</h3>
-                    <p class="res-desc">7 AI prompts that replace a $5K/mo marketing hire.</p>
+                    <p class="res-desc">7 AI prompts that replace a $5K/month marketing hire. Plug-and-play systems you can run this week.</p>
+                    <span class="res-link">Get the kit</span>
                 </div>
-                <span class="res-arrow">→</span>
             </a>
 
             <a href="ai-marketing-playbook.html" class="res-card">
-                <div class="res-icon">📘</div>
-                <div class="res-text">
+                <div class="res-visual">
+                    <div class="res-cover playbook">
+                        <span class="res-cover-label">Free Ebook</span>
+                        <span class="res-cover-title">The AI Marketing Playbook</span>
+                        <span class="res-cover-divider"></span>
+                        <span class="res-cover-foot">Seedscale Agency</span>
+                    </div>
+                </div>
+                <div class="res-body">
                     <span class="res-tag">Free Ebook</span>
                     <h3 class="res-title">The AI Marketing Playbook</h3>
-                    <p class="res-desc">6 chapters. Scale marketing without scaling headcount.</p>
+                    <p class="res-desc">6 chapters. Scale marketing without scaling headcount — the long-form version of the kit.</p>
+                    <span class="res-link">Read the playbook</span>
                 </div>
-                <span class="res-arrow">→</span>
             </a>
 
             <a href="insights.html" class="res-card">
-                <div class="res-icon">📝</div>
-                <div class="res-text">
+                <div class="res-visual">
+                    <img src="blog-img-ai-tools.jpg" alt="Tactical AI and marketing articles">
+                </div>
+                <div class="res-body">
                     <span class="res-tag">Articles</span>
                     <h3 class="res-title">Insights & Essays</h3>
-                    <p class="res-desc">Tactical breakdowns on AI, content, and revenue systems.</p>
+                    <p class="res-desc">Tactical breakdowns on AI, content systems, and what's actually working for lean teams right now.</p>
+                    <span class="res-link">Browse the library</span>
                 </div>
-                <span class="res-arrow">→</span>
-            </a>
-
-            <a href="video-editing-guide.html" class="res-card">
-                <div class="res-icon">🎬</div>
-                <div class="res-text">
-                    <span class="res-tag">Free Guide</span>
-                    <h3 class="res-title">Short-Form Video Editing</h3>
-                    <p class="res-desc">The frame-by-frame system behind viral organic content.</p>
-                </div>
-                <span class="res-arrow">→</span>
             </a>
 
         </div>
