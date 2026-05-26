@@ -119,6 +119,20 @@
         }
         .res-cover.kit { background: linear-gradient(145deg, #073B3A 0%, #0B6E4F 50%, #073B3A 100%); }
         .res-cover.playbook { background: linear-gradient(145deg, #0B6E4F 0%, #08A045 50%, #0B6E4F 100%); }
+        .res-cover.call {
+            background: linear-gradient(135deg, #FACC15 0%, #fde047 100%);
+            color: #073B3A;
+        }
+        .res-cover.call .res-cover-label,
+        .res-cover.call .res-cover-foot { color: #073B3A; }
+        .res-cover.call .res-cover-divider { background: #073B3A; }
+        .res-cover.audit { background: linear-gradient(145deg, #08A045 0%, #0B6E4F 100%); }
+        .res-cover.cmo { background: linear-gradient(145deg, #042625 0%, #0B6E4F 100%); }
+        .res-cover-feature {
+            font-size: 2.4rem; font-weight: 800; line-height: 1;
+            letter-spacing: -0.02em; margin-bottom: 0.5rem;
+        }
+        .res-cover-feature.sm { font-size: 1.5rem; line-height: 1.1; }
         .res-cover-label {
             font-size: 0.6rem; font-weight: 700;
             letter-spacing: 0.22em; text-transform: uppercase;
@@ -300,30 +314,28 @@
         <a href="index.html" class="s-nav-back">← Home</a>
     </nav>
 
-    <!-- HERO: warm welcome -->
+    <!-- HERO: tight bio -->
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-photo">
                 <img src="headshot.jpeg" alt="Rebecca, founder of Seedscale Agency">
             </div>
             <h1>Hi, I'm Rebecca.</h1>
-            <p class="hero-note">I spent <strong>15+ years</strong> building the digital systems behind organizations with millions of subscribers. One thing kept bothering me: most of that playbook was locked inside companies that could afford a 10-person marketing team.</p>
-            <p class="hero-note">Seedscale exists to give that same playbook to <strong>small businesses, solopreneurs, nonprofits, and lean teams</strong> — proven marketing advice at your disposal, without the agency invoice.</p>
-            <a href="#resources" class="scroll-cue">Start here</a>
+            <p class="hero-note">I spent <strong>15+ years</strong> building digital systems for organizations with millions of subscribers. Now I give that same playbook to <strong>small businesses, solopreneurs, nonprofits, and lean teams</strong> — without the agency invoice.</p>
         </div>
     </section>
 
-    <!-- FREE RESOURCES -->
-    <section id="resources" class="resources">
-        <p class="section-label">Free Resources</p>
-        <h2 class="section-h">Start with what's free.</h2>
-        <p class="section-sub">Two complete guides plus a library of essays — proven systems, no fluff. The downloads ask for an email so I can stay in touch.</p>
+    <!-- 4 CONVERSION TARGETS -->
+    <section class="resources">
+        <h2 class="section-h">Pick where to start.</h2>
+        <p class="section-sub">Free, paid, or fully embedded — whatever fits where you are right now.</p>
         <div class="card-grid">
 
+            <!-- 1. Starter Kit -->
             <a href="starter-kit.html" class="res-card">
                 <div class="res-visual">
                     <div class="res-cover kit">
-                        <span class="res-cover-label">Starter Kit</span>
+                        <span class="res-cover-label">Free Starter Kit</span>
                         <span class="res-cover-mark">✦ ✦ ✦</span>
                         <span class="res-cover-title">Build a Digital Business</span>
                         <span class="res-cover-divider"></span>
@@ -331,105 +343,67 @@
                     </div>
                 </div>
                 <div class="res-body">
-                    <span class="res-tag">Starter Kit</span>
-                    <h3 class="res-title">Build a Digital Business</h3>
-                    <p class="res-desc">7 AI prompts that replace a $5K/month marketing hire. Plug-and-play systems you can run this week.</p>
+                    <span class="res-tag">Free</span>
+                    <h3 class="res-title">The Starter Kit</h3>
+                    <p class="res-desc">7 AI prompts that replace a $5K/month marketing hire. Free download.</p>
                     <span class="res-link">Get the kit</span>
                 </div>
             </a>
 
-            <a href="ai-marketing-playbook.html" class="res-card">
+            <!-- 2. Book a coaching call ($225) -->
+            <a href="https://buy.stripe.com/14AbJ3geT7TDaOmfia0Ny05" class="res-card">
                 <div class="res-visual">
-                    <div class="res-cover playbook">
-                        <span class="res-cover-label">Free Ebook</span>
-                        <span class="res-cover-title">The AI Marketing Playbook</span>
+                    <div class="res-cover call">
+                        <span class="res-cover-label">Coaching Call</span>
+                        <span class="res-cover-feature">$225</span>
                         <span class="res-cover-divider"></span>
-                        <span class="res-cover-foot">Seedscale Agency</span>
+                        <span class="res-cover-foot">90-Min Deep Dive</span>
                     </div>
                 </div>
                 <div class="res-body">
-                    <span class="res-tag">Free Ebook</span>
-                    <h3 class="res-title">The AI Marketing Playbook</h3>
-                    <p class="res-desc">6 chapters. Scale marketing without scaling headcount — the long-form version of the kit.</p>
-                    <span class="res-link">Read the playbook</span>
+                    <span class="res-tag">Book a Call · $225</span>
+                    <h3 class="res-title">90-min 1:1 with Me</h3>
+                    <p class="res-desc">Bring one specific marketing problem. Leave with a written action plan you can ship this week.</p>
+                    <span class="res-link">Book my call</span>
                 </div>
             </a>
 
-            <a href="insights.html" class="res-card">
+            <!-- 3. Marketing Audit -->
+            <a href="mailto:rebecca@seedscale.agency?subject=Marketing%20Audit%20Inquiry&body=Hi%20Rebecca%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%20Marketing%20Audit.%20A%20few%20details%20about%20my%20business%3A%0A%0A-%20What%20we%20do%3A%0A-%20Where%20we%27re%20stuck%3A%0A-%20Website%2Ffunnel%20link%3A%0A%0AThanks%21" class="res-card">
                 <div class="res-visual">
-                    <img src="blog-img-ai-tools.jpg" alt="Tactical AI and marketing articles">
+                    <div class="res-cover audit">
+                        <span class="res-cover-label">Marketing Audit</span>
+                        <span class="res-cover-feature sm">Custom Report</span>
+                        <span class="res-cover-divider"></span>
+                        <span class="res-cover-foot">Delivered in 5 Days</span>
+                    </div>
                 </div>
                 <div class="res-body">
-                    <span class="res-tag">Articles</span>
-                    <h3 class="res-title">Insights & Essays</h3>
-                    <p class="res-desc">Tactical breakdowns on AI, content systems, and what's actually working for lean teams right now.</p>
-                    <span class="res-link">Browse the library</span>
+                    <span class="res-tag">Marketing Audit</span>
+                    <h3 class="res-title">Outside Read on Your Engine</h3>
+                    <p class="res-desc">I review your funnel, copy, content, and offer. Written report with prioritized fixes + 30-min walkthrough.</p>
+                    <span class="res-link">Request an audit</span>
                 </div>
             </a>
 
-        </div>
-    </section>
+            <!-- 4. Fractional CMO -->
+            <a href="mailto:rebecca@seedscale.agency?subject=Fractional%20CMO%20Inquiry&body=Hi%20Rebecca%2C%0A%0AI%27d%20like%20to%20talk%20about%20a%20Fractional%20CMO%20engagement.%20A%20few%20details%3A%0A%0A-%20Company%2Fteam%20size%3A%0A-%20Current%20stage%20of%20marketing%3A%0A-%20What%20you%27re%20hoping%20to%20unlock%3A%0A-%20Ideal%20engagement%20length%3A%0A%0AThanks%21" class="res-card">
+                <div class="res-visual">
+                    <div class="res-cover cmo">
+                        <span class="res-cover-label">Fractional CMO</span>
+                        <span class="res-cover-feature sm">Embedded Partner</span>
+                        <span class="res-cover-divider"></span>
+                        <span class="res-cover-foot">3 to 12 Months</span>
+                    </div>
+                </div>
+                <div class="res-body">
+                    <span class="res-tag">Fractional CMO</span>
+                    <h3 class="res-title">Run Growth With Me</h3>
+                    <p class="res-desc">For teams ready to embed a senior operator. I run strategy and execution as if I were on your team. Limited slots.</p>
+                    <span class="res-link">Inquire about CMO work</span>
+                </div>
+            </a>
 
-    <!-- WORK WITH ME -->
-    <section class="work">
-        <p class="section-label">Work With Me</p>
-        <h2 class="section-h">Want a thinking partner?</h2>
-        <p class="section-sub">Three ways in, depending on where you are. Pick the one that fits.</p>
-
-        <div class="offer-grid">
-
-            <!-- COACHING CALL -->
-            <div class="offer-card featured">
-                <p class="offer-eyebrow">Coaching Call</p>
-                <h3 class="offer-title">90-min 1:1 Deep Dive</h3>
-                <p class="offer-fit">For founders running marketing solo who need a sharp second brain for one specific problem.</p>
-                <ul class="offer-list">
-                    <li>Bring one challenge — sequence, launch, positioning, funnel</li>
-                    <li>Walk away with a written action plan</li>
-                    <li>Pay + book your time in one step</li>
-                    <li>Calendar invite lands on your iPhone automatically</li>
-                </ul>
-                <a href="https://buy.stripe.com/14AbJ3geT7TDaOmfia0Ny05" class="offer-cta offer-cta-primary">Book a coaching call →</a>
-            </div>
-
-            <!-- GROWTH AUDIT -->
-            <div class="offer-card">
-                <p class="offer-eyebrow">Growth Audit</p>
-                <h3 class="offer-title">Custom Marketing Audit</h3>
-                <p class="offer-fit">For teams who don't need ongoing help yet — but want an outside read on what's actually working and what's leaking revenue.</p>
-                <ul class="offer-list">
-                    <li>I review your funnel, email, content, and offer</li>
-                    <li>Written report with prioritized fixes in 5 business days</li>
-                    <li>30-min walkthrough call to answer questions</li>
-                </ul>
-                <a href="#inquire" class="offer-cta offer-cta-secondary">Request an audit →</a>
-            </div>
-
-            <!-- CONSULTING -->
-            <div class="offer-card">
-                <p class="offer-eyebrow">Consulting</p>
-                <h3 class="offer-title">Fractional Growth Partner</h3>
-                <p class="offer-fit">For teams ready to embed a senior operator into their marketing — running strategy and execution as if I were on your team.</p>
-                <ul class="offer-list">
-                    <li>3-, 6-, or 12-month engagements</li>
-                    <li>Starts with a paid Growth Audit</li>
-                    <li>Limited slots per year</li>
-                </ul>
-                <a href="connect.html" class="offer-cta offer-cta-tertiary">Inquire about consulting →</a>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- INQUIRE / QUICK CONTACT -->
-    <section id="inquire" class="inquire">
-        <div class="section-inner">
-            <h2>Not sure where to start?</h2>
-            <p>Send a quick note. I read every one and reply within a business day.</p>
-            <div class="inquire-row">
-                <a href="connect.html#contact" class="inquire-btn inquire-btn-yellow">Send a message</a>
-                <a href="mailto:rebecca@seedscale.agency?subject=Audit%20request" class="inquire-btn inquire-btn-outline">Email me directly</a>
-            </div>
         </div>
     </section>
 
