@@ -117,22 +117,19 @@
             align-items: center; justify-content: center; text-align: center;
             color: #fff;
         }
-        .res-cover.kit { background: linear-gradient(145deg, #073B3A 0%, #0B6E4F 50%, #073B3A 100%); }
-        .res-cover.playbook { background: linear-gradient(145deg, #0B6E4F 0%, #08A045 50%, #0B6E4F 100%); }
-        .res-cover.call {
+        /* All cards share the same yellow brand-pop visual */
+        .res-cover {
             background: linear-gradient(135deg, #FACC15 0%, #fde047 100%);
             color: #073B3A;
         }
-        .res-cover.call .res-cover-label,
-        .res-cover.call .res-cover-foot { color: #073B3A; }
-        .res-cover.call .res-cover-divider { background: #073B3A; }
-        .res-cover.audit { background: linear-gradient(145deg, #08A045 0%, #0B6E4F 100%); }
-        .res-cover.cmo { background: linear-gradient(145deg, #042625 0%, #0B6E4F 100%); }
+        .res-cover .res-cover-label,
+        .res-cover .res-cover-foot { color: #073B3A; }
+        .res-cover .res-cover-divider { background: #073B3A; }
         .res-cover-feature {
-            font-size: 2.4rem; font-weight: 800; line-height: 1;
+            font-size: 1.85rem; font-weight: 800; line-height: 1.05;
             letter-spacing: -0.02em; margin-bottom: 0.5rem;
+            color: #073B3A;
         }
-        .res-cover-feature.sm { font-size: 1.5rem; line-height: 1.1; }
         .res-cover-label {
             font-size: 0.6rem; font-weight: 700;
             letter-spacing: 0.22em; text-transform: uppercase;
@@ -314,18 +311,7 @@
         <a href="index.html" class="s-nav-back">← Home</a>
     </nav>
 
-    <!-- HERO: tight bio -->
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-photo">
-                <img src="headshot.jpeg" alt="Rebecca, founder of Seedscale Agency">
-            </div>
-            <h1>Hi, I'm Rebecca.</h1>
-            <p class="hero-note">I spent <strong>15+ years</strong> building digital systems for organizations with millions of subscribers. Now I give that same playbook to <strong>small businesses, solopreneurs, nonprofits, and lean teams</strong> — without the agency invoice.</p>
-        </div>
-    </section>
-
-    <!-- 4 CONVERSION TARGETS -->
+    <!-- 4 CONVERSION TARGETS (top of page) -->
     <section class="resources">
         <h2 class="section-h">Pick where to start.</h2>
         <p class="section-sub">Free, paid, or fully embedded — whatever fits where you are right now.</p>
@@ -334,12 +320,11 @@
             <!-- 1. Starter Kit -->
             <a href="starter-kit.html" class="res-card">
                 <div class="res-visual">
-                    <div class="res-cover kit">
+                    <div class="res-cover">
                         <span class="res-cover-label">Free Starter Kit</span>
-                        <span class="res-cover-mark">✦ ✦ ✦</span>
-                        <span class="res-cover-title">Build a Digital Business</span>
+                        <span class="res-cover-feature">Build a Digital Business</span>
                         <span class="res-cover-divider"></span>
-                        <span class="res-cover-foot">Seedscale Agency</span>
+                        <span class="res-cover-foot">Free Download</span>
                     </div>
                 </div>
                 <div class="res-body">
@@ -350,18 +335,18 @@
                 </div>
             </a>
 
-            <!-- 2. Book a coaching call ($225) -->
+            <!-- 2. Book a coaching call -->
             <a href="https://buy.stripe.com/14AbJ3geT7TDaOmfia0Ny05" class="res-card">
                 <div class="res-visual">
-                    <div class="res-cover call">
+                    <div class="res-cover">
                         <span class="res-cover-label">Coaching Call</span>
-                        <span class="res-cover-feature">$225</span>
+                        <span class="res-cover-feature">90-Min 1:1 Deep Dive</span>
                         <span class="res-cover-divider"></span>
-                        <span class="res-cover-foot">90-Min Deep Dive</span>
+                        <span class="res-cover-foot">Book Yours Now</span>
                     </div>
                 </div>
                 <div class="res-body">
-                    <span class="res-tag">Book a Call · $225</span>
+                    <span class="res-tag">Book a Call</span>
                     <h3 class="res-title">90-min 1:1 with Me</h3>
                     <p class="res-desc">Bring one specific marketing problem. Leave with a written action plan you can ship this week.</p>
                     <span class="res-link">Book my call</span>
@@ -371,9 +356,9 @@
             <!-- 3. Marketing Audit -->
             <a href="mailto:rebecca@seedscale.agency?subject=Marketing%20Audit%20Inquiry&body=Hi%20Rebecca%2C%0A%0AI%27d%20like%20to%20learn%20more%20about%20the%20Marketing%20Audit.%20A%20few%20details%20about%20my%20business%3A%0A%0A-%20What%20we%20do%3A%0A-%20Where%20we%27re%20stuck%3A%0A-%20Website%2Ffunnel%20link%3A%0A%0AThanks%21" class="res-card">
                 <div class="res-visual">
-                    <div class="res-cover audit">
+                    <div class="res-cover">
                         <span class="res-cover-label">Marketing Audit</span>
-                        <span class="res-cover-feature sm">Custom Report</span>
+                        <span class="res-cover-feature">Custom Growth Report</span>
                         <span class="res-cover-divider"></span>
                         <span class="res-cover-foot">Delivered in 5 Days</span>
                     </div>
@@ -389,9 +374,9 @@
             <!-- 4. Fractional CMO -->
             <a href="mailto:rebecca@seedscale.agency?subject=Fractional%20CMO%20Inquiry&body=Hi%20Rebecca%2C%0A%0AI%27d%20like%20to%20talk%20about%20a%20Fractional%20CMO%20engagement.%20A%20few%20details%3A%0A%0A-%20Company%2Fteam%20size%3A%0A-%20Current%20stage%20of%20marketing%3A%0A-%20What%20you%27re%20hoping%20to%20unlock%3A%0A-%20Ideal%20engagement%20length%3A%0A%0AThanks%21" class="res-card">
                 <div class="res-visual">
-                    <div class="res-cover cmo">
+                    <div class="res-cover">
                         <span class="res-cover-label">Fractional CMO</span>
-                        <span class="res-cover-feature sm">Embedded Partner</span>
+                        <span class="res-cover-feature">Embedded Growth Partner</span>
                         <span class="res-cover-divider"></span>
                         <span class="res-cover-foot">3 to 12 Months</span>
                     </div>
@@ -404,6 +389,17 @@
                 </div>
             </a>
 
+        </div>
+    </section>
+
+    <!-- BIO: moved to bottom -->
+    <section class="hero">
+        <div class="hero-inner">
+            <div class="hero-photo">
+                <img src="headshot.jpeg" alt="Rebecca, founder of Seedscale Agency">
+            </div>
+            <h1>Hi, I'm Rebecca.</h1>
+            <p class="hero-note">I spent <strong>15+ years</strong> building digital systems for organizations with millions of subscribers. Now I give that same playbook to <strong>small businesses, solopreneurs, nonprofits, and lean teams</strong> — without the agency invoice.</p>
         </div>
     </section>
 
