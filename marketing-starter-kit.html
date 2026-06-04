@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>The Marketing Starter Kit for Founders and Lean Teams — Seedscale Agency</title>
+<title>Starter Kit to Build a Digital Business — Seedscale Agency</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap');
 
@@ -21,17 +21,18 @@
     -webkit-print-color-adjust: exact !important;
     print-color-adjust: exact !important;
   }
+  @page { size: letter; margin: 0.7in; }
   .page {
-    max-width: 7.5in;
-    margin: 0 auto;
-    padding: 0.7in;
-    page-break-after: always;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
   }
-  .page:last-child { page-break-after: auto; }
+  .page + .page { margin-top: 1.5rem; }
 
-  /* Cover */
+  /* Cover — full bleed (overflow @page margin) */
   .cover {
-    min-height: 9.5in;
+    margin: -0.7in;
+    min-height: 11in;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,7 +41,8 @@
     background-color: #073B3A;
     background: linear-gradient(135deg, #073B3A 0%, #0B6E4F 100%);
     color: #fff;
-    padding: 0.7in;
+    padding: 1in;
+    page-break-after: always;
   }
   .cover .eyebrow {
     font-size: 11pt;
@@ -210,13 +212,20 @@
   /* Page break utility */
   .page-break { page-break-before: always; }
 
+  /* Avoid orphan headings + don't split callouts across pages */
+  h2, h3, .prompt-eyebrow {
+    page-break-after: avoid;
+    break-after: avoid;
+  }
+  .prompt-box, .example {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  p, li { orphans: 2; widows: 2; }
+
   /* Print tweaks */
   @media print {
     body { font-size: 10.5pt; }
-    .page { padding: 0.5in; }
-    .cover { min-height: 10in; }
-    h2 { page-break-after: avoid; }
-    .prompt-box, .example { page-break-inside: avoid; }
   }
 </style>
     <!-- Klaviyo Onsite Tracking -->
@@ -232,8 +241,8 @@
 <!-- ============================================== -->
 <section class="cover">
   <div class="eyebrow">Seedscale Agency</div>
-  <h1>The Marketing Starter Kit<br>for Founders and <em>Lean Teams</em></h1>
-  <p class="subtitle">Seven AI prompts that replace a $5,000/month marketing hire — built for the founder running marketing solo or the team of two doing the work of ten.</p>
+  <h1>The Starter Kit to<br><em>Build a Digital Business</em></h1>
+  <p class="subtitle">A 7-prompt operating system that replaces a $5,000/month marketing hire — built for the founder running solo or the team of two doing the work of ten.</p>
   <div class="author">
     By <strong>Rebecca</strong>, Founder · Seedscale Agency<br>
     seedscale.agency
