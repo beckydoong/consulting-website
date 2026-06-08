@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Build a Professional Website for Free with AI | Seedscale Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="blog-styles.css">
+    <meta property="og:title" content="How to Build a Professional Website for Free with AI (No Coding Required)">
+    <meta property="og:description" content="A step-by-step guide for non-technical people to build a custom website in under an hour using Claude Code and GitHub Pages. Free hosting. No coding. No website builders.">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
+    <script type="text/javascript">
+      !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+    </script>
+    <style>
+        .prompt-block {
+            background: #1a1a2e;
+            color: #e0e0e0;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 2rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            overflow-x: auto;
+            position: relative;
+        }
+        .prompt-block .placeholder {
+            color: #FACC15;
+            font-weight: bold;
+        }
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            color: #fff;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            flex-shrink: 0;
+        }
+        .setup-step {
+            background: #f8faf9;
+            border-radius: 12px;
+            padding: 1.5rem 2rem;
+            margin: 1.5rem 0;
+            border-left: 4px solid var(--primary);
+        }
+        .setup-step h3 {
+            display: flex;
+            align-items: center;
+            margin-top: 0;
+        }
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            font-size: 0.95rem;
+        }
+        .cost-table th {
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        .cost-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .cost-table tr:nth-child(even) td {
+            background: #f8faf9;
+        }
+        .cost-table .free-badge {
+            background: #08A045;
+            color: #fff;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+        .terminal-example {
+            background: #0d1117;
+            color: #c9d1d9;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+        }
+        .terminal-example .command {
+            color: #58a6ff;
+        }
+        .reference-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        @media (max-width: 768px) {
+            .reference-options {
+                grid-template-columns: 1fr;
+            }
+        }
+        .reference-card {
+            background: #f8faf9;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+        }
+        .reference-card .icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        .reference-card h4 {
+            margin: 0.5rem 0;
+            color: var(--darkest);
+        }
+        .reference-card p {
+            font-size: 0.9rem;
+            color: #64748b;
+            margin: 0;
+        }
+        .tab-container {
+            margin: 1.5rem 0;
+        }
+        .tab-buttons {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            background: none;
+            border: none;
+            font-family: 'Work Sans', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64748b;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -2px;
+            transition: all 0.2s;
+        }
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        .tab-content {
+            display: none;
+            padding: 1.5rem 0;
+        }
+        .tab-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body class="blog-page">
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo"><img src="logo.svg" alt="Seedscale Agency" class="nav-logo-img"></a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#impact">Impact</a></li>
+                <li><a href="insights.html">Insights</a></li>
+                <li><a href="index.html#contact" class="nav-cta">Get in Touch</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Blog Header -->
+    <header class="blog-header">
+        <div class="blog-header-content">
+            <span class="blog-category">AI &amp; Technology</span>
+            <h1>How to Build a Professional Website for Free with AI (No Coding Required)</h1>
+            <div class="blog-meta">
+                <span>Seedscale Agency</span>
+                <span class="blog-meta-dot"></span>
+                <span>June 2026</span>
+                <span class="blog-meta-dot"></span>
+                <span>10 min read</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Blog Article -->
+    <article class="blog-article">
+
+        <p>A small business needs a professional website. The owner gets three quotes from developers: $3,000, $7,500, and $12,000. They look at Wix and Squarespace, which are cheaper but still $16 to $45 a month, and the templates all look the same. So the site doesn't get built, or worse, someone puts something together in 2019 that hasn't been touched since.</p>
+
+        <p>This is the default for most small businesses, solo consultants, and lean organizations. Limited budget, no technical staff, and a website that either doesn't exist or doesn't represent who they actually are.</p>
+
+        <p>There is a different option now. You can build a custom, professional website in under an hour using AI, host it on the internet for free, and update it anytime by typing what you want in plain English. No coding. No website builders. No monthly hosting fees.</p>
+
+        <p>This guide walks through the entire process. If you can create an online account and type a sentence, you can do this.</p>
+
+        <h2>What You'll End Up With</h2>
+
+        <ul>
+            <li>A professional, mobile-responsive website with your own branding and colors</li>
+            <li>Hosted for free on GitHub Pages (yourusername.github.io/your-site)</li>
+            <li>Built by AI from your actual content and design preferences</li>
+            <li>Updateable anytime by telling AI what to change, in plain English</li>
+        </ul>
+
+        <h2>What It Costs</h2>
+
+        <table class="cost-table">
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Cost</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GitHub account</td>
+                    <td><span class="free-badge">Free</span></td>
+                    <td>Where your site is hosted</td>
+                </tr>
+                <tr>
+                    <td>Claude Pro subscription</td>
+                    <td>$20/month</td>
+                    <td>The AI that builds your site</td>
+                </tr>
+                <tr>
+                    <td>Website hosting</td>
+                    <td><span class="free-badge">Free</span></td>
+                    <td>GitHub Pages, no limits for static sites</td>
+                </tr>
+                <tr>
+                    <td>Custom domain (optional)</td>
+                    <td>~$12/year</td>
+                    <td>e.g., www.yourbusiness.com</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>The only cost is the Claude subscription, and you can cancel it after building your site if you don't plan to use it for other things. Compare that to a $5,000 developer invoice or $192/year for a Squarespace plan, and the math is clear.</p>
+
+        <h2>What You Need Before You Start</h2>
+
+        <ol>
+            <li>A computer (Mac or Windows)</li>
+            <li>An internet connection</li>
+            <li>About 45 minutes</li>
+        </ol>
+
+        <p>That's it. You don't need to know what a "terminal" is. You don't need design software. The instructions below cover every click.</p>
+
+        <h2>Step-by-Step Setup</h2>
+
+        <div class="setup-step">
+            <h3><span class="step-number">1</span> Create a Free GitHub Account (5 minutes)</h3>
+            <p>GitHub is where your website files will live. Think of it as a free digital filing cabinet that also happens to serve websites to the internet.</p>
+            <ol>
+                <li>Go to <strong>github.com</strong> in your browser</li>
+                <li>Click <strong>Sign up</strong></li>
+                <li>Enter your email, create a password, and choose a username</li>
+                <li>Verify your email when GitHub sends a confirmation</li>
+                <li>Skip any personalization questions that come up</li>
+            </ol>
+            <p><strong>Your username matters.</strong> If you pick "janedoedesign," your free website URL will be janedoedesign.github.io/website. Choose something clean and recognizable.</p>
+        </div>
+
+        <div class="setup-step">
+            <h3><span class="step-number">2</span> Sign Up for Claude Pro (5 minutes)</h3>
+            <p>Claude is the AI that will write all the code for your website. You talk to it in normal English and it does the technical work.</p>
+            <ol>
+                <li>Go to <strong>claude.ai</strong></li>
+                <li>Create an account</li>
+                <li>Subscribe to the <strong>Pro plan</strong> ($20/month)</li>
+            </ol>
+            <p>You can cancel this subscription after your site is built if you only need it for this project.</p>
+        </div>
+
+        <div class="setup-step">
+            <h3><span class="step-number">3</span> Install Claude Code (10 minutes)</h3>
+            <p>Claude Code is a tool that lets Claude write code, create files, and interact with GitHub directly from your computer. It is what turns a conversation into a working website.</p>
+
+            <div class="tab-container">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" onclick="showTab('mac')">Mac</button>
+                    <button class="tab-btn" onclick="showTab('windows')">Windows</button>
+                    <button class="tab-btn" onclick="showTab('desktop')">Desktop App (Easiest)</button>
+                </div>
+                <div id="tab-mac" class="tab-content active">
+                    <p><strong>Open Terminal.</strong> Press <strong>Command + Space</strong> to open Spotlight Search. Type <strong>Terminal</strong> and press Enter. A window with text will appear. This is where Claude Code runs.</p>
+                    <p><strong>Install Claude Code.</strong> Copy and paste this line into Terminal, then press Enter:</p>
+                    <div class="terminal-example"><span class="command">curl -fsSL https://claude.ai/install.sh | sh</span></div>
+                    <p>Wait about 30 seconds for it to finish installing.</p>
+                    <p><strong>Start Claude Code.</strong> Type <code>claude</code> and press Enter. A browser window will open asking you to sign in. Log in with the Claude account you created in Step 2. Come back to Terminal when it confirms the connection.</p>
+                </div>
+                <div id="tab-windows" class="tab-content">
+                    <p><strong>Open PowerShell.</strong> Press the <strong>Windows key</strong>, type <strong>PowerShell</strong>, and press Enter.</p>
+                    <p><strong>Install Claude Code.</strong> Copy and paste this line, then press Enter:</p>
+                    <div class="terminal-example"><span class="command">irm https://claude.ai/install.ps1 | iex</span></div>
+                    <p>Wait for installation to complete.</p>
+                    <p><strong>Start Claude Code.</strong> Type <code>claude</code> and press Enter. Sign in through the browser window that opens, using your Claude account from Step 2.</p>
+                </div>
+                <div id="tab-desktop" class="tab-content">
+                    <p>If Terminal feels overwhelming, there is an easier option.</p>
+                    <ol>
+                        <li>Go to <strong>claude.ai/download</strong></li>
+                        <li>Download the Claude Code desktop app for your computer (Mac or Windows)</li>
+                        <li>Open it and sign in with your Claude account</li>
+                    </ol>
+                    <p>The desktop app works exactly the same way. You type instructions, Claude builds. The interface is just more visual.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="setup-step">
+            <h3><span class="step-number">4</span> Connect to GitHub (2 minutes)</h3>
+            <p>When Claude Code tries to create your website repository for the first time, it will ask you to log in to GitHub. A browser window will open. Log in, click <strong>Authorize</strong>, and you're connected.</p>
+            <p>This only happens once. After that, Claude can push updates to your site whenever you ask.</p>
+        </div>
+
+        <h2>Step 5: Give Claude the Prompt</h2>
+
+        <p>This is where the website actually gets built. Copy the prompt below, fill in the sections marked in <span style="color: #b8860b; font-weight: 600;">gold</span> with your own information, and paste it into Claude Code.</p>
+
+        <div class="prompt-block" id="website-prompt">
+            <button class="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
+Create a GitHub repo named "<span class="placeholder">[your-site-name]</span>-website". I do not know how to code and don't want to learn. Code everything for me. Do not ask for permissions (or as little as possible). Follow these instructions:
+
+1. ABOUT MY ORGANIZATION:
+<span class="placeholder">[Describe your business or organization. What do you do? Who do you serve? What makes you different? List the pages you want: Home, About, Services, Portfolio, Contact, Blog, Testimonials, Pricing, etc.]</span>
+
+2. DESIGN REFERENCE:
+<span class="placeholder">[Choose one or more — paste a URL, drag in a screenshot, or describe the style]</span>
+- Here's a website I'd like to emulate: <span class="placeholder">[PASTE URL]</span>
+- I want it to look: <span class="placeholder">[modern, clean, bold, elegant, warm, minimal, etc.]</span>
+
+3. BRAND COLORS:
+<span class="placeholder">[List your hex color codes, or describe your colors]</span>
+Example: Use #073B3A as the dark accent, #0B6E4F as the primary background, #08A045 for buttons and highlights, and white for text.
+If you don't have hex codes: "Use a <span class="placeholder">[navy / forest green / burgundy / warm gold]</span> palette that feels <span class="placeholder">[professional / welcoming / modern]</span>."
+
+4. COPY AND CONTENT:
+<span class="placeholder">[Choose one]</span>
+- Use this website as source material for the copy: <span class="placeholder">[PASTE URL of your existing site, LinkedIn, or Facebook page]</span>
+- Here's my content: <span class="placeholder">[Paste your about page, services description, team bios, contact info, etc.]</span>
+
+5. FEATURES I WANT:
+- Mobile-responsive (works perfectly on phones and tablets)
+- <span class="placeholder">[Add what you need: contact form, newsletter signup, blog section, image gallery, testimonials, social media links, embedded map, booking calendar, pricing table]</span>
+
+6. After building everything, deploy it to GitHub Pages so it's live on the internet for free. Give me the URL when it's done.
+        </div>
+
+        <h2>How to Show Claude What You Want Your Site to Look Like</h2>
+
+        <p>You don't need to know design terminology. Claude Code can work with whatever reference you give it.</p>
+
+        <div class="reference-options">
+            <div class="reference-card">
+                <div class="icon">&#x1F517;</div>
+                <h4>Paste a URL</h4>
+                <p>Found a website you like? Paste the link. Claude studies the layout, typography, and style, then builds yours to match.</p>
+            </div>
+            <div class="reference-card">
+                <div class="icon">&#x1F4F7;</div>
+                <h4>Drop a Screenshot</h4>
+                <p>Screenshot any website, Instagram page, or even a napkin sketch. Drag it into the Claude Code chat window.</p>
+            </div>
+            <div class="reference-card">
+                <div class="icon">&#x270D;&#xFE0F;</div>
+                <h4>Describe It</h4>
+                <p>"Clean with lots of white space." "Bold and colorful." "Traditional, like a law firm." Plain English works.</p>
+            </div>
+        </div>
+
+        <p>You can combine all three. Give Claude a URL for the layout you like, a screenshot from another site for the color feel, and a description of the overall mood. The more reference you provide, the closer the result.</p>
+
+        <h2>What Happens After You Paste the Prompt</h2>
+
+        <p>Claude Code will start working immediately. You'll see it creating files, writing code, and running commands. The whole process takes about 15 to 20 minutes. You do not need to understand what it's doing.</p>
+
+        <p>Claude will occasionally ask for permission before taking actions (like creating the GitHub repository or pushing files). When you see a prompt asking for approval, type <strong>y</strong> and press Enter.</p>
+
+        <p>When it finishes, Claude will give you a URL. Something like:</p>
+
+        <div class="terminal-example">https://yourusername.github.io/your-site-name-website</div>
+
+        <p>Open it in your browser. Your website is live.</p>
+
+        <h2>Making Changes Later</h2>
+
+        <p>This is where AI-built websites beat every other option for non-technical teams. Open Claude Code, navigate to your website folder, and type what you want in plain English:</p>
+
+        <ul>
+            <li>"Change the hero headline to 'Strategy That Drives Results'"</li>
+            <li>"Add a testimonials section with three quote cards"</li>
+            <li>"Make the contact form send emails to hello@mybusiness.com"</li>
+            <li>"Replace the green color scheme with navy blue"</li>
+            <li>"Add a new blog post titled 'How We Helped 50 Clients This Quarter'"</li>
+            <li>"Add a pricing section with three tiers: Starter, Growth, and Enterprise"</li>
+        </ul>
+
+        <p>Claude makes the change and pushes the update. Your live site reflects it within a few minutes. No developer needed. No support tickets. No waiting.</p>
+
+        <h2>Optional: Add a Custom Domain</h2>
+
+        <p>The free GitHub Pages URL works fine for getting started. When you're ready for a professional domain like www.yourbusiness.com:</p>
+
+        <ol>
+            <li>Buy a domain from Namecheap, Porkbun, or Google Domains (~$12/year for a .com)</li>
+            <li>Tell Claude Code: "Set up my custom domain yourbusiness.com for this GitHub Pages site"</li>
+            <li>Claude will give you the DNS settings to enter at your domain registrar</li>
+            <li>Your domain will be live within 24 hours, with free HTTPS security included</li>
+        </ol>
+
+        <h2>Who This Is For</h2>
+
+        <p>This works for anyone who needs a professional web presence without a developer on staff:</p>
+
+        <ul>
+            <li>Freelancers and consultants who need a portfolio and services page</li>
+            <li>Small businesses that want to look established without a $5,000 investment</li>
+            <li>Side projects and startups that need a landing page fast</li>
+            <li>Anyone whose current website is outdated, embarrassing, or nonexistent</li>
+        </ul>
+
+        <p>Zero dollars for hosting means your budget goes toward the business itself, not a web developer or a monthly subscription. The $3,000 you would have spent on a developer can go toward marketing, inventory, or hiring.</p>
+
+        <!-- Work With Me CTA -->
+        <div class="blog-cta" style="background: linear-gradient(135deg, #0B6E4F 0%, #08A045 100%);">
+            <div class="blog-cta-content">
+                <h3>Need Help Getting Started?</h3>
+                <p>If you'd rather have someone set this up for you, or you need a more complex site with integrations, custom features, or ongoing support, Seedscale can build and manage your entire digital presence.</p>
+                <form id="blog-contact-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
+                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                    <input type="email" name="email" placeholder="Your email address" required style="padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-family: 'Work Sans', sans-serif; font-size: 0.95rem; min-width: 250px; flex: 1;">
+                    <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Let's Connect</button>
+                </form>
+                <p id="blog-contact-success" style="display:none; color:#FACC15; font-weight:600; margin-top:1rem;">Thank you! I'll be in touch soon.</p>
+            </div>
+        </div>
+        <script>
+        document.getElementById('blog-contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var form = this;
+            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
+            .then(function(r) { if(r.ok) { form.style.display='none'; document.getElementById('blog-contact-success').style.display='block'; }});
+        });
+        </script>
+
+        <h2>Troubleshooting</h2>
+
+        <p><strong>"Terminal says 'command not found' when I type claude."</strong> The installation didn't complete. Run the install command from Step 3 again. If it still fails, close Terminal, reopen it, and try the install command one more time.</p>
+
+        <p><strong>"Claude Code asks me for an API key."</strong> Choose the option to sign in with your Claude account instead. You don't need a separate API key if you have a Claude Pro subscription.</p>
+
+        <p><strong>"My site shows a 404 page."</strong> GitHub Pages can take up to 10 minutes to go live the first time. Wait a few minutes and refresh. If it still shows 404, tell Claude Code: "GitHub Pages isn't working, check the settings and fix it."</p>
+
+        <p><strong>"I want to change something but I'm not sure how to describe it."</strong> Screenshot what you see, drop it into Claude Code, and say "see this section? I want to change it to [whatever you want]." Claude understands visual references.</p>
+
+        <p><strong>"My site looks different on my phone."</strong> Tell Claude: "Check the mobile layout and fix any spacing or sizing issues." It will adjust the responsive design.</p>
+
+        <h2>The Bottom Line</h2>
+
+        <p>Five years ago, getting a professional website required either budget or technical skill. Now it requires 45 minutes and $20. The website you present to the world doesn't have to reflect the size of your team. It can reflect the quality of your work.</p>
+
+        <!-- Final CTA -->
+        <div class="blog-cta">
+            <div class="blog-cta-content">
+                <h3>Download The AI Marketing Playbook</h3>
+                <p>Get the complete guide to implementing AI across your digital strategy, with templates, prompts, and step-by-step workflows.</p>
+                <a href="ai-marketing-playbook.html" class="btn btn-primary">Get the Free Ebook</a>
+            </div>
+        </div>
+
+    </article>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="footer-logo">Seedscale Agency</p>
+                <p class="footer-tagline">Marketing Systems for Founders and Lean Teams</p>
+                <p class="footer-copy">&copy; 2026 Seedscale Agency. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="crm-webhook.js"></script>
+    <script>
+    function showTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+        document.querySelectorAll('.tab-btn').forEach(function(el) { el.classList.remove('active'); });
+        document.getElementById('tab-' + tabId).classList.add('active');
+        event.target.classList.add('active');
+    }
+    function copyPrompt() {
+        var promptEl = document.getElementById('website-prompt');
+        var text = promptEl.innerText.replace('Copy Prompt', '').trim();
+        navigator.clipboard.writeText(text).then(function() {
+            var btn = document.querySelector('.copy-btn');
+            btn.textContent = 'Copied!';
+            setTimeout(function() { btn.textContent = 'Copy Prompt'; }, 2000);
+        });
+    }
+    </script>
+</body>
+</html>
