@@ -35,27 +35,39 @@
             font-weight: 300;
             line-height: 1.6;
         }
-        .prompts-section {
+        .prompts-grid-section {
             padding: 4rem 2rem 5rem;
             background: #f9fafb;
         }
-        .prompts-inner {
-            max-width: 820px;
+        .prompts-grid-inner {
+            max-width: 1100px;
             margin: 0 auto;
-            display: flex;
-            flex-direction: column;
+        }
+        .prompts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 28px;
         }
         .prompt-card {
             background: #fff;
-            border: 1px solid rgba(7, 59, 58, 0.08);
+            border: 1px solid rgba(7, 59, 58, 0.06);
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 18px rgba(7, 59, 58, 0.04);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
         }
-        .prompt-card-header {
-            padding: 26px 30px 22px;
-            border-bottom: 1px solid rgba(7, 59, 58, 0.06);
+        .prompt-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(7, 59, 58, 0.1);
+        }
+        .prompt-card-body {
+            padding: 28px 26px 30px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
         .prompt-tag {
             display: inline-block;
@@ -64,75 +76,41 @@
             letter-spacing: 0.12em;
             color: var(--medium);
             font-weight: 700;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             padding: 3px 10px;
             background: rgba(8, 160, 69, 0.08);
             border-radius: 100px;
+            align-self: flex-start;
         }
-        .prompt-card-header h2 {
-            font-size: 1.4rem;
+        .prompt-card-body h2 {
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--darkest);
             line-height: 1.3;
+            margin-bottom: 12px;
             letter-spacing: -0.01em;
-            margin-bottom: 8px;
         }
-        .prompt-card-header p {
-            font-size: 0.95rem;
+        .prompt-card-body p {
+            font-size: 0.92rem;
             color: #555;
             line-height: 1.6;
             font-weight: 300;
+            flex-grow: 1;
+            margin-bottom: 18px;
         }
-        .prompt-body {
-            position: relative;
-            padding: 24px 30px 30px;
-        }
-        .prompt-text {
-            font-family: 'Work Sans', sans-serif;
-            font-size: 0.92rem;
-            line-height: 1.7;
-            color: #333;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            margin: 0;
-            background: #f6f8f7;
-            border: 1px solid rgba(7, 59, 58, 0.06);
-            border-radius: 12px;
-            padding: 22px 24px;
-            max-height: 320px;
-            overflow-y: auto;
-        }
-        .copy-btn {
-            position: absolute;
-            top: 36px;
-            right: 42px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: var(--darkest);
-            color: #fff;
-            font-family: 'Work Sans', sans-serif;
-            font-size: 0.82rem;
+        .prompt-card-link {
+            font-size: 0.85rem;
             font-weight: 600;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.15s;
+            color: var(--dark);
         }
-        .copy-btn:hover { background: var(--dark); transform: translateY(-1px); }
-        .copy-btn.copied { background: var(--medium); }
-        .copy-btn svg { width: 15px; height: 15px; stroke: #fff; stroke-width: 2; fill: none; }
+        @media (max-width: 968px) {
+            .prompts-grid { grid-template-columns: repeat(2, 1fr); }
+            .prompts-hero h1 { font-size: 2.2rem; }
+        }
         @media (max-width: 640px) {
+            .prompts-grid { grid-template-columns: 1fr; }
             .prompts-hero { padding: 7rem 1.5rem 3rem; }
             .prompts-hero h1 { font-size: 1.8rem; }
-            .prompt-card-header, .prompt-body { padding-left: 20px; padding-right: 20px; }
-            .copy-btn {
-                position: static;
-                margin-bottom: 14px;
-                width: 100%;
-                justify-content: center;
-            }
         }
     </style>
     <!-- Klaviyo Onsite Tracking -->
@@ -166,105 +144,43 @@
     <!-- Hero -->
     <section class="prompts-hero">
         <h1>Prompts</h1>
-        <p>A growing library of ready-to-use AI prompts. Copy any prompt with one click and make it your own.</p>
+        <p>A growing library of ready-to-use AI prompts. Click any prompt to open it, then copy it with one tap.</p>
     </section>
 
-    <!-- Prompts Library -->
-    <section class="prompts-section">
-        <div class="prompts-inner">
+    <!-- Prompts Grid -->
+    <section class="prompts-grid-section">
+        <div class="prompts-grid-inner">
+            <div class="prompts-grid">
 
-            <!-- ============================================================
-                 HOW TO ADD A NEW PROMPT
-                 Copy the <article class="prompt-card">...</article> block
-                 below, paste it at the top of this list (newest first),
-                 then edit the tag, title, description, and prompt text.
-                 The copy button works automatically — no other changes
-                 needed.
-                 ============================================================ -->
+                <!-- ========================================================
+                     HOW TO ADD A NEW PROMPT
+                     1. Create a new page by copying an existing
+                        prompt-*.html file (e.g. prompt-best-hairstyles.html),
+                        then edit its title, tag, description, and prompt text.
+                     2. Copy one <a class="prompt-card"> block below, paste it
+                        at the top of this grid (newest first), and point its
+                        href at your new page.
+                     ======================================================== -->
 
-            <article class="prompt-card">
-                <div class="prompt-card-header">
-                    <span class="prompt-tag">Color &amp; Styling</span>
-                    <h2>Personal Color Palette (Seasonal Analysis)</h2>
-                    <p>Turn a portrait photo into a luxury, editorial-style personal color analysis report — like a paid professional consultation.</p>
-                </div>
-                <div class="prompt-body">
-                    <button class="copy-btn" type="button" aria-label="Copy prompt">
-                        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        <span class="copy-label">Copy</span>
-                    </button>
-                    <pre class="prompt-text">Create a high-end personal color analysis infographic using the uploaded portrait as the reference face.
+                <a href="prompt-personal-color-palette.html" class="prompt-card">
+                    <div class="prompt-card-body">
+                        <span class="prompt-tag">Color &amp; Styling</span>
+                        <h2>Personal Color Palette (Seasonal Analysis)</h2>
+                        <p>Turn a portrait photo into a luxury, editorial-style personal color analysis report — like a paid professional consultation.</p>
+                        <span class="prompt-card-link">View prompt &rarr;</span>
+                    </div>
+                </a>
 
-Act as a professional seasonal color analyst. Evaluate the person's skin tone, undertone (warm/cool/neutral), contrast level between hair, skin, and eyes, and overall depth (light vs deep features).
+                <a href="prompt-best-hairstyles.html" class="prompt-card">
+                    <div class="prompt-card-body">
+                        <span class="prompt-tag">Color &amp; Styling</span>
+                        <h2>Best Hairstyles for Face Shape</h2>
+                        <p>Generate a celebrity-stylist hairstyle guide from a portrait photo, with realistic mockups tailored to the person's face shape.</p>
+                        <span class="prompt-card-link">View prompt &rarr;</span>
+                    </div>
+                </a>
 
-Based on established color analysis systems (Spring, Summer, Autumn, Winter), determine the most accurate seasonal category and sub-season.
-
-Design a luxury editorial-style infographic that includes:
-
-* A labeled section showing the assigned season (e.g., Deep Autumn / Soft Autumn / Deep Winter, etc.)
-* A curated color palette of 20–30 swatches that best enhance their natural coloring
-* "Best Neutrals," "Best Accent Colors," and "Avoid Colors" sections
-* Recommendations for metals (gold, silver, bronze, etc.)
-* Styling guidance explaining why these colors enhance complexion and contrast
-* Small edited preview images showing the person wearing outfits in the recommended palettes
-
-Aesthetic:
-
-* Clean luxury magazine style
-* Soft neutral background (cream, beige, warm white)
-* Minimal modern typography
-* Elegant, high-end personal styling brand feel
-
-The final result should feel like a paid professional $2,000 color analysis report.</pre>
-                </div>
-            </article>
-
-            <article class="prompt-card">
-                <div class="prompt-card-header">
-                    <span class="prompt-tag">Color &amp; Styling</span>
-                    <h2>Best Hairstyles for Face Shape</h2>
-                    <p>Generate a celebrity-stylist hairstyle guide from a portrait photo, with realistic mockups tailored to the person's face shape.</p>
-                </div>
-                <div class="prompt-body">
-                    <button class="copy-btn" type="button" aria-label="Copy prompt">
-                        <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-                        <span class="copy-label">Copy</span>
-                    </button>
-                    <pre class="prompt-text">Create a professional hairstyle recommendation guide using the uploaded portrait as reference.
-
-Act as a celebrity hair stylist and facial harmony analyst. Analyze the face shape, jawline softness, forehead proportion, cheekbone structure, and overall symmetry to determine the face shape category (oval, round, square, heart, diamond, etc.).
-
-Then design a luxury editorial hairstyle guide that includes:
-
-* Identified face shape with short explanation
-* The most flattering haircut and styling approaches
-* The least flattering styles to avoid
-* 5–8 recommended hairstyles tailored to this person
-
-For each hairstyle, include:
-
-* Visual mockups showing the person with that hairstyle realistically applied
-* Style name (e.g., "long layered waves," "soft lob," "curtain bangs," etc.)
-* Brief explanation of why it works with their bone structure and proportions
-
-Also include a "Styling Tips" section covering:
-
-* Parting (middle vs side)
-* Volume placement
-* Hair length recommendations
-* Movement vs structure balance
-
-Aesthetic:
-
-* Premium salon brand lookbook style
-* Soft beige/cream editorial background
-* Clean grid layout like a professional hair magazine
-* Polished, realistic transformations (not cartoonish)
-
-The result should look like a paid celebrity stylist consultation board.</pre>
-                </div>
-            </article>
-
+            </div>
         </div>
     </section>
 
@@ -285,22 +201,5 @@ The result should look like a paid celebrity stylist consultation board.</pre>
     </footer>
 
     <script src="script.js"></script>
-    <script>
-        // One-click copy for every prompt card
-        document.querySelectorAll('.copy-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var text = btn.closest('.prompt-body').querySelector('.prompt-text').innerText;
-                var label = btn.querySelector('.copy-label');
-                navigator.clipboard.writeText(text).then(function () {
-                    btn.classList.add('copied');
-                    label.textContent = 'Copied!';
-                    setTimeout(function () {
-                        btn.classList.remove('copied');
-                        label.textContent = 'Copy';
-                    }, 2000);
-                });
-            });
-        });
-    </script>
 </body>
 </html>

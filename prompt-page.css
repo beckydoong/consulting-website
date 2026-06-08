@@ -1,0 +1,120 @@
+/* ============================================================
+   Shared styles for individual prompt pages (prompt-*.html)
+   ============================================================ */
+
+.prompt-hero {
+    background: var(--darkest);
+    color: #fff;
+    padding: 7.5rem 2rem 3.5rem;
+    text-align: center;
+}
+.prompt-back {
+    display: inline-block;
+    color: #a8e6cf;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+}
+.prompt-back:hover { color: #fff; }
+.prompt-hero-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #a8e6cf;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding: 4px 12px;
+    background: rgba(168, 230, 207, 0.12);
+    border-radius: 100px;
+}
+.prompt-hero h1 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.9rem;
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.2;
+}
+.prompt-hero p {
+    color: #a8e6cf;
+    font-size: 1.05rem;
+    max-width: 620px;
+    margin: 0 auto;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.prompt-detail-section {
+    padding: 3.5rem 2rem 5rem;
+    background: #f9fafb;
+}
+.prompt-detail-inner {
+    max-width: 760px;
+    margin: 0 auto;
+}
+.prompt-body {
+    position: relative;
+    background: #fff;
+    border: 1px solid rgba(7, 59, 58, 0.08);
+    border-radius: 16px;
+    box-shadow: 0 4px 18px rgba(7, 59, 58, 0.04);
+    padding: 30px;
+}
+.prompt-text {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #333;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 0;
+}
+.copy-btn {
+    position: absolute;
+    top: 22px;
+    right: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    background: var(--darkest);
+    color: #fff;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+}
+.copy-btn:hover { background: var(--dark); transform: translateY(-1px); }
+.copy-btn.copied { background: var(--medium); }
+.copy-btn svg { width: 15px; height: 15px; stroke: #fff; stroke-width: 2; fill: none; }
+.prompt-usage-note {
+    font-size: 0.88rem;
+    color: #888;
+    line-height: 1.6;
+    margin-top: 1.5rem;
+    text-align: center;
+    font-weight: 300;
+}
+
+@media (max-width: 640px) {
+    .prompt-hero { padding: 7rem 1.5rem 3rem; }
+    .prompt-hero h1 { font-size: 1.7rem; }
+    .prompt-body { padding: 22px 20px; }
+    .copy-btn {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        justify-content: center;
+        margin-bottom: 18px;
+    }
+}
