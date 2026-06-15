@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replace Your Marketing Team — The AI Prompt Pack | Seedscale Agency</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <meta name="description" content="30 plug-and-play prompts for ChatGPT and Claude, organized by the marketing role each one replaces — strategist, copywriter, email, social, designer, analyst. Plus a Canva workflow that turns any post into a branded deck. $9, instant download.">
+    <meta property="og:title" content="Replace Your Marketing Team — The AI Prompt Pack">
+    <meta property="og:description" content="30 ChatGPT & Claude prompts organized by the role each one replaces. A whole marketing team's output, for $9. Instant download.">
+    <meta property="og:image" content="og-image.png">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://seedscale.agency/prompt-pack.html">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Replace Your Marketing Team — The AI Prompt Pack">
+    <meta name="twitter:description" content="30 ChatGPT & Claude prompts organized by the role each one replaces. A whole marketing team's output, for $9.">
+    <meta name="twitter:image" content="og-image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
+        html { scroll-padding-top: 60px; }
+        body {
+            font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6;
+            background: #fafaf9; padding-top: 60px;
+        }
+        img { max-width: 100%; height: auto; display: block; }
+        a { color: inherit; text-decoration: none; }
+
+        /* Nav (mirrors /start.html) */
+        .s-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 1.5rem; height: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .s-nav-logo { display: flex; align-items: center; }
+        .s-nav-logo img { height: 28px; width: auto; }
+        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
+        .s-nav-back:hover { color: #21D375; }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
+            color: #fff; padding: 4.5rem 1.25rem 4rem; text-align: center;
+        }
+        .hero-inner { max-width: 720px; margin: 0 auto; }
+        .hero-eyebrow {
+            display: inline-block; color: #FACC15; font-size: 0.72rem;
+            font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+            margin-bottom: 1.25rem; padding: 0.4rem 0.9rem;
+            border: 1px solid rgba(250,204,21,0.35); border-radius: 999px;
+        }
+        .hero h1 {
+            font-size: 2.6rem; font-weight: 800; line-height: 1.05;
+            margin-bottom: 1.25rem; letter-spacing: -0.025em;
+        }
+        .hero h1 .em { color: #FACC15; }
+        .hero-promise {
+            font-size: 1.15rem; color: rgba(255,255,255,0.95);
+            line-height: 1.5; margin-bottom: 0.6rem; max-width: 600px;
+            margin-left: auto; margin-right: auto; font-weight: 500;
+        }
+        .hero-sub {
+            font-size: 0.95rem; color: rgba(255,255,255,0.78);
+            margin-bottom: 2rem; max-width: 540px;
+            margin-left: auto; margin-right: auto;
+        }
+        @media (min-width: 700px) {
+            .hero { padding: 5.5rem 1.5rem 4.5rem; }
+            .hero h1 { font-size: 3.4rem; }
+        }
+
+        /* Buy button + note */
+        .buy-btn {
+            display: inline-block; font-family: inherit; font-weight: 700;
+            font-size: 1.05rem; padding: 1rem 2.1rem; border-radius: 10px;
+            background: #FACC15; color: #073B3A; cursor: pointer;
+            transition: transform 0.15s, background 0.2s; border: none;
+        }
+        .buy-btn:hover { background: #fde047; transform: translateY(-1px); }
+        .buy-btn .price { opacity: 0.72; font-weight: 700; }
+        .buy-note { font-size: 0.82rem; color: rgba(255,255,255,0.62); margin-top: 0.85rem; }
+        .buy-note-dark { color: #777; }
+
+        /* Sections */
+        section { padding: 4rem 1.25rem; }
+        .section-inner { max-width: 760px; margin: 0 auto; }
+        .section-label {
+            text-align: center; color: #0B6E4F; font-size: 0.7rem;
+            font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .section-h {
+            text-align: center; font-size: 1.9rem; font-weight: 700;
+            color: #073B3A; line-height: 1.15; margin-bottom: 0.6rem;
+            letter-spacing: -0.015em;
+        }
+        .section-sub {
+            text-align: center; color: #555; font-size: 1rem;
+            max-width: 560px; margin: 0 auto 2.5rem;
+        }
+        @media (min-width: 700px) {
+            .section-h { font-size: 2.2rem; }
+        }
+
+        /* Roles grid (the team you're replacing) */
+        .who-grid {
+            display: grid; grid-template-columns: 1fr; gap: 1rem;
+        }
+        @media (min-width: 700px) {
+            .who-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .who-card {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+            padding: 1.4rem 1.5rem;
+        }
+        .who-card h3 {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.35rem;
+        }
+        .who-card p { font-size: 0.92rem; color: #555; line-height: 1.5; }
+        .who-card .cost {
+            display: inline-block; margin-top: 0.7rem; font-size: 0.76rem;
+            font-weight: 700; color: #0B6E4F; background: #eef6f0;
+            padding: 0.25rem 0.6rem; border-radius: 6px;
+        }
+
+        /* What-you-get list */
+        .what-list { list-style: none; padding: 0; }
+        .what-list li {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1.1rem 0; border-bottom: 1px solid #e5e7eb;
+        }
+        .what-list li:last-child { border-bottom: none; }
+        .what-num {
+            flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+            background: #073B3A; color: #FACC15; font-weight: 700;
+            font-size: 0.85rem; display: flex; align-items: center; justify-content: center;
+        }
+        .what-text h3 {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.25rem;
+        }
+        .what-text p { font-size: 0.95rem; color: #555; line-height: 1.55; }
+
+        /* Why-now / value block */
+        .why-now { background: #073B3A; color: #fff; }
+        .why-now .section-label { color: #FACC15; }
+        .why-now .section-h { color: #fff; }
+        .why-quote {
+            font-size: 1.25rem; line-height: 1.5; color: #fff;
+            text-align: center; font-weight: 500; max-width: 620px;
+            margin: 0 auto 1.5rem; letter-spacing: -0.01em;
+        }
+        .why-quote .em { color: #FACC15; }
+        .why-body {
+            text-align: center; color: rgba(255,255,255,0.82);
+            max-width: 580px; margin: 0 auto; font-size: 1rem; line-height: 1.65;
+        }
+        .stack-line {
+            text-align: center; margin: 1.75rem auto 0; max-width: 560px;
+            font-size: 1.05rem; color: #fff; font-weight: 600;
+        }
+        .stack-line .em { color: #FACC15; }
+
+        /* How it works */
+        .next-steps {
+            display: grid; grid-template-columns: 1fr; gap: 0.75rem;
+            max-width: 600px; margin: 0 auto;
+        }
+        .next-step {
+            display: flex; gap: 1rem; align-items: flex-start;
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+            padding: 1.1rem 1.25rem;
+        }
+        .next-step-num {
+            flex-shrink: 0; color: #FACC15; background: #073B3A;
+            font-weight: 700; font-size: 0.78rem; padding: 0.3rem 0.55rem;
+            border-radius: 6px; letter-spacing: 0.06em;
+        }
+        .next-step strong { color: #073B3A; font-size: 1rem; display: block; margin-bottom: 0.15rem; }
+        .next-step p { color: #555; font-size: 0.92rem; line-height: 1.55; }
+
+        /* Bottom CTA */
+        .cta-bottom {
+            background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
+            color: #fff; text-align: center; padding: 4.5rem 1.25rem;
+        }
+        .cta-bottom h2 {
+            font-size: 2rem; font-weight: 800; color: #fff;
+            margin-bottom: 0.75rem; letter-spacing: -0.02em;
+        }
+        .cta-bottom h2 .em { color: #FACC15; }
+        .cta-bottom p {
+            color: rgba(255,255,255,0.82); margin-bottom: 2rem;
+            max-width: 540px; margin-left: auto; margin-right: auto;
+        }
+        @media (min-width: 700px) {
+            .cta-bottom h2 { font-size: 2.4rem; }
+        }
+
+        /* Footer */
+        .ft {
+            background: #073B3A; color: rgba(255,255,255,0.7);
+            padding: 2rem 1.25rem; text-align: center; font-size: 0.85rem;
+        }
+        .ft a { color: #6BBF59; }
+        .ft a:hover { color: #21D375; }
+    </style>
+</head>
+<body>
+
+    <nav class="s-nav">
+        <a href="index.html" class="s-nav-logo">
+            <img src="logo.svg" alt="Seedscale Agency">
+        </a>
+        <a href="start.html" class="s-nav-back">← All offers</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">Prompt Pack · $9 · Instant download</span>
+            <h1>Replace your marketing team.<br><span class="em">Thirty prompts. Nine dollars.</span></h1>
+            <p class="hero-promise">30 plug-and-play prompts for ChatGPT and Claude, organized by the exact marketing role each one replaces — strategist, copywriter, email, social, designer, analyst.</p>
+            <p class="hero-sub">Plus a Canva workflow that turns any post into a branded slide deck. Built for founders, operators &amp; lean teams.</p>
+
+            <a href="https://buy.stripe.com/8x24gBfaPfm56y6da20Ny07" class="buy-btn">Get the prompt pack <span class="price">— $9</span></a>
+            <p class="buy-note">Secure checkout via Stripe. Instant PDF download. Works in ChatGPT &amp; Claude.</p>
+        </div>
+    </section>
+
+    <!-- THE TEAM YOU'RE REPLACING -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">What's inside</div>
+            <h2 class="section-h">A marketing team is six roles.</h2>
+            <p class="section-sub">The pack is organized by the people you'd otherwise hire. Each section hands you the prompts that role would use — tuned for ChatGPT and Claude.</p>
+
+            <div class="who-grid">
+                <div class="who-card">
+                    <h3>The Strategist</h3>
+                    <p>Positioning, campaign briefs, offer stress-tests, the 90-day plan.</p>
+                    <span class="cost">Replaces ~$4–8K/mo</span>
+                </div>
+                <div class="who-card">
+                    <h3>The Copywriter</h3>
+                    <p>Hooks, blog drafts, landing-page heroes, proof points — in your voice.</p>
+                    <span class="cost">Replaces ~$3–5K/mo</span>
+                </div>
+                <div class="who-card">
+                    <h3>The Email Marketer</h3>
+                    <p>Subject lines, welcome and launch sequences, the newsletter, win-backs.</p>
+                    <span class="cost">Replaces ~$2–4K/mo</span>
+                </div>
+                <div class="who-card">
+                    <h3>The Social Manager</h3>
+                    <p>Repurposing, content calendars, threads, captions that match your best.</p>
+                    <span class="cost">Replaces ~$2–4K/mo</span>
+                </div>
+                <div class="who-card">
+                    <h3>The Designer</h3>
+                    <p>Slide outlines, carousels, one-pagers — plus the Canva deck workflow.</p>
+                    <span class="cost">Replaces ~$2–4K/mo</span>
+                </div>
+                <div class="who-card">
+                    <h3>The Analyst</h3>
+                    <p>Voice-of-customer mining, A/B tests, funnel diagnosis, the weekly review.</p>
+                    <span class="cost">Replaces ~$2–4K/mo</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- VALUE / PROOF -->
+    <section class="why-now">
+        <div class="section-inner">
+            <div class="section-label">The math</div>
+            <h2 class="section-h">A whole team's output. One coffee's price.</h2>
+            <p class="why-quote">Hiring those six roles runs <span class="em">$15–30K a month</span> on the open market. The skill was never the tools — it's knowing exactly what to ask each role to do.</p>
+            <p class="stack-line">A real marketing team ≈ $15–30K / month. &nbsp;<span class="em">This pack: $9. Once.</span></p>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section style="background: #fff;">
+        <div class="section-inner">
+            <div class="section-label">In the 16-page pack</div>
+            <h2 class="section-h">Not a prompt list. A system.</h2>
+            <p class="section-sub">Everything is built so the first output lands on-brand and useful — instead of you fighting ChatGPT for it.</p>
+
+            <ul class="what-list">
+                <li>
+                    <span class="what-num">1</span>
+                    <div class="what-text">
+                        <h3>30 role-based prompts</h3>
+                        <p>Grouped by the six roles a marketing team fills, each tagged for ChatGPT, Claude, or either — so you always know where to run it.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">2</span>
+                    <div class="what-text">
+                        <h3>Build your Brand Kit once</h3>
+                        <p>Set your voice, brand colors, and a swipe file of your best-performing work one time. Then every writing and design prompt pulls from it automatically.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">3</span>
+                    <div class="what-text">
+                        <h3>The Canva connector workflow</h3>
+                        <p>Connect Canva to your AI, hand it a post, and get back a branded slide deck — the exact workflow Rebecca uses for her own slides.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">4</span>
+                    <div class="what-text">
+                        <h3>A 7-day activation plan</h3>
+                        <p>One role a day. By Sunday you've run the whole team once and kept the two prompts that earned their place in your week.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">5</span>
+                    <div class="what-text">
+                        <h3>Built for output, not slop</h3>
+                        <p>Every prompt has guards baked in — match your real examples, no generic filler, and never invent fake numbers about your business.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">How it works</div>
+            <h2 class="section-h">From checkout to running prompts in five minutes.</h2>
+
+            <div class="next-steps">
+                <div class="next-step">
+                    <span class="next-step-num">01</span>
+                    <div>
+                        <strong>Click “Get the prompt pack.”</strong>
+                        <p>Secure Stripe checkout. $9, one time. No subscription, no upsell maze.</p>
+                    </div>
+                </div>
+                <div class="next-step">
+                    <span class="next-step-num">02</span>
+                    <div>
+                        <strong>Download the PDF instantly.</strong>
+                        <p>The moment you pay, you land on the download page. The 16-page pack is yours.</p>
+                    </div>
+                </div>
+                <div class="next-step">
+                    <span class="next-step-num">03</span>
+                    <div>
+                        <strong>Build your Brand Kit, then run.</strong>
+                        <p>Five minutes of setup, then paste prompts into ChatGPT or Claude and start shipping today.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="cta-bottom">
+        <div class="hero-inner">
+            <h2>Replace your marketing team <span class="em">for $9.</span></h2>
+            <p>30 prompts, six roles, a Brand Kit, and the Canva workflow. Instant download. Works in ChatGPT and Claude.</p>
+            <a href="https://buy.stripe.com/8x24gBfaPfm56y6da20Ny07" class="buy-btn">Get the prompt pack <span class="price">— $9</span></a>
+            <p class="buy-note">Secure checkout via Stripe · Instant PDF download</p>
+        </div>
+    </section>
+
+    <footer class="ft">
+        © 2026 Seedscale Agency  ·  <a href="index.html">Home</a>  ·  <a href="start.html">All offers</a>  ·  <a href="connect.html">Connect</a>
+    </footer>
+
+</body>
+</html>
