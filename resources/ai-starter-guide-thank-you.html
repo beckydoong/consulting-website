@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Download — The AI Marketing Prompt Pack | Seedscale Agency</title>
-    <meta name="description" content="Thanks for picking up the AI Marketing Prompt Pack. Download your copy here.">
+    <title>Your Download — Get Paid for What You Know | Seedscale Agency</title>
+    <meta name="description" content="Thanks for picking up Get Paid for What You Know. Download your copy here.">
     <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +95,7 @@
         <div class="ty-card">
             <p class="ty-eyebrow">Prompt Pack</p>
             <h1>Thanks for picking this up — here's your download.</h1>
-            <p>Replace Your Marketing Team — 30 ChatGPT &amp; Claude prompts organized by the role each one replaces, plus a Canva slide-deck workflow. Save it somewhere you'll actually open it.</p>
+            <p>Get Paid for What You Know — 50 ChatGPT &amp; Claude prompts to turn your skills into income: find the skill people pay for, package it, price it, and land your first client. Save it somewhere you'll actually open it.</p>
             <a href="/resources/ai-starter-guide.pdf" class="ty-download" download>Download the prompt pack (PDF)</a>
 
             <form id="ty-capture" style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
@@ -128,7 +128,7 @@
         var btn = form.querySelector('button'); if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
         try { if(window.klaviyo && email){
           window.klaviyo.push(['identify', { '$email': email, 'bought_prompt_pack': true }]);
-          window.klaviyo.push(['track', 'Bought Prompt Pack', { product: 'AI Marketing Prompt Pack', value: 9 }]);
+          window.klaviyo.push(['track', 'Bought Prompt Pack', { product: 'Get Paid for What You Know', value: 9 }]);
         }} catch(err){}
         var data = new FormData(form);
         fetch('https://api.web3forms.com/submit', { method:'POST', body:data })
