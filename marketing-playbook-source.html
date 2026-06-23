@@ -237,9 +237,15 @@
     page-break-after: avoid;
     break-after: avoid;
   }
-  .callout, .case {
+  .case {
     page-break-inside: avoid;
     break-inside: avoid;
+  }
+  /* Tall prompt boxes may flow across a page break so they don't get bumped
+     whole to the next page and leave a large white-space gap. */
+  .callout {
+    page-break-inside: auto;
+    break-inside: auto;
   }
   p, li { orphans: 2; widows: 2; }
 
