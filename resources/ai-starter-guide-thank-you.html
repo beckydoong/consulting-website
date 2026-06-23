@@ -11,6 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="/favicon.png">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <!-- Klaviyo Onsite Tracking -->
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
+    <script type="text/javascript">
+      !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+    </script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { overflow-x: hidden; max-width: 100%; }
@@ -93,6 +98,17 @@
             <p>Replace Your Marketing Team — 30 ChatGPT &amp; Claude prompts organized by the role each one replaces, plus a Canva slide-deck workflow. Save it somewhere you'll actually open it.</p>
             <a href="/resources/ai-starter-guide.pdf" class="ty-download" download>Download the prompt pack (PDF)</a>
 
+            <form id="ty-capture" style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
+                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+                <input type="hidden" name="subject" value="Prompt Pack buyer — emailed copy">
+                <input type="hidden" name="from_name" value="Seedscale — Prompt Pack">
+                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+                <input type="email" name="email" placeholder="you@email.com" required aria-label="Your email" style="flex:1;min-width:180px;padding:0.7rem 0.9rem;border:1px solid #e5e7eb;border-radius:8px;font-family:inherit;font-size:0.9rem;">
+                <button type="submit" style="padding:0.7rem 1.1rem;border:none;border-radius:8px;background:#073B3A;color:#fff;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit;">Email me a copy</button>
+                <p style="flex-basis:100%;font-size:0.78rem;color:#888;margin:0.4rem 0 0;">Want it saved in your inbox so you never lose it? Drop your email.</p>
+            </form>
+            <div id="ty-capture-success" style="display:none;margin-top:1.25rem;color:#0B6E4F;font-weight:600;font-size:0.9rem;">✓ On its way — check your inbox.</div>
+
             <div class="ty-upsell">
                 <p class="ty-upsell-label">When you're ready for the full build</p>
                 <h2>The AI Business Blueprint — $27</h2>
@@ -101,6 +117,29 @@
             </div>
         </div>
     </main>
+
+    <script>
+    (function(){
+      var form = document.getElementById('ty-capture');
+      if(!form) return;
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var email = (form.querySelector('input[name=email]')||{}).value || '';
+        var btn = form.querySelector('button'); if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+        try { if(window.klaviyo && email){
+          window.klaviyo.push(['identify', { '$email': email, 'bought_prompt_pack': true }]);
+          window.klaviyo.push(['track', 'Bought Prompt Pack', { product: 'AI Marketing Prompt Pack', value: 9 }]);
+        }} catch(err){}
+        var data = new FormData(form);
+        fetch('https://api.web3forms.com/submit', { method:'POST', body:data })
+          .catch(function(){ return {}; })
+          .then(function(){
+            var s = document.getElementById('ty-capture-success');
+            if(s){ form.style.display = 'none'; s.style.display = 'block'; }
+          });
+      });
+    })();
+    </script>
 
 </body>
 </html>

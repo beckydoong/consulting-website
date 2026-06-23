@@ -6,6 +6,11 @@
   <title>You're In — The AI Business Blueprint</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Klaviyo Onsite Tracking -->
+  <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
+  <script type="text/javascript">
+    !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+  </script>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -252,6 +257,16 @@
       <p>Click below to download your copy. Save it somewhere you'll find it — you'll want to come back to the prompts and action plan.</p>
       <a href="ai-business-blueprint.pdf" download class="download-btn">Download the Blueprint</a>
       <span class="download-note">PDF format. Opens on any device.</span>
+      <form id="ty-capture" style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
+        <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+        <input type="hidden" name="subject" value="Blueprint buyer — emailed copy">
+        <input type="hidden" name="from_name" value="Seedscale — AI Business Blueprint">
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
+        <input type="email" name="email" placeholder="you@email.com" required aria-label="Your email" style="flex:1;min-width:180px;padding:0.7rem 0.9rem;border:1px solid #e5e5e5;border-radius:8px;font-family:inherit;font-size:0.9rem;">
+        <button type="submit" style="padding:0.7rem 1.1rem;border:none;border-radius:8px;background:#073B3A;color:#fff;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit;">Email me a copy</button>
+        <p style="flex-basis:100%;font-size:0.8rem;color:#6b7280;margin:0.4rem 0 0;">Want it saved in your inbox so you never lose it? Drop your email.</p>
+      </form>
+      <div id="ty-capture-success" style="display:none;margin-top:1rem;color:#08A045;font-weight:600;font-size:0.9rem;">✓ On its way — check your inbox.</div>
     </div>
   </section>
 
@@ -299,6 +314,29 @@
   <footer>
     <p>&copy; 2026 Seedscale Agency. All rights reserved.</p>
   </footer>
+
+  <script>
+  (function(){
+    var form = document.getElementById('ty-capture');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var email = (form.querySelector('input[name=email]')||{}).value || '';
+      var btn = form.querySelector('button'); if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      try { if(window.klaviyo && email){
+        window.klaviyo.push(['identify', { '$email': email, 'bought_blueprint': true }]);
+        window.klaviyo.push(['track', 'Bought Blueprint', { product: 'AI Business Blueprint', value: 27 }]);
+      }} catch(err){}
+      var data = new FormData(form);
+      fetch('https://api.web3forms.com/submit', { method:'POST', body:data })
+        .catch(function(){ return {}; })
+        .then(function(){
+          var s = document.getElementById('ty-capture-success');
+          if(s){ form.style.display = 'none'; s.style.display = 'block'; }
+        });
+    });
+  })();
+  </script>
 
 </body>
 </html>
