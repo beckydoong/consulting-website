@@ -467,7 +467,6 @@ If you don't have hex codes: "Use a <span class="placeholder">[navy / forest gre
                 <h3>Need Help Getting Started?</h3>
                 <p>If you'd rather have someone set this up for you, or you need a more complex site with integrations, custom features, or ongoing support, Seedscale can build and manage your entire digital presence.</p>
                 <form id="blog-contact-form" style="display: flex; gap: 0.75rem; flex-wrap: wrap; justify-content: center; margin-top: 1rem;">
-                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
                     <input type="email" name="email" placeholder="Your email address" required style="padding: 0.75rem 1rem; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; background: rgba(255,255,255,0.1); color: #fff; font-family: 'Work Sans', sans-serif; font-size: 0.95rem; min-width: 250px; flex: 1;">
                     <button type="submit" class="btn btn-primary" style="white-space: nowrap;">Let's Connect</button>
                 </form>
@@ -478,8 +477,10 @@ If you don't have hex codes: "Use a <span class="placeholder">[navy / forest gre
         document.getElementById('blog-contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             var form = this;
-            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
-            .then(function(r) { if(r.ok) { form.style.display='none'; document.getElementById('blog-contact-success').style.display='block'; }});
+            var email = (form.querySelector('input[name="email"]')||{}).value || '';
+            fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Blog \u2014 Work With Me',profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
+            .catch(function(){})
+            .then(function(){ form.style.display='none'; document.getElementById('blog-contact-success').style.display='block'; });
         });
         </script>
 

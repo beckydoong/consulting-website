@@ -102,10 +102,6 @@
                 <p style="font-size:1.05rem;font-weight:700;color:#073B3A;margin:0 0 0.35rem;">Want it in your inbox too?</p>
                 <p style="font-size:0.9rem;color:#555;margin:0 0 1rem;line-height:1.5;">Drop your email and I'll send you a copy so you never lose it — plus the quick-start to your first paying client.</p>
                 <form id="ty-capture" style="display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
-                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                    <input type="hidden" name="subject" value="Prompt Pack buyer — emailed copy">
-                    <input type="hidden" name="from_name" value="Seedscale — Prompt Pack">
-                    <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
                     <input type="email" name="email" placeholder="you@email.com" required aria-label="Your email" style="flex:1;min-width:200px;padding:0.8rem 0.95rem;border:1px solid #d1d5db;border-radius:8px;font-family:inherit;font-size:0.95rem;">
                     <button type="submit" style="padding:0.8rem 1.4rem;border:none;border-radius:8px;background:#073B3A;color:#fff;font-weight:700;font-size:0.95rem;cursor:pointer;font-family:inherit;white-space:nowrap;">Email it to me</button>
                 </form>
@@ -133,9 +129,8 @@
           window.klaviyo.push(['identify', { '$email': email, 'bought_prompt_pack': true }]);
           window.klaviyo.push(['track', 'Bought Prompt Pack', { product: 'Get Paid for What You Know', value: 9 }]);
         }} catch(err){}
-        var data = new FormData(form);
-        fetch('https://api.web3forms.com/submit', { method:'POST', body:data })
-          .catch(function(){ return {}; })
+        fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Prompt Pack \u2014 emailed copy',profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
+          .catch(function(){})
           .then(function(){
             var s = document.getElementById('ty-capture-success');
             if(s){ form.style.display = 'none'; s.style.display = 'block'; }

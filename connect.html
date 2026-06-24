@@ -374,7 +374,7 @@
             <div class="contact-label">Contact</div>
             <h2>Start a Conversation</h2>
             <p class="sub">For inquiries, please reach out — I'd love to hear about your business and how I can help.</p>
-            <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <form class="contact-form" id="connect-form">
                 <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
                 <div class="form-row">
                     <input type="text" name="name" placeholder="Your Name" required>
@@ -384,6 +384,7 @@
                 <textarea name="message" placeholder="Tell me about your business and how I can help..." rows="5" required></textarea>
                 <button type="submit" class="btn-submit">Send Message</button>
             </form>
+            <p id="connect-success" style="display:none;color:#0B6E4F;font-weight:600;margin-top:1rem;text-align:center;">Thank you! Your message has been sent &mdash; I&rsquo;ll get back to you within 24 hours.</p>
         </div>
     </section>
 
@@ -392,6 +393,16 @@
     </footer>
 
     <script>
+        (function(){
+          var form = document.getElementById('connect-form');
+          if(form){ form.addEventListener('submit', function(e){
+            e.preventDefault();
+            var email=(form.querySelector('input[name="email"]')||{}).value||'';
+            var name=(form.querySelector('input[name="name"]')||{}).value||'';
+            fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Contact Page',profile:{data:{type:'profile',attributes:{email:email,first_name:name}}}},relationships:{list:{data:{type:'list',id:'TDhpPe'}}}}})}).catch(function(){});
+            fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(function(){ form.style.display='none'; document.getElementById('connect-success').style.display='block'; });
+          }); }
+        })();
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {

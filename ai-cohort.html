@@ -233,10 +233,6 @@
 
             <!-- WAITLIST FORM (hero) -->
             <form class="wl-form" data-source="ai-cohort-hero">
-                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                <input type="hidden" name="subject" value="New AI Cohort waitlist signup">
-                <input type="hidden" name="from_name" value="Seedscale — AI Cohort Waitlist">
-                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
                 <input type="text" class="wl-name" name="first_name" placeholder="First name" aria-label="First name">
                 <input type="email" name="email" placeholder="Your email" required aria-label="Your email">
                 <button type="submit">Join the waitlist</button>
@@ -382,10 +378,6 @@
             <p>Six weeks, live, coached — turning the skills you already have into income, with AI. Limited founding spots. The waitlist goes first.</p>
 
             <form class="wl-form" data-source="ai-cohort-bottom">
-                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                <input type="hidden" name="subject" value="New AI Cohort waitlist signup">
-                <input type="hidden" name="from_name" value="Seedscale — AI Cohort Waitlist">
-                <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
                 <input type="text" class="wl-name" name="first_name" placeholder="First name" aria-label="First name">
                 <input type="email" name="email" placeholder="Your email" required aria-label="Your email">
                 <button type="submit">Hold my spot</button>
@@ -428,12 +420,9 @@
             }
           } catch (err) { /* non-blocking */ }
 
-          // 2) Email the signup to Rebecca via Web3Forms (reliable notification + backup)
-          var data = new FormData(form);
-          data.append('source', form.getAttribute('data-source') || 'ai-cohort');
-          fetch('https://api.web3forms.com/submit', { method: 'POST', body: data })
-            .then(function (r) { return r.json(); })
-            .catch(function () { return { success: true }; }) // don't trap the user on a network blip
+          // 2) Subscribe to Klaviyo (Nurture) — single opt-in, lands instantly
+          fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'AI Cohort Waitlist',profile:{data:{type:'profile',attributes:{email:email,first_name:first}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
+            .catch(function () {})
             .then(function () { showSuccess(form); });
         });
       });

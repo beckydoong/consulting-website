@@ -242,8 +242,6 @@
                 <h1>How to Edit Videos in Minutes with Claude Code + Remotion</h1>
                 <p class="subtitle">Go from raw footage to a polished, captioned short-form video in minutes — with your brand style baked in.</p>
                 <form class="lp-form" id="hero-form">
-                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                    <input type="hidden" name="subject" value="New Download: Video Editing Guide">
                     <h3>Get Your Free Copy</h3>
                     <input type="text" name="name" placeholder="Your Name" required>
                     <input type="email" name="email" placeholder="Your Email" required>
@@ -341,8 +339,6 @@
             <h2>Ready to Edit Videos in Minutes?</h2>
             <p class="cta-sub">Download the free guide and start producing branded short-form video with AI.</p>
             <form class="lp-form" id="bottom-form">
-                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                <input type="hidden" name="subject" value="New Download: Video Editing Guide">
                 <input type="text" name="name" placeholder="Your Name" required>
                 <input type="email" name="email" placeholder="Your Email" required>
                 <button type="submit" class="btn-cta">Get the Free Guide</button>
@@ -363,17 +359,17 @@
         document.getElementById(formId).addEventListener('submit', function(e) {
             e.preventDefault();
             var form = this;
-            fetch('https://api.web3forms.com/submit', { method: 'POST', body: new FormData(form) })
-            .then(function(r) {
-                if (r.ok) {
-                    form.style.display = 'none';
-                    document.getElementById(successId).style.display = 'block';
-                    // Trigger PDF download
-                    var link = document.createElement('a');
-                    link.href = 'video-editing-guide-claude-remotion.pdf';
-                    link.download = 'Video-Editing-Guide-Claude-Code-Remotion.pdf';
-                    link.click();
-                }
+            var email = (form.querySelector('input[name="email"]')||{}).value || '';
+            var name = (form.querySelector('input[name="name"]')||{}).value || '';
+            fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Video Editing Guide',profile:{data:{type:'profile',attributes:{email:email,first_name:name}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
+            .catch(function(){})
+            .then(function() {
+                form.style.display = 'none';
+                document.getElementById(successId).style.display = 'block';
+                var link = document.createElement('a');
+                link.href = 'video-editing-guide-claude-remotion.pdf';
+                link.download = 'Video-Editing-Guide-Claude-Code-Remotion.pdf';
+                link.click();
             });
         });
     }

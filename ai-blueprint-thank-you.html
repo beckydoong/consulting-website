@@ -258,10 +258,6 @@
       <a href="ai-business-blueprint.pdf" download class="download-btn">Download the Blueprint</a>
       <span class="download-note">PDF format. Opens on any device.</span>
       <form id="ty-capture" style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
-        <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-        <input type="hidden" name="subject" value="Blueprint buyer — emailed copy">
-        <input type="hidden" name="from_name" value="Seedscale — AI Business Blueprint">
-        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
         <input type="email" name="email" placeholder="you@email.com" required aria-label="Your email" style="flex:1;min-width:180px;padding:0.7rem 0.9rem;border:1px solid #e5e5e5;border-radius:8px;font-family:inherit;font-size:0.9rem;">
         <button type="submit" style="padding:0.7rem 1.1rem;border:none;border-radius:8px;background:#073B3A;color:#fff;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit;">Email me a copy</button>
         <p style="flex-basis:100%;font-size:0.8rem;color:#6b7280;margin:0.4rem 0 0;">Want it saved in your inbox so you never lose it? Drop your email.</p>
@@ -327,9 +323,8 @@
         window.klaviyo.push(['identify', { '$email': email, 'bought_blueprint': true }]);
         window.klaviyo.push(['track', 'Bought Blueprint', { product: 'AI Business Blueprint', value: 27 }]);
       }} catch(err){}
-      var data = new FormData(form);
-      fetch('https://api.web3forms.com/submit', { method:'POST', body:data })
-        .catch(function(){ return {}; })
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Blueprint \u2014 emailed copy',profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
+        .catch(function(){})
         .then(function(){
           var s = document.getElementById('ty-capture-success');
           if(s){ form.style.display = 'none'; s.style.display = 'block'; }
