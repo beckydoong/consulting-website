@@ -361,7 +361,7 @@
             var form = this;
             var email = (form.querySelector('input[name="email"]')||{}).value || '';
             var name = (form.querySelector('input[name="name"]')||{}).value || '';
-            fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Video Editing Guide',profile:{data:{type:'profile',attributes:{email:email,first_name:name}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
+            fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Video Editing Guide',profile:{data:{type:'profile',attributes:{email:email,first_name:name}}}},relationships:{list:{data:{type:'list',id:'QZnsL7'}}}}})})
             .catch(function(){})
             .then(function() {
                 form.style.display = 'none';
