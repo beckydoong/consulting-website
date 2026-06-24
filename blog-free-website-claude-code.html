@@ -478,7 +478,7 @@ If you don't have hex codes: "Use a <span class="placeholder">[navy / forest gre
             e.preventDefault();
             var form = this;
             var email = (form.querySelector('input[name="email"]')||{}).value || '';
-            fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Blog \u2014 Work With Me',profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:'QZnsL7'}}}}})})
+            fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Blog \u2014 Work With Me',profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
             .catch(function(){})
             .then(function(){ form.style.display='none'; document.getElementById('blog-contact-success').style.display='block'; });
         });
