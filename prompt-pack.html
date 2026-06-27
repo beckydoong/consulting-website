@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The $9 AI Prompt Pack | Seedscale Agency</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta property="og:title" content="The $9 AI Prompt Pack | Seedscale Agency">
+    <meta property="og:description" content="7 AI prompts that turn the skills you already have into something you can sell — for the price of a coffee.">
+    <meta property="og:image" content="https://seedscale.agency/og-image.png">
+    <meta property="og:url" content="https://seedscale.agency/prompt-pack">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
+        body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; }
+        img { max-width: 100%; height: auto; }
+
+        .pp-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 2rem; height: 64px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .pp-nav-back { color: #6BBF59; text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .pp-nav-back:hover { color: #21D375; }
+
+        .pp-hero { background: #073B3A; color: #fff; padding: 8rem 2rem 4rem; text-align: center; }
+        .pp-hero-inner { max-width: 720px; margin: 0 auto; }
+        .pp-eyebrow {
+            display: inline-block; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.18em;
+            color: #FACC15; font-weight: 700; margin-bottom: 1.25rem;
+        }
+        .pp-hero h1 { font-size: 2.8rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+        .pp-hero .sub { font-size: 1.2rem; color: #a8e6cf; font-weight: 300; line-height: 1.55; margin-bottom: 2.5rem; }
+        .pp-price-row { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.5rem; }
+        .pp-price { font-size: 2.5rem; font-weight: 700; color: #fff; }
+        .pp-price-note { font-size: 0.95rem; color: rgba(255,255,255,0.6); }
+        .pp-buy {
+            display: inline-block; padding: 1.1rem 2.75rem; background: #FACC15; color: #073B3A;
+            font-size: 1.15rem; font-weight: 700; border-radius: 10px; text-decoration: none;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .pp-buy:hover { background: #fde047; transform: translateY(-2px); }
+        .pp-guarantee { margin-top: 1rem; font-size: 0.85rem; color: rgba(255,255,255,0.55); }
+
+        .pp-emotion { padding: 5rem 2rem; background: #fff; }
+        .pp-emotion-inner { max-width: 680px; margin: 0 auto; }
+        .pp-emotion p { font-size: 1.15rem; color: #2a2a2a; line-height: 1.7; margin-bottom: 1.5rem; font-weight: 300; }
+        .pp-emotion p strong { font-weight: 600; color: #073B3A; }
+        .pp-emotion h2 { font-size: 1.9rem; font-weight: 700; color: #073B3A; margin-bottom: 1.5rem; letter-spacing: -0.01em; line-height: 1.25; }
+
+        .pp-list { padding: 5rem 2rem; background: #f9fafb; }
+        .pp-list-inner { max-width: 1000px; margin: 0 auto; text-align: center; }
+        .pp-list-inner h2 { font-size: 2rem; font-weight: 700; color: #073B3A; margin-bottom: 0.5rem; }
+        .pp-list-inner .section-sub { color: #555; font-size: 1.05rem; margin-bottom: 3rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+        .pp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem; text-align: left; }
+        .pp-card { background: #fff; border-radius: 12px; padding: 1.75rem; border: 1px solid #e5e7eb; transition: box-shadow 0.25s, transform 0.25s; }
+        .pp-card:hover { box-shadow: 0 8px 24px rgba(7,59,58,0.1); transform: translateY(-3px); }
+        .pp-card .num {
+            display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px;
+            border-radius: 50%; background: #0B6E4F; color: #fff; font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem;
+        }
+        .pp-card h4 { font-size: 1.05rem; font-weight: 600; color: #073B3A; margin-bottom: 0.5rem; }
+        .pp-card p { font-size: 0.95rem; color: #333; line-height: 1.55; }
+
+        .pp-mid-cta { padding: 4.5rem 2rem; background: #073B3A; color: #fff; text-align: center; }
+        .pp-mid-cta-inner { max-width: 560px; margin: 0 auto; }
+        .pp-mid-cta h2 { font-size: 1.9rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .pp-mid-cta p { color: #a8e6cf; font-size: 1.05rem; margin-bottom: 2rem; font-weight: 300; }
+
+        .pp-coaching { padding: 5rem 2rem; background: linear-gradient(135deg, #0B6E4F 0%, #073B3A 100%); color: #fff; }
+        .pp-coaching-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+        .pp-coaching .eyebrow { color: #FACC15; letter-spacing: 0.15em; font-size: 0.8rem; text-transform: uppercase; font-weight: 700; margin-bottom: 1rem; display: block; }
+        .pp-coaching h2 { font-size: 2rem; font-weight: 700; line-height: 1.25; margin-bottom: 1.25rem; }
+        .pp-coaching p { font-size: 1.1rem; color: rgba(255,255,255,0.85); line-height: 1.6; margin-bottom: 2rem; }
+        .pp-coaching a.book { display: inline-block; background: #FACC15; color: #073B3A; padding: 1rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: background 0.2s, transform 0.15s; }
+        .pp-coaching a.book:hover { background: #fde047; transform: translateY(-2px); }
+
+        .pp-author { padding: 5rem 2rem; background: #fff; }
+        .pp-author-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+        .author-card { background: #f0fdf4; border-radius: 16px; padding: 2.5rem; border: 1px solid #bbf7d0; }
+        .author-avatar { width: 84px; height: 84px; border-radius: 50%; margin: 0 auto 1.25rem; overflow: hidden; }
+        .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .author-card h3 { font-size: 1.2rem; font-weight: 600; color: #073B3A; margin-bottom: 0.75rem; }
+        .author-card p { font-size: 0.95rem; color: #444; line-height: 1.65; }
+
+        .pp-footer { background: #052726; color: rgba(255,255,255,0.5); text-align: center; padding: 2.5rem 2rem; font-size: 0.85rem; }
+        .pp-footer .logo { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 0.25rem; }
+
+        @media (max-width: 768px) {
+            .pp-hero { padding: 6.5rem 1.25rem 3rem; }
+            .pp-hero h1 { font-size: 2rem; }
+            .pp-hero .sub { font-size: 1.05rem; }
+            .pp-emotion, .pp-list, .pp-coaching, .pp-author, .pp-mid-cta { padding: 3.5rem 1.25rem; }
+            .pp-emotion h2, .pp-list-inner h2, .pp-coaching h2, .pp-mid-cta h2 { font-size: 1.6rem; }
+            .pp-grid { grid-template-columns: 1fr; }
+            .author-card { padding: 1.75rem 1.25rem; }
+        }
+    </style>
+    <!-- Klaviyo Onsite Tracking -->
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
+    <script type="text/javascript">
+      !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+    </script>
+</head>
+<body>
+
+    <nav class="pp-nav">
+        <a href="index.html"><img src="logo.svg" alt="Seedscale Agency" style="height:36px;width:auto"></a>
+        <a href="index.html" class="pp-nav-back">&larr; Back to Home</a>
+    </nav>
+
+    <!-- Hero -->
+    <section class="pp-hero">
+        <div class="pp-hero-inner">
+            <span class="pp-eyebrow">The $9 Prompt Pack</span>
+            <h1>You're sitting on a skill. Let's turn it into something.</h1>
+            <p class="sub">7 AI prompts that pull what's already in your head — your experience, your story, your way of doing things — and turn it into words, offers, and content people will actually pay for.</p>
+            <div class="pp-price-row">
+                <span class="pp-price">$9</span>
+                <span class="pp-price-note">one-time &middot; instant access</span>
+            </div>
+            <!-- TODO: replace href with the live $9 Stripe checkout link -->
+            <a href="CHECKOUT_LINK_HERE" class="pp-buy">Get the Prompt Pack &rarr;</a>
+            <p class="pp-guarantee">Instant download &middot; Works in ChatGPT, Claude, or any AI tool</p>
+        </div>
+    </section>
+
+    <!-- Emotional hook -->
+    <section class="pp-emotion">
+        <div class="pp-emotion-inner">
+            <h2>Most people don't lack a skill. They just can't see the one they already have.</h2>
+            <p>You've got years of experience. Instincts. A way of solving problems that feels so <em>obvious</em> to you that you've convinced yourself it isn't worth anything.</p>
+            <p>It is. You just haven't had a way to pull it out of your head and shape it into something other people will pay for. So it stays stuck — a quiet "I should really do something with this" that never quite becomes a thing.</p>
+            <p><strong>That's exactly what this pack is for.</strong> Not 100 prompts you'll never open. Seven small systems that take what's already inside you and your business and make it usable — today, in the next hour, even if you've never seriously used AI before.</p>
+        </div>
+    </section>
+
+    <!-- What's inside -->
+    <section class="pp-list">
+        <div class="pp-list-inner">
+            <h2>What's inside the pack</h2>
+            <p class="section-sub">Seven prompts. Each one takes something you already have and turns it into momentum.</p>
+            <div class="pp-grid">
+                <div class="pp-card">
+                    <span class="num">1</span>
+                    <h4>The Audience Voice Decoder</h4>
+                    <p>Mine reviews, DMs, and conversations to surface the exact words your people use — so you finally know what to say and stop guessing.</p>
+                </div>
+                <div class="pp-card">
+                    <span class="num">2</span>
+                    <h4>The Revenue Email Machine</h4>
+                    <p>Generate welcome, nurture, and sales sequences in your voice — so "I don't know where to start" stops being the thing that holds you back.</p>
+                </div>
+                <div class="pp-card">
+                    <span class="num">3</span>
+                    <h4>The Content Repurposer</h4>
+                    <p>Turn one idea into 10 platform-native posts in 20 minutes. Three weeks of content from a single afternoon.</p>
+                </div>
+                <div class="pp-card">
+                    <span class="num">4</span>
+                    <h4>The Subject Line Lab</h4>
+                    <p>Generate and rank 20 subject lines and find the patterns your audience actually opens — no more staring at a blank line.</p>
+                </div>
+                <div class="pp-card">
+                    <span class="num">5</span>
+                    <h4>The Sales Page Diagnostic</h4>
+                    <p>Audit any page for friction, missing proof, and weak hooks — and get a prioritized fix list rated by effort and impact.</p>
+                </div>
+                <div class="pp-card">
+                    <span class="num">6</span>
+                    <h4>The Competitor Teardown</h4>
+                    <p>Analyze a competitor's funnel from public assets and find three specific gaps you can move on this month.</p>
+                </div>
+                <div class="pp-card">
+                    <span class="num">7</span>
+                    <h4>The Founder Story Polisher</h4>
+                    <p>Turn the origin story you've been underselling into a narrative people remember, trust, and refer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid-page buy CTA -->
+    <section class="pp-mid-cta">
+        <div class="pp-mid-cta-inner">
+            <h2>Less than lunch. The only thing between you and starting.</h2>
+            <p>I priced it at $9 on purpose — so the decision is the easy part. Run your first prompt today.</p>
+            <div class="pp-price-row">
+                <span class="pp-price">$9</span>
+                <span class="pp-price-note">one-time &middot; instant access</span>
+            </div>
+            <!-- TODO: replace href with the live $9 Stripe checkout link -->
+            <a href="CHECKOUT_LINK_HERE" class="pp-buy">Get the Prompt Pack &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Coaching CTA -->
+    <section class="pp-coaching">
+        <div class="pp-coaching-inner">
+            <span class="eyebrow">Want to figure it out together?</span>
+            <h2>If part of you knows there's something you're meant to build — but you can't quite name it yet — that's my favorite conversation.</h2>
+            <p>On a coaching call we map it out together: the skill you're sitting on, who it's actually for, and the first AI-assisted step to get it moving. No pressure, just a thinking partner who's done this for teams with tens of millions of subscribers.</p>
+            <a href="https://seedscale.agency/connect.html" class="book">Book a coaching call &rarr;</a>
+        </div>
+    </section>
+
+    <!-- Author note -->
+    <section class="pp-author">
+        <div class="pp-author-inner">
+            <div class="author-card">
+                <div class="author-avatar"><img src="headshot.jpeg" alt="Rebecca, founder of Seedscale"></div>
+                <h3>Hi, I'm Rebecca.</h3>
+                <p>I spent 15+ years leading digital teams for organizations with tens of millions of subscribers — driving billions of views and growing audiences into the millions. Most of that playbook stayed locked inside companies that could afford a big team. I built this pack to hand the same tools to the person with real skill and no team yet. Grab it, run one prompt, and prove to yourself you'll actually start.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="pp-footer">
+        <p class="logo">Seedscale Agency</p>
+        <p>Marketing Systems for Founders and Lean Teams</p>
+        <p>&copy; 2026 Seedscale Agency. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
