@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social &amp; Marketing Strategy — 60-Min 1:1 with Rebecca | Seedscale</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <meta name="description" content="A 60-minute strategy session with Rebecca for creators and businesses stuck on social media growth. Content audit, positioning, and a 30-day content calendar. $297.">
+    <meta property="og:title" content="Social & Marketing Strategy — 60-Min 1:1 with Rebecca">
+    <meta property="og:description" content="Posting and getting nowhere? In 60 minutes Rebecca will audit your content, fix your positioning, and hand you a 30-day calendar. $297.">
+    <meta property="og:image" content="og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seedscale.agency/social-strategy.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
+        html { scroll-padding-top: 60px; }
+        body {
+            font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6;
+            background: #fafaf9; padding-top: 60px;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        .s-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 1.5rem; height: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .s-nav-logo img { height: 28px; width: auto; }
+        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
+        .s-nav-back:hover { color: #21D375; }
+
+        .hero {
+            background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
+            color: #fff; padding: 4.5rem 1.25rem 4rem; text-align: center;
+        }
+        .hero-inner { max-width: 720px; margin: 0 auto; }
+        .hero-eyebrow {
+            display: inline-block; color: #FACC15; font-size: 0.72rem;
+            font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+            margin-bottom: 1.25rem; padding: 0.4rem 0.9rem;
+            border: 1px solid rgba(250,204,21,0.35); border-radius: 999px;
+        }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800; line-height: 1.08;
+            margin-bottom: 1.25rem; letter-spacing: -0.025em;
+        }
+        .hero h1 .em { color: #FACC15; }
+        .hero-promise {
+            font-size: 1.15rem; color: rgba(255,255,255,0.95);
+            line-height: 1.5; margin-bottom: 0.6rem; max-width: 600px;
+            margin-left: auto; margin-right: auto; font-weight: 500;
+        }
+        .hero-sub {
+            font-size: 0.95rem; color: rgba(255,255,255,0.78);
+            margin-bottom: 2rem; max-width: 540px;
+            margin-left: auto; margin-right: auto;
+        }
+        @media (min-width: 700px) {
+            .hero { padding: 5.5rem 1.5rem 4.5rem; }
+            .hero h1 { font-size: 2.8rem; }
+        }
+
+        .buy-btn {
+            display: inline-block; font-family: inherit; font-weight: 700;
+            font-size: 1.05rem; padding: 1rem 2.1rem; border-radius: 10px;
+            background: #FACC15; color: #073B3A; cursor: pointer;
+            transition: transform 0.15s, background 0.2s; border: none;
+        }
+        .buy-btn:hover { background: #fde047; transform: translateY(-1px); }
+        .buy-btn .price { opacity: 0.72; font-weight: 700; }
+        .buy-note { font-size: 0.82rem; color: rgba(255,255,255,0.62); margin-top: 0.85rem; }
+        .buy-note-dark { color: #777; }
+
+        section { padding: 4rem 1.25rem; }
+        .section-inner { max-width: 760px; margin: 0 auto; }
+        .section-label {
+            text-align: center; color: #0B6E4F; font-size: 0.7rem;
+            font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .section-h {
+            text-align: center; font-size: 1.9rem; font-weight: 700;
+            color: #073B3A; line-height: 1.15; margin-bottom: 0.6rem;
+            letter-spacing: -0.015em;
+        }
+        .section-sub {
+            text-align: center; color: #555; font-size: 1rem;
+            max-width: 560px; margin: 0 auto 2.5rem;
+        }
+        @media (min-width: 700px) {
+            .section-h { font-size: 2.2rem; }
+        }
+
+        .pain-grid {
+            display: grid; grid-template-columns: 1fr; gap: 1rem;
+        }
+        @media (min-width: 700px) {
+            .pain-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .pain-card {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+            padding: 1.4rem 1.5rem;
+        }
+        .pain-card h3 {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.35rem;
+        }
+        .pain-card p { font-size: 0.92rem; color: #555; line-height: 1.5; }
+        .pain-card .icon { font-size: 1.4rem; margin-bottom: 0.5rem; display: block; }
+
+        .what-list { list-style: none; padding: 0; }
+        .what-list li {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1.1rem 0; border-bottom: 1px solid #e5e7eb;
+        }
+        .what-list li:last-child { border-bottom: none; }
+        .what-num {
+            flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+            background: #073B3A; color: #FACC15; font-weight: 700;
+            font-size: 0.85rem; display: flex; align-items: center; justify-content: center;
+        }
+        .what-text h3 {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.25rem;
+        }
+        .what-text p { font-size: 0.95rem; color: #555; line-height: 1.55; }
+
+        .why-now { background: #073B3A; color: #fff; }
+        .why-now .section-label { color: #FACC15; }
+        .why-now .section-h { color: #fff; }
+        .why-quote {
+            font-size: 1.25rem; line-height: 1.5; color: #fff;
+            text-align: center; font-weight: 500; max-width: 620px;
+            margin: 0 auto 1.5rem; letter-spacing: -0.01em;
+        }
+        .why-quote .em { color: #FACC15; }
+        .why-body {
+            text-align: center; color: rgba(255,255,255,0.82);
+            max-width: 580px; margin: 0 auto; font-size: 1rem; line-height: 1.65;
+        }
+
+        .next-steps {
+            display: grid; grid-template-columns: 1fr; gap: 0.75rem;
+            max-width: 600px; margin: 0 auto;
+        }
+        .next-step {
+            display: flex; gap: 1rem; align-items: flex-start;
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+            padding: 1.1rem 1.25rem;
+        }
+        .next-step-num {
+            flex-shrink: 0; color: #FACC15; background: #073B3A;
+            font-weight: 700; font-size: 0.78rem; padding: 0.3rem 0.55rem;
+            border-radius: 6px; letter-spacing: 0.06em;
+        }
+        .next-step strong { color: #073B3A; font-size: 1rem; display: block; margin-bottom: 0.15rem; }
+        .next-step p { color: #555; font-size: 0.92rem; line-height: 1.55; }
+
+        .about-block {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+            padding: 2rem 1.75rem; max-width: 600px; margin: 0 auto;
+            display: flex; gap: 1.5rem; align-items: flex-start;
+        }
+        .about-photo {
+            width: 80px; height: 80px; min-width: 80px; border-radius: 50%; overflow: hidden;
+            border: 3px solid #FACC15;
+        }
+        .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .about-text h3 { font-size: 1.1rem; font-weight: 700; color: #073B3A; margin-bottom: 0.35rem; }
+        .about-text p { font-size: 0.92rem; color: #555; line-height: 1.55; }
+        @media (max-width: 500px) {
+            .about-block { flex-direction: column; align-items: center; text-align: center; }
+        }
+
+        .cta-bottom {
+            background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
+            color: #fff; text-align: center; padding: 4.5rem 1.25rem;
+        }
+        .cta-bottom h2 {
+            font-size: 2rem; font-weight: 800; color: #fff;
+            margin-bottom: 0.75rem; letter-spacing: -0.02em;
+        }
+        .cta-bottom h2 .em { color: #FACC15; }
+        .cta-bottom p {
+            color: rgba(255,255,255,0.82); margin-bottom: 2rem;
+            max-width: 540px; margin-left: auto; margin-right: auto;
+        }
+        @media (min-width: 700px) {
+            .cta-bottom h2 { font-size: 2.4rem; }
+        }
+
+        .ft {
+            background: #073B3A; color: rgba(255,255,255,0.7);
+            padding: 2rem 1.25rem; text-align: center; font-size: 0.85rem;
+        }
+        .ft a { color: #6BBF59; }
+        .ft a:hover { color: #21D375; }
+    </style>
+</head>
+<body>
+
+    <nav class="s-nav">
+        <a href="index.html" class="s-nav-logo">
+            <img src="logo.svg" alt="Seedscale Agency">
+        </a>
+        <a href="connect.html" class="s-nav-back">← All offers</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">60-Min 1:1 Session · $297</span>
+            <h1>Posting every day and<br><span class="em">still not growing?</span></h1>
+            <p class="hero-promise">In 60 minutes, I'll tell you exactly why your content isn't converting and rebuild your strategy from the ground up.</p>
+            <p class="hero-sub">A 1:1 session with me, Rebecca. Not a template. Not a course. A hands-on content and marketing strategy built around your brand, your audience, and your goals.</p>
+
+            <a href="https://buy.stripe.com/00wcN79QvddX3lU7PI0Ny09" class="buy-btn">Book your session <span class="price">— $297</span></a>
+            <p class="buy-note">Secure checkout via Stripe. You'll book your time slot after payment.</p>
+        </div>
+    </section>
+
+    <!-- THIS IS FOR YOU IF... -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">Sound familiar?</div>
+            <h2 class="section-h">This session is for you if...</h2>
+            <p class="section-sub">You're doing the work. You're showing up. But the numbers aren't moving and you can't figure out why.</p>
+
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <span class="icon">📉</span>
+                    <h3>You post consistently but nothing converts</h3>
+                    <p>You've been told to "just be consistent." You are. And your DMs are still empty. The problem isn't frequency. It's positioning.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="icon">🎯</span>
+                    <h3>You don't know who you're actually talking to</h3>
+                    <p>"Everyone" is not an audience. Until you get specific about who you serve and what they need, your content will feel generic to everyone.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="icon">😩</span>
+                    <h3>You're stuck in the content hamster wheel</h3>
+                    <p>You spend hours creating content that gets 12 likes and no leads. You need a system, not more motivation.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="icon">🤷</span>
+                    <h3>You don't know what to post or how to sell</h3>
+                    <p>You have something to offer but you can't figure out how to talk about it without sounding pushy or salesy. That's a messaging problem, and it's fixable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT YOU GET -->
+    <section style="background: #fff;">
+        <div class="section-inner">
+            <div class="section-label">What you walk away with</div>
+            <h2 class="section-h">60 minutes. A complete content reset.</h2>
+            <p class="section-sub">You'll leave with a strategy you can execute tomorrow. Not "ideas." Not "inspiration." A plan with specifics.</p>
+
+            <ul class="what-list">
+                <li>
+                    <span class="what-num">1</span>
+                    <div class="what-text">
+                        <h3>A full content audit</h3>
+                        <p>I'll look at what you've been posting, what's working, what's not, and why. You'll see exactly where your content is leaking attention.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">2</span>
+                    <div class="what-text">
+                        <h3>Your audience positioning, locked in</h3>
+                        <p>Who you're for, what you help them do, and why they should listen to you over anyone else. This is the foundation everything else is built on.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">3</span>
+                    <div class="what-text">
+                        <h3>A 30-day content calendar with hooks</h3>
+                        <p>30 days of posts. Not topics. Actual hooks, formats, and calls to action you can use as-is or riff on. No more staring at a blank screen.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">4</span>
+                    <div class="what-text">
+                        <h3>Full session recording</h3>
+                        <p>Rewatch the strategy breakdown anytime. Reference it when you're planning next month's content. Share it with your team if you have one.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">5</span>
+                    <div class="what-text">
+                        <h3>Written summary with action items</h3>
+                        <p>Everything we covered in a clean document. Your positioning statement, your content pillars, your calendar, and what to do first. Delivered within 48 hours.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- WHY REBECCA -->
+    <section class="why-now">
+        <div class="section-inner">
+            <div class="section-label">Who you're working with</div>
+            <h2 class="section-h">I've done this at scale. Now I do it 1:1.</h2>
+            <p class="why-quote">15 years in digital marketing. <span class="em">10 million+ subscribers</span> built across YouTube, email, and social. I've seen what works at every stage, from zero followers to millions.</p>
+            <p class="why-body">I've helped creators, personal brands, and small businesses fix their content strategy and start seeing real growth. Not vanity metrics. Real leads, real engagement, real revenue.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT REBECCA -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">About Rebecca</div>
+            <h2 class="section-h" style="margin-bottom: 1.75rem;">Your strategist for the hour.</h2>
+
+            <div class="about-block">
+                <div class="about-photo">
+                    <img src="headshot.jpeg" alt="Rebecca">
+                </div>
+                <div class="about-text">
+                    <h3>Rebecca, founder of Seedscale</h3>
+                    <p>I've built content engines for brands with millions of subscribers and helped solo creators go from invisible to fully booked. I know what works on Instagram, YouTube, TikTok, LinkedIn, and email. I'll tell you where to focus and what to ignore.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section style="background: #fff;">
+        <div class="section-inner">
+            <div class="section-label">How it works</div>
+            <h2 class="section-h">From booking to content calendar in 48 hours.</h2>
+
+            <div class="next-steps">
+                <div class="next-step">
+                    <span class="next-step-num">01</span>
+                    <div>
+                        <strong>Book and pay.</strong>
+                        <p>Click the button below. Secure checkout through Stripe. After payment, you'll pick a time on my calendar.</p>
+                    </div>
+                </div>
+                <div class="next-step">
+                    <span class="next-step-num">02</span>
+                    <div>
+                        <strong>Share your content with me.</strong>
+                        <p>You'll get a short intake form. Drop your social handles, your goals, and what you've been struggling with. I'll review everything before we meet.</p>
+                    </div>
+                </div>
+                <div class="next-step">
+                    <span class="next-step-num">03</span>
+                    <div>
+                        <strong>We meet for 60 minutes.</strong>
+                        <p>Video call. I'll walk through your audit, we'll nail your positioning, and I'll build your 30-day calendar live. You'll see exactly what to post and why.</p>
+                    </div>
+                </div>
+                <div class="next-step">
+                    <span class="next-step-num">04</span>
+                    <div>
+                        <strong>You get your recording + summary within 48 hours.</strong>
+                        <p>Full session recording, your content calendar, your positioning doc, and a clear list of what to do first. Open it and start posting.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="cta-bottom">
+        <div class="hero-inner">
+            <h2>Stop guessing. <span class="em">Start growing.</span></h2>
+            <p>One hour with Rebecca. A full content audit, clear positioning, and a 30-day content calendar you can start using tomorrow. $297, one time.</p>
+            <a href="https://buy.stripe.com/00wcN79QvddX3lU7PI0Ny09" class="buy-btn">Book your session <span class="price">— $297</span></a>
+            <p class="buy-note">Secure checkout via Stripe · You'll book your time slot after payment</p>
+        </div>
+    </section>
+
+    <footer class="ft">
+        &copy; 2026 Seedscale Agency &middot; <a href="index.html">Home</a> &middot; <a href="connect.html">All offers</a>
+    </footer>
+
+</body>
+</html>

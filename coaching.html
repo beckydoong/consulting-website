@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Coaching with Rebecca — $997/mo | Seedscale</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <meta name="description" content="Rebecca becomes your thinking partner. Two 60-minute calls per month plus async support. Marketing, content, AI, and growth. $997/mo, cancel anytime.">
+    <meta property="og:title" content="Monthly Coaching with Rebecca — $997/mo">
+    <meta property="og:description" content="Two calls per month plus async support. Marketing, content, AI, growth. Your thinking partner on the stuff that matters. Cancel anytime.">
+    <meta property="og:image" content="og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seedscale.agency/coaching.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
+        html { scroll-padding-top: 60px; }
+        body {
+            font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6;
+            background: #fafaf9; padding-top: 60px;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        .s-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 1.5rem; height: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .s-nav-logo img { height: 28px; width: auto; }
+        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
+        .s-nav-back:hover { color: #21D375; }
+
+        .hero {
+            background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
+            color: #fff; padding: 4.5rem 1.25rem 4rem; text-align: center;
+        }
+        .hero-inner { max-width: 720px; margin: 0 auto; }
+        .hero-eyebrow {
+            display: inline-block; color: #FACC15; font-size: 0.72rem;
+            font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+            margin-bottom: 1.25rem; padding: 0.4rem 0.9rem;
+            border: 1px solid rgba(250,204,21,0.35); border-radius: 999px;
+        }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800; line-height: 1.08;
+            margin-bottom: 1.25rem; letter-spacing: -0.025em;
+        }
+        .hero h1 .em { color: #FACC15; }
+        .hero-promise {
+            font-size: 1.15rem; color: rgba(255,255,255,0.95);
+            line-height: 1.5; margin-bottom: 0.6rem; max-width: 600px;
+            margin-left: auto; margin-right: auto; font-weight: 500;
+        }
+        .hero-sub {
+            font-size: 0.95rem; color: rgba(255,255,255,0.78);
+            margin-bottom: 2rem; max-width: 540px;
+            margin-left: auto; margin-right: auto;
+        }
+        @media (min-width: 700px) {
+            .hero { padding: 5.5rem 1.5rem 4.5rem; }
+            .hero h1 { font-size: 2.8rem; }
+        }
+
+        .buy-btn {
+            display: inline-block; font-family: inherit; font-weight: 700;
+            font-size: 1.05rem; padding: 1rem 2.1rem; border-radius: 10px;
+            background: #FACC15; color: #073B3A; cursor: pointer;
+            transition: transform 0.15s, background 0.2s; border: none;
+        }
+        .buy-btn:hover { background: #fde047; transform: translateY(-1px); }
+        .buy-btn .price { opacity: 0.72; font-weight: 700; }
+        .buy-note { font-size: 0.82rem; color: rgba(255,255,255,0.62); margin-top: 0.85rem; }
+        .buy-note-dark { color: #777; }
+
+        section { padding: 4rem 1.25rem; }
+        .section-inner { max-width: 760px; margin: 0 auto; }
+        .section-label {
+            text-align: center; color: #0B6E4F; font-size: 0.7rem;
+            font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
+            margin-bottom: 0.6rem;
+        }
+        .section-h {
+            text-align: center; font-size: 1.9rem; font-weight: 700;
+            color: #073B3A; line-height: 1.15; margin-bottom: 0.6rem;
+            letter-spacing: -0.015em;
+        }
+        .section-sub {
+            text-align: center; color: #555; font-size: 1rem;
+            max-width: 560px; margin: 0 auto 2.5rem;
+        }
+        @media (min-width: 700px) {
+            .section-h { font-size: 2.2rem; }
+        }
+
+        .pain-grid {
+            display: grid; grid-template-columns: 1fr; gap: 1rem;
+        }
+        @media (min-width: 700px) {
+            .pain-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .pain-card {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+            padding: 1.4rem 1.5rem;
+        }
+        .pain-card h3 {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.35rem;
+        }
+        .pain-card p { font-size: 0.92rem; color: #555; line-height: 1.5; }
+        .pain-card .icon { font-size: 1.4rem; margin-bottom: 0.5rem; display: block; }
+
+        .includes-grid {
+            display: grid; grid-template-columns: 1fr; gap: 1rem;
+        }
+        @media (min-width: 600px) {
+            .includes-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .includes-card {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+            padding: 1.75rem 1.5rem; text-align: center;
+        }
+        .includes-card .ic-icon {
+            font-size: 2rem; margin-bottom: 0.75rem; display: block;
+        }
+        .includes-card h3 {
+            font-size: 1.1rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.35rem;
+        }
+        .includes-card p { font-size: 0.9rem; color: #555; line-height: 1.5; }
+
+        .what-list { list-style: none; padding: 0; }
+        .what-list li {
+            display: flex; gap: 1rem; align-items: flex-start;
+            padding: 1.1rem 0; border-bottom: 1px solid #e5e7eb;
+        }
+        .what-list li:last-child { border-bottom: none; }
+        .what-num {
+            flex-shrink: 0; width: 32px; height: 32px; border-radius: 50%;
+            background: #073B3A; color: #FACC15; font-weight: 700;
+            font-size: 0.85rem; display: flex; align-items: center; justify-content: center;
+        }
+        .what-text h3 {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            margin-bottom: 0.25rem;
+        }
+        .what-text p { font-size: 0.95rem; color: #555; line-height: 1.55; }
+
+        .why-now { background: #073B3A; color: #fff; }
+        .why-now .section-label { color: #FACC15; }
+        .why-now .section-h { color: #fff; }
+        .why-quote {
+            font-size: 1.25rem; line-height: 1.5; color: #fff;
+            text-align: center; font-weight: 500; max-width: 620px;
+            margin: 0 auto 1.5rem; letter-spacing: -0.01em;
+        }
+        .why-quote .em { color: #FACC15; }
+        .why-body {
+            text-align: center; color: rgba(255,255,255,0.82);
+            max-width: 580px; margin: 0 auto; font-size: 1rem; line-height: 1.65;
+        }
+
+        .compare-block {
+            max-width: 600px; margin: 0 auto;
+        }
+        .compare-row {
+            display: flex; gap: 1rem; padding: 1rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .compare-row:last-child { border-bottom: none; }
+        .compare-label { flex: 1; font-weight: 600; color: #073B3A; font-size: 0.95rem; }
+        .compare-val { flex: 1; color: #555; font-size: 0.95rem; }
+
+        .about-block {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+            padding: 2rem 1.75rem; max-width: 600px; margin: 0 auto;
+            display: flex; gap: 1.5rem; align-items: flex-start;
+        }
+        .about-photo {
+            width: 80px; height: 80px; min-width: 80px; border-radius: 50%; overflow: hidden;
+            border: 3px solid #FACC15;
+        }
+        .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .about-text h3 { font-size: 1.1rem; font-weight: 700; color: #073B3A; margin-bottom: 0.35rem; }
+        .about-text p { font-size: 0.92rem; color: #555; line-height: 1.55; }
+        @media (max-width: 500px) {
+            .about-block { flex-direction: column; align-items: center; text-align: center; }
+        }
+
+        .cta-bottom {
+            background: linear-gradient(165deg, #073B3A 0%, #0B6E4F 100%);
+            color: #fff; text-align: center; padding: 4.5rem 1.25rem;
+        }
+        .cta-bottom h2 {
+            font-size: 2rem; font-weight: 800; color: #fff;
+            margin-bottom: 0.75rem; letter-spacing: -0.02em;
+        }
+        .cta-bottom h2 .em { color: #FACC15; }
+        .cta-bottom p {
+            color: rgba(255,255,255,0.82); margin-bottom: 2rem;
+            max-width: 540px; margin-left: auto; margin-right: auto;
+        }
+        @media (min-width: 700px) {
+            .cta-bottom h2 { font-size: 2.4rem; }
+        }
+
+        .ft {
+            background: #073B3A; color: rgba(255,255,255,0.7);
+            padding: 2rem 1.25rem; text-align: center; font-size: 0.85rem;
+        }
+        .ft a { color: #6BBF59; }
+        .ft a:hover { color: #21D375; }
+    </style>
+</head>
+<body>
+
+    <nav class="s-nav">
+        <a href="index.html" class="s-nav-logo">
+            <img src="logo.svg" alt="Seedscale Agency">
+        </a>
+        <a href="connect.html" class="s-nav-back">← All offers</a>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-inner">
+            <span class="hero-eyebrow">Monthly Coaching · $997/mo · Cancel anytime</span>
+            <h1>Stop making decisions <span class="em">alone.</span></h1>
+            <p class="hero-promise">I become your thinking partner on marketing, content, AI, and growth. Two calls a month, plus async support so you're never stuck waiting for our next session.</p>
+            <p class="hero-sub">This is for people who are past the basics and need a senior-level strategist in their corner. Not a course. Not a community. Direct access to me, Rebecca.</p>
+
+            <a href="https://buy.stripe.com/fZu00l6Ej2zj6y6da20Ny0a" class="buy-btn">Start coaching <span class="price">— $997/mo</span></a>
+            <p class="buy-note">Cancel anytime. No contracts. You'll book your first call after payment.</p>
+        </div>
+    </section>
+
+    <!-- THIS IS FOR YOU IF... -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">Sound familiar?</div>
+            <h2 class="section-h">This is for you if...</h2>
+            <p class="section-sub">You've got momentum. You're making money. But you're making every decision by yourself and it's slowing you down.</p>
+
+            <div class="pain-grid">
+                <div class="pain-card">
+                    <span class="icon">🧠</span>
+                    <h3>You need someone to think with, not just learn from</h3>
+                    <p>You've taken the courses. You've read the books. What you need now is someone who understands your specific situation and can help you make better decisions, faster.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="icon">⚡</span>
+                    <h3>You're stuck between too many priorities</h3>
+                    <p>Should you launch the course or fix the funnel? Hire or automate? Rebrand or double down? You need someone to cut through the noise and tell you what matters right now.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="icon">🔄</span>
+                    <h3>You're tired of one-off advice</h3>
+                    <p>A single strategy session helps, but growth is ongoing. You need someone who knows your business, remembers where you left off, and helps you build momentum over time.</p>
+                </div>
+                <div class="pain-card">
+                    <span class="icon">💬</span>
+                    <h3>You need answers between calls</h3>
+                    <p>Ideas don't happen on a schedule. When something comes up, you need to be able to reach out, share context, and get a real answer. Not wait two weeks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT'S INCLUDED -->
+    <section style="background: #fff;">
+        <div class="section-inner">
+            <div class="section-label">What's included every month</div>
+            <h2 class="section-h">A senior strategist in your corner.</h2>
+            <p class="section-sub">Everything you'd get from a marketing director, without the salary, the benefits, or the ramp-up time.</p>
+
+            <div class="includes-grid">
+                <div class="includes-card">
+                    <span class="ic-icon">📞</span>
+                    <h3>Two 60-min strategy calls</h3>
+                    <p>Scheduled on your calendar, every two weeks. Bring your biggest questions, review what's working, plan what's next.</p>
+                </div>
+                <div class="includes-card">
+                    <span class="ic-icon">💬</span>
+                    <h3>Async Slack + email support</h3>
+                    <p>Message me between calls. Share a draft, ask a quick question, get feedback on a decision. I respond within 24 hours on business days.</p>
+                </div>
+                <div class="includes-card">
+                    <span class="ic-icon">🎯</span>
+                    <h3>Personalized strategy</h3>
+                    <p>Not templates. Everything is built around your business, your audience, your goals. I learn your brand and remember your context between sessions.</p>
+                </div>
+                <div class="includes-card">
+                    <span class="ic-icon">🔓</span>
+                    <h3>Cancel anytime</h3>
+                    <p>No contracts, no lock-ins. Stay because it's working. If it's not, cancel with one click. No awkward conversation required.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT WE WORK ON -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">What we work on together</div>
+            <h2 class="section-h">Bring me whatever's keeping you stuck.</h2>
+            <p class="section-sub">Every person I coach brings different challenges. Here's what comes up most.</p>
+
+            <ul class="what-list">
+                <li>
+                    <span class="what-num">1</span>
+                    <div class="what-text">
+                        <h3>Marketing strategy</h3>
+                        <p>Funnels, launches, email sequences, lead generation. We build and refine the system that turns attention into revenue.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">2</span>
+                    <div class="what-text">
+                        <h3>Content and social media</h3>
+                        <p>What to post, how to position yourself, how to sell without being salesy. Platform strategy for Instagram, YouTube, TikTok, LinkedIn, email.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">3</span>
+                    <div class="what-text">
+                        <h3>AI tools and workflows</h3>
+                        <p>Which AI tools actually save time, how to use them for your specific work, and how to build workflows that give you back hours every week.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">4</span>
+                    <div class="what-text">
+                        <h3>Offer design and pricing</h3>
+                        <p>What to sell, how to package it, how to price it, and how to position it so people actually buy. From digital products to high-ticket services.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="what-num">5</span>
+                    <div class="what-text">
+                        <h3>Business decisions</h3>
+                        <p>Should you hire? Should you pivot? Should you raise your rates? I've been through these decisions at every stage. I'll help you think clearly about yours.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- WHY REBECCA -->
+    <section class="why-now">
+        <div class="section-inner">
+            <div class="section-label">Why work with Rebecca</div>
+            <h2 class="section-h">I've been where you are. Multiple times.</h2>
+            <p class="why-quote">15 years in digital marketing. <span class="em">10 million+ subscribers</span> built. I've launched products, scaled content brands, hired teams, and rebuilt strategies from scratch. I know what works because I've done it.</p>
+            <p class="why-body">I don't give generic advice. I learn your business, track your progress between calls, and give you the same strategic thinking I use in my own work. This is as close to having me on your team as it gets without a retainer.</p>
+        </div>
+    </section>
+
+    <!-- ABOUT REBECCA -->
+    <section>
+        <div class="section-inner">
+            <div class="section-label">About Rebecca</div>
+            <h2 class="section-h" style="margin-bottom: 1.75rem;">Your thinking partner.</h2>
+
+            <div class="about-block">
+                <div class="about-photo">
+                    <img src="headshot.jpeg" alt="Rebecca">
+                </div>
+                <div class="about-text">
+                    <h3>Rebecca, founder of Seedscale</h3>
+                    <p>I spent 15 years building content brands, running marketing for companies at every stage, and growing audiences past 10M subscribers. Now I use AI every day in my own work and help others do the same. Coaching is how I give people direct access to everything I've learned.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COACHING vs. STRATEGY SESSION -->
+    <section style="background: #fff;">
+        <div class="section-inner">
+            <div class="section-label">How it compares</div>
+            <h2 class="section-h">Strategy session vs. coaching.</h2>
+            <p class="section-sub">Not sure which one fits? Here's the difference.</p>
+
+            <div class="compare-block">
+                <div class="compare-row" style="border-bottom: 2px solid #073B3A;">
+                    <div class="compare-label" style="font-weight: 700;"></div>
+                    <div class="compare-val" style="font-weight: 700; color: #073B3A;">Strategy Session ($297)</div>
+                    <div class="compare-val" style="font-weight: 700; color: #073B3A;">Coaching ($997/mo)</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-label">Calls</div>
+                    <div class="compare-val">1 session</div>
+                    <div class="compare-val">2 per month</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-label">Async support</div>
+                    <div class="compare-val">No</div>
+                    <div class="compare-val">Slack + email</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-label">Best for</div>
+                    <div class="compare-val">One specific problem</div>
+                    <div class="compare-val">Ongoing growth</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-label">Continuity</div>
+                    <div class="compare-val">One-time</div>
+                    <div class="compare-val">I learn your business</div>
+                </div>
+                <div class="compare-row">
+                    <div class="compare-label">Accountability</div>
+                    <div class="compare-val">Self-directed</div>
+                    <div class="compare-val">Built-in check-ins</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="cta-bottom">
+        <div class="hero-inner">
+            <h2>Get a strategist <span class="em">in your corner.</span></h2>
+            <p>Two calls a month. Async support between them. A thinking partner who learns your business and helps you grow. $997/mo, cancel anytime.</p>
+            <a href="https://buy.stripe.com/fZu00l6Ej2zj6y6da20Ny0a" class="buy-btn">Start coaching <span class="price">— $997/mo</span></a>
+            <p class="buy-note">Cancel anytime · No contracts · You'll book your first call after payment</p>
+        </div>
+    </section>
+
+    <footer class="ft">
+        &copy; 2026 Seedscale Agency &middot; <a href="index.html">Home</a> &middot; <a href="connect.html">All offers</a>
+    </footer>
+
+</body>
+</html>
