@@ -207,25 +207,25 @@
         var params = new URLSearchParams(window.location.search);
         var session = params.get('session') || 'strategy';
 
-        var sessionField = document.getElementById(‘form-session’);
-        var title = document.getElementById(‘confirm-title’);
-        var aiGroup = document.getElementById(‘ai-tools-group’);
-        var socialGroup = document.getElementById(‘social-handles-group’);
+        var sessionField = document.getElementById('form-session');
+        var title = document.getElementById('confirm-title');
+        var aiGroup = document.getElementById('ai-tools-group');
+        var socialGroup = document.getElementById('social-handles-group');
 
         if (sessionField) sessionField.value = session;
 
-        if (session === ‘ai-career’) {
-            title.textContent = ‘Payment confirmed. Let’s build your AI strategy.’;
-            socialGroup.style.display = ‘none’;
-            aiGroup.style.display = ‘’;
-        } else if (session === ‘social’) {
-            title.textContent = ‘Payment confirmed. Let’s fix your content strategy.’;
-            socialGroup.style.display = ‘’;
-            aiGroup.style.display = ‘none’;
-        } else if (session === ‘coaching’) {
-            title.textContent = ‘Welcome to coaching. Let’s get you set up.’;
-            socialGroup.style.display = ‘’;
-            aiGroup.style.display = ‘’;
+        if (session === 'ai-career') {
+            title.textContent = "Payment confirmed. Let's build your AI strategy.";
+            socialGroup.style.display = 'none';
+            aiGroup.style.display = '';
+        } else if (session === 'social') {
+            title.textContent = "Payment confirmed. Let's fix your content strategy.";
+            socialGroup.style.display = '';
+            aiGroup.style.display = 'none';
+        } else if (session === 'coaching') {
+            title.textContent = "Welcome to coaching. Let's get you set up.";
+            socialGroup.style.display = '';
+            aiGroup.style.display = '';
         }
 
         var form = document.getElementById('intake-form');
