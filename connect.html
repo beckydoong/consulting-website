@@ -3,223 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Work With Us | Seedscale Agency</title>
-    <meta name="description" content="Connect with Seedscale Agency — digital marketing consulting for founders and lean teams. Content marketing, AI consulting, and direct response systems.">
-    <meta property="og:title" content="Work With Seedscale Agency">
-    <meta property="og:description" content="Digital marketing consulting for mission-driven organizations.">
+    <title>Start Here — Rebecca at Seedscale</title>
+    <meta name="description" content="Free AI resources, strategy sessions, coaching, and consulting from Rebecca at Seedscale Agency. Find what fits where you are right now.">
+    <meta property="og:title" content="Start Here — Rebecca at Seedscale">
+    <meta property="og:description" content="Free resources, strategy sessions, coaching, and consulting. Find what fits where you are.">
     <meta property="og:image" content="https://seedscale.agency/og-image.png">
     <meta property="og:url" content="https://seedscale.agency/connect.html">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-        :root {
-            --darkest: #073B3A;
-            --dark: #0B6E4F;
-            --medium: #08A045;
-            --light: #6BBF59;
-            --bright: #21D375;
-            --accent: #FACC15;
-            --accent-hover: #fde047;
-        }
-
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Work Sans', sans-serif;
-            color: #1a1a1a;
-            line-height: 1.6;
-            background: #fff;
+            color: #1a1a1a; line-height: 1.6;
+            background: #f9fafb;
+        }
+        a { color: inherit; text-decoration: none; }
+
+        /* ── Header / Bio ── */
+        .bio {
+            background: #073B3A; color: #fff;
+            padding: 3rem 1.5rem 2.5rem; text-align: center;
+        }
+        .bio-photo {
+            width: 96px; height: 96px; border-radius: 50%; overflow: hidden;
+            margin: 0 auto 1rem; border: 3px solid #FACC15;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+        }
+        .bio-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .bio h1 {
+            font-size: 1.6rem; font-weight: 700; margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+        }
+        .bio p {
+            font-size: 0.92rem; color: rgba(255,255,255,0.8);
+            max-width: 420px; margin: 0 auto; line-height: 1.5;
         }
 
-        /* ── Nav ── */
-        .lp-nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: var(--darkest); padding: 0 2rem; height: 64px;
+        /* ── Quick Nav ── */
+        .quick-nav {
+            display: flex; gap: 0.5rem; justify-content: center;
+            flex-wrap: wrap; padding: 1rem 1rem 0;
+            max-width: 520px; margin: 0 auto;
+        }
+        .quick-nav a {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #FACC15;
+            padding: 0.4rem 0.85rem; border: 1px solid rgba(250,204,21,0.3);
+            border-radius: 100px; transition: all 0.2s;
+        }
+        .quick-nav a:hover { background: rgba(250,204,21,0.12); }
+
+        /* ── Section ── */
+        .section {
+            max-width: 520px; margin: 0 auto;
+            padding: 2rem 1.25rem 0;
+        }
+        .section-label {
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; color: #0B6E4F; margin-bottom: 1rem;
+            padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;
+        }
+
+        /* ── Offer Card ── */
+        .offer {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 1.1rem 1.25rem; margin-bottom: 0.75rem;
+            background: #fff; border-radius: 14px;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none; color: inherit;
+        }
+        .offer:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .offer-highlight {
+            background: #FACC15; border-color: #FACC15;
+        }
+        .offer-highlight .offer-tag { color: #073B3A; }
+        .offer-highlight .offer-title { color: #073B3A; }
+        .offer-highlight .offer-desc { color: rgba(7,59,58,0.8); }
+        .offer-highlight .offer-arrow { color: #073B3A; }
+        .offer-highlight .offer-price { color: #073B3A; background: rgba(7,59,58,0.1); }
+
+        .offer-icon {
+            width: 44px; height: 44px; min-width: 44px;
+            border-radius: 10px; background: #073B3A;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; margin-top: 0.1rem;
+        }
+        .offer-highlight .offer-icon {
+            background: #073B3A;
+        }
+        .offer-body { flex: 1; min-width: 0; }
+        .offer-top {
             display: flex; align-items: center; justify-content: space-between;
+            gap: 0.5rem; margin-bottom: 0.15rem;
         }
-        .lp-nav-logo {
-            text-decoration: none; display: flex; align-items: center;
+        .offer-tag {
+            font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: #0B6E4F;
         }
-        .lp-nav-logo img {
-            height: 36px; width: auto;
+        .offer-price {
+            font-size: 0.68rem; font-weight: 700; color: #0B6E4F;
+            background: #eef6f0; padding: 0.15rem 0.5rem;
+            border-radius: 4px; white-space: nowrap;
         }
-        .lp-nav-link {
-            color: var(--light); text-decoration: none; font-size: 0.9rem; font-weight: 500;
-            transition: color 0.2s;
+        .offer-title {
+            font-size: 1.05rem; font-weight: 700; color: #073B3A;
+            line-height: 1.25; margin-bottom: 0.25rem;
         }
-        .lp-nav-link:hover { color: var(--bright); }
-
-        /* ── Hero ── */
-        .hero {
-            background: var(--darkest); color: #fff;
-            padding: 8rem 2rem 4rem; text-align: center;
+        .offer-desc {
+            font-size: 0.85rem; color: #555; line-height: 1.45;
         }
-        .hero-inner {
-            max-width: 720px; margin: 0 auto;
-        }
-        .hero-badge {
-            display: inline-block; padding: 0.35rem 1rem; border-radius: 100px;
-            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
-            font-size: 0.8rem; font-weight: 500; color: var(--light);
-            letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 1.5rem;
-        }
-        .hero h1 {
-            font-size: 2.6rem; font-weight: 700; line-height: 1.15;
-            letter-spacing: -0.02em; margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.1rem; color: #a8e6cf; line-height: 1.6; margin-bottom: 2rem;
-        }
-        .hero .scroll-cta {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            color: var(--accent); text-decoration: none; font-weight: 600;
-            font-size: 0.95rem; transition: opacity 0.2s;
-        }
-        .hero .scroll-cta:hover { opacity: 0.8; }
-        .hero .scroll-cta svg {
-            width: 18px; height: 18px; stroke: var(--accent); fill: none; stroke-width: 2;
+        .offer-arrow {
+            font-size: 0.85rem; color: #0B6E4F; font-weight: 600;
+            margin-top: 0.4rem; display: inline-block;
         }
 
-        /* ── About ── */
-        .about {
-            padding: 5rem 2rem; background: #f9fafb;
+        /* ── Fractional CTA ── */
+        .fractional {
+            max-width: 520px; margin: 0 auto;
+            padding: 2rem 1.25rem 1rem;
         }
-        .about-inner {
-            max-width: 900px; margin: 0 auto;
-            display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start;
+        .fractional-card {
+            background: #073B3A; color: #fff;
+            border-radius: 14px; padding: 1.75rem 1.5rem;
+            text-align: center;
         }
-        .about-photo img {
-            width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
-            border: 4px solid var(--dark);
+        .fractional-card .frac-label {
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; color: #FACC15; margin-bottom: 0.75rem;
         }
-        .about-text h2 {
-            font-size: 1.6rem; font-weight: 700; color: var(--darkest); margin-bottom: 1rem;
+        .fractional-card h3 {
+            font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;
         }
-        .about-text p {
-            font-size: 0.95rem; color: #444; line-height: 1.65; margin-bottom: 0.75rem;
+        .fractional-card p {
+            font-size: 0.9rem; color: rgba(255,255,255,0.8);
+            line-height: 1.5; margin-bottom: 1.25rem;
+            max-width: 400px; margin-left: auto; margin-right: auto;
         }
-        .stats-row {
-            display: flex; gap: 2rem; margin-top: 1.5rem; padding-top: 1.5rem;
-            border-top: 1px solid #e5e7eb;
+        .fractional-card .frac-btn {
+            display: inline-block; padding: 0.75rem 1.75rem;
+            background: #FACC15; color: #073B3A;
+            border-radius: 8px; font-weight: 700; font-size: 0.95rem;
+            transition: background 0.2s, transform 0.15s;
         }
-        .stat-item { text-align: center; }
-        .stat-num {
-            display: block; font-size: 1.5rem; font-weight: 700; color: var(--dark);
-        }
-        .stat-lbl {
-            font-size: 0.75rem; color: #888; text-transform: uppercase; letter-spacing: 0.05em;
-        }
-
-        /* ── Services ── */
-        .services {
-            padding: 5rem 2rem; background: #fff;
-        }
-        .services-inner {
-            max-width: 900px; margin: 0 auto; text-align: center;
-        }
-        .services-inner h2 {
-            font-size: 1.8rem; font-weight: 700; color: var(--darkest); margin-bottom: 0.5rem;
-        }
-        .services-inner .sub {
-            color: #666; font-size: 1rem; margin-bottom: 2.5rem;
-        }
-        .services-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: left;
-        }
-        .svc-card {
-            background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px;
-            padding: 1.75rem; transition: box-shadow 0.25s, transform 0.25s;
-        }
-        .svc-card:hover {
-            box-shadow: 0 8px 24px rgba(7,59,58,0.08); transform: translateY(-3px);
-        }
-        .svc-icon {
-            width: 44px; height: 44px; border-radius: 10px; background: var(--darkest);
-            display: flex; align-items: center; justify-content: center; margin-bottom: 1rem;
-        }
-        .svc-icon svg { width: 22px; height: 22px; stroke: var(--accent); fill: none; stroke-width: 1.5; }
-        .svc-card h3 {
-            font-size: 1.05rem; font-weight: 600; color: var(--darkest); margin-bottom: 0.5rem;
-        }
-        .svc-card p {
-            font-size: 0.88rem; color: #555; line-height: 1.55;
-        }
-
-        /* ── Contact ── (homepage-style: light mint section, white cards, dark green button) */
-        .contact {
-            padding: 5rem 2rem; background: #F0F7F4; color: var(--darkest);
-        }
-        .contact-inner {
-            max-width: 900px; margin: 0 auto;
-        }
-        .contact-label {
-            display: inline-block; font-size: 0.72rem; text-transform: uppercase;
-            letter-spacing: 0.3em; color: var(--medium); margin-bottom: 1.25rem;
-            font-weight: 700; padding: 0.4rem 1rem; background: rgba(8,160,69,0.08);
-            border-radius: 100px;
-        }
-        .contact-inner h2 {
-            font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; line-height: 1.15;
-            letter-spacing: -0.02em; color: var(--darkest); margin-bottom: 1rem;
-        }
-        .contact-inner .sub {
-            font-size: 1.1rem; color: rgba(7,59,58,0.7); max-width: 580px;
-            margin-bottom: 3rem; line-height: 1.7; font-weight: 300;
-        }
-        .contact-form {
-            display: flex; flex-direction: column; gap: 16px;
-        }
-        .form-row {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-        }
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%; padding: 16px 20px; border: 1px solid rgba(7,59,58,0.1);
-            border-radius: 12px; background: #fff; color: var(--darkest);
-            font-family: 'Work Sans', sans-serif; font-size: 0.95rem;
-            transition: border-color 0.2s;
-        }
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder { color: rgba(7,59,58,0.4); }
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none; border-color: var(--medium);
-        }
-        .contact-form textarea {
-            min-height: 120px; resize: vertical;
-        }
-        .btn-submit {
-            align-self: flex-start; padding: 0.85rem 2.25rem; border: none;
-            border-radius: 100px; background: var(--darkest); color: #fff;
-            font-family: 'Work Sans', sans-serif; font-size: 1rem; font-weight: 700;
-            cursor: pointer; transition: background 0.2s, transform 0.15s;
-        }
-        .btn-submit:hover { background: var(--accent-hover); transform: translateY(-1px); }
-        .form-note {
-            text-align: center; font-size: 0.78rem; color: rgba(255,255,255,0.4);
-            margin-top: 0.75rem;
+        .fractional-card .frac-btn:hover {
+            background: #fde047; transform: translateY(-1px);
         }
 
         /* ── Footer ── */
         .footer {
-            background: #052726; color: rgba(255,255,255,0.4); text-align: center;
-            padding: 2rem; font-size: 0.82rem;
+            max-width: 520px; margin: 0 auto;
+            padding: 2rem 1.25rem 3rem;
+            text-align: center; font-size: 0.78rem; color: #999;
         }
-        .footer a { color: var(--light); text-decoration: none; }
-        .footer a:hover { color: var(--bright); }
+        .footer a { color: #0B6E4F; }
 
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            .about-inner { grid-template-columns: 1fr; text-align: center; }
-            .about-photo img { margin: 0 auto; }
-            .stats-row { justify-content: center; }
-            .services-grid { grid-template-columns: 1fr; }
-            .form-row { grid-template-columns: 1fr; }
+        /* ── Desktop polish ── */
+        @media (min-width: 640px) {
+            .bio { padding: 4rem 2rem 3rem; }
+            .bio h1 { font-size: 1.9rem; }
+            .bio-photo { width: 110px; height: 110px; }
         }
     </style>
     <!-- Klaviyo Onsite Tracking -->
@@ -230,163 +182,167 @@
 </head>
 <body>
 
-    <nav class="lp-nav">
-        <a href="index.html" class="lp-nav-logo"><img src="logo.svg" alt="Seedscale Agency"></a>
-        <a href="index.html" class="lp-nav-link">&larr; Visit Full Site</a>
-    </nav>
-
-    <!-- Hero -->
-    <section class="hero">
-        <div class="hero-inner">
-            <span class="hero-badge">Marketing Systems for Founders and Lean Teams</span>
-            <h1>Let's Build Your Marketing Engine</h1>
-            <p>I build the email, content, and AI systems that help founders, lean teams, and mission-driven organizations scale digital revenue without scaling headcount.</p>
-            <a href="#contact" class="scroll-cta">
-                Get in Touch
-                <svg viewBox="0 0 24 24"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
-            </a>
+    <!-- Bio Header -->
+    <header class="bio">
+        <div class="bio-photo">
+            <img src="headshot.jpeg" alt="Rebecca">
         </div>
-    </section>
+        <h1>Rebecca at Seedscale</h1>
+        <p>15+ years in digital marketing. 10M+ subscribers. Now I help people turn the skills they already have into income.</p>
+        <nav class="quick-nav">
+            <a href="#free">Free</a>
+            <a href="#products">Products</a>
+            <a href="#strategy">Strategy</a>
+            <a href="#coaching">Coaching</a>
+            <a href="#consulting">Consulting</a>
+        </nav>
+    </header>
 
-    <!-- About -->
-    <section class="about">
-        <div class="about-inner">
-            <div class="about-photo">
-                <img src="headshot.jpeg" alt="Rebecca — Founder of Seedscale Agency">
-            </div>
-            <div class="about-text">
-                <h2>Meet Rebecca</h2>
-                <p>I'm the founder of Seedscale. I build marketing engines for founders, lean teams, and mission-driven organizations — the kind of digital infrastructure that used to require a 10-person department.</p>
-                <p>I've spent 15+ years leading digital teams for organizations with tens of millions of subscribers — driving billions of social views, raising tens of millions in digital revenue, and growing subscriber bases into the millions.</p>
-                <p>Today, I work with founders, SaaS companies, agencies, and mission-driven teams to build the systems that turn attention into revenue.</p>
-                <div class="stats-row">
-                    <div class="stat-item">
-                        <span class="stat-num">15+</span>
-                        <span class="stat-lbl">Years</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-num">10M+</span>
-                        <span class="stat-lbl">Subscribers</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-num">$15M+</span>
-                        <span class="stat-lbl">Revenue Raised</span>
-                    </div>
+    <!-- ════════════════════════════════════ -->
+    <!--  FREE RESOURCES                      -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section" id="free">
+        <div class="section-label">Free Resources</div>
+
+        <a href="ai-playbook.html" class="offer">
+            <div class="offer-icon">📘</div>
+            <div class="offer-body">
+                <div class="offer-top">
+                    <span class="offer-tag">Free Ebook</span>
+                    <span class="offer-price">Free</span>
                 </div>
+                <div class="offer-title">The AI Playbook</div>
+                <div class="offer-desc">6-chapter guide to finding your highest-paid skill, building career leverage, and creating income on your own terms.</div>
+                <span class="offer-arrow">Download free &rarr;</span>
             </div>
+        </a>
+
+        <a href="starter-kit.html" class="offer">
+            <div class="offer-icon">⚡</div>
+            <div class="offer-body">
+                <div class="offer-top">
+                    <span class="offer-tag">Free Starter Kit</span>
+                    <span class="offer-price">Free</span>
+                </div>
+                <div class="offer-title">The AI Starter Kit</div>
+                <div class="offer-desc">22 prompts to find your highest-paid skill, negotiate your worth, and build income on your own terms. Plus a ChatGPT vs Claude cheat sheet.</div>
+                <span class="offer-arrow">Get the kit &rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- ════════════════════════════════════ -->
+    <!--  PAID PRODUCTS                       -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section" id="products">
+        <div class="section-label">Products</div>
+
+        <a href="prompt-pack.html" class="offer offer-highlight">
+            <div class="offer-icon">🎯</div>
+            <div class="offer-body">
+                <div class="offer-top">
+                    <span class="offer-tag">Prompt Pack</span>
+                    <span class="offer-price">$9</span>
+                </div>
+                <div class="offer-title">Get Paid for What You Know</div>
+                <div class="offer-desc">50 ChatGPT and Claude prompts to turn your skills into income: find the skill, package it, price it, and land your first client.</div>
+                <span class="offer-arrow">Get the prompt pack &rarr;</span>
+            </div>
+        </a>
+
+        <a href="ai-business-blueprint.html" class="offer offer-highlight">
+            <div class="offer-icon">📐</div>
+            <div class="offer-body">
+                <div class="offer-top">
+                    <span class="offer-tag">Digital Guide</span>
+                    <span class="offer-price">$27</span>
+                </div>
+                <div class="offer-title">The AI Business Blueprint</div>
+                <div class="offer-desc">13-chapter guide to building a digital business with AI. Content engine, lead acquisition, product launch, and a 30-day action plan.</div>
+                <span class="offer-arrow">Get the blueprint &rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- ════════════════════════════════════ -->
+    <!--  STRATEGY SESSIONS                   -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section" id="strategy">
+        <div class="section-label">1:1 Strategy Sessions</div>
+
+        <a href="https://buy.stripe.com/bJeeVfaUz8XH6y6fia0Ny08" class="offer offer-highlight">
+            <div class="offer-icon">🧠</div>
+            <div class="offer-body">
+                <div class="offer-top">
+                    <span class="offer-tag">60-Min Session</span>
+                    <span class="offer-price">$297</span>
+                </div>
+                <div class="offer-title">AI Career Strategy</div>
+                <div class="offer-desc">Map your highest-value skill, get a personalized AI tool stack, and leave with a 90-day plan to increase your earning power. Recording + written summary included.</div>
+                <span class="offer-arrow">Book your session &rarr;</span>
+            </div>
+        </a>
+
+        <a href="https://buy.stripe.com/00wcN79QvddX3lU7PI0Ny09" class="offer offer-highlight">
+            <div class="offer-icon">📱</div>
+            <div class="offer-body">
+                <div class="offer-top">
+                    <span class="offer-tag">60-Min Session</span>
+                    <span class="offer-price">$297</span>
+                </div>
+                <div class="offer-title">Social &amp; Marketing Strategy</div>
+                <div class="offer-desc">Content audit, audience positioning, and a 30-day content calendar with hooks. For creators, personal brands, and small businesses ready to grow.</div>
+                <span class="offer-arrow">Book your session &rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- ════════════════════════════════════ -->
+    <!--  COACHING                            -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section" id="coaching">
+        <div class="section-label">Ongoing Coaching</div>
+
+        <a href="https://buy.stripe.com/fZu00l6Ej2zj6y6da20Ny0a" class="offer offer-highlight">
+            <div class="offer-icon">🔥</div>
+            <div class="offer-body">
+                <div class="offer-top">
+                    <span class="offer-tag">Monthly</span>
+                    <span class="offer-price">$997/mo</span>
+                </div>
+                <div class="offer-title">Monthly Coaching</div>
+                <div class="offer-desc">Two 60-min calls per month plus async Slack/email support. I become your thinking partner on marketing, content, AI, and growth. Cancel anytime.</div>
+                <span class="offer-arrow">Book a discovery call &rarr;</span>
+            </div>
+        </a>
+    </div>
+
+    <!-- ════════════════════════════════════ -->
+    <!--  CONSULTING / FRACTIONAL             -->
+    <!-- ════════════════════════════════════ -->
+    <div class="fractional" id="consulting">
+        <div class="fractional-card">
+            <div class="frac-label">Consulting</div>
+            <h3>Fractional Marketing Partner</h3>
+            <p>Full ownership of your marketing strategy and execution. Email, content, AI, paid. For teams ready for embedded leadership without a full-time hire.</p>
+            <a href="work-with-me.html" class="frac-btn">See consulting tiers &rarr;</a>
         </div>
-    </section>
+    </div>
 
-    <!-- Services -->
-    <section class="services">
-        <div class="services-inner">
-            <h2>What I Do</h2>
-            <p class="sub">Strategic digital systems tailored to your business.</p>
-            <div class="services-grid">
-                <div class="svc-card">
-                    <div class="svc-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-                    </div>
-                    <h3>Content Marketing</h3>
-                    <p>Viral video, social media, email, and editorial strategy that drives engagement and grows your audience.</p>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.57-3.25 3.93"/><path d="M8.56 13.49A8 8 0 0 0 4 20h5"/><circle cx="19" cy="19" r="3"/></svg>
-                    </div>
-                    <h3>AI Consulting</h3>
-                    <p>Optimize workflows, automate customer and audience engagement, and unlock data-driven insights with AI.</p>
-                </div>
-                <div class="svc-card">
-                    <div class="svc-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    </div>
-                    <h3>Direct Response</h3>
-                    <p>Acquisition and lifecycle revenue across email, SMS, and paid channels — turning visitors into customers, supporters, and recurring revenue.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- COACHING SECTION (entry-level, productized) -->
-    <section style="background:#073B3A; padding:5rem 2rem 4rem; color:#fff;">
-        <div style="max-width:1100px; margin:0 auto;">
-            <div style="text-align:center; margin-bottom:3.5rem;">
-                <p style="color:#FACC15; letter-spacing:0.15em; font-size:0.85rem; text-transform:uppercase; font-weight:700; margin-bottom:0.75rem;">Coaching</p>
-                <h2 style="font-size:2.4rem; font-weight:700; line-height:1.2; margin-bottom:1rem;">For founders running marketing solo.</h2>
-                <p style="color:rgba(255,255,255,0.85); max-width:640px; margin:0 auto; font-size:1.05rem; line-height:1.6;">You want to execute the work yourself but you need a thinking partner who's done this at scale. Two tiers depending on whether you want one focused session or ongoing accountability.</p>
-            </div>
-            <div style="display:grid; grid-template-columns:repeat(2, 1fr); gap:2rem; max-width:780px; margin:0 auto; align-items:stretch;">
-
-                <!-- Coaching Tier 1: Single Session -->
-                <div style="background:rgba(255,255,255,0.06); padding:2rem 1.75rem; border-radius:12px; border:1px solid rgba(255,255,255,0.1); display:flex; flex-direction:column;">
-                    <p style="color:#FACC15; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; margin-bottom:0.6rem;">Single Session</p>
-                    <h3 style="font-size:1.5rem; font-weight:700; margin-bottom:0.4rem;">Coaching Call</h3>
-                    <p style="color:#FACC15; font-size:2rem; font-weight:800; margin-bottom:0.2rem; line-height:1;">$497</p>
-                    <p style="color:rgba(255,255,255,0.6); font-size:0.8rem; margin-bottom:1.5rem;">one-time</p>
-                    <p style="font-size:0.95rem; color:rgba(255,255,255,0.85); line-height:1.55; margin-bottom:1.5rem;">A focused 90-min deep dive on ONE specific marketing problem. Audit your email sequence, review your launch plan, sharpen your positioning. Walk away with a written action plan.</p>
-                    <a href="#contact" style="margin-top:auto; display:block; text-align:center; padding:0.85rem 1rem; background:rgba(255,255,255,0.1); color:#fff; text-decoration:none; border-radius:6px; font-weight:600; font-size:0.95rem; border:1px solid rgba(255,255,255,0.2);">Book a discovery call</a>
-                </div>
-
-                <!-- Coaching Tier 2: Monthly - MOST POPULAR -->
-                <div style="background:#FACC15; padding:2rem 1.75rem; border-radius:12px; border:2px solid #FACC15; display:flex; flex-direction:column; position:relative; transform:scale(1.04); box-shadow:0 12px 32px rgba(0,0,0,0.25);">
-                    <div style="position:absolute; top:-14px; left:50%; transform:translateX(-50%); background:#073B3A; color:#FACC15; padding:0.35rem 1rem; border-radius:100px; font-size:0.7rem; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; white-space:nowrap;">★ Most Popular</div>
-                    <p style="color:#073B3A; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; margin-bottom:0.6rem; margin-top:0.4rem;">Ongoing</p>
-                    <h3 style="font-size:1.5rem; font-weight:700; margin-bottom:0.4rem; color:#073B3A;">Monthly Coaching</h3>
-                    <p style="color:#073B3A; font-size:2rem; font-weight:800; margin-bottom:0.2rem; line-height:1;">$997<span style="font-size:1rem; font-weight:500;">/mo</span></p>
-                    <p style="color:rgba(7,59,58,0.7); font-size:0.8rem; margin-bottom:1.5rem;">cancel anytime</p>
-                    <p style="font-size:0.95rem; color:rgba(7,59,58,0.9); line-height:1.55; margin-bottom:1.5rem;">A thinking partner for founders running marketing solo. Two strategy calls per month plus async Slack/email between. Ongoing accountability without outsourcing the execution.</p>
-                    <a href="#contact" style="margin-top:auto; display:block; text-align:center; padding:0.85rem 1rem; background:#073B3A; color:#FACC15; text-decoration:none; border-radius:6px; font-weight:700; font-size:0.95rem;">Book a discovery call</a>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- CONSULTING SECTION (fractional/embedded partner work) -->
-    <section style="background:#042625; padding:5rem 2rem; color:#fff; border-top:1px solid rgba(255,255,255,0.08);">
-        <div style="max-width:1100px; margin:0 auto;">
-            <div style="text-align:center; margin-bottom:3rem;">
-                <p style="color:#FACC15; letter-spacing:0.15em; font-size:0.85rem; text-transform:uppercase; font-weight:700; margin-bottom:0.75rem;">Consulting</p>
-                <h2 style="font-size:2.4rem; font-weight:700; line-height:1.2; margin-bottom:1rem;">For teams ready for a fractional partner.</h2>
-                <p style="color:rgba(255,255,255,0.85); max-width:680px; margin:0 auto; font-size:1.05rem; line-height:1.6;">When you want me embedded — running your marketing strategy and execution as if I were on your team. This is full-stack growth leadership for founders and teams ready to scale beyond what coaching alone can do.</p>
-            </div>
-
-            <div style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:2.5rem; max-width:780px; margin:0 auto;">
-                <p style="color:#FACC15; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; font-weight:700; margin-bottom:0.75rem;">What's included</p>
-                <ul style="list-style:none; padding:0; margin:0 0 2rem; display:grid; grid-template-columns:1fr 1fr; gap:0.75rem 1.5rem;">
-                    <li style="font-size:0.95rem; color:rgba(255,255,255,0.9);">→ Full ownership of marketing strategy</li>
-                    <li style="font-size:0.95rem; color:rgba(255,255,255,0.9);">→ Hands-on execution across email, content, AI</li>
-                    <li style="font-size:0.95rem; color:rgba(255,255,255,0.9);">→ Weekly or bi-weekly working sessions</li>
-                    <li style="font-size:0.95rem; color:rgba(255,255,255,0.9);">→ Monthly performance reporting</li>
-                    <li style="font-size:0.95rem; color:rgba(255,255,255,0.9);">→ Engagement durations from 3 to 12 months</li>
-                    <li style="font-size:0.95rem; color:rgba(255,255,255,0.9);">→ Limited to a small number of clients per year</li>
-                </ul>
-                <p style="color:rgba(255,255,255,0.7); font-size:0.95rem; margin-bottom:1.5rem; line-height:1.55;">Consulting pricing varies based on scope and duration. Every engagement starts with a Growth Audit so we both know exactly what we're walking into. <a href="https://seedscale.agency/work-with-me.html" style="color:#FACC15; text-decoration:underline;">See all four consulting tiers and pricing →</a></p>
-                <a href="#contact" style="display:block; text-align:center; padding:1rem 1.5rem; background:#FACC15; color:#073B3A; text-decoration:none; border-radius:8px; font-weight:700; font-size:1rem;">Book a discovery call to discuss consulting</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Form (homepage-style — matches index.html aesthetic) -->
-    <section class="contact" id="contact">
-        <div class="contact-inner">
-            <div class="contact-label">Contact</div>
-            <h2>Start a Conversation</h2>
-            <p class="sub">For inquiries, please reach out — I'd love to hear about your business and how I can help.</p>
-            <form class="contact-form" id="connect-form">
-                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                <div class="form-row">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Your Email" required>
-                </div>
-                <input type="text" name="organization" placeholder="Organization Name">
-                <textarea name="message" placeholder="Tell me about your business and how I can help..." rows="5" required></textarea>
-                <button type="submit" class="btn-submit">Send Message</button>
-            </form>
-            <p id="connect-success" style="display:none;color:#0B6E4F;font-weight:600;margin-top:1rem;text-align:center;">Thank you! Your message has been sent &mdash; I&rsquo;ll get back to you within 24 hours.</p>
-        </div>
-    </section>
+    <!-- ════════════════════════════════════ -->
+    <!--  CONTACT FORM                        -->
+    <!-- ════════════════════════════════════ -->
+    <div class="section" id="contact" style="padding-bottom: 0.5rem;">
+        <div class="section-label">Get in Touch</div>
+        <form id="connect-form" style="display:flex; flex-direction:column; gap:0.75rem;">
+            <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
+            <input type="text" name="name" placeholder="Your name" required style="padding:0.85rem 1rem; border:1px solid #e5e7eb; border-radius:10px; font-family:inherit; font-size:0.95rem; background:#fff;">
+            <input type="email" name="email" placeholder="Your email" required style="padding:0.85rem 1rem; border:1px solid #e5e7eb; border-radius:10px; font-family:inherit; font-size:0.95rem; background:#fff;">
+            <textarea name="message" placeholder="What can I help with?" rows="3" required style="padding:0.85rem 1rem; border:1px solid #e5e7eb; border-radius:10px; font-family:inherit; font-size:0.95rem; resize:vertical; background:#fff;"></textarea>
+            <button type="submit" style="padding:0.85rem 1.5rem; background:#073B3A; color:#fff; border:none; border-radius:10px; font-family:inherit; font-size:1rem; font-weight:700; cursor:pointer; transition:background 0.2s;">Send Message</button>
+        </form>
+        <p id="connect-success" style="display:none;color:#0B6E4F;font-weight:600;margin-top:1rem;text-align:center;">Thank you! I'll get back to you within 24 hours.</p>
+    </div>
 
     <footer class="footer">
         <p>&copy; 2026 Seedscale Agency &middot; <a href="index.html">seedscale.agency</a></p>
@@ -403,17 +359,7 @@
             fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(function(){ form.style.display='none'; document.getElementById('connect-success').style.display='block'; });
           }); }
         })();
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', e => {
-                e.preventDefault();
-                document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-            });
-        });
-
-        // (Klaviyo handles its own success message — no JS needed here)
     </script>
-
     <script src="crm-webhook.js"></script>
 </body>
 </html>
