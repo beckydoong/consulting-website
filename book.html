@@ -137,8 +137,7 @@
             <p>Five minutes now saves us time on the call. I review every submission before we meet.</p>
 
             <form id="intake-form">
-                <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
-                <input type="hidden" name="subject" id="form-subject" value="New Intake Form Submission">
+                <input type="hidden" name="session_type" id="form-session" value="strategy">
 
                 <div class="form-group">
                     <label for="name">Your name</label>
@@ -208,26 +207,25 @@
         var params = new URLSearchParams(window.location.search);
         var session = params.get('session') || 'strategy';
 
-        var subject = document.getElementById('form-subject');
-        var title = document.getElementById('confirm-title');
-        var aiGroup = document.getElementById('ai-tools-group');
-        var socialGroup = document.getElementById('social-handles-group');
+        var sessionField = document.getElementById(‘form-session’);
+        var title = document.getElementById(‘confirm-title’);
+        var aiGroup = document.getElementById(‘ai-tools-group’);
+        var socialGroup = document.getElementById(‘social-handles-group’);
 
-        if (session === 'ai-career') {
-            subject.value = 'Intake Form: AI Career Strategy Session';
-            title.textContent = 'Payment confirmed. Let’s build your AI strategy.';
-            socialGroup.style.display = 'none';
-            aiGroup.style.display = '';
-        } else if (session === 'social') {
-            subject.value = 'Intake Form: Social & Marketing Strategy Session';
-            title.textContent = 'Payment confirmed. Let’s fix your content strategy.';
-            socialGroup.style.display = '';
-            aiGroup.style.display = 'none';
-        } else if (session === 'coaching') {
-            subject.value = 'Intake Form: Monthly Coaching (New Client)';
-            title.textContent = 'Welcome to coaching. Let’s get you set up.';
-            socialGroup.style.display = '';
-            aiGroup.style.display = '';
+        if (sessionField) sessionField.value = session;
+
+        if (session === ‘ai-career’) {
+            title.textContent = ‘Payment confirmed. Let’s build your AI strategy.’;
+            socialGroup.style.display = ‘none’;
+            aiGroup.style.display = ‘’;
+        } else if (session === ‘social’) {
+            title.textContent = ‘Payment confirmed. Let’s fix your content strategy.’;
+            socialGroup.style.display = ‘’;
+            aiGroup.style.display = ‘none’;
+        } else if (session === ‘coaching’) {
+            title.textContent = ‘Welcome to coaching. Let’s get you set up.’;
+            socialGroup.style.display = ‘’;
+            aiGroup.style.display = ‘’;
         }
 
         var form = document.getElementById('intake-form');
@@ -239,23 +237,39 @@
                 var btn = form.querySelector('.submit-btn');
                 if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
 
+                var role = (form.querySelector('#role') || {}).value || '';
+                var goal = (form.querySelector('#goal') || {}).value || '';
+                var aiTools = (form.querySelector('#ai-tools') || {}).value || '';
+                var socialHandles = (form.querySelector('#social-handles') || {}).value || '';
+                var struggle = (form.querySelector('#struggle') || {}).value || '';
+                var anythingElse = (form.querySelector('#anything-else') || {}).value || '';
+
                 try {
                     if (window.klaviyo && email) {
-                        window.klaviyo.push(['identify', { '$email': email, '$first_name': name, 'session_type': session }]);
-                        window.klaviyo.push(['track', 'Submitted Intake Form', { session_type: session }]);
+                        window.klaviyo.push(['identify', {
+                            '$email': email,
+                            '$first_name': name,
+                            'Role': role,
+                            'Session Type': session,
+                            'AI Tools Used': aiTools,
+                            'Social Handles': socialHandles
+                        }]);
+                        window.klaviyo.push(['track', 'Submitted Intake Form', {
+                            session_type: session,
+                            role: role,
+                            goal: goal,
+                            ai_tools: aiTools,
+                            social_handles: socialHandles,
+                            struggle: struggle,
+                            anything_else: anythingElse
+                        }]);
                     }
                 } catch(err) {}
 
-                fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: new FormData(form)
-                }).then(function() {
+                setTimeout(function() {
                     form.style.display = 'none';
                     document.getElementById('intake-success').style.display = 'block';
-                }).catch(function() {
-                    form.style.display = 'none';
-                    document.getElementById('intake-success').style.display = 'block';
-                });
+                }, 500);
             });
         }
     })();
