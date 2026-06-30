@@ -193,21 +193,17 @@
             <h2>Pick a time that works for you.</h2>
             <p>60-minute video call. You'll get a calendar invite with the meeting link.</p>
 
-            <a href="https://cal.com/seedscale-agency/coaching-deep-dive" id="cal-link" class="book-btn" data-cal-link="seedscale-agency/coaching-deep-dive" data-cal-config='{"layout":"month_view"}'>
+            <button type="button" id="cal-link" class="book-btn" data-cal-link="seedscale-agency/coaching-deep-dive" data-cal-config='{"layout":"month_view"}'>
                 Book your session on my calendar &rarr;
-            </a>
+            </button>
         </div>
 
         <p class="note">Questions? Email me at hello@seedscale.agency</p>
 
     </div>
 
-    <!-- Cal.com Embed -->
-    <script>
-    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
-    Cal("init", {origin:"https://app.cal.com"});
-    Cal("ui", {"styles":{"branding":{"brandColor":"#073B3A"}}});
-    </script>
+    <!-- Cal.com Embed — loaded as external script for reliability -->
+    <script src="https://app.cal.com/embed/embed.js" async></script>
 
     <script>
     (function(){
@@ -290,25 +286,54 @@
             });
         }
 
-        Cal("on", {
-            action: "bookingSuccessful",
-            callback: function(e) {
-                var data = e.detail.data;
-                var meetingTime = data.startTime || data.date || '';
-                var email = submittedEmail || (document.getElementById('email') || {}).value || '';
-
-                if (window.klaviyo && email && meetingTime) {
-                    window.klaviyo.push(['identify', {
-                        '$email': email,
-                        'Next Meeting Time': meetingTime
-                    }]);
-                    window.klaviyo.push(['track', 'Booked Meeting', {
-                        meeting_start_time: meetingTime,
-                        session_type: session
-                    }]);
+        // Fallback: if Cal.com embed doesn't load, open in new tab
+        var calBtn = document.getElementById('cal-link');
+        if (calBtn) {
+            calBtn.addEventListener('click', function() {
+                if (!window.Cal) {
+                    var slug = calBtn.getAttribute('data-cal-link') || 'seedscale-agency/coaching-deep-dive';
+                    window.open('https://cal.com/' + slug, '_blank');
                 }
-            }
-        });
+            });
+        }
+
+        // Initialize Cal.com embed once loaded
+        function initCal() {
+            if (typeof Cal !== 'function') return;
+            Cal("init", {origin: "https://app.cal.com"});
+            Cal("ui", {"styles": {"branding": {"brandColor": "#073B3A"}}});
+            Cal("on", {
+                action: "bookingSuccessful",
+                callback: function(e) {
+                    var data = e.detail.data;
+                    var meetingTime = data.startTime || data.date || '';
+                    var email = submittedEmail || (document.getElementById('email') || {}).value || '';
+
+                    if (window.klaviyo && email && meetingTime) {
+                        window.klaviyo.push(['identify', {
+                            '$email': email,
+                            'Next Meeting Time': meetingTime
+                        }]);
+                        window.klaviyo.push(['track', 'Booked Meeting', {
+                            meeting_start_time: meetingTime,
+                            session_type: session
+                        }]);
+                    }
+                }
+            });
+        }
+
+        if (typeof Cal === 'function') {
+            initCal();
+        } else {
+            var checkCal = setInterval(function() {
+                if (typeof Cal === 'function') {
+                    clearInterval(checkCal);
+                    initCal();
+                }
+            }, 200);
+            setTimeout(function() { clearInterval(checkCal); }, 10000);
+        }
     })();
     </script>
 
