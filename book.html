@@ -193,7 +193,7 @@
             <h2>Pick a time that works for you.</h2>
             <p>60-minute video call. You'll get a calendar invite with the meeting link.</p>
 
-            <a href="https://cal.com/seedscale-agency/coaching-deep-dive" id="cal-link" class="book-btn" target="_blank">
+            <a href="https://cal.com/seedscale-agency/coaching-deep-dive" id="cal-link" class="book-btn" data-cal-link="seedscale-agency/coaching-deep-dive" data-cal-config='{"layout":"month_view"}'>
                 Book your session on my calendar &rarr;
             </a>
         </div>
@@ -202,10 +202,19 @@
 
     </div>
 
+    <!-- Cal.com Embed -->
+    <script>
+    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+    Cal("init", {origin:"https://app.cal.com"});
+    Cal("ui", {"styles":{"branding":{"brandColor":"#073B3A"}}});
+    </script>
+
     <script>
     (function(){
         var params = new URLSearchParams(window.location.search);
         var session = params.get('session') || 'strategy';
+        var submittedEmail = '';
+        var submittedName = '';
 
         var sessionField = document.getElementById('form-session');
         var title = document.getElementById('confirm-title');
@@ -234,6 +243,8 @@
                 e.preventDefault();
                 var email = (form.querySelector('#email') || {}).value || '';
                 var name = (form.querySelector('#name') || {}).value || '';
+                submittedEmail = email;
+                submittedName = name;
                 var btn = form.querySelector('.submit-btn');
                 if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
 
@@ -266,12 +277,38 @@
                     }
                 } catch(err) {}
 
+                var calLink = document.getElementById('cal-link');
+                if (calLink && email) {
+                    calLink.setAttribute('data-cal-link',
+                        'seedscale-agency/coaching-deep-dive?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email));
+                }
+
                 setTimeout(function() {
                     form.style.display = 'none';
                     document.getElementById('intake-success').style.display = 'block';
                 }, 500);
             });
         }
+
+        Cal("on", {
+            action: "bookingSuccessful",
+            callback: function(e) {
+                var data = e.detail.data;
+                var meetingTime = data.startTime || data.date || '';
+                var email = submittedEmail || (document.getElementById('email') || {}).value || '';
+
+                if (window.klaviyo && email && meetingTime) {
+                    window.klaviyo.push(['identify', {
+                        '$email': email,
+                        'Next Meeting Time': meetingTime
+                    }]);
+                    window.klaviyo.push(['track', 'Booked Meeting', {
+                        meeting_start_time: meetingTime,
+                        session_type: session
+                    }]);
+                }
+            }
+        });
     })();
     </script>
 
