@@ -355,7 +355,12 @@
             e.preventDefault();
             var email=(form.querySelector('input[name="email"]')||{}).value||'';
             var name=(form.querySelector('input[name="name"]')||{}).value||'';
+            var message=(form.querySelector('textarea[name="message"]')||{}).value||'';
             fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Contact Page',profile:{data:{type:'profile',attributes:{email:email,first_name:name}}}},relationships:{list:{data:{type:'list',id:'TDhpPe'}}}}})}).catch(function(){});
+            try{ if(window.klaviyo && email){
+              window.klaviyo.push(['identify',{ '$email': email, '$first_name': name }]);
+              window.klaviyo.push(['track','Submitted Contact Form',{ source:'Contact Page', message: message }]);
+            } }catch(err){}
             fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(function(){ form.style.display='none'; document.getElementById('connect-success').style.display='block'; });
           }); }
         })();
