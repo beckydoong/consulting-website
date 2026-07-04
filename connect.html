@@ -335,7 +335,6 @@
     <div class="section" id="contact" style="padding-bottom: 0.5rem;">
         <div class="section-label">Get in Touch</div>
         <form id="connect-form" style="display:flex; flex-direction:column; gap:0.75rem;">
-            <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
             <input type="text" name="name" placeholder="Your name" required style="padding:0.85rem 1rem; border:1px solid #e5e7eb; border-radius:10px; font-family:inherit; font-size:0.95rem; background:#fff;">
             <input type="email" name="email" placeholder="Your email" required style="padding:0.85rem 1rem; border:1px solid #e5e7eb; border-radius:10px; font-family:inherit; font-size:0.95rem; background:#fff;">
             <textarea name="message" placeholder="What can I help with?" rows="3" required style="padding:0.85rem 1rem; border:1px solid #e5e7eb; border-radius:10px; font-family:inherit; font-size:0.95rem; resize:vertical; background:#fff;"></textarea>
@@ -355,11 +354,15 @@
             e.preventDefault();
             var email=(form.querySelector('input[name="email"]')||{}).value||'';
             var name=(form.querySelector('input[name="name"]')||{}).value||'';
+            var message=(form.querySelector('textarea[name="message"]')||{}).value||'';
+            if (window.klaviyo && email) {
+                window.klaviyo.push(['identify', { '$email': email, '$first_name': name }]);
+                window.klaviyo.push(['track', 'Submitted Contact Form', { source: 'Contact Page', message: message }]);
+            }
             fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Contact Page',profile:{data:{type:'profile',attributes:{email:email,first_name:name}}}},relationships:{list:{data:{type:'list',id:'TDhpPe'}}}}})}).catch(function(){});
-            fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(form)}).then(function(){ form.style.display='none'; document.getElementById('connect-success').style.display='block'; });
+            form.style.display='none'; document.getElementById('connect-success').style.display='block';
           }); }
         })();
     </script>
-    <script src="crm-webhook.js"></script>
 </body>
 </html>

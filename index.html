@@ -467,7 +467,6 @@
             <p class="section-subtitle">For inquiries, please reach out — I'd love to hear about your organization and how I can help.</p>
             <div class="contact-content">
                 <form class="contact-form" id="contact-form">
-                    <input type="hidden" name="access_key" value="7e064b64-247c-457d-8d17-0412ec87a48b">
                     <div class="form-row">
                         <input type="text" name="name" placeholder="Your Name" required>
                         <input type="email" name="email" placeholder="Your Email" required>
@@ -490,15 +489,15 @@
                 var form = this;
                 var email = (form.querySelector('input[name="email"]')||{}).value || '';
                 var name = (form.querySelector('input[name="name"]')||{}).value || '';
+                var organization = (form.querySelector('input[name="organization"]')||{}).value || '';
+                var message = (form.querySelector('textarea[name="message"]')||{}).value || '';
+                if (window.klaviyo && email) {
+                    window.klaviyo.push(['identify', { '$email': email, '$first_name': name, 'organization': organization }]);
+                    window.klaviyo.push(['track', 'Submitted Contact Form', { source: 'Homepage Contact Form', organization: organization, message: message }]);
+                }
                 fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Homepage Contact Form',profile:{data:{type:'profile',attributes:{email:email,first_name:name}}}},relationships:{list:{data:{type:'list',id:'TDhpPe'}}}}})}).catch(function(){});
-                var data = new FormData(form);
-                fetch('https://api.web3forms.com/submit', {
-                    method: 'POST',
-                    body: data
-                }).then(function(res) {
-                    form.style.display = 'none';
-                    document.getElementById('contact-success').style.display = 'block';
-                });
+                form.style.display = 'none';
+                document.getElementById('contact-success').style.display = 'block';
             });
             </script>
         </div>
@@ -523,6 +522,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script src="crm-webhook.js"></script>
 </body>
 </html>
