@@ -1,11 +1,12 @@
-# AI Starter Kit Check-in Campaign — Segment + Copy
+# AI Resource Check-in Campaign — Segment + Copy
 
-> Rev 3, 2026-07-05. Rev 2 → 3: copy no longer assumes everyone got the
-> AI Starter Kit (the June-email list includes contacts from other lead
-> magnets/forms); send scheduled for **Mon July 6, 9:00 a.m. PT**, test
-> to Becky first. Rev 1 → 2: pure check-in copy + overlap analysis.
-> Klaviyo connector still needs re-auth, so list names/counts below are
-> from the 2026-07-04 data pull.
+> Rev 4, 2026-07-05. Rev 3 → 4: Prompt Pack buyers folded into this single
+> send (no separate prompt-pack campaign); opener now covers paid Prompt
+> Pack + acknowledges the "got email #1 then silence" buyers. Rev 2 → 3:
+> copy no longer assumes everyone got the AI Starter Kit. Rev 1 → 2: pure
+> check-in copy + overlap analysis. Send: **Mon July 6, 9:00 a.m. PT**,
+> test to Becky first. Klaviyo connector was unreachable at prep time, so
+> list names/counts below are from the 2026-07-04 data pull.
 
 ## Overlap: why one campaign can't double-send
 
@@ -14,17 +15,14 @@ audience is one segment built with OR conditions or several lists/segments
 selected together on the campaign, each profile receives exactly one email
 per campaign — overlap between the lists cannot cause a duplicate.
 
-So the real double-send risk is **across campaigns**, and there is a
-confirmed case: prompt pack buyer meriyenparra.gf@gmail.com also received
-the AI Starter Kit welcome flow (emails on Jun 24–29), so she is in BOTH
-this campaign's audience AND the planned prompt-pack check-in. Two
-"how's it going" emails in the same week reads as spam.
-
-**Recommendation:** exclude segment **Bought Prompt Pack** (`WPKXF4`,
-3 profiles; the 4th buyer is a seed profile) from this campaign, and send
-those folks their tailored prompt-pack check-in on July 8–9. Alternative:
-skip the separate prompt-pack campaign entirely and let this check-in
-cover them — then no exclusion needed.
+**Resolved 2026-07-05:** the Prompt Pack buyers are folded into this one
+send (Becky's call), so there is no second campaign and no cross-campaign
+double-send risk. Only 2 real buyers are affected — Meriyen (already in
+the Starter Kit audience) and r.craddocktaylor (pure Prompt Pack buyer);
+the opener was rewritten so the copy is honest for paid buyers, including
+those who got flow Email #1 and then nothing. Trade-off accepted: they no
+longer get the tailored standalone "my follow-ups to you went quiet"
+apology — it's folded into the general opener instead.
 
 **Unverifiable until Klaviyo reconnects:** whether the June-campaign list
 (`Scc69p`) and the AI Starter Kit signup list are the same list or two
@@ -43,11 +41,16 @@ same, one condition is redundant but harmless.
 2. Is in list → *[the list the June 24 campaign "The ChatGPT prompts you
    requested" was sent to (`Scc69p`) — open that campaign → Recipients]*
 3. Is in segment → **7 Prompts — Correction cohort** (`WYvYAB`)
+4. Is in segment → **Bought Prompt Pack** (`WPKXF4`) — folds the paid
+   Prompt Pack buyers into this single send (decision 2026-07-05).
 
-**AND NOT** (recommended, see overlap note): Is in segment → **Bought
-Prompt Pack** (`WPKXF4`)
+**AND NOT** (optional cleanup): email is `promptpack-seed@seedscale.agency`
+— the internal seed profile. Becky's own address will also match; that's
+normal for her own campaigns.
 
-Suppressed/unsubscribed profiles are dropped automatically.
+Suppressed/unsubscribed profiles are dropped automatically. Because
+everyone now receives this one campaign, there is **no separate prompt-pack
+check-in** and therefore no cross-campaign double-send risk.
 
 **Campaign settings:**
 - From: rebecca@seedscale.agency (Rebecca at Seedscale)
@@ -69,10 +72,11 @@ Suppressed/unsubscribed profiles are dropped automatically.
 
 Hi {{ first_name|default:"there" }},
 
-You're getting this because somewhere along the way you grabbed one of my
-free AI resources — for most of you that's the AI Starter Kit (the seven
-prompts), for others a playbook or guide. (And a few of you got the wrong
-file entirely during an email mixup on my end — sorry again about that.)
+You're getting this because at some point you picked up one of my AI
+resources — the AI Starter Kit (the seven prompts), a playbook or guide,
+or the Prompt Pack. (And some of you had a bumpy ride with my emails
+afterward: the wrong file, or a series that started and then went quiet.
+That was on me, and I'm sorry.)
 
 Whichever it was, I realized I never actually asked:
 
@@ -119,5 +123,4 @@ It's the seven prompts I'd start with.
 1. Verify the two list names/IDs, confirm whether they're the same list,
    and pull the built segment's count.
 2. Create this campaign + template in draft via the API.
-3. Prompt pack check-in campaign — July 8–9, to the "got Email #1, then
-   silence" pair (or fold into this send; Becky's call).
+3. ~~Separate prompt-pack check-in~~ — dropped; buyers folded into this send.
