@@ -66,12 +66,15 @@
       <p>Save it somewhere you'll actually open it. The Master Install Prompt is on page 3 — that's the five-minute step that makes everything work.</p>
       <a href="resources/career-mode-pack.pdf" download class="download-btn">Download the pack (PDF)</a>
       <span class="download-note">PDF format. Opens on any device.</span>
-      <form id="ty-capture" style="margin-top:1.5rem;display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center;">
-        <input type="email" name="email" placeholder="you@email.com" required aria-label="Your email" style="flex:1;min-width:180px;padding:0.7rem 0.9rem;border:1px solid #e5e5e5;border-radius:8px;font-family:inherit;font-size:0.9rem;">
-        <button type="submit" style="padding:0.7rem 1.1rem;border:none;border-radius:8px;background:#073B3A;color:#fff;font-weight:700;font-size:0.9rem;cursor:pointer;font-family:inherit;">Email me my copy</button>
-        <p style="flex-basis:100%;font-size:0.8rem;color:#6b7280;margin:0.4rem 0 0;">Used a different email at checkout? Drop the one where you want the pack delivered.</p>
-      </form>
-      <div id="ty-capture-success" style="display:none;margin-top:1rem;color:#08A045;font-weight:600;font-size:0.9rem;">&#10003; On its way — check your inbox.</div>
+      <div id="ty-box" style="margin-top:1.75rem;padding:1.25rem 1.3rem 1.4rem;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:12px;text-align:left;">
+        <h3 style="font-size:1.02rem;font-weight:700;color:#073B3A;margin:0 0 0.35rem;">Confirm your email &rarr; get your copy + your first walkthrough</h3>
+        <p style="font-size:0.9rem;color:#374151;margin:0 0 0.9rem;line-height:1.55;">Add your email and I'll send the pack to your inbox with a short getting-started note, so it's saved where you'll actually find it &mdash; and so I can help if you get stuck. Five seconds.</p>
+        <form id="ty-capture" style="display:flex;gap:0.5rem;flex-wrap:wrap;">
+          <input type="email" name="email" placeholder="you@email.com" required aria-label="Your email" style="flex:1;min-width:190px;padding:0.8rem 0.95rem;border:1px solid #d1d5db;border-radius:8px;font-family:inherit;font-size:0.98rem;">
+          <button type="submit" style="padding:0.8rem 1.4rem;border:none;border-radius:8px;background:#073B3A;color:#fff;font-weight:700;font-size:0.98rem;cursor:pointer;font-family:inherit;">Send it to me</button>
+        </form>
+      </div>
+      <div id="ty-capture-success" style="display:none;margin-top:1rem;color:#08A045;font-weight:600;font-size:0.95rem;">&#10003; On its way — check your inbox.</div>
     </div>
   </section>
 
@@ -126,7 +129,9 @@
         .catch(function(){})
         .then(function(){
           var s = document.getElementById('ty-capture-success');
-          if(s){ form.style.display = 'none'; s.style.display = 'block'; }
+          var box = document.getElementById('ty-box');
+          if(box){ box.style.display = 'none'; }
+          if(s){ s.style.display = 'block'; }
         });
     });
   })();
