@@ -108,6 +108,65 @@
             font-size: 0.98rem;
         }
         .callout strong { color: var(--darkest); }
+        .download-box {
+            background: #f8faf9;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 1.75rem 2rem;
+            margin: 2rem 0;
+        }
+        .download-box h3 { margin: 0 0 0.35rem; color: var(--darkest); }
+        .download-box .dl-sub { color: #64748b; font-size: 0.95rem; margin: 0 0 1.25rem; }
+        .dl-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.6rem;
+            margin-bottom: 1.25rem;
+        }
+        @media (max-width: 640px) { .dl-grid { grid-template-columns: 1fr; } }
+        .dl-item {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 9px;
+            padding: 0.7rem 0.9rem;
+            text-decoration: none;
+            color: var(--darkest);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: border-color 0.2s, transform 0.1s;
+        }
+        .dl-item:hover { border-color: var(--primary); transform: translateY(-1px); }
+        .dl-item .dl-file { font-family: 'Courier New', monospace; font-weight: 700; }
+        .dl-item .dl-desc { color: #64748b; font-weight: 400; }
+        .dl-item .dl-ico { color: var(--primary); flex-shrink: 0; }
+        .dl-all {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .dl-inline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 0.75rem;
+            padding: 0.5rem 0.9rem;
+            background: #fff;
+            border: 1px solid var(--primary);
+            border-radius: 8px;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.88rem;
+        }
+        .dl-inline:hover { background: var(--primary); color: #fff; }
     </style>
 </head>
 <body class="blog-page">
@@ -199,6 +258,20 @@
 
         <p>The steps below build each one. You only do this once.</p>
 
+        <div class="download-box">
+            <h3>Grab the starter files</h3>
+            <p class="dl-sub">Don't build these from a blank page. Download the ready-made Markdown templates, drop them into your Claude Project, and fill in the blanks. Each one includes the prompt to complete it.</p>
+            <div class="dl-grid">
+                <a class="dl-item" href="resources/claude-brain/about-me.md" download><span class="dl-ico">&#x2B07;</span> <span><span class="dl-file">about-me.md</span> <span class="dl-desc">— who you are + interview prompt</span></span></a>
+                <a class="dl-item" href="resources/claude-brain/style-guide.md" download><span class="dl-ico">&#x2B07;</span> <span><span class="dl-file">style-guide.md</span> <span class="dl-desc">— the anti-AI writing rules</span></span></a>
+                <a class="dl-item" href="resources/claude-brain/current-context.md" download><span class="dl-ico">&#x2B07;</span> <span><span class="dl-file">current-context.md</span> <span class="dl-desc">— what you're working on</span></span></a>
+                <a class="dl-item" href="resources/claude-brain/voice-samples.md" download><span class="dl-ico">&#x2B07;</span> <span><span class="dl-file">voice-samples.md</span> <span class="dl-desc">— your best writing</span></span></a>
+                <a class="dl-item" href="resources/claude-brain/custom-instructions.md" download><span class="dl-ico">&#x2B07;</span> <span><span class="dl-file">custom-instructions.md</span> <span class="dl-desc">— the standing order</span></span></a>
+                <a class="dl-item" href="resources/claude-brain/README.md" download><span class="dl-ico">&#x2B07;</span> <span><span class="dl-file">README.md</span> <span class="dl-desc">— the 4-step quickstart</span></span></a>
+            </div>
+            <a class="dl-all" href="resources/claude-brain/claude-brain-starter-pack.zip" download>&#x1F4E6; Download all 6 files (.zip)</a>
+        </div>
+
         <h2>What You Need Before You Start</h2>
 
         <ol>
@@ -255,6 +328,7 @@ Write it so that, reading it cold, you could pick up any task from me with full 
             <p>Answer in your normal typing voice. Don't polish it, because the messiness <em>is</em> the data. When Claude outputs the "About Me" document, read it, fix anything off, then add it to your Project knowledge (use <strong>Add content</strong> or the paperclip) as a file named <code>about-me.md</code>.</p>
 
             <div class="callout"><strong>Why the interview beats a form.</strong> You know your own context the way you know your accent: you can't hear it, but it's obvious to everyone else. The questions surface things you'd never think to write down, and your unedited answers are the truest sample of how you actually sound.</div>
+            <a class="dl-inline" href="resources/claude-brain/about-me.md" download>&#x2B07; Download about-me.md (prompt included)</a>
         </div>
 
         <div class="setup-step">
@@ -290,6 +364,7 @@ Contractions are good. Sentence fragments are fine.
 If a sentence could sit in anyone's blog, rewrite it so it could only be mine.</div>
 
             <div class="callout"><strong>Make it yours.</strong> The banned list is a starting point. Every time you catch a word you personally never say, add it. Ten words you actually hate beat fifty generic ones.</div>
+            <a class="dl-inline" href="resources/claude-brain/style-guide.md" download>&#x2B07; Download style-guide.md</a>
         </div>
 
         <div class="setup-step">
@@ -304,6 +379,7 @@ If a sentence could sit in anyone's blog, rewrite it so it could only be mine.</
 Turn this into a clean Markdown file called "current-context.md", organized by project or theme. For each one, capture: the goal, where it stands right now, the next actions, and any decisions I've already made so we don't relitigate them. Ask me up to 5 questions to fill the biggest gaps, then give me the finished file.</div>
 
             <p>Save the result as <code>current-context.md</code> in the Project. From here on, treat the brain like a notebook: when you have an idea or make a decision, drop it in. The Project is the one place it won't get lost.</p>
+            <a class="dl-inline" href="resources/claude-brain/current-context.md" download>&#x2B07; Download current-context.md (prompt included)</a>
         </div>
 
         <div class="setup-step">
@@ -320,6 +396,7 @@ Rules:
 - When I share a new decision or idea, tell me which file to add it to so the brain stays current.</div>
 
             <p>That's the whole machine. Five files, one habit of working inside the Project, and Claude stops being a stranger you brief every morning.</p>
+            <a class="dl-inline" href="resources/claude-brain/custom-instructions.md" download>&#x2B07; Download custom-instructions.md</a>
         </div>
 
         <h2>How You Actually Use It: Never Prompt From Scratch Again</h2>
@@ -341,7 +418,7 @@ Rules:
 
         <ul>
             <li><strong>Keep one brain, not ten.</strong> A single Project you refine over months beats a fresh chat every time. The compounding is the entire point.</li>
-            <li><strong>Feed it your greatest hits.</strong> Add two or three samples of writing you're proud of as <code>voice-samples.md</code> and label it "match this." Real examples teach voice better than any description.</li>
+            <li><strong>Feed it your greatest hits.</strong> Add two or three samples of writing you're proud of as <code>voice-samples.md</code> and label it "match this." Real examples teach voice better than any description. <a href="resources/claude-brain/voice-samples.md" download style="color: var(--primary); font-weight: 600;">Download the template &#x2B07;</a></li>
             <li><strong>Capture in the moment.</strong> The brain is only as good as what's in it. Make it a reflex: idea, decision, or lesson, drop it in the same day.</li>
             <li><strong>Correct it once, then update the file.</strong> When Claude slips a "leverage" back in, don't just fix the draft. Add it to the style guide. The brain gets smarter every time you catch it.</li>
             <li><strong>Give it the job, not just the topic.</strong> Even with full context, "write a post for founders behind on AI, my voice, 150 words, one idea" beats "write a post." Specifics get you a usable first pass.</li>
