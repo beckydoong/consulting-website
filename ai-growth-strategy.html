@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My AI Growth Strategy — The Exact System I Use to Grow on Social | Seedscale</title>
+    <title>My AI Growth Strategy — Grow Your Brand with Clarity and Direction | Seedscale</title>
 
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    <meta name="description" content="The exact AI-powered content system Rebecca uses to plan a month of social content in one afternoon. Prompts, workflows, posting strategy, and templates. $19, instant access.">
-    <meta property="og:title" content="My AI Growth Strategy — The Exact System I Use to Grow on Social">
-    <meta property="og:description" content="Stop staring at a blank screen. The AI content system behind billions of views — prompts, workflows, and a 30-day posting plan. $19, instant access.">
+    <meta name="description" content="A simple, no-fluff guide to growing your audience and revenue with AI — from the strategist behind billions of views, subscribers in the millions, and tens of millions in revenue. $19, instant access.">
+    <meta property="og:title" content="My AI Growth Strategy — Grow Your Brand with Clarity and Direction">
+    <meta property="og:description" content="Ready to grow your brand on social media — but not sure where to begin? The AI growth system behind billions of views. $19, instant access. One-time payment.">
     <meta property="og:image" content="og-image.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://seedscale.agency/ai-growth-strategy.html">
@@ -79,18 +79,11 @@
         .cover p { color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 400px; margin: 0 auto; }
         .cover-emoji { font-size: 2rem; position: absolute; opacity: 0.9; }
 
-        /* Title + rating + price */
-        .product-title { font-size: 1.5rem; font-weight: 800; color: #073B3A; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.5rem; }
-        .rating { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.9rem; }
-        .stars { color: #FACC15; font-size: 1rem; letter-spacing: 0.1em; }
-        .rating-note { font-size: 0.82rem; color: #666; }
+        /* Title + price */
+        .product-title { font-size: 1.5rem; font-weight: 800; color: #073B3A; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
         .price-row { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1.1rem; }
-        .price-was { font-size: 1.05rem; color: #999; text-decoration: line-through; font-weight: 500; }
         .price-now { font-size: 1.8rem; font-weight: 800; color: #073B3A; }
-        .price-badge {
-            background: #FEF3C7; color: #92400E; font-size: 0.72rem; font-weight: 700;
-            padding: 0.25rem 0.6rem; border-radius: 999px; letter-spacing: 0.04em;
-        }
+        .price-note { font-size: 0.9rem; color: #666; font-weight: 500; }
 
         .buy-btn {
             display: block; width: 100%; text-align: center; font-family: inherit;
@@ -104,72 +97,39 @@
         }
 
         /* Description copy */
-        .copy p { margin-bottom: 1rem; font-size: 0.98rem; color: #333; }
+        .copy p { margin-bottom: 1.15rem; font-size: 1rem; color: #333; }
         .copy p:last-child { margin-bottom: 0; }
         .copy strong { color: #073B3A; }
-        .copy .lead { font-size: 1.05rem; font-weight: 600; color: #073B3A; }
+        .copy em { font-style: italic; }
+        .copy .hook { font-size: 1.08rem; font-weight: 700; color: #073B3A; }
+        .copy .standalone { font-style: italic; font-weight: 700; color: #073B3A; }
+        .copy .price-line { font-size: 1.08rem; font-weight: 800; color: #073B3A; }
+        .copy .disclaimer { font-style: italic; font-size: 0.92rem; color: #555; }
 
-        .card-label {
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em;
-            text-transform: uppercase; color: #0B6E4F; margin-bottom: 0.4rem;
+        /* Stats block (in place of press clippings) */
+        .stats {
+            display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin: 1.4rem 0;
         }
-        .card-h { font-size: 1.25rem; font-weight: 800; color: #073B3A; letter-spacing: -0.015em; margin-bottom: 1rem; line-height: 1.25; }
+        @media (min-width: 480px) { .stats { grid-template-columns: 1fr 1fr 1fr; } }
+        .stat-tile {
+            background: #073B3A; color: #fff; border-radius: 14px;
+            padding: 1.1rem 0.9rem; text-align: center;
+        }
+        .stat-tile .num { display: block; font-size: 1.3rem; font-weight: 800; color: #FACC15; letter-spacing: -0.02em; }
+        .stat-tile .lbl { font-size: 0.72rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
 
+        /* What's inside */
+        .inside-h {
+            font-size: 1.35rem; font-weight: 800; color: #073B3A;
+            letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 1.1rem;
+        }
         .inside-list { list-style: none; }
         .inside-list li {
-            display: flex; gap: 0.8rem; align-items: flex-start;
-            padding: 0.8rem 0; border-bottom: 1px solid #f0f0ee;
-        }
-        .inside-list li:last-child { border-bottom: none; padding-bottom: 0; }
-        .inside-emoji { font-size: 1.25rem; flex-shrink: 0; line-height: 1.4; }
-        .inside-list h3 { font-size: 0.98rem; font-weight: 700; color: #073B3A; margin-bottom: 0.15rem; }
-        .inside-list p { font-size: 0.88rem; color: #555; line-height: 1.5; }
-
-        .fit-list { list-style: none; }
-        .fit-list li {
             display: flex; gap: 0.7rem; align-items: flex-start;
-            font-size: 0.93rem; color: #333; padding: 0.45rem 0;
+            font-size: 1rem; color: #333; line-height: 1.55;
+            padding: 0.55rem 0;
         }
-        .fit-list .mark { flex-shrink: 0; line-height: 1.5; }
-        .fit-divider { margin: 1.1rem 0 0.6rem; font-size: 0.95rem; font-weight: 700; color: #073B3A; }
-
-        .testimonial {
-            background: #fff; border-radius: 20px; padding: 1.5rem;
-            box-shadow: 0 1px 3px rgba(7,59,58,0.08);
-        }
-        .testimonial .stars { margin-bottom: 0.6rem; display: block; }
-        .testimonial blockquote { font-size: 0.95rem; color: #333; line-height: 1.55; margin-bottom: 0.75rem; }
-        .testimonial cite { font-style: normal; font-size: 0.84rem; font-weight: 700; color: #073B3A; }
-        .testimonial cite span { font-weight: 400; color: #888; }
-
-        details.faq {
-            border-bottom: 1px solid #f0f0ee; padding: 0.9rem 0;
-        }
-        details.faq:last-of-type { border-bottom: none; padding-bottom: 0; }
-        details.faq summary {
-            font-size: 0.96rem; font-weight: 700; color: #073B3A; cursor: pointer;
-            list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 1rem;
-        }
-        details.faq summary::-webkit-details-marker { display: none; }
-        details.faq summary::after { content: "+"; font-size: 1.2rem; color: #0B6E4F; font-weight: 400; }
-        details.faq[open] summary::after { content: "–"; }
-        details.faq p { font-size: 0.9rem; color: #555; margin-top: 0.6rem; line-height: 1.55; }
-
-        .about-block { display: flex; gap: 1.1rem; align-items: flex-start; }
-        .about-photo {
-            width: 68px; height: 68px; min-width: 68px; border-radius: 50%; overflow: hidden;
-            border: 3px solid #FACC15;
-        }
-        .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .about-text h3 { font-size: 1rem; font-weight: 700; color: #073B3A; margin-bottom: 0.3rem; }
-        .about-text p { font-size: 0.88rem; color: #555; line-height: 1.55; }
-
-        .guarantee {
-            background: #073B3A; color: #fff; text-align: center;
-        }
-        .guarantee .card-h { color: #fff; }
-        .guarantee p { color: rgba(255,255,255,0.82); font-size: 0.93rem; max-width: 420px; margin: 0 auto 1.4rem; }
-        .guarantee .em { color: #FACC15; }
+        .inside-list .mark { flex-shrink: 0; line-height: 1.55; }
 
         /* Sticky mobile buy bar */
         .sticky-buy {
@@ -178,8 +138,6 @@
             padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
             display: flex; align-items: center; gap: 1rem;
         }
-        .sticky-buy-price { line-height: 1.2; }
-        .sticky-buy-price .was { font-size: 0.78rem; color: #999; text-decoration: line-through; display: block; }
         .sticky-buy-price .now { font-size: 1.15rem; font-weight: 800; color: #073B3A; }
         .sticky-buy .buy-btn { flex: 1; padding: 0.85rem 1rem; font-size: 1rem; }
         @media (min-width: 700px) {
@@ -213,7 +171,7 @@
             </div>
             <div>
                 <div class="creator-name">Rebecca · Seedscale</div>
-                <div class="creator-sub">The strategist behind 10M+ subscribers &amp; billions of views</div>
+                <div class="creator-sub">The strategist behind billions of views &amp; millions of subscribers</div>
             </div>
         </div>
 
@@ -223,165 +181,61 @@
             <span class="cover-emoji" style="bottom: 1rem; right: 1.25rem;">📈</span>
             <span class="cover-kicker">Digital Guide · Instant Access</span>
             <h2>My AI Growth<br><span class="em">Strategy</span></h2>
-            <p>The exact AI-powered content system I use to plan a month of social media in one afternoon — and grow every single week.</p>
+            <p>A simple, no-fluff guide to growing your audience and revenue with AI — with clarity and direction.</p>
         </div>
 
-        <!-- TITLE / RATING / PRICE / BUY -->
+        <!-- TITLE / PRICE / BUY -->
         <div class="card">
-            <h1 class="product-title">My AI Growth Strategy 🚀</h1>
-            <div class="rating">
-                <span class="stars">★★★★★</span>
-                <span class="rating-note">Loved by creators, founders &amp; lean teams</span>
-            </div>
+            <h1 class="product-title">My AI Growth Strategy</h1>
             <div class="price-row">
-                <span class="price-was">$47</span>
                 <span class="price-now">$19</span>
-                <span class="price-badge">LAUNCH PRICE</span>
+                <span class="price-note">Instant access. One-time payment.</span>
             </div>
             <!-- TODO: Replace href with your Stripe payment link for this product -->
-            <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="buy-btn">I want this! →</a>
-            <p class="trust-line">🔒 Secure checkout via Stripe · Delivered instantly to your inbox · Yours forever</p>
+            <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="buy-btn">Get instant access →</a>
+            <p class="trust-line">🔒 Secure checkout via Stripe · Delivered instantly to your inbox</p>
         </div>
 
         <!-- SALES COPY -->
         <div class="card copy">
-            <p class="lead">Let's be honest — you don't have a content problem. You have a <em>system</em> problem. 👀</p>
-            <p>You know you should be posting. You've probably tried ChatGPT and gotten content that sounds like... a robot wrote it. So you go back to staring at a blank screen, posting when inspiration strikes, and wondering why the algorithm hates you.</p>
-            <p><strong>Here's the truth:</strong> the creators and brands growing fastest right now aren't more talented than you. They're not working harder than you. They have a <strong>repeatable system</strong> — and most of them are quietly running it with AI.</p>
-            <p>I've spent 15 years building content engines — <strong>10M+ subscribers, billions of views, $15M+ raised every year</strong>. This guide is that exact playbook, rebuilt for AI, and priced so anyone can grab it. ✨</p>
+            <p class="hook">😱 Ready to grow your brand on social media — but not sure where to begin?</p>
+            <p>Maybe you've tried posting consistently before and felt lost on what actually works.</p>
+            <p>Or maybe you've been praying for a way to grow your audience and revenue without burning out to get out of the post-and-hope cycle.</p>
+            <p class="standalone">I've been there.</p>
+            <p><strong>I have always been a fan of smart growth systems.</strong> I've done everything from building content engines from scratch to running growth for established brands — anything that turned attention into real audience and real revenue during the seasons it mattered most.</p>
+            <p>And over time, the strategies I developed <em>behind the scenes</em> took brands from invisible to viral — generating <strong>billions of views</strong>, managing <strong>subscriber lists in the millions</strong>, and growing <strong>revenue to tens of millions</strong>.</p>
+
+            <div class="stats">
+                <div class="stat-tile"><span class="num">Billions</span><span class="lbl">of Views</span></div>
+                <div class="stat-tile"><span class="num">Millions</span><span class="lbl">of Subscribers</span></div>
+                <div class="stat-tile"><span class="num">Tens of Millions</span><span class="lbl">in Revenue</span></div>
+            </div>
+
+            <p>I remember searching for ways to grow while juggling deadlines, algorithms, and big goals.</p>
+            <p>Most of what I found online was either outdated, confusing, or just didn't feel realistic for anyone without a full marketing team.</p>
+            <p>So I built the guide I wish I had back then — one that's simple to start, and designed for real people who want to grow their brand without adding more stress.</p>
+            <p>My AI Growth Strategy is a simple, no-fluff guide to help you <strong>start growing your audience and revenue with clarity and direction</strong> — without adding more stress.</p>
         </div>
 
         <!-- WHAT'S INSIDE -->
         <div class="card">
-            <div class="card-label">What's inside</div>
-            <h2 class="card-h">Everything you need to go from blank screen to booked-out content calendar 👇</h2>
+            <h2 class="inside-h">✨ What's Inside My AI Growth Strategy</h2>
             <ul class="inside-list">
-                <li>
-                    <span class="inside-emoji">🧠</span>
-                    <div>
-                        <h3>The AI Growth Framework</h3>
-                        <p>My step-by-step system for turning one idea into 30 days of content — hooks, formats, and CTAs included. Works on Instagram, TikTok, LinkedIn &amp; YouTube.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="inside-emoji">✍️</span>
-                    <div>
-                        <h3>My exact prompt library</h3>
-                        <p>The word-for-word prompts I use for hooks, scripts, captions, and repurposing — engineered so the output sounds like <em>you</em>, not a robot.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="inside-emoji">🗓️</span>
-                    <div>
-                        <h3>The 1-afternoon content sprint</h3>
-                        <p>A plug-and-play workflow to batch a full month of posts in a single sitting. Set aside 3 hours, follow the steps, done.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="inside-emoji">📊</span>
-                    <div>
-                        <h3>The growth feedback loop</h3>
-                        <p>How to read your analytics in 10 minutes a week and feed what's working back into your AI system — so your content gets smarter every month.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="inside-emoji">💰</span>
-                    <div>
-                        <h3>The audience-to-revenue bridge</h3>
-                        <p>Views are nice. Sales are better. The simple content mix that turns followers into leads, subscribers, and buyers — without feeling salesy.</p>
-                    </div>
-                </li>
-                <li>
-                    <span class="inside-emoji">🎁</span>
-                    <div>
-                        <h3>Bonus: 30 fill-in-the-blank hooks</h3>
-                        <p>Proven hook templates you can steal on your very next post. No AI required — just fill in the blank and hit publish.</p>
-                    </div>
-                </li>
+                <li><span class="mark">✔️</span> <span>The AI-powered growth framework I've personally tested and used — plus the exact system I'm using right now to grow brands</span></li>
+                <li><span class="mark">✔️</span> <span>The exact prompts I use to create hooks, scripts, captions, and repurposed content — engineered so it sounds like <em>you</em>, not a robot.</span></li>
+                <li><span class="mark">✔️</span> <span>A quick, easy-to-follow action plan to batch a full month of content in one afternoon</span></li>
+                <li><span class="mark">✔️</span> <span>The simple weekly feedback loop that turns your analytics into smarter content — and your followers into leads, subscribers, and buyers</span></li>
+                <li><span class="mark">✔️</span> <span>An additional list of 30 fill-in-the-blank hooks, broken down so you can quickly find what works for your brand — plus where to get started!</span></li>
             </ul>
         </div>
 
-        <!-- WHO IT'S FOR -->
-        <div class="card">
-            <div class="card-label">Real talk</div>
-            <h2 class="card-h">This is for you if...</h2>
-            <ul class="fit-list">
-                <li><span class="mark">✅</span> You're a creator, coach, founder, or marketer who knows content matters but can't stay consistent</li>
-                <li><span class="mark">✅</span> You've tried AI tools and the output felt generic, cringey, or off-brand</li>
-                <li><span class="mark">✅</span> You want a system you can run in a few hours a month — not another full-time job</li>
-                <li><span class="mark">✅</span> You'd rather follow a proven playbook than guess your way through the algorithm</li>
-            </ul>
-            <p class="fit-divider">It's NOT for you if...</p>
-            <ul class="fit-list">
-                <li><span class="mark">❌</span> You're looking for a get-rich-quick hack or "go viral overnight" gimmick</li>
-                <li><span class="mark">❌</span> <span>You want someone to do it all for you (that's my <a href="coaching.html" style="color:#0B6E4F; font-weight:600; text-decoration:underline;">coaching</a> — this is the DIY version)</span></li>
-            </ul>
-        </div>
-
-        <!-- TESTIMONIALS -->
-        <div class="testimonial">
-            <span class="stars">★★★★★</span>
-            <blockquote>"I batched an entire month of content the weekend I got this. The prompt library alone is worth 10x the price — my captions finally sound like me."</blockquote>
-            <cite>Jamie <span>· Wellness coach</span></cite>
-        </div>
-        <div class="testimonial">
-            <span class="stars">★★★★★</span>
-            <blockquote>"We're a two-person team doing the social output of a full department now. The feedback loop section changed how we plan everything."</blockquote>
-            <cite>Marcus <span>· SaaS founder</span></cite>
-        </div>
-        <div class="testimonial">
-            <span class="stars">★★★★★</span>
-            <blockquote>"I went from posting twice a month to five times a week without hiring anyone. Engagement is up, and I actually got two client inquiries from LinkedIn last week."</blockquote>
-            <cite>Priya <span>· Fractional CMO</span></cite>
-        </div>
-
-        <!-- ABOUT -->
-        <div class="card">
-            <div class="card-label">Who made this</div>
-            <div class="about-block" style="margin-top: 0.75rem;">
-                <div class="about-photo">
-                    <img src="headshot.jpeg" alt="Rebecca">
-                </div>
-                <div class="about-text">
-                    <h3>Hey, I'm Rebecca 👋</h3>
-                    <p>I've spent 15 years building marketing engines — 10M+ subscribers, billions of views, and $15M+ raised annually. Now I help founders, creators, and lean teams grow with systems instead of burnout. This guide is the system I actually use, written down.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- FAQ -->
-        <div class="card">
-            <div class="card-label">Questions?</div>
-            <h2 class="card-h">FAQ</h2>
-            <details class="faq">
-                <summary>What exactly do I get?</summary>
-                <p>A beautifully designed digital guide (PDF) with the full AI Growth Framework, my complete prompt library, the 1-afternoon content sprint workflow, the analytics feedback loop, the audience-to-revenue content mix, and 30 bonus hook templates. Delivered to your inbox instantly after checkout.</p>
-            </details>
-            <details class="faq">
-                <summary>Which AI tools do I need?</summary>
-                <p>Any modern AI chat tool works — ChatGPT, Claude, or Gemini, including the free tiers. The system is about the strategy and prompts, not a specific tool.</p>
-            </details>
-            <details class="faq">
-                <summary>Does this work for my platform?</summary>
-                <p>Yes. The framework is platform-agnostic and includes specific guidance for Instagram, TikTok, LinkedIn, and YouTube. If you post short-form content anywhere, this applies.</p>
-            </details>
-            <details class="faq">
-                <summary>I'm not "techy." Will I be able to follow it?</summary>
-                <p>Absolutely. Every prompt is copy-paste ready and every workflow is step-by-step. If you can write a text message, you can run this system.</p>
-            </details>
-            <details class="faq">
-                <summary>How is this different from free AI content advice?</summary>
-                <p>Free advice gives you tips. This gives you a complete, sequenced system that's been battle-tested on channels with millions of subscribers — including the exact prompts, the weekly cadence, and how it all connects to revenue.</p>
-            </details>
-        </div>
-
-        <!-- GUARANTEE / FINAL CTA -->
-        <div class="card guarantee">
-            <h2 class="card-h">Your next 30 days of content are <span class="em">one afternoon away.</span> ⏳</h2>
-            <p>Grab the guide, run the sprint this weekend, and start next week with a full calendar of content that sounds like you and grows your audience.</p>
+        <!-- CLOSING / PRICE / DISCLAIMER -->
+        <div class="card copy">
+            <p><strong>My AI Growth Strategy</strong> is the guide that I wish I had when I started my journey. If you are posting and getting nowhere and looking for ways to grow your brand now, this was made for you!</p>
+            <p class="price-line">$19 Instant access. One-time payment.</p>
             <!-- TODO: Replace href with your Stripe payment link for this product -->
-            <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="buy-btn">Get instant access — $19 →</a>
-            <p class="trust-line" style="color: rgba(255,255,255,0.6);">🔒 Secure checkout via Stripe · Instant delivery · Keep it forever</p>
+            <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="buy-btn" style="margin: 0.5rem 0 1.4rem;">Get instant access — $19 →</a>
+            <p class="disclaimer">Due to the nature of digital products, all sales are final. Once your purchase is complete, you will not be eligible for a refund. Please review the product details carefully before completing your purchase. Thank you for understanding!</p>
         </div>
 
         <footer class="ft">
@@ -393,11 +247,10 @@
     <!-- STICKY BUY BAR -->
     <div class="sticky-buy">
         <div class="sticky-buy-price">
-            <span class="was">$47</span>
             <span class="now">$19</span>
         </div>
         <!-- TODO: Replace href with your Stripe payment link for this product -->
-        <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="buy-btn">I want this! →</a>
+        <a href="https://buy.stripe.com/REPLACE_WITH_YOUR_PAYMENT_LINK" class="buy-btn">Get instant access →</a>
     </div>
 
 </body>
