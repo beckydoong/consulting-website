@@ -1,639 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The AI Business Blueprint — Seedscale Agency</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The AI Business Blueprint — Turn What You Know Into a Real Business | Seedscale</title>
 
-    :root {
-      --navy: #073B3A;
-      --navy-dark: #042625;
-      --gold: #08A045;
-      --gold-light: #a8e6cf;
-      --gold-bg: #f0fdf4;
-      --cream: #f7faf9;
-      --yellow: #FACC15;
-      --yellow-light: #fde047;
-      --white: #ffffff;
-      --gray-100: #f7f7f7;
-      --gray-200: #e5e5e5;
-      --gray-500: #6b7280;
-      --gray-700: #374151;
-      --gray-900: #111827;
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    }
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-    html { scroll-behavior: smooth; }
-    body { font-family: var(--font-body); color: var(--gray-900); line-height: 1.7; background: var(--white); }
+    <meta name="description" content="A simple, no-fluff guide to turning your skills into a real income stream with AI — 13 chapters, 15+ prompts, 10 templates, and a 30-day action plan. $27, instant access.">
+    <meta property="og:title" content="The AI Business Blueprint — Turn What You Know Into a Real Business">
+    <meta property="og:description" content="Ready to turn what you know into a real business — but not sure where to begin? 13 chapters, 15+ prompts, a 30-day plan. $27, instant access.">
+    <meta property="og:image" content="og-image.png">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://seedscale.agency/ai-business-blueprint.html">
 
-    /* ─── HERO ─── */
-    .hero {
-      background: linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 50%, #0B6E4F 100%);
-      color: var(--white);
-      padding: 80px 24px 100px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle at 30% 70%, rgba(8, 160, 69, 0.08) 0%, transparent 50%),
-                  radial-gradient(circle at 70% 30%, rgba(8, 160, 69, 0.05) 0%, transparent 50%);
-      pointer-events: none;
-    }
-    .hero-content { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
-    .hero-label {
-      display: inline-block;
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--yellow);
-      margin-bottom: 24px;
-      border: 1px solid rgba(250, 204, 21, 0.4);
-      padding: 6px 20px;
-      border-radius: 100px;
-    }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(36px, 6vw, 56px);
-      font-weight: 900;
-      line-height: 1.15;
-      margin-bottom: 24px;
-    }
-    .hero h1 .gold { color: var(--yellow); }
-    .hero p {
-      font-size: 18px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.85);
-      max-width: 560px;
-      margin: 0 auto 40px;
-    }
-    .hero-price {
-      display: inline-flex;
-      align-items: baseline;
-      gap: 12px;
-      margin-bottom: 32px;
-    }
-    .hero-price .amount {
-      font-family: var(--font-display);
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--yellow);
-    }
-    .hero-price .note {
-      font-size: 15px;
-      color: rgba(255,255,255,0.6);
-    }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    /* ─── CTA BUTTON ─── */
-    .cta-btn {
-      display: inline-block;
-      background: var(--yellow);
-      color: var(--navy-dark);
-      font-family: var(--font-body);
-      font-size: 17px;
-      font-weight: 700;
-      padding: 18px 48px;
-      border-radius: 8px;
-      text-decoration: none;
-      transition: all 0.2s ease;
-      border: none;
-      cursor: pointer;
-      letter-spacing: 0.5px;
-    }
-    .cta-btn:hover {
-      background: var(--yellow-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(250, 204, 21, 0.4);
-    }
-    .cta-btn-outline {
-      background: transparent;
-      border: 2px solid var(--gold);
-      color: var(--gold);
-    }
-    .cta-btn-outline:hover {
-      background: var(--gold);
-      color: var(--navy-dark);
-    }
-    .cta-sub {
-      display: block;
-      margin-top: 12px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
-    }
+    <!-- Klaviyo Onsite Tracking -->
+    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
+    <script type="text/javascript">
+      !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
+    </script>
 
-    /* ─── SECTIONS ─── */
-    section { padding: 80px 24px; }
-    .container { max-width: 860px; margin: 0 auto; }
-    .section-label {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
-    }
-    .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(28px, 4vw, 40px);
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 20px;
-      line-height: 1.25;
-    }
-    .section-subtitle {
-      font-size: 17px;
-      color: var(--gray-500);
-      max-width: 600px;
-      margin-bottom: 48px;
-      line-height: 1.7;
-    }
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html, body { overflow-x: hidden; max-width: 100%; }
+        body {
+            font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6;
+            background: #ecefec; padding-top: 60px; padding-bottom: 90px;
+        }
+        a { color: inherit; text-decoration: none; }
 
-    /* ─── PROBLEM SECTION ─── */
-    .problem { background: var(--cream); }
-    .problem-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 24px;
-      margin-top: 40px;
-    }
-    .problem-card {
-      background: var(--white);
-      border-radius: 12px;
-      padding: 32px 28px;
-      border: 1px solid var(--gray-200);
-    }
-    .problem-card .icon {
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-    .problem-card h3 {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-    }
-    .problem-card p {
-      font-size: 15px;
-      color: var(--gray-500);
-      line-height: 1.6;
-    }
+        .s-nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: #073B3A; padding: 0 1.5rem; height: 60px;
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .s-nav-logo img { height: 28px; width: auto; }
+        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
+        .s-nav-back:hover { color: #21D375; }
 
-    /* ─── WHAT'S INSIDE ─── */
-    .inside { background: var(--white); }
-    .parts-grid {
-      display: grid;
-      gap: 32px;
-      margin-top: 40px;
-    }
-    .part-block {
-      border-left: 4px solid var(--gold);
-      padding-left: 28px;
-    }
-    .part-block .part-label {
-      font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 8px;
-    }
-    .part-block h3 {
-      font-family: var(--font-display);
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-    .part-block ul {
-      list-style: none;
-      padding: 0;
-    }
-    .part-block li {
-      font-size: 15px;
-      color: var(--gray-700);
-      padding: 6px 0;
-      padding-left: 20px;
-      position: relative;
-    }
-    .part-block li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-weight: 600;
-    }
+        .feed {
+            max-width: 560px; margin: 0 auto; padding: 1.5rem 1rem 3rem;
+            display: flex; flex-direction: column; gap: 1rem;
+        }
+        .card {
+            background: #fff; border-radius: 20px; padding: 1.75rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(7,59,58,0.08);
+        }
 
-    /* ─── BENEFITS ─── */
-    .benefits { background: var(--navy); color: var(--white); }
-    .benefits .section-title { color: var(--white); }
-    .benefits .section-subtitle { color: rgba(255,255,255,0.65); }
-    .benefit-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
-    }
-    .benefit-item {
-      text-align: center;
-      padding: 20px;
-    }
-    .benefit-item .number {
-      font-family: var(--font-display);
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--yellow);
-      margin-bottom: 12px;
-    }
-    .benefit-item h3 {
-      font-size: 17px;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-    .benefit-item p {
-      font-size: 14px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.6;
-    }
+        .creator {
+            display: flex; align-items: center; gap: 0.9rem; padding: 1.1rem 1.5rem;
+        }
+        .creator-avatar {
+            width: 56px; height: 56px; border-radius: 50%; overflow: hidden;
+            border: 3px solid #FACC15; flex-shrink: 0;
+        }
+        .creator-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .creator-name { font-weight: 700; color: #073B3A; font-size: 1rem; line-height: 1.3; }
+        .creator-sub { font-size: 0.82rem; color: #666; }
 
-    /* ─── AUTHOR ─── */
-    .author { background: var(--cream); }
-    .author-card {
-      display: flex;
-      gap: 40px;
-      align-items: flex-start;
-      flex-wrap: wrap;
-    }
-    .author-photo {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--navy) 0%, #0B6E4F 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .author-photo span {
-      font-family: var(--font-display);
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--yellow);
-    }
-    .author-text { flex: 1; min-width: 280px; }
-    .author-text h3 {
-      font-family: var(--font-display);
-      font-size: 24px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-    .author-text p {
-      font-size: 16px;
-      color: var(--gray-700);
-      margin-bottom: 14px;
-      line-height: 1.7;
-    }
+        .cover {
+            border-radius: 20px; overflow: hidden;
+            background: linear-gradient(150deg, #073B3A 0%, #0B6E4F 70%, #0e8a5f 100%);
+            color: #fff; padding: 3rem 1.75rem; text-align: center; position: relative;
+        }
+        .cover-kicker {
+            display: inline-block; background: #FACC15; color: #073B3A;
+            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em;
+            text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 999px;
+            margin-bottom: 1.1rem;
+        }
+        .cover h2 {
+            font-size: 2rem; font-weight: 800; line-height: 1.1;
+            letter-spacing: -0.025em; margin-bottom: 0.75rem;
+        }
+        .cover h2 .em { color: #FACC15; }
+        .cover p { color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 400px; margin: 0 auto; }
+        .cover-emoji { font-size: 2rem; position: absolute; opacity: 0.9; }
 
-    /* ─── PRICING CTA ─── */
-    .pricing {
-      background: var(--white);
-      text-align: center;
-    }
-    .pricing-box {
-      max-width: 520px;
-      margin: 40px auto 0;
-      background: var(--white);
-      border: 2px solid var(--yellow);
-      border-radius: 16px;
-      padding: 48px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-box::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: var(--yellow);
-    }
-    .pricing-box .price-label {
-      font-size: 14px;
-      font-weight: 600;
-      color: var(--gray-500);
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-    .pricing-box .price-amount {
-      font-family: var(--font-display);
-      font-size: 56px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 24px;
-    }
-    .pricing-box .includes {
-      text-align: left;
-      list-style: none;
-      padding: 0;
-      margin-bottom: 32px;
-    }
-    .pricing-box .includes li {
-      font-size: 15px;
-      color: var(--gray-700);
-      padding: 10px 0;
-      border-bottom: 1px solid var(--gray-200);
-      padding-left: 28px;
-      position: relative;
-    }
-    .pricing-box .includes li::before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-weight: 700;
-    }
-    .pricing-box .includes li:last-child {
-      border-bottom: none;
-    }
+        .product-title { font-size: 1.5rem; font-weight: 800; color: #073B3A; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 0.75rem; }
+        .price-row { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1.1rem; }
+        .price-now { font-size: 1.8rem; font-weight: 800; color: #073B3A; }
+        .price-note { font-size: 0.9rem; color: #666; font-weight: 500; }
 
-    /* ─── FAQ ─── */
-    .faq { background: var(--cream); }
-    .faq-list { margin-top: 40px; }
-    .faq-item {
-      border-bottom: 1px solid var(--gray-200);
-      padding: 24px 0;
-    }
-    .faq-item:first-child { border-top: 1px solid var(--gray-200); }
-    .faq-item h3 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 10px;
-      cursor: pointer;
-    }
-    .faq-item p {
-      font-size: 15px;
-      color: var(--gray-700);
-      line-height: 1.7;
-    }
+        .buy-btn {
+            display: block; width: 100%; text-align: center; font-family: inherit;
+            font-weight: 800; font-size: 1.1rem; padding: 1.05rem 1.5rem;
+            border-radius: 999px; background: #FACC15; color: #073B3A;
+            cursor: pointer; transition: transform 0.15s, background 0.2s; border: none;
+        }
+        .buy-btn:hover { background: #fde047; transform: translateY(-1px); }
+        .trust-line { text-align: center; font-size: 0.8rem; color: #777; margin-top: 0.75rem; }
 
-    /* ─── GUARANTEE ─── */
-    .guarantee {
-      background: var(--gold-bg);
-      text-align: center;
-      padding: 60px 24px;
-    }
-    .guarantee-inner {
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    .guarantee h2 {
-      font-family: var(--font-display);
-      font-size: 28px;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 16px;
-    }
-    .guarantee p {
-      font-size: 16px;
-      color: var(--gray-700);
-      line-height: 1.7;
-    }
+        .copy p { margin-bottom: 1.15rem; font-size: 1rem; color: #333; }
+        .copy p:last-child { margin-bottom: 0; }
+        .copy strong { color: #073B3A; }
+        .copy em { font-style: italic; }
+        .copy .hook { font-size: 1.08rem; font-weight: 700; color: #073B3A; }
+        .copy .standalone { font-style: italic; font-weight: 700; color: #073B3A; }
+        .copy .price-line { font-size: 1.08rem; font-weight: 800; color: #073B3A; }
+        .copy .disclaimer { font-style: italic; font-size: 0.92rem; color: #555; }
 
-    /* ─── FOOTER ─── */
-    footer {
-      background: var(--navy-dark);
-      color: rgba(255,255,255,0.5);
-      text-align: center;
-      padding: 40px 24px;
-      font-size: 14px;
-    }
-    footer a { color: var(--gold); text-decoration: none; }
+        .stats {
+            display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin: 1.4rem 0;
+        }
+        @media (min-width: 480px) { .stats { grid-template-columns: 1fr 1fr 1fr; } }
+        .stat-tile {
+            background: #073B3A; color: #fff; border-radius: 14px;
+            padding: 1.1rem 0.9rem; text-align: center;
+        }
+        .stat-tile .num { display: block; font-size: 1.3rem; font-weight: 800; color: #FACC15; letter-spacing: -0.02em; }
+        .stat-tile .lbl { font-size: 0.72rem; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
 
-    /* ─── RESPONSIVE ─── */
-    @media (max-width: 640px) {
-      .hero { padding: 60px 20px 80px; }
-      section { padding: 60px 20px; }
-      .author-card { flex-direction: column; align-items: center; text-align: center; }
-      .pricing-box { padding: 36px 24px; }
-    }
-  </style>
+        .inside-h {
+            font-size: 1.35rem; font-weight: 800; color: #073B3A;
+            letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 1.1rem;
+        }
+        .inside-list { list-style: none; }
+        .inside-list li {
+            display: flex; gap: 0.7rem; align-items: flex-start;
+            font-size: 1rem; color: #333; line-height: 1.55;
+            padding: 0.55rem 0;
+        }
+        .inside-list .mark { flex-shrink: 0; line-height: 1.55; }
+
+        .sticky-buy {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+            background: #fff; border-top: 1px solid #e5e7eb;
+            padding: 0.75rem 1rem calc(0.75rem + env(safe-area-inset-bottom));
+            display: flex; align-items: center; gap: 1rem;
+        }
+        .sticky-buy-price .now { font-size: 1.15rem; font-weight: 800; color: #073B3A; }
+        .sticky-buy .buy-btn { flex: 1; padding: 0.85rem 1rem; font-size: 1rem; }
+        @media (min-width: 700px) {
+            .sticky-buy { display: none; }
+            body { padding-bottom: 0; }
+        }
+
+        .ft {
+            background: transparent; color: #888;
+            padding: 1rem 1.25rem 2rem; text-align: center; font-size: 0.82rem;
+        }
+        .ft a { color: #0B6E4F; font-weight: 500; }
+        .ft a:hover { color: #21D375; }
+    </style>
 </head>
 <body>
 
-  <!-- ─── HERO ─── -->
-  <section class="hero">
-    <div class="hero-content">
-      <span class="hero-label">Digital Guide</span>
-      <h1>The <span class="gold">AI Business</span> Blueprint</h1>
-      <p>How to build a digital business with AI tools, create a social media lead engine, and sell your first product — even if you've never written a line of code.</p>
-      <div class="hero-price">
-        <span class="amount">$27</span>
-        <span class="note">one-time purchase</span>
-      </div>
-      <br>
-      <a href="https://buy.stripe.com/dRm9AV7In8XH9Ki6LE0Ny06" class="cta-btn">Get the Blueprint</a>
-      <span class="cta-sub">Instant PDF download.</span>
-    </div>
-  </section>
+    <nav class="s-nav">
+        <a href="index.html" class="s-nav-logo">
+            <img src="logo.svg" alt="Seedscale Agency">
+        </a>
+        <a href="connect.html" class="s-nav-back">← All offers</a>
+    </nav>
 
-  <!-- ─── PROBLEM ─── -->
-  <section class="problem">
-    <div class="container">
-      <p class="section-label">The Problem</p>
-      <h2 class="section-title">You know AI is changing everything.<br>You just don't know where to start.</h2>
-      <p class="section-subtitle">You've seen people building businesses with AI. You want in. But every tutorial assumes you're a developer, and every "guru" is selling a $997 course on vibes.</p>
-      <div class="problem-grid">
-        <div class="problem-card">
-          <div class="icon">⏰</div>
-          <h3>No time to figure it out</h3>
-          <p>You could spend weeks watching YouTube videos and reading blog posts. Or you could follow a system that works in 30 days.</p>
-        </div>
-        <div class="problem-card">
-          <div class="icon">🔧</div>
-          <h3>Too many tools, no clarity</h3>
-          <p>Claude, ChatGPT, Claude Code, Midjourney — which ones actually matter? This guide cuts through the noise.</p>
-        </div>
-        <div class="problem-card">
-          <div class="icon">💡</div>
-          <h3>Ideas but no system</h3>
-          <p>You have the expertise. You just need the framework to turn it into content, an audience, and a product that sells.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div class="feed">
 
-  <!-- ─── WHAT'S INSIDE ─── -->
-  <section class="inside">
-    <div class="container">
-      <p class="section-label">What's Inside</p>
-      <h2 class="section-title">13 chapters. Four parts. One system.</h2>
-      <p class="section-subtitle">Every chapter is actionable. No filler. No theory without application.</p>
-      <div class="parts-grid">
-        <div class="part-block">
-          <p class="part-label">Part 1</p>
-          <h3>The AI Tools That Matter Right Now</h3>
-          <ul>
-            <li>Claude — your AI thinking partner for writing, analysis, and strategy</li>
-            <li>Claude Code — your AI developer that builds websites and tools from plain English</li>
-            <li>Claude CoWork — your AI team that runs multiple agents in parallel</li>
-            <li>ChatGPT — when to use it, how it complements Claude, custom GPTs</li>
-            <li>Side-by-side comparison and recommended starter stack</li>
-          </ul>
+        <!-- CREATOR HEADER -->
+        <div class="card creator">
+            <div class="creator-avatar">
+                <img src="headshot.jpeg" alt="Rebecca, founder of Seedscale">
+            </div>
+            <div>
+                <div class="creator-name">Rebecca · Seedscale</div>
+                <div class="creator-sub">The strategist behind billions of views &amp; millions of subscribers</div>
+            </div>
         </div>
-        <div class="part-block">
-          <p class="part-label">Part 2</p>
-          <h3>Building Your Lead Acquisition Engine</h3>
-          <ul>
-            <li>Why social media is your engine, not your product</li>
-            <li>Content that attracts buyers (not just followers) — 10 templates included</li>
-            <li>Creating a week of content in 2 hours with AI</li>
-            <li>Building an audience that actually purchases from you</li>
-            <li>The 3 metrics that predict revenue, not vanity</li>
-          </ul>
-        </div>
-        <div class="part-block">
-          <p class="part-label">Part 3</p>
-          <h3>Turning Followers Into Customers</h3>
-          <ul>
-            <li>Where to sell: Gumroad vs Stan Store vs your own site (and when to choose each)</li>
-            <li>6 digital products ranked by effort and profit potential</li>
-            <li>The launch playbook — pre-launch, launch day, post-launch sequences</li>
-            <li>How to validate demand before you build anything</li>
-            <li>When and how to raise your prices</li>
-          </ul>
-        </div>
-        <div class="part-block">
-          <p class="part-label">Part 4</p>
-          <h3>Your 30-Day Action Plan</h3>
-          <ul>
-            <li>Day-by-day tasks with time estimates and expected outcomes</li>
-            <li>Which AI tool to use for each step</li>
-            <li>From zero to published product in 30 days</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ─── BENEFITS / NUMBERS ─── -->
-  <section class="benefits">
-    <div class="container">
-      <p class="section-label" style="color: var(--gold);">Why This Guide</p>
-      <h2 class="section-title">Built for people who build, not people who code.</h2>
-      <p class="section-subtitle">Everything in this guide can be done by someone with zero technical background. That's the point.</p>
-      <div class="benefit-grid">
-        <div class="benefit-item">
-          <div class="number">13</div>
-          <h3>Chapters</h3>
-          <p>Every one written with specific, copy-paste-ready prompts and real examples</p>
+        <!-- COVER -->
+        <div class="cover">
+            <span class="cover-emoji" style="top: 1rem; left: 1.25rem;">🏗️</span>
+            <span class="cover-emoji" style="bottom: 1rem; right: 1.25rem;">🚀</span>
+            <span class="cover-kicker">Digital Guide · Instant Access</span>
+            <h2>The AI Business<br><span class="em">Blueprint</span></h2>
+            <p>A simple, no-fluff guide to turn what you know into a real income stream with AI — with clarity and direction.</p>
         </div>
-        <div class="benefit-item">
-          <div class="number">15+</div>
-          <h3>AI Prompts</h3>
-          <p>Ready-to-use prompts for content, sales copy, research, and product creation</p>
-        </div>
-        <div class="benefit-item">
-          <div class="number">30</div>
-          <h3>Day Plan</h3>
-          <p>Step-by-step roadmap from setup to launched product with daily tasks</p>
-        </div>
-        <div class="benefit-item">
-          <div class="number">10</div>
-          <h3>Templates</h3>
-          <p>Content templates for social media that attract buyers, not just followers</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ─── AUTHOR ─── -->
-  <section class="author">
-    <div class="container">
-      <p class="section-label">About the Author</p>
-      <h2 class="section-title">Rebecca, Seedscale Agency</h2>
-      <div class="author-card">
-        <div class="author-photo"><span>SA</span></div>
-        <div class="author-text">
-          <p>I've built marketing engines behind 10M+ subscribers, $15M+ raised annually, and billions of views. I've doubled digital fundraising revenue from $7M to $14M, built a base of 250,000 active recurring supporters, and produced campaigns that generated 100M+ views across social platforms.</p>
-          <p>Now I build those same systems for founders and lean teams through Seedscale Agency. AI has changed how fast one person can move. This guide is the system I wish I'd had when I started — everything I know about using AI tools to create content, build an audience, and sell digital products, compressed into something you can follow in 30 days.</p>
+        <!-- TITLE / PRICE / BUY -->
+        <div class="card">
+            <h1 class="product-title">The AI Business Blueprint</h1>
+            <div class="price-row">
+                <span class="price-now">$27</span>
+                <span class="price-note">Instant access. One-time payment.</span>
+            </div>
+            <a href="https://buy.stripe.com/dRm9AV7In8XH9Ki6LE0Ny06" class="buy-btn">Get instant access →</a>
+            <p class="trust-line">🔒 Secure checkout via Stripe · Instant download · Lifetime access</p>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ─── FAQ ─── -->
-  <section class="faq">
-    <div class="container">
-      <p class="section-label">Questions</p>
-      <h2 class="section-title">Frequently Asked</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>Do I need to know how to code?</h3>
-          <p>No. This guide is specifically designed for non-technical people. The AI tools covered (Claude, ChatGPT, Claude Code) handle the technical work. You provide the ideas and instructions in plain English.</p>
-        </div>
-        <div class="faq-item">
-          <h3>What format is the guide?</h3>
-          <p>You'll receive the guide as a downloadable file immediately after purchase. It's a professionally formatted document you can read on any device.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Is this just a list of AI tools?</h3>
-          <p>No. The tools section is 5 chapters out of 13. The majority of the guide covers the business system: how to create content, build an audience, create a product, and launch it. The AI tools are the how. The business strategy is the what.</p>
-        </div>
-        <div class="faq-item">
-          <h3>I already use ChatGPT. Will I learn anything new?</h3>
-          <p>Yes. This guide covers Claude, Claude Code, and Claude CoWork — tools most ChatGPT users haven't explored. More importantly, it shows you how to use these tools together as a system for building a business, not just answering questions.</p>
-        </div>
-        <div class="faq-item">
-          <h3>What if I don't have a product idea yet?</h3>
-          <p>Chapter 11 covers six types of digital products you can create with AI, ranked by effort and profit potential. Chapter 5 includes prompts for niche discovery. The 30-day plan walks you through the entire process from idea to launch.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+        <!-- SALES COPY -->
+        <div class="card copy">
+            <p class="hook">😱 Ready to turn what you know into a real business — but not sure where to begin?</p>
+            <p>Maybe you've started a side hustle or two before and felt lost on how to make the income consistent.</p>
+            <p>Or maybe you've been praying for a way to build something of your own — without quitting your job, hiring a team, or burning out to get there.</p>
+            <p class="standalone">I've been there.</p>
+            <p><strong>I have always been a fan of building lean.</strong> I've done everything from launching offers from scratch to building the growth engines behind major brands — anything that turned skills and attention into consistent revenue during the seasons it mattered most.</p>
+            <p>And over time, the systems I developed <em>behind the scenes</em> took brands from invisible to viral — generating <strong>billions of views</strong>, managing <strong>subscriber lists in the millions</strong>, and growing <strong>revenue to tens of millions</strong>.</p>
 
-  <!-- ─── FINAL CTA ─── -->
-  <section class="pricing">
-    <div class="container">
-      <p class="section-label">Get Started</p>
-      <h2 class="section-title">Your 30-day path from idea to income.</h2>
-      <div class="pricing-box">
-        <p class="price-label">One-time purchase</p>
-        <p class="price-amount">$27</p>
-        <ul class="includes">
-          <li>13-chapter comprehensive guide</li>
-          <li>15+ copy-paste AI prompts for business</li>
-          <li>10 social media content templates</li>
-          <li>30-day step-by-step action plan</li>
-          <li>Platform comparison charts and decision frameworks</li>
-          <li>Launch playbook with email sequences</li>
-          <li>Resources appendix with tool recommendations</li>
-        </ul>
-        <a href="https://buy.stripe.com/dRm9AV7In8XH9Ki6LE0Ny06" class="cta-btn" style="width: 100%; text-align: center;">Get the Blueprint — $27</a>
-      </div>
-    </div>
-  </section>
+            <div class="stats">
+                <div class="stat-tile"><span class="num">Billions</span><span class="lbl">of Views</span></div>
+                <div class="stat-tile"><span class="num">Millions</span><span class="lbl">of Subscribers</span></div>
+                <div class="stat-tile"><span class="num">Tens of Millions</span><span class="lbl">in Revenue</span></div>
+            </div>
 
-  <!-- ─── FOOTER ─── -->
-  <footer>
-    <p>&copy; 2026 Seedscale Agency. All rights reserved.</p>
-  </footer>
+            <p>I remember trying to piece it all together myself — one YouTube video, one thread, one "guru" course at a time.</p>
+            <p>Most of what I found was either outdated, all hype with no substance, or written for people who already had a big audience and a full team behind them.</p>
+            <p>So I built the blueprint I wish I had back then — one that's simple to follow, and designed for real people who want to build a real income stream with AI without adding more stress.</p>
+            <p>The AI Business Blueprint is a simple, no-fluff guide to help you <strong>go from idea to paying customers with clarity and direction</strong> — without adding more stress.</p>
+        </div>
+
+        <!-- WHAT'S INSIDE -->
+        <div class="card">
+            <h2 class="inside-h">✨ What's Inside the AI Business Blueprint</h2>
+            <ul class="inside-list">
+                <li><span class="mark">✔️</span> <span>13 no-fluff chapters that walk you from idea to income — including the AI tools that actually matter right now (and the ones you can safely ignore)</span></li>
+                <li><span class="mark">✔️</span> <span>How to build your lead acquisition engine with AI — the same approach I've used to grow subscriber lists in the millions</span></li>
+                <li><span class="mark">✔️</span> <span>How to turn followers into customers — the content, offers, and follow-up that sell without feeling salesy</span></li>
+                <li><span class="mark">✔️</span> <span>15+ tested AI prompts and 10 plug-and-play templates so you never start from a blank page</span></li>
+                <li><span class="mark">✔️</span> <span>Your 30-day action plan — a quick, easy-to-follow path so you know exactly what to do each week to launch!</span></li>
+            </ul>
+        </div>
+
+        <!-- CLOSING / PRICE / DISCLAIMER -->
+        <div class="card copy">
+            <p><strong>The AI Business Blueprint</strong> is the guide that I wish I had when I started building. If you're ready to turn your skills into a real income stream — and you want AI doing the heavy lifting — this was made for you!</p>
+            <p class="price-line">$27 Instant access. One-time payment.</p>
+            <a href="https://buy.stripe.com/dRm9AV7In8XH9Ki6LE0Ny06" class="buy-btn" style="margin: 0.5rem 0 1.4rem;">Get instant access — $27 →</a>
+            <p class="disclaimer">Due to the nature of digital products, all sales are final. Once your purchase is complete, you will not be eligible for a refund. Please review the product details carefully before completing your purchase. Thank you for understanding!</p>
+        </div>
+
+        <footer class="ft">
+            &copy; 2026 Seedscale Agency &middot; <a href="index.html">Home</a> &middot; <a href="connect.html">All offers</a> &middot; Next step: <a href="ai-career-strategy.html">AI Career Strategy 1:1 →</a>
+        </footer>
+
+    </div>
+
+    <!-- STICKY BUY BAR -->
+    <div class="sticky-buy">
+        <div class="sticky-buy-price">
+            <span class="now">$27</span>
+        </div>
+        <a href="https://buy.stripe.com/dRm9AV7In8XH9Ki6LE0Ny06" class="buy-btn">Get instant access →</a>
+    </div>
 
 </body>
 </html>

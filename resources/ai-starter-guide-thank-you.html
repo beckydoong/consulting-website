@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Download — Get Paid for What You Know | Seedscale Agency</title>
-    <meta name="description" content="Thanks for picking up Get Paid for What You Know. Download your copy here.">
+    <title>Your Download — The AI Side Hustle Jumpstart Kit | Seedscale Agency</title>
+    <meta name="description" content="Thanks for picking up The AI Side Hustle Jumpstart Kit. Download your copy here.">
     <meta name="robots" content="noindex">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -93,10 +93,10 @@
 
     <main class="ty-wrap">
         <div class="ty-card">
-            <p class="ty-eyebrow">Prompt Pack</p>
+            <p class="ty-eyebrow">Jumpstart Kit</p>
             <h1>Thanks for picking this up — here's your download.</h1>
-            <p>Get Paid for What You Know — 50 ChatGPT &amp; Claude prompts to turn your skills into income: find the skill people pay for, package it, price it, and land your first client. Save it somewhere you'll actually open it.</p>
-            <a href="/resources/ai-starter-guide.pdf" class="ty-download" download>Download the prompt pack (PDF)</a>
+            <p>The AI Side Hustle Jumpstart Kit — 50 ChatGPT &amp; Claude prompts to start earning extra income with AI: find the skill people pay for, package it, price it, and land your first client. Save it somewhere you'll actually open it.</p>
+            <a href="/resources/ai-starter-guide.pdf" class="ty-download" download>Download the kit (PDF)</a>
 
             <div style="margin-top:1.75rem;background:#f0fdf4;border:1.5px solid #FACC15;border-radius:14px;padding:1.3rem 1.25rem 1.45rem;text-align:center;">
                 <p style="font-size:1.05rem;font-weight:700;color:#073B3A;margin:0 0 0.35rem;">Want it in your inbox too?</p>
@@ -127,7 +127,7 @@
         var btn = form.querySelector('button'); if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
         try { if(window.klaviyo && email){
           window.klaviyo.push(['identify', { '$email': email, 'bought_prompt_pack': true }]);
-          window.klaviyo.push(['track', 'Bought Prompt Pack', { product: 'Get Paid for What You Know', value: 9 }]);
+          window.klaviyo.push(['track', 'Bought Prompt Pack', { product: 'The AI Side Hustle Jumpstart Kit', value: 9 }]);
         }} catch(err){}
         fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Prompt Pack \u2014 emailed copy',profile:{data:{type:'profile',attributes:{email:email}}}},relationships:{list:{data:{type:'list',id:'Y7Dexm'}}}}})})
           .catch(function(){})
