@@ -23,152 +23,212 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { overflow-x: hidden; max-width: 100%; }
         body {
-            font-family: 'Work Sans', sans-serif; color: #3a3a3a; line-height: 1.75;
-            font-weight: 400; background: #ecefec;
+            font-family: 'Work Sans', sans-serif; color: #3a3a3a; line-height: 1.7;
+            font-weight: 400; background: #ecefec; padding-bottom: 84px;
         }
         a { color: inherit; text-decoration: none; }
 
+        /* Compact confirmation band */
         .confirm {
             background: linear-gradient(150deg, #073B3A 0%, #0B6E4F 100%);
-            color: #fff; text-align: center; padding: 2.75rem 1.25rem 2.25rem;
+            color: #fff; text-align: center; padding: 1.9rem 1.25rem 1.7rem;
+        }
+        .confirm-row {
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.7rem; flex-wrap: wrap;
         }
         .confirm-check {
-            width: 52px; height: 52px; border-radius: 50%; background: #21D375;
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1rem; font-size: 1.5rem;
+            width: 34px; height: 34px; border-radius: 50%; background: #21D375;
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: 1rem; flex-shrink: 0;
         }
         .confirm h1 {
-            font-size: 1.65rem; font-weight: 700; line-height: 1.25;
-            letter-spacing: -0.01em; max-width: 520px; margin: 0 auto 0.6rem;
+            font-size: 1.35rem; font-weight: 700; line-height: 1.3; letter-spacing: -0.01em;
         }
         .confirm h1 .em { color: #FACC15; }
-        .confirm p { color: rgba(255,255,255,0.88); font-size: 0.95rem; max-width: 440px; margin: 0 auto; font-weight: 400; }
-        .confirm .spam-note { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 0.6rem; }
+        .confirm p { color: rgba(255,255,255,0.75); font-size: 0.85rem; margin-top: 0.4rem; }
 
-        .feed {
-            max-width: 540px; margin: 0 auto; padding: 1.5rem 1rem 3rem;
-            display: flex; flex-direction: column; gap: 1rem;
+        /* Layout */
+        .wrap {
+            max-width: 980px; margin: 0 auto; padding: 1.25rem 1rem 2.5rem;
+            display: grid; grid-template-columns: 1fr; gap: 1rem; align-items: start;
         }
+        @media (min-width: 860px) {
+            .wrap {
+                grid-template-columns: 1.1fr 0.9fr; gap: 1.5rem; padding-top: 2rem;
+                grid-template-areas: "copy buy" "dl buy";
+            }
+            .copy-col { grid-area: copy; }
+            .buy-col { grid-area: buy; position: sticky; top: 1.25rem; }
+            .dl-col { grid-area: dl; }
+            body { padding-bottom: 0; }
+        }
+
         .card {
-            background: #fff; border-radius: 20px; padding: 2rem 1.6rem;
+            background: #fff; border-radius: 20px; padding: 1.9rem 1.6rem;
             box-shadow: 0 1px 3px rgba(7,59,58,0.08);
         }
 
-        .offer-card { border: 2px solid #FACC15; box-shadow: 0 6px 20px rgba(7,59,58,0.10); }
-        .offer-kicker {
-            display: inline-block; background: #FEF3C7; color: #92400E;
-            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 999px;
-            margin-bottom: 1.1rem;
+        /* Buy box */
+        .buy-box {
+            background: #fff; border-radius: 20px; overflow: hidden;
+            border: 2px solid #FACC15; box-shadow: 0 6px 20px rgba(7,59,58,0.12);
         }
-        .offer-card h2 {
-            font-size: 1.45rem; font-weight: 700; color: #073B3A;
-            letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 1.1rem;
+        .buy-box-head {
+            background: #073B3A; color: #fff; padding: 1rem 1.5rem;
+            display: flex; align-items: center; gap: 0.8rem;
         }
-        .offer-card h2 .em { color: #0B6E4F; }
-        .offer-card p {
-            font-size: 1.02rem; color: #3a3a3a; margin-bottom: 1rem;
-            line-height: 1.7;
+        .buy-avatar {
+            width: 42px; height: 42px; border-radius: 50%; overflow: hidden;
+            border: 2px solid #FACC15; flex-shrink: 0;
         }
-        .offer-card p strong { color: #073B3A; font-weight: 600; }
-        .offer-card .beat { font-weight: 600; color: #073B3A; }
-
-        .mini-list { list-style: none; margin: 1.2rem 0 1.4rem; }
+        .buy-avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .buy-box-head .t { font-weight: 700; font-size: 0.98rem; line-height: 1.3; }
+        .buy-box-head .s { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+        .buy-box-body { padding: 1.4rem 1.5rem 1.5rem; }
+        .buy-promise {
+            font-size: 1.05rem; font-weight: 600; color: #073B3A;
+            line-height: 1.45; margin-bottom: 0.9rem;
+        }
+        .mini-list { list-style: none; margin-bottom: 1.1rem; }
         .mini-list li {
-            display: flex; gap: 0.7rem; align-items: flex-start;
-            font-size: 0.98rem; color: #3a3a3a; line-height: 1.6; padding: 0.4rem 0;
+            display: flex; gap: 0.6rem; align-items: flex-start;
+            font-size: 0.92rem; color: #3a3a3a; line-height: 1.5; padding: 0.28rem 0;
         }
-        .mini-list .mark { flex-shrink: 0; color: #0B6E4F; }
-
-        .price-strip {
-            display: flex; align-items: baseline; gap: 0.65rem; margin-bottom: 0.5rem;
-        }
-        .price-strip .amt { font-size: 1.7rem; font-weight: 700; color: #073B3A; }
-        .price-strip .note { font-size: 0.9rem; color: #666; }
-        .anchor-line { font-size: 0.92rem; color: #666; margin-bottom: 1.1rem; font-style: italic; }
+        .mini-list .mark { flex-shrink: 0; color: #0B6E4F; font-weight: 600; }
+        .price-strip { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.9rem; }
+        .price-strip .amt { font-size: 1.9rem; font-weight: 700; color: #073B3A; }
+        .price-strip .note { font-size: 0.86rem; color: #666; }
 
         .buy-btn {
             display: block; width: 100%; text-align: center; font-family: inherit;
-            font-weight: 700; font-size: 1.05rem; padding: 1rem 1.5rem;
+            font-weight: 700; font-size: 1.05rem; padding: 1rem 1.25rem;
             border-radius: 999px; background: #FACC15; color: #073B3A;
             cursor: pointer; transition: transform 0.15s, background 0.2s; border: none;
         }
         .buy-btn:hover { background: #fde047; transform: translateY(-1px); }
-        .trust-line { text-align: center; font-size: 0.8rem; color: #888; margin-top: 0.75rem; }
-
-        .skip-line { text-align: center; font-size: 0.9rem; color: #666; }
+        .trust-line { text-align: center; font-size: 0.78rem; color: #888; margin-top: 0.7rem; line-height: 1.5; }
+        .skip-line { text-align: center; font-size: 0.85rem; color: #777; margin-top: 0.9rem; }
         .skip-line a { color: #0B6E4F; font-weight: 500; text-decoration: underline; }
 
-        .dl-card { text-align: center; }
-        .dl-card h3 { font-size: 1.1rem; font-weight: 700; color: #073B3A; margin-bottom: 0.4rem; }
-        .dl-card p { font-size: 0.92rem; color: #555; margin-bottom: 1.1rem; }
+        /* Copy card */
+        .offer-kicker {
+            display: inline-block; background: #FEF3C7; color: #92400E;
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+        .copy-col h2 {
+            font-size: 1.5rem; font-weight: 700; color: #073B3A;
+            letter-spacing: -0.01em; line-height: 1.28; margin-bottom: 1.1rem;
+        }
+        .copy-col h2 .em { color: #0B6E4F; }
+        .copy-col p { font-size: 1rem; margin-bottom: 0.95rem; }
+        .copy-col p:last-child { margin-bottom: 0; }
+        .copy-col p strong { color: #073B3A; font-weight: 600; }
+        .beat { font-weight: 600; color: #073B3A; }
+        .proof-line {
+            margin-top: 1.2rem; padding-top: 1.1rem; border-top: 1px solid #f0f0ee;
+            font-size: 0.88rem; color: #666; line-height: 1.6;
+        }
+
+        /* Download */
+        .dl-card { text-align: center; padding: 1.4rem 1.5rem; }
+        .dl-card h3 { font-size: 1rem; font-weight: 700; color: #073B3A; margin-bottom: 0.5rem; }
         .dl-btn {
-            display: inline-block; font-weight: 600; font-size: 0.98rem;
-            padding: 0.85rem 1.8rem; border-radius: 999px;
+            display: inline-block; font-weight: 600; font-size: 0.92rem;
+            padding: 0.7rem 1.5rem; border-radius: 999px;
             background: #073B3A; color: #fff; transition: background 0.2s;
         }
         .dl-btn:hover { background: #0B6E4F; }
 
+        /* Sticky mobile buy bar */
+        .sticky-buy {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+            background: #fff; border-top: 1px solid #e5e7eb;
+            padding: 0.7rem 1rem calc(0.7rem + env(safe-area-inset-bottom));
+            display: flex; align-items: center; gap: 0.9rem;
+        }
+        .sticky-buy .p { font-size: 1.15rem; font-weight: 700; color: #073B3A; }
+        .sticky-buy .buy-btn { flex: 1; padding: 0.8rem 1rem; font-size: 0.98rem; }
+        @media (min-width: 860px) { .sticky-buy { display: none; } }
+
         .ft {
-            background: transparent; color: #888;
-            padding: 0.5rem 1.25rem 2.5rem; text-align: center; font-size: 0.82rem;
+            color: #999; padding: 0 1.25rem 2rem; text-align: center; font-size: 0.8rem;
         }
         .ft a { color: #0B6E4F; font-weight: 500; }
-        .ft a:hover { color: #21D375; }
     </style>
 </head>
 <body>
 
     <!-- CONFIRMATION -->
     <header class="confirm">
-        <div class="confirm-check">✓</div>
-        <h1>Done! Your AI Starter Kit is <span class="em">on its way.</span></h1>
-        <p>It's coming from rebecca@seedscale.agency — give it two minutes.</p>
-        <p class="spam-note">Not there? Check spam or promotions, then drag it to your inbox.</p>
+        <div class="confirm-row">
+            <span class="confirm-check">✓</span>
+            <h1>Done! Your AI Starter Kit is <span class="em">on its way.</span></h1>
+        </div>
+        <p>Coming from rebecca@seedscale.agency — give it two minutes. Not there? Check spam or promotions.</p>
     </header>
 
-    <div class="feed">
+    <div class="wrap">
 
-        <!-- TRIPWIRE OFFER -->
-        <div class="card offer-card">
+        <!-- BUY BOX (first in DOM = top on mobile, sticky right on desktop) -->
+        <div class="buy-col">
+            <div class="buy-box">
+                <div class="buy-box-head">
+                    <div class="buy-avatar"><img src="headshot.jpeg" alt="Rebecca"></div>
+                    <div>
+                        <div class="t">The AI Side Hustle Jumpstart Kit</div>
+                        <div class="s">by Rebecca · billions of views, millions of subscribers</div>
+                    </div>
+                </div>
+                <div class="buy-box-body">
+                    <p class="buy-promise">50 copy-paste AI prompts that take you from "what would I even sell?" to your first paying client.</p>
+                    <ul class="mini-list">
+                        <li><span class="mark">✔</span> <span>Turn your skill into an offer people buy</span></li>
+                        <li><span class="mark">✔</span> <span>Price it with confidence</span></li>
+                        <li><span class="mark">✔</span> <span>Find buyers — zero followers needed</span></li>
+                        <li><span class="mark">✔</span> <span>14-day plan to your first sale</span></li>
+                    </ul>
+                    <div class="price-strip">
+                        <span class="amt">$9</span>
+                        <span class="note">One payment · Instant download</span>
+                    </div>
+                    <a href="https://buy.stripe.com/8x24gBfaPfm56y6da20Ny07" class="buy-btn">Yes! I want the Jumpstart Kit →</a>
+                    <p class="trust-line">🔒 Secure checkout via Stripe · Works with free ChatGPT &amp; Claude · Yours forever</p>
+                    <p class="skip-line">No thanks — <a href="#download">take me to my free download</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COPY -->
+        <div class="copy-col card">
             <span class="offer-kicker">While you wait 👀</span>
             <h2>You're about to find your most valuable skill.<br><span class="em">Here's who will pay you for it.</span></h2>
-
             <p>In a few minutes, the Starter Kit will show you what you're worth.</p>
             <p>Then comes the real question: <span class="beat">who's going to pay you for it?</span></p>
-            <p>That's the one question the <strong>AI Side Hustle Jumpstart Kit</strong> answers.</p>
-            <p>It's 50 copy-paste prompts for ChatGPT and Claude — in the exact order you need them. No audience required. No business plan. Just the next step, spelled out.</p>
-
-            <ul class="mini-list">
-                <li><span class="mark">✔</span> <span>Turn your skill into an offer people actually buy</span></li>
-                <li><span class="mark">✔</span> <span>Price it with confidence — and know what to say when they ask</span></li>
-                <li><span class="mark">✔</span> <span>Find your first buyers, even with zero followers</span></li>
-                <li><span class="mark">✔</span> <span>Follow the 14-day plan to your first sale</span></li>
-            </ul>
-
-            <div class="price-strip">
-                <span class="amt">$9</span>
-                <span class="note">One payment · Instant download</span>
-            </div>
-            <p class="anchor-line">About the cost of lunch — except this one pays you back.</p>
-
-            <a href="https://buy.stripe.com/8x24gBfaPfm56y6da20Ny07" class="buy-btn">Yes! I want the Jumpstart Kit →</a>
-            <p class="trust-line">🔒 Secure checkout via Stripe</p>
+            <p>That's the one question the <strong>Jumpstart Kit</strong> answers.</p>
+            <p>It's the exact process I've used to turn skills into income at every scale — packed into 50 prompts, in the order you need them. No audience required. No business plan. Just the next step, spelled out.</p>
+            <p><span class="beat">About the cost of lunch — except this one pays you back.</span></p>
+            <p class="proof-line">Behind these prompts: 15 years building marketing engines — billions of views, subscriber lists in the millions, and revenue in the tens of millions. The same thinking, sized for one person starting from zero.</p>
         </div>
-
-        <p class="skip-line">No thanks — <a href="#download">just take me to my free download</a> 👇</p>
 
         <!-- DOWNLOAD -->
-        <div class="card dl-card" id="download">
+        <div class="dl-col card dl-card" id="download">
             <h3>📥 Your free AI Starter Kit</h3>
-            <p>It's headed to your inbox, but you can grab it right now too:</p>
-            <a href="/resources/ai-starter-kit-millennial-women.pdf" class="dl-btn" download>Download the Starter Kit (PDF)</a>
+            <a href="/resources/ai-starter-kit-millennial-women.pdf" class="dl-btn" download>Download the PDF now</a>
         </div>
 
-        <footer class="ft">
-            &copy; 2026 Seedscale Agency &middot; <a href="index.html">Home</a> &middot; <a href="connect.html">All offers</a>
-        </footer>
+    </div>
 
+    <footer class="ft">
+        &copy; 2026 Seedscale Agency &middot; <a href="index.html">Home</a> &middot; <a href="connect.html">All offers</a>
+    </footer>
+
+    <!-- STICKY MOBILE BUY BAR -->
+    <div class="sticky-buy">
+        <span class="p">$9</span>
+        <a href="https://buy.stripe.com/8x24gBfaPfm56y6da20Ny07" class="buy-btn">Get the Jumpstart Kit →</a>
     </div>
 
 </body>
