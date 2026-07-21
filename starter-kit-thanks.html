@@ -11,7 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Klaviyo Onsite Tracking -->
     <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
@@ -23,8 +23,8 @@
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { overflow-x: hidden; max-width: 100%; }
         body {
-            font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6;
-            background: #ecefec;
+            font-family: 'Work Sans', sans-serif; color: #3a3a3a; line-height: 1.75;
+            font-weight: 400; background: #ecefec;
         }
         a { color: inherit; text-decoration: none; }
 
@@ -33,72 +33,77 @@
             color: #fff; text-align: center; padding: 2.75rem 1.25rem 2.25rem;
         }
         .confirm-check {
-            width: 54px; height: 54px; border-radius: 50%; background: #21D375;
+            width: 52px; height: 52px; border-radius: 50%; background: #21D375;
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1rem; font-size: 1.6rem;
+            margin: 0 auto 1rem; font-size: 1.5rem;
         }
         .confirm h1 {
-            font-size: 1.7rem; font-weight: 800; line-height: 1.15;
-            letter-spacing: -0.02em; max-width: 560px; margin: 0 auto 0.5rem;
+            font-size: 1.65rem; font-weight: 700; line-height: 1.25;
+            letter-spacing: -0.01em; max-width: 520px; margin: 0 auto 0.6rem;
         }
         .confirm h1 .em { color: #FACC15; }
-        .confirm p { color: rgba(255,255,255,0.85); font-size: 0.95rem; max-width: 480px; margin: 0 auto; }
-        .confirm .spam-note { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; }
+        .confirm p { color: rgba(255,255,255,0.88); font-size: 0.95rem; max-width: 440px; margin: 0 auto; font-weight: 400; }
+        .confirm .spam-note { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 0.6rem; }
 
         .feed {
-            max-width: 560px; margin: 0 auto; padding: 1.5rem 1rem 3rem;
+            max-width: 540px; margin: 0 auto; padding: 1.5rem 1rem 3rem;
             display: flex; flex-direction: column; gap: 1rem;
         }
         .card {
-            background: #fff; border-radius: 20px; padding: 1.75rem 1.5rem;
+            background: #fff; border-radius: 20px; padding: 2rem 1.6rem;
             box-shadow: 0 1px 3px rgba(7,59,58,0.08);
         }
 
-        .offer-card { border: 2px solid #FACC15; box-shadow: 0 6px 20px rgba(7,59,58,0.12); }
+        .offer-card { border: 2px solid #FACC15; box-shadow: 0 6px 20px rgba(7,59,58,0.10); }
         .offer-kicker {
             display: inline-block; background: #FEF3C7; color: #92400E;
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.14em;
-            text-transform: uppercase; padding: 0.35rem 0.8rem; border-radius: 999px;
-            margin-bottom: 0.9rem;
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+            text-transform: uppercase; padding: 0.35rem 0.85rem; border-radius: 999px;
+            margin-bottom: 1.1rem;
         }
         .offer-card h2 {
-            font-size: 1.45rem; font-weight: 800; color: #073B3A;
-            letter-spacing: -0.02em; line-height: 1.22; margin-bottom: 0.9rem;
+            font-size: 1.45rem; font-weight: 700; color: #073B3A;
+            letter-spacing: -0.01em; line-height: 1.3; margin-bottom: 1.1rem;
         }
         .offer-card h2 .em { color: #0B6E4F; }
-        .offer-card p { font-size: 0.97rem; color: #333; margin-bottom: 1rem; }
-        .offer-card p strong { color: #073B3A; }
-
-        .mini-list { list-style: none; margin-bottom: 1.2rem; }
-        .mini-list li {
-            display: flex; gap: 0.65rem; align-items: flex-start;
-            font-size: 0.94rem; color: #333; line-height: 1.5; padding: 0.35rem 0;
+        .offer-card p {
+            font-size: 1.02rem; color: #3a3a3a; margin-bottom: 1rem;
+            line-height: 1.7;
         }
-        .mini-list .mark { flex-shrink: 0; }
+        .offer-card p strong { color: #073B3A; font-weight: 600; }
+        .offer-card .beat { font-weight: 600; color: #073B3A; }
+
+        .mini-list { list-style: none; margin: 1.2rem 0 1.4rem; }
+        .mini-list li {
+            display: flex; gap: 0.7rem; align-items: flex-start;
+            font-size: 0.98rem; color: #3a3a3a; line-height: 1.6; padding: 0.4rem 0;
+        }
+        .mini-list .mark { flex-shrink: 0; color: #0B6E4F; }
 
         .price-strip {
-            display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 1rem;
+            display: flex; align-items: baseline; gap: 0.65rem; margin-bottom: 0.5rem;
         }
-        .price-strip .amt { font-size: 1.7rem; font-weight: 800; color: #073B3A; }
-        .price-strip .note { font-size: 0.88rem; color: #666; }
+        .price-strip .amt { font-size: 1.7rem; font-weight: 700; color: #073B3A; }
+        .price-strip .note { font-size: 0.9rem; color: #666; }
+        .anchor-line { font-size: 0.92rem; color: #666; margin-bottom: 1.1rem; font-style: italic; }
 
         .buy-btn {
             display: block; width: 100%; text-align: center; font-family: inherit;
-            font-weight: 800; font-size: 1.08rem; padding: 1rem 1.5rem;
+            font-weight: 700; font-size: 1.05rem; padding: 1rem 1.5rem;
             border-radius: 999px; background: #FACC15; color: #073B3A;
             cursor: pointer; transition: transform 0.15s, background 0.2s; border: none;
         }
         .buy-btn:hover { background: #fde047; transform: translateY(-1px); }
-        .trust-line { text-align: center; font-size: 0.8rem; color: #777; margin-top: 0.7rem; }
+        .trust-line { text-align: center; font-size: 0.8rem; color: #888; margin-top: 0.75rem; }
 
-        .skip-line { text-align: center; font-size: 0.88rem; color: #666; }
-        .skip-line a { color: #0B6E4F; font-weight: 600; text-decoration: underline; }
+        .skip-line { text-align: center; font-size: 0.9rem; color: #666; }
+        .skip-line a { color: #0B6E4F; font-weight: 500; text-decoration: underline; }
 
         .dl-card { text-align: center; }
         .dl-card h3 { font-size: 1.1rem; font-weight: 700; color: #073B3A; margin-bottom: 0.4rem; }
-        .dl-card p { font-size: 0.9rem; color: #555; margin-bottom: 1.1rem; }
+        .dl-card p { font-size: 0.92rem; color: #555; margin-bottom: 1.1rem; }
         .dl-btn {
-            display: inline-block; font-weight: 700; font-size: 0.98rem;
+            display: inline-block; font-weight: 600; font-size: 0.98rem;
             padding: 0.85rem 1.8rem; border-radius: 999px;
             background: #073B3A; color: #fff; transition: background 0.2s;
         }
@@ -117,30 +122,37 @@
     <!-- CONFIRMATION -->
     <header class="confirm">
         <div class="confirm-check">✓</div>
-        <h1>You're in! Your AI Starter Kit is <span class="em">on its way.</span></h1>
-        <p>Check your inbox in the next few minutes — it's coming from <strong>rebecca@seedscale.agency</strong>.</p>
-        <p class="spam-note">Don't see it? Check spam or promotions, and drag it to your inbox so you never miss one.</p>
+        <h1>Done! Your AI Starter Kit is <span class="em">on its way.</span></h1>
+        <p>It's coming from rebecca@seedscale.agency — give it two minutes.</p>
+        <p class="spam-note">Not there? Check spam or promotions, then drag it to your inbox.</p>
     </header>
 
     <div class="feed">
 
         <!-- TRIPWIRE OFFER -->
         <div class="card offer-card">
-            <span class="offer-kicker">Wait — before you go 👀</span>
-            <h2>The Starter Kit finds your skill.<br><span class="em">This gets it paid for.</span></h2>
-            <p>The free kit you just grabbed helps you spot your highest-paid skill. The obvious next question: <strong>okay — now who's going to pay me for it?</strong></p>
-            <p>That's the exact gap the <strong>AI Side Hustle Jumpstart Kit</strong> closes — 50 tested ChatGPT &amp; Claude prompts, in order, that walk you from "what would I even sell?" to your first paying client:</p>
+            <span class="offer-kicker">While you wait 👀</span>
+            <h2>You're about to find your most valuable skill.<br><span class="em">Here's who will pay you for it.</span></h2>
+
+            <p>In a few minutes, the Starter Kit will show you what you're worth.</p>
+            <p>Then comes the real question: <span class="beat">who's going to pay you for it?</span></p>
+            <p>That's the one question the <strong>AI Side Hustle Jumpstart Kit</strong> answers.</p>
+            <p>It's 50 copy-paste prompts for ChatGPT and Claude — in the exact order you need them. No audience required. No business plan. Just the next step, spelled out.</p>
+
             <ul class="mini-list">
-                <li><span class="mark">✔️</span> <span>Shape your skill into one clear offer people say yes to</span></li>
-                <li><span class="mark">✔️</span> <span>Price it on results, not hours — and know what to say when they ask</span></li>
-                <li><span class="mark">✔️</span> <span>Find your first buyers and reach out without the cringe</span></li>
-                <li><span class="mark">✔️</span> <span>A 14-day action plan, plus prompts to turn one client into repeat income</span></li>
+                <li><span class="mark">✔</span> <span>Turn your skill into an offer people actually buy</span></li>
+                <li><span class="mark">✔</span> <span>Price it with confidence — and know what to say when they ask</span></li>
+                <li><span class="mark">✔</span> <span>Find your first buyers, even with zero followers</span></li>
+                <li><span class="mark">✔</span> <span>Follow the 14-day plan to your first sale</span></li>
             </ul>
+
             <div class="price-strip">
                 <span class="amt">$9</span>
-                <span class="note">One-time payment · Instant download · Less than lunch</span>
+                <span class="note">One payment · Instant download</span>
             </div>
-            <a href="https://buy.stripe.com/8x24gBfaPfm56y6da20Ny07" class="buy-btn">Yes — I want my first client →</a>
+            <p class="anchor-line">About the cost of lunch — except this one pays you back.</p>
+
+            <a href="https://buy.stripe.com/8x24gBfaPfm56y6da20Ny07" class="buy-btn">Yes! I want the Jumpstart Kit →</a>
             <p class="trust-line">🔒 Secure checkout via Stripe</p>
         </div>
 
