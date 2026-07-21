@@ -233,7 +233,17 @@
             title.textContent = "Welcome to coaching. Let's get you set up.";
             socialGroup.style.display = '';
             aiGroup.style.display = '';
+        } else if (session === 'quick-call') {
+            title.textContent = "Payment confirmed. Let's get your question answered.";
+            socialGroup.style.display = 'none';
+            aiGroup.style.display = 'none';
         }
+
+        var calEvent = session === 'quick-call'
+            ? 'seedscale-agency/quick-call'
+            : 'seedscale-agency/coaching-deep-dive';
+        var calBtn = document.getElementById('cal-link');
+        if (calBtn) calBtn.setAttribute('data-cal-link', calEvent);
 
         var form = document.getElementById('intake-form');
         if (form) {
@@ -278,7 +288,7 @@
                 var calLink = document.getElementById('cal-link');
                 if (calLink && email) {
                     calLink.setAttribute('data-cal-link',
-                        'seedscale-agency/coaching-deep-dive?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email));
+                        calEvent + '?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email));
                 }
 
                 setTimeout(function() {
