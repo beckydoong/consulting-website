@@ -97,14 +97,17 @@
         }
         .fit-list .mark { flex-shrink: 0; }
 
-        .about-block { display: flex; gap: 1.1rem; align-items: flex-start; }
+        .about-block { display: flex; gap: 1.4rem; align-items: center; }
         .about-photo {
-            width: 64px; height: 64px; min-width: 64px; border-radius: 50%; overflow: hidden;
-            border: 3px solid #FACC15;
+            width: 128px; height: 128px; min-width: 128px; border-radius: 50%; overflow: hidden;
+            border: 4px solid #FACC15; box-shadow: 0 4px 14px rgba(7,59,58,0.18);
         }
         .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .about-text h3 { font-size: 1rem; font-weight: 700; color: #073B3A; margin-bottom: 0.3rem; }
-        .about-text p { font-size: 0.88rem; color: #555; line-height: 1.55; }
+        .about-text h3 { font-size: 1.05rem; font-weight: 700; color: #073B3A; margin-bottom: 0.3rem; }
+        .about-text p { font-size: 0.9rem; color: #555; line-height: 1.55; }
+        @media (max-width: 480px) {
+            .about-block { flex-direction: column; text-align: center; }
+        }
 
         /* Order card */
         .order-card {
