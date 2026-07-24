@@ -108,8 +108,8 @@
   <section class="connect">
     <div class="connect-inner">
       <h2>Want a plan that's specific to you?</h2>
-      <p>The pack gives you the modes. The AI Strategy Session gives you 60 minutes on your exact situation — your highest-value skill mapped to AI, a tool stack for your work, and a 90-day plan to income.</p>
-      <a href="ai-career-strategy.html" class="connect-link">Book a strategy session</a>
+      <p>The pack gives you the modes. A <strong>30-minute Quick Strategy Call</strong> gives you answers on your exact situation — bring one question, leave with the decision made and next steps in writing. $97.</p>
+      <a href="quick-call.html" class="connect-link">Book a quick call — $97</a>
     </div>
   </section>
 
@@ -125,7 +125,7 @@
       e.preventDefault();
       var email = (form.querySelector('input[name=email]')||{}).value || '';
       var btn = form.querySelector('button'); if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
-      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Income Mode Pack — thank-you page',profile:{data:{type:'profile',attributes:{email:email,properties:{pack_name:'The Income Mode Pack',pack_url:'https://seedscale.agency/resources/income-mode-pack.pdf',next_step_url:'https://seedscale.agency/ai-career-strategy.html'}}}}},relationships:{list:{data:{type:'list',id:'RJ6xcL'}}}}})})
+      fetch('https://a.klaviyo.com/client/subscriptions/?company_id=TipqN2',{method:'POST',headers:{'revision':'2024-10-15','Content-Type':'application/json'},body:JSON.stringify({data:{type:'subscription',attributes:{custom_source:'Income Mode Pack — thank-you page',profile:{data:{type:'profile',attributes:{email:email,properties:{pack_name:'The Income Mode Pack',pack_url:'https://seedscale.agency/resources/income-mode-pack.pdf',next_step_url:'https://seedscale.agency/quick-call.html'}}}}},relationships:{list:{data:{type:'list',id:'RJ6xcL'}}}}})})
         .catch(function(){})
         .then(function(){
           var s = document.getElementById('ty-capture-success');
