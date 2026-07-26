@@ -1,272 +1,223 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Strategy Call — 30 Minutes with Rebecca | Seedscale</title>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Quick Strategy Call — 30 Minutes with Rebecca | Rebecca.Builds</title>
+<meta name="description" content="One question. Thirty minutes. An answer you can act on today. A fast 1:1 call with Rebecca for the decision you've been sitting on. $97." />
 
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Quick Strategy Call — 30 Minutes with Rebecca" />
+<meta property="og:description" content="One question. Thirty minutes. An answer you can act on today. $97." />
+<meta property="og:type" content="website" />
 
-    <meta name="description" content="One question. Thirty minutes. An answer you can act on today. A fast 1:1 call with Rebecca for the decision you've been sitting on. $97.">
-    <meta property="og:title" content="Quick Strategy Call — 30 Minutes with Rebecca">
-    <meta property="og:description" content="One question. Thirty minutes. An answer you can act on today. $97.">
-    <meta property="og:image" content="og-image.png">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://seedscale.agency/quick-call.html">
+<!-- Fonts: Fraunces (display serif) + Inter (body). Same as rebecca.builds. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        display: ['Fraunces', 'Georgia', 'serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        paper: '#faf7f2',
+        ink: '#1c1a17',
+        forest: '#1f4d3a',
+        forestdark: '#173d2e',
+        muted: '#6b6459',
+        line: '#e7e0d5',
+      },
+    },
+  },
+};
+</script>
 
-    <!-- Klaviyo Onsite Tracking -->
-    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
-    <script type="text/javascript">
-      !function(){if(!window.klaviyo){window._klOnsite=window._klOnsite||[];try{window.klaviyo=new Proxy({},{get:function(n,i){return"push"===i?function(){var n;(n=window._klOnsite).push.apply(n,arguments)}:function(){for(var n=arguments.length,o=new Array(n),w=0;w<n;w++)o[w]=arguments[w];var t="function"==typeof o[o.length-1]?o.pop():void 0,e=new Promise((function(n){window._klOnsite.push([i].concat(o,[function(i){t&&t(i),n(i)}]))}));return e}}})}catch(n){window.klaviyo=window.klaviyo||[],window.klaviyo.push=function(){var n;(n=window._klOnsite).push.apply(n,arguments)}}}}();
-    </script>
-
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { overflow-x: hidden; max-width: 100%; }
-        body {
-            font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6;
-            background: #ecefec; padding-top: 60px;
-        }
-        a { color: inherit; text-decoration: none; }
-
-        .s-nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: #073B3A; padding: 0 1.5rem; height: 60px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .s-nav-logo img { height: 28px; width: auto; }
-        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
-        .s-nav-back:hover { color: #21D375; }
-
-        /* Header band */
-        .head-band {
-            background: linear-gradient(150deg, #073B3A 0%, #0B6E4F 100%);
-            color: #fff; text-align: center; padding: 2.75rem 1.25rem 2.5rem;
-        }
-        .head-kicker {
-            display: inline-block; background: #FACC15; color: #073B3A;
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em;
-            text-transform: uppercase; padding: 0.4rem 0.9rem; border-radius: 999px;
-            margin-bottom: 1rem;
-        }
-        .head-band h1 {
-            font-size: 2rem; font-weight: 800; line-height: 1.12;
-            letter-spacing: -0.02em; max-width: 640px; margin: 0 auto 0.6rem;
-        }
-        .head-band h1 .em { color: #FACC15; }
-        .head-band p { color: rgba(255,255,255,0.85); font-size: 1rem; max-width: 520px; margin: 0 auto; }
-        @media (min-width: 700px) { .head-band h1 { font-size: 2.4rem; } }
-
-        /* Two-column checkout layout */
-        .checkout {
-            max-width: 960px; margin: 0 auto; padding: 1.5rem 1rem 3rem;
-            display: grid; grid-template-columns: 1fr; gap: 1.25rem;
-            align-items: start;
-        }
-        @media (min-width: 860px) {
-            .checkout { grid-template-columns: 1.15fr 0.85fr; padding-top: 2rem; }
-            .order-col { position: sticky; top: 76px; }
-        }
-
-        .card {
-            background: #fff; border-radius: 20px; padding: 1.75rem 1.5rem;
-            box-shadow: 0 1px 3px rgba(7,59,58,0.08);
-        }
-        .card + .card { margin-top: 1.25rem; }
-
-        .card-label {
-            font-size: 0.7rem; font-weight: 800; letter-spacing: 0.2em;
-            text-transform: uppercase; color: #0B6E4F; margin-bottom: 0.5rem;
-        }
-        .card-h { font-size: 1.3rem; font-weight: 800; color: #073B3A; letter-spacing: -0.015em; line-height: 1.25; margin-bottom: 1rem; }
-
-        .copy p { margin-bottom: 1rem; font-size: 0.98rem; color: #333; }
-        .copy p:last-child { margin-bottom: 0; }
-        .copy strong { color: #073B3A; }
-
-        .fit-list { list-style: none; }
-        .fit-list li {
-            display: flex; gap: 0.7rem; align-items: flex-start;
-            font-size: 0.96rem; color: #333; line-height: 1.5;
-            padding: 0.45rem 0;
-        }
-        .fit-list .mark { flex-shrink: 0; }
-
-        .about-block { display: flex; gap: 1.4rem; align-items: center; }
-        .about-photo {
-            width: 128px; height: 128px; min-width: 128px; border-radius: 50%; overflow: hidden;
-            border: 4px solid #FACC15; box-shadow: 0 4px 14px rgba(7,59,58,0.18);
-        }
-        .about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-        .about-text h3 { font-size: 1.05rem; font-weight: 700; color: #073B3A; margin-bottom: 0.3rem; }
-        .about-text p { font-size: 0.9rem; color: #555; line-height: 1.55; }
-        @media (max-width: 480px) {
-            .about-block { flex-direction: column; text-align: center; }
-        }
-
-        /* Order card */
-        .order-card {
-            background: #fff; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 4px 16px rgba(7,59,58,0.12); border: 2px solid #073B3A;
-        }
-        .order-head {
-            background: #073B3A; color: #fff; padding: 1.1rem 1.5rem;
-            font-weight: 800; font-size: 0.95rem; letter-spacing: 0.02em;
-        }
-        .order-body { padding: 1.5rem; }
-        .order-item {
-            display: flex; justify-content: space-between; align-items: baseline;
-            gap: 1rem; padding: 0.55rem 0; font-size: 0.95rem; color: #333;
-            border-bottom: 1px solid #f0f0ee;
-        }
-        .order-item .item-name { line-height: 1.4; }
-        .order-item .item-val { color: #0B6E4F; font-weight: 600; white-space: nowrap; }
-        .order-total {
-            display: flex; justify-content: space-between; align-items: baseline;
-            padding: 0.9rem 0 0.4rem; font-weight: 800; color: #073B3A;
-        }
-        .order-total .amt { font-size: 1.7rem; }
-        .order-note { font-size: 0.82rem; color: #777; margin-bottom: 1.1rem; }
-
-        .buy-btn {
-            display: block; width: 100%; text-align: center; font-family: inherit;
-            font-weight: 800; font-size: 1.1rem; padding: 1.05rem 1.5rem;
-            border-radius: 999px; background: #FACC15; color: #073B3A;
-            cursor: pointer; transition: transform 0.15s, background 0.2s; border: none;
-        }
-        .buy-btn:hover { background: #fde047; transform: translateY(-1px); }
-        .trust-line { text-align: center; font-size: 0.8rem; color: #777; margin-top: 0.8rem; }
-
-        .steps { list-style: none; counter-reset: step; }
-        .steps li {
-            display: flex; gap: 0.85rem; align-items: flex-start;
-            padding: 0.55rem 0; font-size: 0.92rem; color: #444; line-height: 1.5;
-        }
-        .step-n {
-            counter-increment: step; flex-shrink: 0;
-            width: 26px; height: 26px; border-radius: 50%;
-            background: #073B3A; color: #FACC15; font-weight: 700; font-size: 0.78rem;
-            display: flex; align-items: center; justify-content: center; margin-top: 0.1rem;
-        }
-
-        .ft {
-            background: transparent; color: #888;
-            padding: 1rem 1.25rem 2.5rem; text-align: center; font-size: 0.82rem;
-        }
-        .ft a { color: #0B6E4F; font-weight: 500; }
-        .ft a:hover { color: #21D375; }
-    </style>
+<style>
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+.font-display { font-family: 'Fraunces', Georgia, serif; }
+a.btn { min-height: 52px; }
+</style>
 </head>
-<body>
 
-    <nav class="s-nav">
-        <a href="index.html" class="s-nav-logo">
-            <img src="logo.svg" alt="Seedscale Agency">
-        </a>
-        <a href="connect.html" class="s-nav-back">← All offers</a>
-    </nav>
+<body class="bg-paper text-ink antialiased">
 
-    <!-- HEADER -->
-    <header class="head-band">
-        <span class="head-kicker">30-Minute 1:1 Call</span>
-        <h1>One question. Thirty minutes.<br><span class="em">An answer you can act on today.</span></h1>
-        <p>The fast lane for the decision you've been sitting on — without booking a full strategy session.</p>
-    </header>
+<!-- ============ HERO ============ -->
+<header class="px-5 pt-12 pb-10 sm:pt-16">
+  <div class="mx-auto max-w-[640px]">
 
-    <div class="checkout">
-
-        <!-- LEFT: OFFER DETAILS -->
-        <div>
-            <div class="card copy">
-                <div class="card-label">Why this call exists</div>
-                <h2 class="card-h">Some questions don't need an hour. They need an answer.</h2>
-                <p>Not everything deserves a deep-dive. Sometimes you're one decision away from moving: a price you keep second-guessing, a launch email that isn't converting, an AI tool you can't choose, a post that flopped and you don't know why.</p>
-                <p>You could sit on it for another month. Or you could put it in front of someone who's made these calls at scale — <strong>billions of views, subscriber lists in the millions, revenue in the tens of millions</strong> — and walk out with the answer in half an hour.</p>
-                <p><strong>Bring one question.</strong> I'll give you a straight answer, the reasoning behind it, and what to do next.</p>
-            </div>
-
-            <div class="card">
-                <div class="card-label">Perfect for</div>
-                <h2 class="card-h">Bring me things like...</h2>
-                <ul class="fit-list">
-                    <li><span class="mark">💬</span> <span>"Is my offer priced right — and how do I raise it without losing people?"</span></li>
-                    <li><span class="mark">💬</span> <span>"Here's my funnel / landing page / launch email. Why isn't it converting?"</span></li>
-                    <li><span class="mark">💬</span> <span>"Which AI tools should my team actually adopt — and in what order?"</span></li>
-                    <li><span class="mark">💬</span> <span>"My last 10 posts went nowhere. What's broken?"</span></li>
-                    <li><span class="mark">💬</span> <span>"I have two directions for my next offer. Which one do I build?"</span></li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="card-label">How it works</div>
-                <h2 class="card-h">Booked to answered in three steps.</h2>
-                <ol class="steps">
-                    <li><span class="step-n">1</span> <span><strong>Book your slot.</strong> Secure checkout, then you pick a time on my calendar — most slots are within the week.</span></li>
-                    <li><span class="step-n">2</span> <span><strong>Send your question.</strong> A short intake form: your question, plus any links or screenshots. I review everything before we talk, so we start at the answer, not the backstory.</span></li>
-                    <li><span class="step-n">3</span> <span><strong>We talk for 30 minutes.</strong> Straight to it. You leave with the decision made and your next steps in writing — plus the recording.</span></li>
-                </ol>
-            </div>
-
-            <div class="card">
-                <div class="card-label">Who you're asking</div>
-                <div class="about-block" style="margin-top: 0.5rem;">
-                    <div class="about-photo">
-                        <img src="headshot.jpeg" alt="Rebecca, founder of Seedscale">
-                    </div>
-                    <div class="about-text">
-                        <h3>Rebecca, founder of Seedscale</h3>
-                        <p>15 years building marketing engines — for brands with millions of subscribers and for solo builders on their first offer. I've probably seen your exact question before. That's why this only takes 30 minutes.</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Profile row -->
+    <div class="mb-7 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4">
+        <img
+          src="https://consulting-website-7zs.pages.dev/headshot.jpeg"
+          alt="Rebecca"
+          loading="lazy"
+          width="72" height="72"
+          class="h-[72px] w-[72px] rounded-full object-cover border border-line bg-line"
+        />
+        <div class="leading-tight">
+          <p class="font-medium text-ink">Rebecca.Builds</p>
+          <p class="text-sm text-muted">Marketing strategist</p>
         </div>
-
-        <!-- RIGHT: ORDER CARD -->
-        <div class="order-col">
-            <div class="order-card">
-                <div class="order-head">Your order</div>
-                <div class="order-body">
-                    <div class="order-item">
-                        <span class="item-name">Quick Strategy Call — 30 minutes, 1:1 with Rebecca</span>
-                        <span class="item-val">$97</span>
-                    </div>
-                    <div class="order-item">
-                        <span class="item-name">Pre-call review of your question &amp; materials</span>
-                        <span class="item-val">Included</span>
-                    </div>
-                    <div class="order-item">
-                        <span class="item-name">Call recording</span>
-                        <span class="item-val">Included</span>
-                    </div>
-                    <div class="order-item" style="border-bottom: none;">
-                        <span class="item-name">Written next-steps recap</span>
-                        <span class="item-val">Included</span>
-                    </div>
-                    <div class="order-total">
-                        <span>Total</span>
-                        <span class="amt">$97</span>
-                    </div>
-                    <p class="order-note">One-time payment. You'll pick your time slot right after checkout.</p>
-                    <a href="https://buy.stripe.com/5kQ28t7In8XH7Caee60Ny0f" class="buy-btn">Book my call →</a>
-                    <p class="trust-line">🔒 Secure checkout via Stripe</p>
-                </div>
-            </div>
-
-            <div class="card" style="margin-top: 1.25rem;">
-                <p style="font-size: 0.88rem; color: #555; line-height: 1.55;">Need more than one question answered? A <a href="ai-career-strategy.html" style="color:#0B6E4F; font-weight:600; text-decoration:underline;">full 60-minute strategy session</a> ($297) goes deeper — audit, plan, and all.</p>
-            </div>
-        </div>
-
+      </div>
+      <a href="/" class="text-sm font-medium text-forest underline decoration-forest/30 underline-offset-4 hover:decoration-forest">← All offers</a>
     </div>
 
-    <footer class="ft">
-        &copy; 2026 Seedscale Agency &middot; <a href="index.html">Home</a> &middot; <a href="connect.html">All offers</a>
-    </footer>
+    <p class="text-sm font-semibold uppercase tracking-wide text-forest">30-minute 1:1 call</p>
 
+    <h1 class="mt-3 font-display text-[2.6rem] leading-[1.05] tracking-tight text-ink sm:text-6xl">
+      One question. Thirty minutes. An answer you can act on today.
+    </h1>
+
+    <p class="mt-6 text-lg leading-relaxed text-muted">
+      The fast lane for the decision you've been sitting on — without booking a full strategy session.
+    </p>
+
+    <div class="mt-8">
+      <a href="https://buy.stripe.com/5kQ28t7In8XH7Caee60Ny0f"
+         class="btn inline-flex items-center justify-center rounded-full bg-forest px-7 text-base font-semibold text-paper transition-colors hover:bg-forestdark">
+        Book my call — $97
+      </a>
+      <p class="mt-3 text-sm text-muted">One-time payment. You'll pick your time slot right after checkout, and most slots are within the week.</p>
+    </div>
+  </div>
+</header>
+
+<!-- ============ WHY THIS CALL EXISTS ============ -->
+<section class="px-5 py-10">
+  <div class="mx-auto max-w-[640px] border-t border-line pt-10">
+    <p class="text-sm font-semibold uppercase tracking-wide text-forest">Why this call exists</p>
+    <h2 class="mt-4 font-display text-2xl leading-tight text-ink sm:text-3xl">Some questions don't need an hour. They need an answer.</h2>
+    <div class="mt-5 space-y-4 text-base leading-relaxed text-muted">
+      <p>Not everything deserves a deep-dive. Sometimes you're one decision away from moving: a price you keep second-guessing, a launch email that isn't converting, an AI tool you can't choose, a post that flopped and you don't know why.</p>
+      <p>You could sit on it for another month. Or you could put it in front of someone who's made these calls at scale — <span class="font-semibold text-ink">billions of views, subscriber lists in the millions, revenue in the tens of millions</span> — and walk out with the answer in half an hour.</p>
+      <p><span class="font-semibold text-ink">Bring one question.</span> I'll give you a straight answer, the reasoning behind it, and what to do next.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PERFECT FOR ============ -->
+<section class="px-5 py-10">
+  <div class="mx-auto max-w-[640px] border-t border-line pt-10">
+    <p class="text-sm font-semibold uppercase tracking-wide text-forest">Perfect for</p>
+    <h2 class="mt-4 font-display text-2xl leading-tight text-ink sm:text-3xl">Bring me things like…</h2>
+    <div class="mt-6 grid grid-cols-1 gap-3">
+      <div class="rounded-xl border border-line bg-white/60 p-5 text-base leading-relaxed text-muted">"Is my offer priced right — and how do I raise it without losing people?"</div>
+      <div class="rounded-xl border border-line bg-white/60 p-5 text-base leading-relaxed text-muted">"Here's my funnel / landing page / launch email. Why isn't it converting?"</div>
+      <div class="rounded-xl border border-line bg-white/60 p-5 text-base leading-relaxed text-muted">"Which AI tools should my team actually adopt — and in what order?"</div>
+      <div class="rounded-xl border border-line bg-white/60 p-5 text-base leading-relaxed text-muted">"My last 10 posts went nowhere. What's broken?"</div>
+      <div class="rounded-xl border border-line bg-white/60 p-5 text-base leading-relaxed text-muted">"I have two directions for my next offer. Which one do I build?"</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="px-5 py-10">
+  <div class="mx-auto max-w-[640px] border-t border-line pt-10">
+    <p class="text-sm font-semibold uppercase tracking-wide text-forest">How it works</p>
+    <h2 class="mt-4 font-display text-2xl leading-tight text-ink sm:text-3xl">Booked to answered in three steps.</h2>
+    <ol class="mt-6 space-y-5">
+      <li class="flex gap-4">
+        <span class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-forest text-sm font-semibold text-paper">1</span>
+        <p class="text-base leading-relaxed text-muted"><span class="font-semibold text-ink">Book your slot.</span> Secure checkout, then you pick a time on my calendar — most slots are within the week.</p>
+      </li>
+      <li class="flex gap-4">
+        <span class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-forest text-sm font-semibold text-paper">2</span>
+        <p class="text-base leading-relaxed text-muted"><span class="font-semibold text-ink">Send your question.</span> A short intake form: your question, plus any links or screenshots. I review everything before we talk, so we start at the answer, not the backstory.</p>
+      </li>
+      <li class="flex gap-4">
+        <span class="mt-0.5 flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full bg-forest text-sm font-semibold text-paper">3</span>
+        <p class="text-base leading-relaxed text-muted"><span class="font-semibold text-ink">We talk for 30 minutes.</span> Straight to it. You leave with the decision made and your next steps in writing — plus the recording.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ THE ORDER ============ -->
+<section class="px-5 py-10">
+  <div class="mx-auto max-w-[640px]">
+    <div class="rounded-2xl border-2 border-forest bg-forest/[0.04] p-6 shadow-sm sm:p-8">
+      <p class="text-sm font-semibold uppercase tracking-wide text-forest">Your order</p>
+
+      <div class="mt-5 divide-y divide-line/80">
+        <div class="flex items-baseline justify-between gap-4 py-3">
+          <span class="text-base leading-snug text-ink">Quick Strategy Call — 30 minutes, 1:1 with Rebecca</span>
+          <span class="whitespace-nowrap font-semibold text-forest">$97</span>
+        </div>
+        <div class="flex items-baseline justify-between gap-4 py-3">
+          <span class="text-base leading-snug text-muted">Pre-call review of your question &amp; materials</span>
+          <span class="whitespace-nowrap font-semibold text-forest">Included</span>
+        </div>
+        <div class="flex items-baseline justify-between gap-4 py-3">
+          <span class="text-base leading-snug text-muted">Call recording</span>
+          <span class="whitespace-nowrap font-semibold text-forest">Included</span>
+        </div>
+        <div class="flex items-baseline justify-between gap-4 py-3">
+          <span class="text-base leading-snug text-muted">Written next-steps recap</span>
+          <span class="whitespace-nowrap font-semibold text-forest">Included</span>
+        </div>
+        <div class="flex items-baseline justify-between gap-4 pt-4">
+          <span class="font-display text-lg text-ink">Total</span>
+          <span class="font-display text-3xl text-ink">$97</span>
+        </div>
+      </div>
+
+      <a href="https://buy.stripe.com/5kQ28t7In8XH7Caee60Ny0f"
+         class="btn mt-6 inline-flex w-full items-center justify-center rounded-full bg-forest px-6 text-base font-semibold text-paper transition-colors hover:bg-forestdark">
+        Book my call →
+      </a>
+      <p class="mt-3 text-center text-xs text-muted">🔒 Secure checkout via Stripe · Charges appear as &ldquo;REBECCABUILDS&rdquo; on your statement.</p>
+    </div>
+
+    <!-- Cross-sell -->
+    <div class="mt-4 rounded-xl border border-line bg-white/60 p-5">
+      <p class="text-sm leading-relaxed text-muted">Need more than one question answered? A <a href="deep-dive.html" class="font-semibold text-forest underline decoration-forest/30 underline-offset-4 hover:decoration-forest">90-minute Deep Dive working session</a> goes deeper — we build the plan together, decision by decision.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO YOU'RE ASKING ============ -->
+<section class="px-5 py-10">
+  <div class="mx-auto max-w-[640px] border-t border-line pt-10">
+    <p class="text-sm font-semibold uppercase tracking-wide text-forest">Who you're asking</p>
+    <div class="mt-5 flex items-center gap-5">
+      <img
+        src="https://consulting-website-7zs.pages.dev/headshot.jpeg"
+        alt="Rebecca"
+        loading="lazy"
+        width="88" height="88"
+        class="h-[88px] w-[88px] flex-shrink-0 rounded-full object-cover border border-line bg-line"
+      />
+      <div>
+        <h3 class="font-display text-xl leading-snug text-ink">Rebecca · Rebecca.Builds</h3>
+        <p class="mt-2 text-base leading-relaxed text-muted">15 years building marketing engines — for brands with millions of subscribers and for solo builders on their first offer. I've probably seen your exact question before. That's why this only takes 30 minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="px-5 pb-14 pt-6">
+  <div class="mx-auto max-w-[640px] border-t border-line pt-8">
+    <div class="flex flex-col gap-3 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2">
+        <a href="https://instagram.com/rebecca.builds" class="text-forest underline decoration-forest/30 underline-offset-4 hover:decoration-forest">@rebecca.builds</a>
+        <a href="/" class="text-forest underline decoration-forest/30 underline-offset-4 hover:decoration-forest">All offers</a>
+      </div>
+      <p class="text-muted">Sessions are booked after checkout. Charges appear as &ldquo;REBECCABUILDS&rdquo; on your statement.</p>
+    </div>
+    <p class="mt-6 text-xs text-muted">© <span id="year">2026</span> Rebecca.Builds</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
