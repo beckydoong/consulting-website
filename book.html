@@ -1,324 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're Booked — Next Steps | Seedscale</title>
-    <meta name="robots" content="noindex">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
-    <style>
-        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { overflow-x: hidden; max-width: 100%; }
-        html { scroll-padding-top: 60px; }
-        body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; background: #fafaf9; padding-top: 60px; }
-        a { color: inherit; text-decoration: none; }
-
-        .s-nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: #073B3A; padding: 0 1.5rem; height: 60px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .s-nav-logo img { height: 28px; width: auto; }
-        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
-
-        .wrap {
-            max-width: 600px; margin: 0 auto; padding: 3rem 1.25rem 4rem;
-        }
-
-        .confirm-banner {
-            background: #f0fdf4; border: 2px solid #6BBF59; border-radius: 16px;
-            padding: 2rem 1.75rem; text-align: center; margin-bottom: 2.5rem;
-        }
-        .confirm-banner .check { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
-        .confirm-banner h1 {
-            font-size: 1.65rem; font-weight: 700; color: #073B3A;
-            margin-bottom: 0.5rem; line-height: 1.2;
-        }
-        .confirm-banner p { font-size: 0.95rem; color: #555; }
-
-        .step-label {
-            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
-            text-transform: uppercase; color: #0B6E4F; margin-bottom: 0.75rem;
-            display: flex; align-items: center; gap: 0.5rem;
-        }
-        .step-num {
-            background: #073B3A; color: #FACC15; font-weight: 700;
-            width: 24px; height: 24px; border-radius: 50%;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 0.75rem;
-        }
-
-        .section-card {
-            background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
-            padding: 1.75rem 1.5rem; margin-bottom: 1.5rem;
-        }
-        .section-card h2 {
-            font-size: 1.2rem; font-weight: 700; color: #073B3A;
-            margin-bottom: 0.35rem;
-        }
-        .section-card > p { font-size: 0.9rem; color: #555; margin-bottom: 1.25rem; }
-
-        .form-group { margin-bottom: 1rem; }
-        .form-group label {
-            display: block; font-size: 0.88rem; font-weight: 600;
-            color: #073B3A; margin-bottom: 0.35rem;
-        }
-        .form-group input, .form-group textarea, .form-group select {
-            width: 100%; padding: 0.8rem 1rem; border: 1px solid #d1d5db;
-            border-radius: 10px; font-family: inherit; font-size: 0.95rem;
-            background: #fff; resize: vertical;
-        }
-        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none; border-color: #0B6E4F; box-shadow: 0 0 0 3px rgba(11,110,79,0.1);
-        }
-
-        .submit-btn {
-            display: block; width: 100%; padding: 0.95rem;
-            background: #073B3A; color: #fff; border: none;
-            border-radius: 10px; font-family: inherit;
-            font-size: 1rem; font-weight: 700; cursor: pointer;
-            transition: background 0.2s, transform 0.15s;
-        }
-        .submit-btn:hover { background: #0B6E4F; transform: translateY(-1px); }
-
-        .book-btn {
-            display: block; width: 100%; padding: 1rem;
-            background: #FACC15; color: #073B3A; border: none;
-            border-radius: 10px; font-family: inherit;
-            font-size: 1.05rem; font-weight: 700; cursor: pointer;
-            transition: background 0.2s, transform 0.15s;
-            text-align: center; margin-top: 0.5rem;
-        }
-        .book-btn:hover { background: #fde047; transform: translateY(-1px); }
-
-        .success-msg {
-            display: none; text-align: center; padding: 1.5rem;
-            color: #0B6E4F; font-weight: 600; font-size: 1rem;
-        }
-
-        .note {
-            text-align: center; font-size: 0.82rem; color: #999;
-            margin-top: 2rem;
-        }
-
-        @media (max-width: 480px) {
-            .confirm-banner { padding: 1.5rem 1.25rem; }
-            .confirm-banner h1 { font-size: 1.4rem; }
-            .section-card { padding: 1.5rem 1.25rem; }
-        }
-    </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>You're in — pick your time | Rebecca.Builds</title>
+<meta name="robots" content="noindex" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{--paper:#faf7f2;--ink:#1c1a17;--forest:#1f4d3a;--muted:#6b6459;--line:#e7e0d5}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Inter',system-ui,sans-serif}
+  .wrap{max-width:820px;margin:0 auto;padding:32px 20px 64px}
+  .brand{font-family:'Fraunces',Georgia,serif;font-size:18px}
+  .eyebrow{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--forest);margin-top:28px}
+  h1{font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:2rem;line-height:1.1;margin:12px 0 0}
+  p.lead{font-size:17px;line-height:1.6;color:var(--muted);margin:16px 0 0}
+  #sess{font-weight:600;color:var(--ink)}
+  .cal-card{margin-top:28px;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;min-height:640px}
+  #my-cal-inline{width:100%;min-height:640px}
+  .foot{margin-top:28px;font-size:13px;color:var(--muted)}
+  .foot a{color:var(--forest)}
+</style>
 </head>
 <body>
+  <div class="wrap">
+    <div class="brand">Rebecca.Builds</div>
+    <p class="eyebrow">Payment received</p>
+    <h1>You're in. Let's get you booked.</h1>
+    <p class="lead">Pick a time for your <span id="sess">session</span> below. You'll get a calendar invite with the video link, plus a short intake so I can prep before we meet.</p>
+    <div class="cal-card"><div id="my-cal-inline"></div></div>
+    <p class="foot">Trouble booking? Email <a href="mailto:hello@rebecca.builds">hello@rebecca.builds</a> and we'll sort it out.</p>
+  </div>
 
-    <nav class="s-nav">
-        <a href="index.html" class="s-nav-logo">
-            <img src="logo.svg" alt="Seedscale Agency">
-        </a>
-        <a href="connect.html" class="s-nav-back">← All offers</a>
-    </nav>
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
 
-    <div class="wrap">
+  var params = new URLSearchParams(window.location.search);
+  var s = (params.get("session") || "").toLowerCase();
+  var map = {
+    "quick-call": { link: "seedscale-agency/quick-call", label: "30-minute AI Strategy Call" },
+    "ai-career": { link: "seedscale-agency/ai-career-strategy", label: "AI Career Strategy session" },
+    "social": { link: "seedscale-agency/social-marketing-strategy", label: "Social & Marketing Strategy session" },
+    "coaching": { link: "seedscale-agency/coaching-kickoff", label: "Coaching kickoff call" },
+    "deep-dive": { link: "seedscale-agency/coaching-deep-dive", label: "90-minute Deep Dive" }
+  };
+  var chosen = map[s] || map["deep-dive"];
+  document.getElementById("sess").textContent = chosen.label;
 
-        <div class="confirm-banner">
-            <span class="check">&#10003;</span>
-            <h1 id="confirm-title">Payment confirmed. Let's get started.</h1>
-            <p id="confirm-sub">Two quick steps below and you're all set.</p>
-        </div>
-
-        <!-- STEP 1: Intake Form -->
-        <div class="section-card">
-            <div class="step-label"><span class="step-num">1</span> Fill out your intake form</div>
-            <h2>Help me prepare for our session.</h2>
-            <p>Five minutes now saves us time on the call. I review every submission before we meet.</p>
-
-            <form id="intake-form">
-                <input type="hidden" name="session_type" id="form-session" value="strategy">
-
-                <div class="form-group">
-                    <label for="name">Your name</label>
-                    <input type="text" id="name" name="name" required placeholder="First and last name">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Your email</label>
-                    <input type="email" id="email" name="email" required placeholder="you@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="role">What do you do? (role, business, or brand)</label>
-                    <input type="text" id="role" name="role" required placeholder="e.g. Marketing manager, fitness coach, freelance designer">
-                </div>
-
-                <div class="form-group">
-                    <label for="goal">What's the #1 thing you want to walk away with?</label>
-                    <textarea id="goal" name="goal" rows="3" required placeholder="Be specific. The clearer you are, the more I can prep."></textarea>
-                </div>
-
-                <div class="form-group" id="ai-tools-group">
-                    <label for="ai-tools">What AI tools have you tried? (if any)</label>
-                    <input type="text" id="ai-tools" name="ai_tools" placeholder="e.g. ChatGPT, Claude, Canva AI, none yet">
-                </div>
-
-                <div class="form-group" id="social-handles-group" style="display:none;">
-                    <label for="social-handles">Your social media handles (so I can review before we meet)</label>
-                    <input type="text" id="social-handles" name="social_handles" placeholder="e.g. @yourhandle on Instagram, TikTok, LinkedIn">
-                </div>
-
-                <div class="form-group" id="struggle-group">
-                    <label for="struggle">What have you already tried that isn't working?</label>
-                    <textarea id="struggle" name="struggle" rows="3" placeholder="This helps me skip the basics and focus on what matters."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label for="anything-else">Anything else I should know?</label>
-                    <textarea id="anything-else" name="anything_else" rows="2" placeholder="Links, context, deadlines, whatever helps."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit intake form</button>
-            </form>
-
-            <div class="success-msg" id="intake-success">
-                &#10003; Got it. I'll review everything before we meet.
-            </div>
-        </div>
-
-        <!-- STEP 2: Book Your Call -->
-        <div class="section-card">
-            <div class="step-label"><span class="step-num">2</span> Book your time slot</div>
-            <h2>Pick a time that works for you.</h2>
-            <p>60-minute video call. You'll get a calendar invite with the meeting link.</p>
-
-            <button type="button" id="cal-link" class="book-btn" data-cal-link="seedscale-agency/coaching-deep-dive" data-cal-config='{"layout":"month_view"}'>
-                Book your session on my calendar &rarr;
-            </button>
-        </div>
-
-        <p class="note">Questions? Email me at hello@seedscale.agency</p>
-
-    </div>
-
-    <script>
-    // Scheduling embed loader — URL constructed dynamically
-    (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, ["https://app","cal","com/embed/embed.js"].join("."), "init");
-    Cal("init", {origin: ["https://app","cal","com"].join(".")});
-    Cal("ui", {"styles": {"branding": {"brandColor": "#073B3A"}}});
-
-    (function(){
-        var params = new URLSearchParams(window.location.search);
-        var session = params.get('session') || 'strategy';
-        var submittedEmail = '';
-        var submittedName = '';
-
-        var sessionField = document.getElementById('form-session');
-        var title = document.getElementById('confirm-title');
-        var aiGroup = document.getElementById('ai-tools-group');
-        var socialGroup = document.getElementById('social-handles-group');
-
-        if (sessionField) sessionField.value = session;
-
-        if (session === 'ai-career') {
-            title.textContent = "Payment confirmed. Let's build your AI strategy.";
-            socialGroup.style.display = 'none';
-            aiGroup.style.display = '';
-        } else if (session === 'social') {
-            title.textContent = "Payment confirmed. Let's fix your content strategy.";
-            socialGroup.style.display = '';
-            aiGroup.style.display = 'none';
-        } else if (session === 'coaching') {
-            title.textContent = "Welcome to coaching. Let's get you set up.";
-            socialGroup.style.display = '';
-            aiGroup.style.display = '';
-        } else if (session === 'quick-call') {
-            title.textContent = "Payment confirmed. Let's get your question answered.";
-            socialGroup.style.display = 'none';
-            aiGroup.style.display = 'none';
-        }
-
-        var calEvent = session === 'quick-call'
-            ? 'seedscale-agency/quick-call'
-            : 'seedscale-agency/coaching-deep-dive';
-        var calBtn = document.getElementById('cal-link');
-        if (calBtn) calBtn.setAttribute('data-cal-link', calEvent);
-
-        var form = document.getElementById('intake-form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var email = (form.querySelector('#email') || {}).value || '';
-                var name = (form.querySelector('#name') || {}).value || '';
-                submittedEmail = email;
-                submittedName = name;
-                var btn = form.querySelector('.submit-btn');
-                if (btn) { btn.disabled = true; btn.textContent = 'Submitting...'; }
-
-                var role = (form.querySelector('#role') || {}).value || '';
-                var goal = (form.querySelector('#goal') || {}).value || '';
-                var aiTools = (form.querySelector('#ai-tools') || {}).value || '';
-                var socialHandles = (form.querySelector('#social-handles') || {}).value || '';
-                var struggle = (form.querySelector('#struggle') || {}).value || '';
-                var anythingElse = (form.querySelector('#anything-else') || {}).value || '';
-
-                try {
-                    if (window.klaviyo && email) {
-                        window.klaviyo.push(['identify', {
-                            '$email': email,
-                            '$first_name': name,
-                            'Role': role,
-                            'Session Type': session,
-                            'AI Tools Used': aiTools,
-                            'Social Handles': socialHandles
-                        }]);
-                        window.klaviyo.push(['track', 'Submitted Intake Form', {
-                            session_type: session,
-                            role: role,
-                            goal: goal,
-                            ai_tools: aiTools,
-                            social_handles: socialHandles,
-                            struggle: struggle,
-                            anything_else: anythingElse
-                        }]);
-                    }
-                } catch(err) {}
-
-                var calLink = document.getElementById('cal-link');
-                if (calLink && email) {
-                    calLink.setAttribute('data-cal-link',
-                        calEvent + '?name=' + encodeURIComponent(name) + '&email=' + encodeURIComponent(email));
-                }
-
-                setTimeout(function() {
-                    form.style.display = 'none';
-                    document.getElementById('intake-success').style.display = 'block';
-                }, 500);
-            });
-        }
-
-        Cal("on", {
-            action: "bookingSuccessful",
-            callback: function(e) {
-                var data = e.detail.data;
-                var meetingTime = data.startTime || data.date || '';
-                var email = submittedEmail || (document.getElementById('email') || {}).value || '';
-
-                if (window.klaviyo && email && meetingTime) {
-                    window.klaviyo.push(['identify', {
-                        '$email': email,
-                        'Next Meeting Time': meetingTime
-                    }]);
-                    window.klaviyo.push(['track', 'Booked Meeting', {
-                        meeting_start_time: meetingTime,
-                        session_type: session
-                    }]);
-                }
-            }
-        });
-    })();
-    </script>
-
+  Cal("init", { origin: "https://cal.com" });
+  Cal("inline", { elementOrSelector: "#my-cal-inline", calLink: chosen.link, layout: "month_view" });
+  Cal("ui", { hideEventTypeDetails: false, layout: "month_view" });
+</script>
 </body>
 </html>
