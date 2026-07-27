@@ -3,51 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>You're Booked — Next Steps | Seedscale</title>
+    <title>You're Booked — Next Steps | Rebecca.Builds</title>
     <meta name="robots" content="noindex">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script async type="text/javascript" src="https://static.klaviyo.com/onsite/js/TipqN2/klaviyo.js?company_id=TipqN2"></script>
     <style>
         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { overflow-x: hidden; max-width: 100%; }
         html { scroll-padding-top: 60px; }
-        body { font-family: 'Work Sans', sans-serif; color: #1a1a1a; line-height: 1.6; background: #fafaf9; padding-top: 60px; }
+        body { font-family: 'Inter', system-ui, sans-serif; color: #1a1a1a; line-height: 1.6; background: #faf7f2; padding-top: 60px; }
         a { color: inherit; text-decoration: none; }
 
         .s-nav {
             position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            background: #073B3A; padding: 0 1.5rem; height: 60px;
+            background: #1f4d3a; padding: 0 1.5rem; height: 60px;
             display: flex; align-items: center; justify-content: space-between;
         }
         .s-nav-logo img { height: 28px; width: auto; }
-        .s-nav-back { color: #6BBF59; font-size: 0.85rem; font-weight: 500; }
+        .s-nav-back { color: #cfe3d8; font-size: 0.85rem; font-weight: 500; }
 
         .wrap {
             max-width: 600px; margin: 0 auto; padding: 3rem 1.25rem 4rem;
         }
 
         .confirm-banner {
-            background: #f0fdf4; border: 2px solid #6BBF59; border-radius: 16px;
+            background: #eef4f1; border: 2px solid #1f4d3a; border-radius: 16px;
             padding: 2rem 1.75rem; text-align: center; margin-bottom: 2.5rem;
         }
         .confirm-banner .check { font-size: 2.5rem; margin-bottom: 0.75rem; display: block; }
-        .confirm-banner h1 {
-            font-size: 1.65rem; font-weight: 700; color: #073B3A;
+        .confirm-banner h1 { font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.65rem; font-weight: 700; color: #1f4d3a;
             margin-bottom: 0.5rem; line-height: 1.2;
         }
         .confirm-banner p { font-size: 0.95rem; color: #555; }
 
         .step-label {
             font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
-            text-transform: uppercase; color: #0B6E4F; margin-bottom: 0.75rem;
+            text-transform: uppercase; color: #173d2e; margin-bottom: 0.75rem;
             display: flex; align-items: center; gap: 0.5rem;
         }
         .step-num {
-            background: #073B3A; color: #FACC15; font-weight: 700;
+            background: #1f4d3a; color: #faf7f2; font-weight: 700;
             width: 24px; height: 24px; border-radius: 50%;
             display: inline-flex; align-items: center; justify-content: center;
             font-size: 0.75rem;
@@ -57,8 +57,8 @@
             background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
             padding: 1.75rem 1.5rem; margin-bottom: 1.5rem;
         }
-        .section-card h2 {
-            font-size: 1.2rem; font-weight: 700; color: #073B3A;
+        .section-card h2 { font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.2rem; font-weight: 700; color: #1f4d3a;
             margin-bottom: 0.35rem;
         }
         .section-card > p { font-size: 0.9rem; color: #555; margin-bottom: 1.25rem; }
@@ -66,7 +66,7 @@
         .form-group { margin-bottom: 1rem; }
         .form-group label {
             display: block; font-size: 0.88rem; font-weight: 600;
-            color: #073B3A; margin-bottom: 0.35rem;
+            color: #1f4d3a; margin-bottom: 0.35rem;
         }
         .form-group input, .form-group textarea, .form-group select {
             width: 100%; padding: 0.8rem 1rem; border: 1px solid #d1d5db;
@@ -74,31 +74,31 @@
             background: #fff; resize: vertical;
         }
         .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
-            outline: none; border-color: #0B6E4F; box-shadow: 0 0 0 3px rgba(11,110,79,0.1);
+            outline: none; border-color: #173d2e; box-shadow: 0 0 0 3px rgba(11,110,79,0.1);
         }
 
         .submit-btn {
             display: block; width: 100%; padding: 0.95rem;
-            background: #073B3A; color: #fff; border: none;
+            background: #1f4d3a; color: #fff; border: none;
             border-radius: 10px; font-family: inherit;
             font-size: 1rem; font-weight: 700; cursor: pointer;
             transition: background 0.2s, transform 0.15s;
         }
-        .submit-btn:hover { background: #0B6E4F; transform: translateY(-1px); }
+        .submit-btn:hover { background: #173d2e; transform: translateY(-1px); }
 
         .book-btn {
             display: block; width: 100%; padding: 1rem;
-            background: #FACC15; color: #073B3A; border: none;
+            background: #1f4d3a; color: #faf7f2; border: none;
             border-radius: 10px; font-family: inherit;
             font-size: 1.05rem; font-weight: 700; cursor: pointer;
             transition: background 0.2s, transform 0.15s;
             text-align: center; margin-top: 0.5rem;
         }
-        .book-btn:hover { background: #fde047; transform: translateY(-1px); }
+        .book-btn:hover { background: #173d2e; transform: translateY(-1px); }
 
         .success-msg {
             display: none; text-align: center; padding: 1.5rem;
-            color: #0B6E4F; font-weight: 600; font-size: 1rem;
+            color: #173d2e; font-weight: 600; font-size: 1rem;
         }
 
         .note {
@@ -108,7 +108,7 @@
 
         @media (max-width: 480px) {
             .confirm-banner { padding: 1.5rem 1.25rem; }
-            .confirm-banner h1 { font-size: 1.4rem; }
+            .confirm-banner h1 { font-family: 'Fraunces', Georgia, serif; font-size: 1.4rem; }
             .section-card { padding: 1.5rem 1.25rem; }
         }
     </style>
@@ -116,10 +116,8 @@
 <body>
 
     <nav class="s-nav">
-        <a href="index.html" class="s-nav-logo">
-            <img src="logo.svg" alt="Seedscale Agency">
-        </a>
-        <a href="connect.html" class="s-nav-back">← All offers</a>
+        <a href="https://rebeccabuilds.pages.dev/" class="s-nav-logo" style="color:#faf7f2;font-family:'Fraunces',Georgia,serif;font-size:1.15rem;font-weight:500;">Rebecca.Builds</a>
+        <a href="https://rebeccabuilds.pages.dev/" class="s-nav-back">All offers &rarr;</a>
     </nav>
 
     <div class="wrap">
@@ -191,22 +189,30 @@
         <div class="section-card">
             <div class="step-label"><span class="step-num">2</span> Book your time slot</div>
             <h2>Pick a time that works for you.</h2>
-            <p>60-minute video call. You'll get a calendar invite with the meeting link.</p>
+            <p>You'll get a calendar invite with the video link, plus a reminder before we meet.</p>
 
             <button type="button" id="cal-link" class="book-btn" data-cal-link="seedscale-agency/coaching-deep-dive" data-cal-config='{"layout":"month_view"}'>
                 Book your session on my calendar &rarr;
             </button>
         </div>
 
-        <p class="note">Questions? Email me at hello@seedscale.agency</p>
+        <p class="note">Questions? Email me at hello@rebecca.builds</p>
 
     </div>
+
+    <footer style="max-width:600px;margin:0 auto;padding:0 1.25rem 3rem;text-align:center;font-size:0.8rem;color:#6b6459;">
+        <a href="https://instagram.com/rebecca.builds" style="color:#1f4d3a;text-decoration:underline;">@rebecca.builds</a>
+        <p style="margin-top:0.6rem;">Sessions are booked after checkout, and I never make income promises.</p>
+        <p style="margin-top:0.6rem;">&copy; 2026 Rebecca.Builds</p>
+    </footer>
+
+    
 
     <script>
     // Scheduling embed loader — URL constructed dynamically
     (function (C, A, L) { var p = function (a, ar) { a.q.push(ar); }; var d = C.document; C.Cal = C.Cal || function () { var cal = C.Cal; var ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { var api = function () { p(api, arguments); }; var namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, ["https://app","cal","com/embed/embed.js"].join("."), "init");
     Cal("init", {origin: ["https://app","cal","com"].join(".")});
-    Cal("ui", {"styles": {"branding": {"brandColor": "#073B3A"}}});
+    Cal("ui", {"styles": {"branding": {"brandColor": "#1f4d3a"}}});
 
     (function(){
         var params = new URLSearchParams(window.location.search);
@@ -234,14 +240,20 @@
             socialGroup.style.display = '';
             aiGroup.style.display = '';
         } else if (session === 'quick-call') {
-            title.textContent = "Payment confirmed. Let's get your question answered.";
+            title.textContent = "Payment confirmed. Let's put AI to work.";
             socialGroup.style.display = 'none';
             aiGroup.style.display = 'none';
         }
 
-        var calEvent = session === 'quick-call'
-            ? 'seedscale-agency/quick-call'
-            : 'seedscale-agency/coaching-deep-dive';
+        var calEventMap = {
+            'quick-call': 'seedscale-agency/quick-call',
+            'deep-dive':  'seedscale-agency/coaching-deep-dive',
+            'strategy':   'seedscale-agency/coaching-deep-dive',
+            'ai-career':  'seedscale-agency/ai-career-strategy',
+            'social':     'seedscale-agency/social-marketing-strategy',
+            'coaching':   'seedscale-agency/coaching-kickoff'
+        };
+        var calEvent = calEventMap[session] || 'seedscale-agency/coaching-deep-dive';
         var calBtn = document.getElementById('cal-link');
         if (calBtn) calBtn.setAttribute('data-cal-link', calEvent);
 
