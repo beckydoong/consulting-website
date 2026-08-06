@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Founder Visibility Kit — Rebecca at Seedscale</title>
+    <meta name="description" content="The Founder Visibility Kit: the Founder Bio Formula, 20 proven Instagram hooks, the Trial Reels playbook, the 7-Day Visibility Sprint, and the email quick-start for female founders.">
+    <meta name="robots" content="noindex">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Work Sans', sans-serif;
+            color: #1a1a1a; line-height: 1.65;
+            background: #f9fafb;
+        }
+        a { color: #0B6E4F; text-decoration: none; font-weight: 600; }
+
+        .hero {
+            background: #073B3A; color: #fff;
+            padding: 3.5rem 1.5rem 3rem; text-align: center;
+        }
+        .hero .kicker {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; color: #FACC15; margin-bottom: 0.85rem;
+        }
+        .hero h1 {
+            font-size: 2rem; font-weight: 800; letter-spacing: -0.02em;
+            line-height: 1.2; max-width: 560px; margin: 0 auto 0.85rem;
+        }
+        .hero p { font-size: 1rem; color: rgba(255,255,255,0.82); max-width: 460px; margin: 0 auto; }
+
+        .toc {
+            display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap;
+            padding: 1.25rem 1rem 0; max-width: 620px; margin: 0 auto;
+        }
+        .toc a {
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #0B6E4F;
+            padding: 0.4rem 0.85rem; border: 1px solid #d6e4dc;
+            border-radius: 100px; background: #fff;
+        }
+
+        .section { max-width: 620px; margin: 0 auto; padding: 2.5rem 1.25rem 0; }
+        .section-label {
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; color: #0B6E4F; margin-bottom: 1rem;
+            padding-bottom: 0.5rem; border-bottom: 2px solid #e5e7eb;
+        }
+        .panel {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 14px;
+            padding: 1.75rem 1.5rem; margin-bottom: 1rem;
+        }
+        .panel h2 { font-size: 1.3rem; font-weight: 800; color: #073B3A; margin-bottom: 0.75rem; letter-spacing: -0.01em; }
+        .panel h3 { font-size: 1rem; font-weight: 700; color: #073B3A; margin: 1.25rem 0 0.5rem; }
+        .panel p { font-size: 0.95rem; color: #444; margin-bottom: 0.85rem; }
+        .panel ul, .panel ol { font-size: 0.95rem; color: #444; margin: 0 0 0.85rem 1.25rem; }
+        .panel li { margin-bottom: 0.5rem; }
+
+        .intro-header { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+        .intro-header img {
+            width: 72px; height: 72px; border-radius: 50%; object-fit: cover;
+            border: 3px solid #FACC15;
+        }
+        .stats { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0 0.5rem; }
+        .stat { background: #eef6f0; border-radius: 10px; padding: 0.75rem 1rem; flex: 1; min-width: 130px; text-align: center; }
+        .stat .num { display: block; font-size: 1.15rem; font-weight: 800; color: #073B3A; }
+        .stat .lbl { font-size: 0.72rem; color: #0B6E4F; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+
+        .formula {
+            background: #073B3A; color: #fff; border-radius: 10px;
+            padding: 1.1rem 1.25rem; font-size: 0.98rem; font-weight: 600;
+            margin: 0.75rem 0 1rem;
+        }
+        .formula .hl { color: #FACC15; }
+        .example {
+            background: #f6f7f9; border-left: 3px solid #FACC15; border-radius: 0 8px 8px 0;
+            padding: 0.85rem 1rem; font-size: 0.9rem; color: #444; margin-bottom: 0.75rem;
+        }
+        .example strong { color: #073B3A; }
+        .databox {
+            background: #eef6f0; border-radius: 10px; padding: 1rem 1.15rem;
+            font-size: 0.88rem; color: #2f4f43; margin-bottom: 1rem;
+        }
+        .databox strong { color: #073B3A; }
+
+        .hook {
+            display: flex; gap: 0.85rem; align-items: flex-start;
+            padding: 0.75rem 0; border-bottom: 1px solid #f0f1f3;
+        }
+        .hook:last-child { border-bottom: none; }
+        .hook .n {
+            min-width: 28px; height: 28px; border-radius: 50%;
+            background: #FACC15; color: #073B3A; font-weight: 800; font-size: 0.8rem;
+            display: flex; align-items: center; justify-content: center; margin-top: 0.15rem;
+        }
+        .hook p { margin: 0; font-size: 0.93rem; }
+        .hook .why { display: block; font-size: 0.78rem; color: #888; margin-top: 0.15rem; }
+
+        .day {
+            display: flex; gap: 0.85rem; align-items: flex-start;
+            padding: 0.85rem 0; border-bottom: 1px solid #f0f1f3;
+        }
+        .day:last-child { border-bottom: none; }
+        .day .d {
+            min-width: 58px; font-size: 0.7rem; font-weight: 800; letter-spacing: 0.08em;
+            text-transform: uppercase; color: #0B6E4F; margin-top: 0.25rem;
+        }
+        .day p { margin: 0; font-size: 0.93rem; }
+        .day strong { color: #073B3A; }
+
+        .step {
+            display: flex; gap: 0.85rem; align-items: flex-start;
+            padding: 0.75rem 0; border-bottom: 1px solid #f0f1f3;
+        }
+        .step:last-child { border-bottom: none; }
+        .step .n {
+            min-width: 28px; height: 28px; border-radius: 8px;
+            background: #073B3A; color: #FACC15; font-weight: 800; font-size: 0.8rem;
+            display: flex; align-items: center; justify-content: center; margin-top: 0.15rem;
+        }
+        .step p { margin: 0; font-size: 0.93rem; }
+        .step strong { color: #073B3A; }
+
+        .cta {
+            max-width: 620px; margin: 0 auto; padding: 2.5rem 1.25rem 3rem;
+        }
+        .cta-card {
+            background: #073B3A; color: #fff; border-radius: 14px;
+            padding: 1.75rem 1.5rem; text-align: center;
+        }
+        .cta-card .frac-label {
+            font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em;
+            text-transform: uppercase; color: #FACC15; margin-bottom: 0.75rem;
+        }
+        .cta-card h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .cta-card p { font-size: 0.9rem; color: rgba(255,255,255,0.8); margin-bottom: 1.25rem; max-width: 420px; margin-left: auto; margin-right: auto; }
+        .cta-card a {
+            display: inline-block; padding: 0.75rem 1.75rem;
+            background: #FACC15; color: #073B3A; border-radius: 8px;
+            font-weight: 700; font-size: 0.95rem;
+        }
+
+        .footer {
+            max-width: 620px; margin: 0 auto; padding: 0 1.25rem 3rem;
+            text-align: center; font-size: 0.78rem; color: #999;
+        }
+        @media (min-width: 640px) {
+            .hero h1 { font-size: 2.4rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <p class="kicker">The Founder Visibility Kit</p>
+        <h1>Welcome in. Let's get you seen.</h1>
+        <p>Six short sections. Work through them in order, or jump to what you need most right now.</p>
+    </header>
+
+    <nav class="toc">
+        <a href="#intro">Meet Rebecca</a>
+        <a href="#bio">Bio Formula</a>
+        <a href="#hooks">20 Hooks</a>
+        <a href="#trials">Trial Reels</a>
+        <a href="#sprint">7-Day Sprint</a>
+        <a href="#email">Email List</a>
+    </nav>
+
+    <!-- ═══ INTRO ═══ -->
+    <div class="section" id="intro">
+        <div class="section-label">Part 1 · Meet Rebecca</div>
+        <div class="panel">
+            <div class="intro-header">
+                <img src="headshot.jpeg" alt="Rebecca — Digital Marketing Strategist">
+                <div>
+                    <h2 style="margin-bottom:0.2rem;">Hi, I'm Rebecca 👋</h2>
+                    <p style="margin:0;font-size:0.85rem;color:#777;">Founder, Seedscale Agency</p>
+                </div>
+            </div>
+            <p>I spent 15 years building the marketing engines behind some very big audiences — and I've seen exactly what separates the founders who get noticed from the ones who stay invisible.</p>
+            <div class="stats">
+                <div class="stat"><span class="num">10M+</span><span class="lbl">Subscribers Grown</span></div>
+                <div class="stat"><span class="num">Billions</span><span class="lbl">of Views Generated</span></div>
+                <div class="stat"><span class="num">$15M+</span><span class="lbl">Raised Annually</span></div>
+            </div>
+            <p>Here's the truth those numbers taught me: <strong>visibility is a system you can build in an afternoon and run in minutes a day.</strong> The founders who grow have a clear one-line message, a small set of hooks that sound like them, and a rhythm they can actually keep.</p>
+            <p>I made this kit for female founders because I've watched too many brilliant women build real businesses that nobody hears about — while people with better packaging and thinner results take up all the air. Your work deserves the audience. This kit is the packaging.</p>
+            <p>Every section here takes minutes to put into practice. Let's go.</p>
+        </div>
+    </div>
+
+    <!-- ═══ BIO FORMULA ═══ -->
+    <div class="section" id="bio">
+        <div class="section-label">Part 2 · The Founder Bio Formula</div>
+        <div class="panel">
+            <h2>Your bio has one job.</h2>
+            <p>People decide in about two seconds whether to follow you. A great bio tells the right person "this account is for you" — instantly.</p>
+            <div class="formula">I help <span class="hl">[who]</span> get <span class="hl">[outcome]</span> without <span class="hl">[the thing they dread]</span> · <span class="hl">[one line of proof]</span></div>
+            <h3>Examples</h3>
+            <div class="example"><strong>Skincare founder:</strong> Helping women 40+ get glowing skin without the 12-step routine · Formulated by an actual chemist 🧪</div>
+            <div class="example"><strong>Fractional CFO:</strong> I help female founders know their numbers without the spreadsheet spiral · 9 exits and counting</div>
+            <div class="example"><strong>Coach:</strong> Helping mom founders build 6-figure brands in 10 hrs/week · Did it twice myself</div>
+            <h3>Rules that make it work</h3>
+            <ul>
+                <li><strong>Name the person you serve.</strong> "Women 40+" beats "skincare lovers."</li>
+                <li><strong>One outcome only.</strong> If your bio lists three, the reader remembers zero.</li>
+                <li><strong>Keep proof to a single line.</strong> One number or credential is plenty.</li>
+                <li><strong>End with a reason to tap the link</strong> — name what's waiting there ("Free visibility kit ↓").</li>
+            </ul>
+            <p>✏️ <strong>Do it now:</strong> write your version of the formula, read it out loud, and cut every word you'd never say to a friend.</p>
+        </div>
+    </div>
+
+    <!-- ═══ HOOKS ═══ -->
+    <div class="section" id="hooks">
+        <div class="section-label">Part 3 · 20 Hooks Proven to Work Over and Over</div>
+        <div class="panel">
+            <h2>Fill in the blanks. Sound like you.</h2>
+            <p>These 20 formulas keep working because they match how people actually watch. Retention studies across millions of reels found "specific outcome" hooks hold roughly 45% of viewers, POV-style realism holds about 42%, and unpopular opinions hold about 38% — the three strongest patterns on the platform right now.</p>
+            <div class="databox"><strong>Two rules before you scroll:</strong> around 60% of viewers watch reels on mute, so put your hook on screen as a bold text overlay in the first half-second — 5 to 8 words, top third of the frame. Then check your retention chart: if 70% of viewers are still with you at second 3, your hook did its job.</div>
+            <div class="hook"><div class="n">1</div><div><p>"Stop scrolling if you're a founder who [specific struggle]."<span class="why">Direct call-out — filters for exactly your person in half a second.</span></p></div></div>
+            <div class="hook"><div class="n">2</div><div><p>"I did [specific action] every day for 30 days. Here's what happened."<span class="why">Specific-outcome hook — the top retention performer on the platform.</span></p></div></div>
+            <div class="hook"><div class="n">3</div><div><p>"How I went from [before] to [after] in [timeframe]."<span class="why">Transformation arc — viewers stay to learn the how.</span></p></div></div>
+            <div class="hook"><div class="n">4</div><div><p>"3 signs you're [problem] — and what to do about each one."<span class="why">Diagnostic lists earn saves; saves tell the algorithm to push you.</span></p></div></div>
+            <div class="hook"><div class="n">5</div><div><p>"Unpopular opinion: [contrarian take on your niche]."<span class="why">Among the highest-retention openers; mild disagreement fuels comments.</span></p></div></div>
+            <div class="hook"><div class="n">6</div><div><p>"The biggest mistake I see [your audience] make with [topic]."<span class="why">Authority framing plus the viewer's fear of making it too.</span></p></div></div>
+            <div class="hook"><div class="n">7</div><div><p>"If I were starting my [business type] from zero in 2026, here's exactly what I'd do."<span class="why">"Exactly" promises a plan, and plans get saved.</span></p></div></div>
+            <div class="hook"><div class="n">8</div><div><p>"Things I wish I knew before [pricing my offer / launching / quitting my job]."<span class="why">Regret framing feels generous instead of preachy.</span></p></div></div>
+            <div class="hook"><div class="n">9</div><div><p>"POV: you're a founder and [hyper-relatable moment]."<span class="why">POV realism — the #2 retention formula, perfect for text-overlay reels.</span></p></div></div>
+            <div class="hook"><div class="n">10</div><div><p>"I tested [tool/strategy] for 30 days so you don't have to."<span class="why">You absorb the risk; the viewer gets the shortcut.</span></p></div></div>
+            <div class="hook"><div class="n">11</div><div><p>"Nobody talks about this part of [your industry]."<span class="why">Insider-secret framing — implies the viewer is getting the real story.</span></p></div></div>
+            <div class="hook"><div class="n">12</div><div><p>"Steal my exact [template/script/checklist] — it's free."<span class="why">Direct value hook. Pair it with your lead magnet link (see Part 6).</span></p></div></div>
+            <div class="hook"><div class="n">13</div><div><p>"This feels illegal to know."<span class="why">Pure curiosity spike — pay it off within 5 seconds or retention dies.</span></p></div></div>
+            <div class="hook"><div class="n">14</div><div><p>"Watch me [build / write / package the thing] in real time."<span class="why">Process content builds trust and works perfectly on mute.</span></p></div></div>
+            <div class="hook"><div class="n">15</div><div><p>"5 [tools/habits] I can't run my business without."<span class="why">Listicle + tools = the most shareable combo in the founder niche.</span></p></div></div>
+            <div class="hook"><div class="n">16</div><div><p>"Read this if you're building a business with [kids at home / a 9-to-5 / no team]."<span class="why">Constraint call-out — hyper-specific relatability beats broad appeal.</span></p></div></div>
+            <div class="hook"><div class="n">17</div><div><p>"Here's what [$500 / one hour] with me actually gets you."<span class="why">Transparency converts silent lurkers into buyers.</span></p></div></div>
+            <div class="hook"><div class="n">18</div><div><p>"The question I get asked most: [question]. My honest answer:"<span class="why">"Honest" signals a real take is coming, with no pitch attached.</span></p></div></div>
+            <div class="hook"><div class="n">19</div><div><p>"Before you post another reel, do this."<span class="why">Interrupts the exact behavior your viewer is doing right now.</span></p></div></div>
+            <div class="hook"><div class="n">20</div><div><p>"Say this the next time a client asks for a discount."<span class="why">Word-for-word scripts are the most-saved format on Instagram.</span></p></div></div>
+        </div>
+    </div>
+
+    <!-- ═══ TRIAL REELS ═══ -->
+    <div class="section" id="trials">
+        <div class="section-label">Part 4 · The Trial Reels Playbook</div>
+        <div class="panel">
+            <h2>Test your hooks on strangers first.</h2>
+            <p>Trial Reels are Instagram's built-in testing lab. Flip the <strong>Trial</strong> toggle before you share, and the reel goes out only to people who <em>don't</em> follow you. Your followers never see the experiment. You'll need a professional account, and Instagram rolls the feature out to accounts with roughly 1,000+ followers.</p>
+            <p>This removes the scariest part of posting — looking messy in front of the audience you already earned. Every trial is a free audition in front of strangers, and strangers are exactly where growth comes from.</p>
+            <h3>The playbook</h3>
+            <div class="step"><div class="n">1</div><p><strong>Run 2–3 Trial Reels a week.</strong> More trials mean more data, more reach, and faster learning about what your audience responds to.</p></div>
+            <div class="step"><div class="n">2</div><p><strong>Change one variable at a time.</strong> Same video with two different hooks from Part 3, or same hook with two different trending sounds. One variable per test, or you'll never know what worked.</p></div>
+            <div class="step"><div class="n">3</div><p><strong>Read the results after ~24 hours.</strong> Instagram shows you views, watch time, and engagement from non-followers. Look for hooks that hold 70%+ of viewers through second 3 and pull new follows.</p></div>
+            <div class="step"><div class="n">4</div><p><strong>Share the winners.</strong> Turn on auto-share so strong trials post to your followers automatically, or share them manually once the data's in. Losers quietly disappear and cost you nothing.</p></div>
+            <div class="step"><div class="n">5</div><p><strong>Test adjacent topics.</strong> Curious whether your audience wants behind-the-scenes, pricing talk, or personal story content? Trial it. If a tangent hits, you've found a new growth lane. If it flops, nobody you know ever saw it.</p></div>
+            <p>🎬 <strong>Rule of thumb:</strong> when a Trial Reel wins, remake that hook into three more reels before you move on. Winners repeat.</p>
+        </div>
+    </div>
+
+    <!-- ═══ SPRINT ═══ -->
+    <div class="section" id="sprint">
+        <div class="section-label">Part 5 · The 7-Day Visibility Sprint</div>
+        <div class="panel">
+            <h2>One small action a day. No skipping.</h2>
+            <p>Momentum beats perfection. Each day takes 15–30 minutes.</p>
+            <div class="day"><div class="d">Day 1</div><p><strong>Rewrite your bio</strong> using the Founder Bio Formula. Update your link and profile photo while you're there.</p></div>
+            <div class="day"><div class="d">Day 2</div><p><strong>Post your story</strong> using Hook #3 or #8 — why you started, in under 150 words. Pin it.</p></div>
+            <div class="day"><div class="d">Day 3</div><p><strong>Engage before you create.</strong> Leave 10 genuine comments on accounts your ideal customer follows. Skip "love this!" and say something real.</p></div>
+            <div class="day"><div class="d">Day 4</div><p><strong>Share proof.</strong> A result, a review, a before/after, a milestone. Use Hook #2 or #17 to frame it.</p></div>
+            <div class="day"><div class="d">Day 5</div><p><strong>Teach one thing</strong> you know so well it feels obvious. That's exactly the content your audience saves. Have Trial Reels access? Run it as a trial with two different hooks.</p></div>
+            <div class="day"><div class="d">Day 6</div><p><strong>Go direct.</strong> Send 3 warm DMs — past customers, collaborators, or founders you admire. Open genuine conversations and save any pitch for later.</p></div>
+            <div class="day"><div class="d">Day 7</div><p><strong>Review + repeat.</strong> Check which post got the most reach and saves. Make next week's version of it. That's your rhythm now.</p></div>
+        </div>
+    </div>
+
+    <!-- ═══ EMAIL LIST ═══ -->
+    <div class="section" id="email">
+        <div class="section-label">Part 6 · Start Collecting Emails Immediately</div>
+        <div class="panel">
+            <h2>The algorithm rents you reach. Your list is yours.</h2>
+            <p>Instagram can change the algorithm, restrict an account, or bury your reach overnight — and every follower you've earned lives on that rented ground. An email list moves the relationship onto ground you control. When you launch something, the sale happens in the inbox, where you reach 100% of your people every time you hit send.</p>
+            <div class="databox"><strong>The numbers make the case:</strong> email returns an average of <strong>$36 for every $1 spent</strong> — among the highest of any marketing channel. Welcome emails see open rates near <strong>69%</strong> and drive roughly <strong>3x more revenue per send</strong> than any other automated email. And speed compounds everything: people contacted within minutes of signing up convert dramatically better than people left waiting even an hour.</div>
+            <p>Start now, while your audience is small. A list of 200 warm subscribers who chose you will outsell 20,000 passive followers on launch day.</p>
+            <h3>Your lead magnet: one problem, one fast win</h3>
+            <ul>
+                <li><strong>Solve one specific problem</strong> your ideal customer has this week — a checklist, a template, a formula. Aim for 10 minutes to value, and skip the 40-page ebook.</li>
+                <li><strong>Name the outcome in the title.</strong> "The Founder Bio Formula" beats "My Free Guide."</li>
+                <li><strong>Deliver it instantly and automatically.</strong> The signup-to-inbox gap should be minutes, never "I'll send it tonight."</li>
+                <li><strong>Make it a natural first step toward your paid offer</strong> so the people who download it are the people who'll eventually buy.</li>
+            </ul>
+            <h3>Your welcome series: three emails, that's it</h3>
+            <div class="step"><div class="n">1</div><p><strong>Instantly — deliver the goods.</strong> Send the lead magnet, tell them exactly what to do with it first, and ask one question they can reply to. Replies train inboxes to trust you.</p></div>
+            <div class="step"><div class="n">2</div><p><strong>Day 1 — tell your story.</strong> Who you are, why you do this, and the one belief that drives your work. Connection here is what earns opens forever after.</p></div>
+            <div class="step"><div class="n">3</div><p><strong>Day 3 — help them win, then point the way.</strong> Push them to actually use the freebie, share your best related tip, and name the next step for whoever wants more.</p></div>
+            <p>Write like a person. One idea and one call-to-action per email — a welcome series with five links per email reads like a brochure and gets deleted like one.</p>
+            <p>💌 <strong>And here's the fun part:</strong> you're inside this exact system right now. This kit is the lead magnet, and the three emails arriving in your inbox this week are the welcome series. Steal the structure for your own business — it's yours now.</p>
+        </div>
+    </div>
+
+    <!-- ═══ NEXT STEP ═══ -->
+    <div class="cta">
+        <div class="cta-card">
+            <div class="frac-label">Want a shortcut?</div>
+            <h3>Social &amp; Marketing Strategy with Rebecca</h3>
+            <p>In 60 minutes I'll audit your content, lock in your positioning, and hand you a 30-day calendar with hooks you can start using tomorrow. Recording and written summary included.</p>
+            <a href="social-strategy.html">Book your session &rarr;</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 Seedscale Agency &middot; <a href="connect.html" style="color:#0B6E4F;">Back to Start Here</a></p>
+    </footer>
+
+</body>
+</html>
