@@ -671,7 +671,7 @@ function exitFullscreen() {
   const fn = document.exitFullscreen || document.webkitExitFullscreen;
   if (fn && (document.fullscreenElement || document.webkitFullscreenElement)) { try { const r = fn.call(document); if (r && r.catch) r.catch(() => {}); } catch {} }
 }
-function trapBack() { history.pushState({ boop: 1 }, '', location.href); }
+function trapBack() { try { history.pushState({ boop: 1 }, '', location.href); } catch {} }
 window.addEventListener('popstate', () => { if (playing) { trapBack(); } });
 const beforeUnload = e => { e.preventDefault(); e.returnValue = ''; };
 document.addEventListener('visibilitychange', () => {
