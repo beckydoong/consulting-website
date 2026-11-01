@@ -61,7 +61,8 @@
     transition: transform .15s, background .2s;
   }
   #modes button.on { background: rgba(255,255,255,.32); border-color: #ffd60a; transform: scale(1.12); }
-  @media (max-width: 420px) { #modes button { width: 46px; height: 46px; font-size: 24px; } #modes { gap: 5px; padding: 6px; } }
+  @media (max-width: 460px) { #modes button { width: 44px; height: 44px; font-size: 23px; } #modes { gap: 4px; padding: 6px; } }
+  @media (max-width: 360px) { #modes button { width: 40px; height: 40px; font-size: 21px; } #modes { gap: 3px; padding: 5px; } }
 
   /* ---------- Overlays ---------- */
   .overlay {
@@ -132,8 +133,8 @@
 <div id="start" class="overlay scroll">
   <div class="card">
     <h1 class="title" aria-label="Boop!"><span>B</span><span>o</span><span>o</span><span>p</span><span>!</span></h1>
-    <p class="tag">Tap, smash, pop & paint, for little hands</p>
-    <div class="emoji-row">🐶 🫧 🎆 🎨 🐹 🎹</div>
+    <p class="tag">Tap, smash, pop, paint & sing, for little hands</p>
+    <div class="emoji-row">🐶 🫧 🎆 🎨 🐹 🎹 🎤</div>
     <button id="play" class="big-btn">▶ Play</button>
 
     <div class="grownups">
@@ -162,7 +163,7 @@
       <div class="seg" data-setting="voice"><button data-v="1">On</button><button data-v="0">Off</button></div></div>
     <div class="row"><div class="lbl">Time's-up timer<small id="timerLeft">Off</small></div>
       <div class="seg" data-setting="timer"><button data-v="0">Off</button><button data-v="10">10m</button><button data-v="20">20m</button><button data-v="30">30m</button></div></div>
-    <div class="row"><div class="lbl">Surprise mode switch<small>Changes the game every few minutes</small></div>
+    <div class="row"><div class="lbl">Surprise mode switch<small>Changes the game every 3 minutes</small></div>
       <div class="seg" data-setting="shuffle"><button data-v="1">On</button><button data-v="0">Off</button></div></div>
 
     <div class="actions">
@@ -275,7 +276,7 @@ let W = 0, H = 0, DPR = 1, U = 300;
 function resize() {
   DPR = Math.min(2, window.devicePixelRatio || 1); W = innerWidth; H = innerHeight; U = Math.min(W, H);
   cv.width = (W * DPR) | 0; cv.height = (H * DPR) | 0; ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
-  layoutHoles(); layoutPads();
+  layoutHoles(); layoutPads(); if (MODES.songs) MODES.songs.layout();
 }
 const sprites = new Map();
 function sprite(e) {
@@ -602,7 +603,154 @@ MODES.music = {
   key(e) { const pad = pads[(e && e.keyCode || (rand(8) | 0)) % pads.length]; if (pad) this.hit(pad); }
 };
 
-const MODE_ORDER = ['smash', 'bubbles', 'fireworks', 'paint', 'peekaboo', 'music'];
+// --- Songs: 12 classic nursery songs. Tap a picture to listen, or "play it myself" one note per tap.
+// All tunes are traditional and in the public domain. Notation: NOTE+octave[:beats][!]  (! = "POP!")
+const NOTE_IDX = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+function parseSong(str) {
+  return str.trim().split(/\s+/).map(tok => {
+    const pop = tok.endsWith('!'); if (pop) tok = tok.slice(0, -1);
+    const [n, b] = tok.split(':'), m = /^([A-G])(#|b)?(\d)$/.exec(n);
+    const midi = 12 * (+m[3] + 1) + NOTE_IDX[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
+    return { midi, f: 440 * Math.pow(2, (midi - 69) / 12), beats: b ? parseFloat(b) : 1, pop };
+  });
+}
+const SONGS = [
+  { t: 'Twinkle Twinkle', e: '⭐', bpm: 108, n: 'C4 C4 G4 G4 A4 A4 G4:2 F4 F4 E4 E4 D4 D4 C4:2 G4 G4 F4 F4 E4 E4 D4:2 G4 G4 F4 F4 E4 E4 D4:2 C4 C4 G4 G4 A4 A4 G4:2 F4 F4 E4 E4 D4 D4 C4:2' },
+  { t: "Mary's Little Lamb", e: '🐑', bpm: 120, n: 'E4 D4 C4 D4 E4 E4 E4:2 D4 D4 D4:2 E4 G4 G4:2 E4 D4 C4 D4 E4 E4 E4 E4 D4 D4 E4 D4 C4:4' },
+  { t: 'Old MacDonald', e: '🐮', bpm: 132, n: 'G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3 D4 G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3 D4:.5 D4:.5 G4 G4 G4:2 D4:.5 D4:.5 G4 G4 G4:2 G4:.5 G4:.5 G4 G4:.5 G4:.5 G4 G4:.5 G4:.5 G4:.5 G4:.5 G4 G4 G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3' },
+  { t: 'Wheels on the Bus', e: '🚌', bpm: 132, n: 'C4 F4 F4:.5 F4:.5 F4 A4 C5 A4 F4:2 G4 E4 C4:2 C5 A4 F4:2 C4 F4 F4:.5 F4:.5 F4 A4 C5 A4 F4:2 G4:2 C4 C4 F4:3' },
+  { t: 'Row Your Boat', e: '🚣', bpm: 100, n: 'C4:1.5 C4:1.5 C4 D4:.5 E4:1.5 E4 D4:.5 E4 F4:.5 G4:3 C5:.5 C5:.5 C5:.5 G4:.5 G4:.5 G4:.5 E4:.5 E4:.5 E4:.5 C4:.5 C4:.5 C4:.5 G4 F4:.5 E4 D4:.5 C4:3' },
+  { t: 'Itsy Bitsy Spider', e: '🕷️', bpm: 104, n: 'G3:.5 C4 C4:.5 C4 D4:.5 E4 E4:.5 E4 D4:.5 C4 D4:.5 E4 C4:2.5 E4:1.5 E4 F4:.5 G4:3 G4 F4:.5 E4 F4:.5 G4 E4:2.5 C4:1.5 C4 D4:.5 E4:3 E4 D4:.5 C4 D4:.5 E4 C4:2.5 G3:.5 G3:.5 C4 C4:.5 C4 D4:.5 E4 E4:.5 E4 D4:.5 C4 D4:.5 E4 C4:2.5' },
+  { t: 'London Bridge', e: '🌉', bpm: 120, n: 'G4:1.5 A4:.5 G4 F4 E4 F4 G4:2 D4 E4 F4:2 E4 F4 G4:2 G4:1.5 A4:.5 G4 F4 E4 F4 G4:2 D4:2 G4:2 E4 C4:3' },
+  { t: 'Are You Sleeping', e: '🔔', bpm: 120, n: 'C4 D4 E4 C4 C4 D4 E4 C4 E4 F4 G4:2 E4 F4 G4:2 G4:.5 A4:.5 G4:.5 F4:.5 E4 C4 G4:.5 A4:.5 G4:.5 F4:.5 E4 C4 C4 G3 C4:2 C4 G3 C4:2' },
+  { t: 'Hot Cross Buns', e: '🍞', bpm: 110, n: 'E4 D4 C4:2 E4 D4 C4:2 C4:.5 C4:.5 C4:.5 C4:.5 D4:.5 D4:.5 D4:.5 D4:.5 E4 D4 C4:2' },
+  { t: 'B-I-N-G-O', e: '🐶', bpm: 132, n: 'G4 C5 C5 G4 G4 A4 A4 G4:2 G4 C5 C5 D5 D5 E5 C5:2 E5 E5 F5 F5 F5:2 D5 D5 E5 E5 E5:2 C5 C5 D5 D5 D5:2 C5 B4 G4 A4 B4 C5:2 C5:2' },
+  { t: 'Pop Goes the Weasel', e: '🐒', bpm: 120, n: 'C4 C4:.5 D4 D4:.5 E4:.5 G4:.5 E4:.5 C4:1.5 G3:.5 C4 C4:.5 D4 D4:.5 E4:1.5 C4:1.5 C4 C4:.5 D4 D4:.5 E4:.5 G4:.5 E4:.5 C4:1.5 A4:3! D4 F4:.5 E4:1.5 C4:1.5' },
+  { t: 'This Old Man', e: '👴', bpm: 132, n: 'G4 E4 G4:2 G4 E4 G4:2 A4 G4 F4 E4 D4 E4 F4:2 E4:.5 F4:.5 G4 C4 C4:.5 C4:.5 C4:.5 C4:.5 C4:.5 D4:.5 E4:.5 F4:.5 G4:2 G4 D4 D4 F4 E4 D4 C4:2' }
+].map(s => Object.assign(s, { notes: parseSong(s.n) }));
+const noteHue = midi => (midi % 12) * 30;
+function songNote(f, dur, when = 0) { tone(f, Math.max(.28, dur * 1.15), 'triangle', .26, when); tone(f * 2, Math.min(.5, dur), 'sine', .06, when); }
+
+MODES.songs = {
+  icon: '🎤', tiles: [], playing: null, along: null, myself: false,
+  enter() { this.layout(); },
+  exit() { this.stop(); this.along = null; },
+  stop() { this.playing = null; },
+  pill() { const w = 230, h = 46; return { x: (W - w) / 2, y: 66, w, h }; },
+  backBtn() { return { x: 12, y: 66, w: 132, h: 46 }; },
+  layout() {
+    const top = 124, bottom = H - 104, land = W > H, cols = land ? 4 : 3, rows = land ? 3 : 4, gap = 10;
+    const tw = (W - gap * (cols + 1)) / cols, th = (bottom - top - gap * (rows - 1)) / rows;
+    this.tiles = SONGS.map((s, n) => ({ x: gap + (n % cols) * (tw + gap), y: top + Math.floor(n / cols) * (th + gap), w: tw, h: th, color: HEXES[n % HEXES.length], bounce: 0 }));
+  },
+  start(i) {
+    initAudio(); if (!ac) return;
+    this.playing = { i, idx: 0, played: 0, next: ac.currentTime + .08, events: [] };
+    this.tiles[i].bounce = 1;
+  },
+  update(dt) {
+    if (!this.tiles.length) this.layout();
+    for (const t of this.tiles) t.bounce = Math.max(0, t.bounce - dt * 4);
+    if (this.along) this.along.bounce = Math.max(0, this.along.bounce - dt * 4);
+    const P = this.playing; if (!P || !ac) return;
+    const s = SONGS[P.i], spb = 60 / s.bpm;
+    if (P.next < ac.currentTime - .25) P.next = ac.currentTime + .05; // resumed after a pause
+    while (P.idx < s.notes.length && P.next < ac.currentTime + .15) {
+      const n = s.notes[P.idx]; songNote(n.f, n.beats * spb, P.next - ac.currentTime);
+      P.events.push({ at: P.next, n, idx: P.idx }); P.next += n.beats * spb; P.idx++;
+    }
+    while (P.events.length && P.events[0].at <= ac.currentTime) {
+      const ev = P.events.shift(), t = this.tiles[P.i]; P.played = ev.idx + 1; t.bounce = 1;
+      const cx = t.x + t.w / 2, cy = t.y + t.h * .4;
+      texts.push({ txt: pick(['♪', '♫', '♬']), x: cx + rand(-t.w * .35, t.w * .35), y: cy - t.h * .1, size: clamp(U * .06, 20, 40), life: 1, t: 0, color: `hsl(${noteHue(ev.n.midi)},100%,75%)` });
+      if (ev.n.pop) { sfx.pop(); burst(cx, cy, 40, { star: .6 }); floatText('POP!', cx, cy - t.h * .3, clamp(U * .12, 36, 80), 1.2, '#ffd60a'); }
+    }
+    if (P.idx >= s.notes.length && !P.events.length && ac.currentTime > P.next) {
+      const t = this.tiles[P.i]; burst(t.x + t.w / 2, t.y + t.h / 2, 30, { star: .8 }); this.playing = null;
+    }
+  },
+  button(r, label, on) {
+    ctx.save(); ctx.fillStyle = on ? '#ffd60a' : 'rgba(255,255,255,.16)';
+    ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(r.x, r.y, r.w, r.h, r.h / 2); else ctx.rect(r.x, r.y, r.w, r.h); ctx.fill();
+    ctx.fillStyle = on ? '#2a1666' : '#fff'; ctx.font = `800 17px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`;
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, r.x + r.w / 2, r.y + r.h / 2 + 1); ctx.restore();
+  },
+  draw() {
+    if (this.along) return this.drawAlong();
+    this.button(this.pill(), this.myself ? '👆 Play it myself: ON' : '👆 Play it myself', this.myself);
+    const P = this.playing;
+    this.tiles.forEach((t, i) => {
+      const on = P && P.i === i, s = SONGS[i];
+      ctx.save(); ctx.globalAlpha = on ? 1 : .6; ctx.fillStyle = t.color;
+      if (on) { ctx.shadowColor = t.color; ctx.shadowBlur = 30; }
+      ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(t.x, t.y, t.w, t.h, 18); else ctx.rect(t.x, t.y, t.w, t.h); ctx.fill(); ctx.restore();
+      const es = Math.min(t.w, t.h) * .5, bob = on ? -t.bounce * 10 : 0;
+      drawEmoji(s.e, t.x + t.w / 2, t.y + t.h * .42 + bob, es * (1 + t.bounce * .12), on ? Math.sin(now * 6) * .12 : 0);
+      // title (wraps to two lines if needed)
+      const fs = clamp(Math.min(t.w * .1, t.h * .11), 11, 19);
+      ctx.save(); ctx.font = `800 ${fs}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#fff'; ctx.shadowColor = 'rgba(0,0,0,.45)'; ctx.shadowBlur = 4;
+      let lines = [s.t];
+      if (ctx.measureText(s.t).width > t.w - 12) { const w = s.t.split(' '), h = Math.ceil(w.length / 2); lines = [w.slice(0, h).join(' '), w.slice(h).join(' ')]; }
+      lines.forEach((l, k) => ctx.fillText(l, t.x + t.w / 2, t.y + t.h * .82 + (k - (lines.length - 1) / 2) * fs * 1.1));
+      ctx.restore();
+      if (on) { ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.fillRect(t.x + 10, t.y + t.h - 9, (t.w - 20) * (P.played / s.notes.length), 4); }
+    });
+  },
+  drawAlong() {
+    const A = this.along, s = SONGS[A.i];
+    this.button(this.backBtn(), '⬅ Songs', false);
+    ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fff';
+    ctx.font = `900 ${clamp(U * .075, 24, 48)}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`;
+    ctx.fillText(s.t, W / 2, H * .22);
+    ctx.restore();
+    const size = clamp(U * .38, 120, 320);
+    drawEmoji(s.e, W / 2, H * .47 - A.bounce * 24, size * (1 + A.bounce * .15), Math.sin(A.bounce * 8) * .1 * A.bounce);
+    if (A.idx === 0) {
+      const a = .5 + Math.sin(now * 4) * .5;
+      ctx.save(); ctx.globalAlpha = .5 + a * .5; ctx.fillStyle = '#ffd60a'; ctx.textAlign = 'center';
+      ctx.font = `800 ${clamp(U * .055, 18, 32)}px ui-rounded, system-ui, sans-serif`; ctx.fillText('Tap anywhere to play the song!', W / 2, H * .7); ctx.restore();
+    }
+    // progress: a road of note dots
+    const n = s.notes.length, bw = Math.min(W * .8, 700), x0 = (W - bw) / 2, y = H * .78;
+    for (let i = 0; i < n; i++) {
+      const x = x0 + bw * (i + .5) / n, done = i < A.idx;
+      ctx.fillStyle = done ? `hsl(${noteHue(s.notes[i].midi)},100%,70%)` : 'rgba(255,255,255,.18)';
+      ctx.beginPath(); ctx.arc(x, y - (done ? (s.notes[i].midi - 60) * 1.6 : 0), Math.min(7, bw / n * .4), 0, TAU); ctx.fill();
+    }
+  },
+  alongTap(p) {
+    const A = this.along, s = SONGS[A.i], n = s.notes[A.idx];
+    songNote(n.f, Math.min(n.beats * 60 / s.bpm, .7));
+    const col = `hsl(${noteHue(n.midi)},100%,70%)`;
+    burst(p.x, p.y, 14, { colors: [col, '#fff'], speed: 220, size: 6, g: 120, star: .7, life: .8 });
+    texts.push({ txt: pick(['♪', '♫', '♬']), x: p.x, y: p.y - 30, size: clamp(U * .08, 26, 50), life: .9, t: 0, color: col });
+    if (n.pop) { sfx.pop(); confetti(); floatText('POP!', W / 2, H * .35, U * .16, 1.2, '#ffd60a'); }
+    A.bounce = 1; A.idx++;
+    if (A.idx >= s.notes.length) {
+      A.idx = 0; texts = texts.filter(t => t.txt !== 'POP!'); confetti(); sfx.chime(); floatText('You played it!', W / 2, H * .35, clamp(U * .1, 32, 70), 2.4, '#ffd60a'); say('You played it!'); addBoop(5);
+    }
+  },
+  inRect: (p, r) => p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y && p.y <= r.y + r.h,
+  down(p) {
+    if (this.along) {
+      if (this.inRect(p, this.backBtn())) { this.along = null; sfx.thud(); return; }
+      return this.alongTap(p);
+    }
+    if (this.inRect(p, this.pill())) { this.myself = !this.myself; this.stop(); tone(noteFreq(this.myself ? 9 : 4), .2, 'triangle', .15); return; }
+    const i = this.tiles.findIndex(t => this.inRect(p, t));
+    if (i < 0) { ring(p.x, p.y, '#fff', 40, .3); return; }
+    if (this.myself) { this.stop(); this.along = { i, idx: 0, bounce: 1 }; addBoop(); return; }
+    if (this.playing && this.playing.i === i) { this.stop(); return; }
+    this.start(i); addBoop(); burst(p.x, p.y, 12, { star: .8, speed: 200, g: 100 });
+  },
+  key() {
+    if (this.along) return this.alongTap({ x: rand(W * .2, W * .8), y: rand(H * .3, H * .7) });
+    if (!this.playing) this.start(rand(SONGS.length) | 0);
+  }
+};
+
+const MODE_ORDER = ['smash', 'bubbles', 'fireworks', 'paint', 'peekaboo', 'music', 'songs'];
 let mode = MODE_ORDER.includes(settings.mode) ? settings.mode : 'smash';
 const modeBar = $('#modes');
 MODE_ORDER.forEach(m => {
@@ -613,6 +761,7 @@ MODE_ORDER.forEach(m => {
 let modeSince = 0;
 function setMode(m) {
   if (m === mode && modeSince) { tone(noteFreq(7), .15, 'sine', .1); return; }
+  if (MODES[mode] && MODES[mode].exit) MODES[mode].exit();
   mode = m; settings.mode = m; save(); modeSince = now;
   MODES[m].enter && MODES[m].enter();
   [...modeBar.children].forEach(b => b.classList.toggle('on', b.dataset.m === m));
@@ -706,6 +855,7 @@ function play() {
   floatText('Tap anywhere!', W / 2, H / 2, clamp(U * .1, 30, 64), 2.2, '#ffd60a');
 }
 function openParent() {
+  MODES.songs.stop();
   $('#parent').classList.remove('hidden'); $('#parentSub').textContent = `Boops so far: ${boops} ⭐`; refreshSegs(); updateTimerLabel();
 }
 function closeParent() {
@@ -714,11 +864,13 @@ function closeParent() {
   enterFullscreen(); requestWake();
 }
 function quit() {
+  MODES.songs.exit();
   playing = false; $('#parent').classList.add('hidden'); $('#done').classList.add('hidden'); document.body.classList.remove('timesup'); timesUp = false; $('#hud').classList.add('hidden'); $('#start').classList.remove('hidden');
   window.removeEventListener('beforeunload', beforeUnload); exitFullscreen();
   try { wakeLock && wakeLock.release(); } catch {} wakeLock = null;
 }
 function finish() {
+  MODES.songs.stop();
   timesUp = true; playing = false; endAt = 0; pointers.clear();
   $('#doneMsg').textContent = `Great job! You made ${boops} boops ⭐`; $('#done').classList.remove('hidden'); document.body.classList.add('timesup'); sfx.lullaby(); say('All done! Great job!');
 }
