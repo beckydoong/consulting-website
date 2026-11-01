@@ -157,8 +157,8 @@
     <h2>🔓 Grown-up menu</h2>
     <p class="sub" id="parentSub">Boops so far: 0</p>
 
-    <div class="row"><div class="lbl">Sound</div>
-      <div class="seg" data-setting="sound"><button data-v="1">On</button><button data-v="0">Off</button></div></div>
+    <div class="row"><div class="lbl">Volume<small>Plays even if the phone is on silent</small></div>
+      <div class="seg" data-setting="vol"><button data-v="0">Off</button><button data-v="1">Quiet</button><button data-v="2">Medium</button><button data-v="3">Loud</button></div></div>
     <div class="row"><div class="lbl">Say names out loud<small>“Cow!” “Blue star!”</small></div>
       <div class="seg" data-setting="voice"><button data-v="1">On</button><button data-v="0">Off</button></div></div>
     <div class="row"><div class="lbl">Time's-up timer<small id="timerLeft">Off</small></div>
@@ -213,28 +213,36 @@ const PAD_ANIMALS = ['🐶','🐱','🐮','🐸','🐥','🐷','🦁','🐵'];
 
 /* ================= Settings ================= */
 const store = (() => { try { return JSON.parse(localStorage.getItem('boop-settings')) || {}; } catch { return {}; } })();
-const settings = Object.assign({ sound: 1, voice: 0, timer: 0, shuffle: 0, mode: 'smash' }, store);
+const settings = Object.assign({ vol: 3, voice: 0, timer: 0, shuffle: 0, mode: 'smash' }, store);
 const save = () => { try { localStorage.setItem('boop-settings', JSON.stringify(settings)); } catch {} };
 
 /* ================= Audio (all synthesized, no files) ================= */
 let ac = null, master = null, voices = 0, noiseBuf = null;
 const PENTA = [0, 2, 4, 7, 9];
 const noteFreq = i => 261.63 * Math.pow(2, (Math.floor(i / 5) * 12 + PENTA[((i % 5) + 5) % 5]) / 12);
+const VOLS = [0, 0.25, 0.5, 0.85];
 function initAudio() {
   if (ac) { if (ac.state !== 'running') ac.resume(); return; }
   const AC = window.AudioContext || window.webkitAudioContext; if (!AC) return;
   ac = new AC();
+  // Loudness chain: volume -> compressor -> makeup gain -> soft limiter, so it cuts through a noisy room without crackling
+  try { if (navigator.audioSession) navigator.audioSession.type = 'playback'; } catch {} // iPhone: play even when the silent switch is on
   const comp = ac.createDynamicsCompressor();
-  master = ac.createGain(); master.gain.value = settings.sound ? 0.55 : 0;
-  master.connect(comp); comp.connect(ac.destination);
+  comp.threshold.value = -18; comp.knee.value = 8; comp.ratio.value = 6; comp.attack.value = 0.003; comp.release.value = 0.2;
+  const makeup = ac.createGain(); makeup.gain.value = 1.0;
+  const limiter = ac.createWaveShaper(), curve = new Float32Array(2048);
+  for (let i = 0; i < curve.length; i++) { const x = i / (curve.length - 1) * 2 - 1; curve[i] = Math.tanh(x * 1.2) / Math.tanh(1.2); }
+  limiter.curve = curve; limiter.oversample = '2x';
+  master = ac.createGain(); master.gain.value = VOLS[settings.vol] || 0;
+  master.connect(comp); comp.connect(makeup); makeup.connect(limiter); limiter.connect(ac.destination);
   noiseBuf = ac.createBuffer(1, ac.sampleRate, ac.sampleRate);
   const d = noiseBuf.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
   // iOS unlock: play a silent blip inside the gesture
   const o = ac.createOscillator(), g = ac.createGain(); g.gain.value = 0; o.connect(g); g.connect(master); o.start(); o.stop(ac.currentTime + 0.01);
 }
-function setSound(on) { if (master) master.gain.setTargetAtTime(on ? 0.55 : 0, ac.currentTime, 0.05); }
+function setVol(v) { if (master) master.gain.setTargetAtTime(VOLS[v] || 0, ac.currentTime, 0.05); }
 function tone(freq, dur = 0.35, type = 'sine', vol = 0.22, when = 0, freqEnd) {
-  if (!ac || !settings.sound || voices > 28) return;
+  if (!ac || !settings.vol || voices > 28) return;
   const t = ac.currentTime + when, o = ac.createOscillator(), g = ac.createGain();
   o.type = type; o.frequency.setValueAtTime(freq, t);
   if (freqEnd) o.frequency.exponentialRampToValueAtTime(freqEnd, t + dur * 0.8);
@@ -243,7 +251,7 @@ function tone(freq, dur = 0.35, type = 'sine', vol = 0.22, when = 0, freqEnd) {
   voices++; o.onended = () => voices--;
 }
 function noise(dur = 0.5, vol = 0.3, f1 = 800, f2 = 100, type = 'lowpass', when = 0) {
-  if (!ac || !settings.sound || voices > 28) return;
+  if (!ac || !settings.vol || voices > 28) return;
   const t = ac.currentTime + when, s = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
   s.buffer = noiseBuf; f.type = type; f.frequency.setValueAtTime(f1, t); f.frequency.exponentialRampToValueAtTime(f2, t + dur);
   g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
@@ -381,7 +389,7 @@ function addBoop(n = 1) {
   boops += n; const el = $('#score'); el.textContent = '⭐ ' + boops;
   el.classList.add('bump'); setTimeout(() => el.classList.remove('bump'), 150);
   if (boops % 25 < n) { // crossed a multiple of 25
-    confetti(); sfx.chime(); const p = pick(PRAISE); floatText(p, W / 2, H * .42, U * .17, 2.2, pick(HEXES)); say(p);
+    confetti(); if (mode !== 'songs') sfx.chime(); const p = pick(PRAISE); floatText(p, W / 2, H * .42, U * .17, 2.2, pick(HEXES)); say(p);
   }
 }
 
@@ -603,70 +611,181 @@ MODES.music = {
   key(e) { const pad = pads[(e && e.keyCode || (rand(8) | 0)) % pads.length]; if (pad) this.hit(pad); }
 };
 
-// --- Songs: 12 classic nursery songs. Tap a picture to listen, or "play it myself" one note per tap.
+// --- Songs: 12 classic nursery songs played by a little band (melody, bass, chords and drums).
 // All tunes are traditional and in the public domain. Notation: NOTE+octave[:beats][!]  (! = "POP!")
+// key = semitones above C, bar = beats per bar (3 = a bouncy 6/8 feel), pickup = beats before the first downbeat.
 const NOTE_IDX = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+const mtof = m => 440 * Math.pow(2, (m - 69) / 12);
 function parseSong(str) {
   return str.trim().split(/\s+/).map(tok => {
     const pop = tok.endsWith('!'); if (pop) tok = tok.slice(0, -1);
     const [n, b] = tok.split(':'), m = /^([A-G])(#|b)?(\d)$/.exec(n);
     const midi = 12 * (+m[3] + 1) + NOTE_IDX[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0);
-    return { midi, f: 440 * Math.pow(2, (midi - 69) / 12), beats: b ? parseFloat(b) : 1, pop };
+    return { midi, f: mtof(midi), beats: b ? parseFloat(b) : 1, pop };
   });
 }
 const SONGS = [
-  { t: 'Twinkle Twinkle', e: '⭐', bpm: 108, n: 'C4 C4 G4 G4 A4 A4 G4:2 F4 F4 E4 E4 D4 D4 C4:2 G4 G4 F4 F4 E4 E4 D4:2 G4 G4 F4 F4 E4 E4 D4:2 C4 C4 G4 G4 A4 A4 G4:2 F4 F4 E4 E4 D4 D4 C4:2' },
-  { t: "Mary's Little Lamb", e: '🐑', bpm: 120, n: 'E4 D4 C4 D4 E4 E4 E4:2 D4 D4 D4:2 E4 G4 G4:2 E4 D4 C4 D4 E4 E4 E4 E4 D4 D4 E4 D4 C4:4' },
-  { t: 'Old MacDonald', e: '🐮', bpm: 132, n: 'G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3 D4 G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3 D4:.5 D4:.5 G4 G4 G4:2 D4:.5 D4:.5 G4 G4 G4:2 G4:.5 G4:.5 G4 G4:.5 G4:.5 G4 G4:.5 G4:.5 G4:.5 G4:.5 G4 G4 G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3' },
-  { t: 'Wheels on the Bus', e: '🚌', bpm: 132, n: 'C4 F4 F4:.5 F4:.5 F4 A4 C5 A4 F4:2 G4 E4 C4:2 C5 A4 F4:2 C4 F4 F4:.5 F4:.5 F4 A4 C5 A4 F4:2 G4:2 C4 C4 F4:3' },
-  { t: 'Row Your Boat', e: '🚣', bpm: 100, n: 'C4:1.5 C4:1.5 C4 D4:.5 E4:1.5 E4 D4:.5 E4 F4:.5 G4:3 C5:.5 C5:.5 C5:.5 G4:.5 G4:.5 G4:.5 E4:.5 E4:.5 E4:.5 C4:.5 C4:.5 C4:.5 G4 F4:.5 E4 D4:.5 C4:3' },
-  { t: 'Itsy Bitsy Spider', e: '🕷️', bpm: 104, n: 'G3:.5 C4 C4:.5 C4 D4:.5 E4 E4:.5 E4 D4:.5 C4 D4:.5 E4 C4:2.5 E4:1.5 E4 F4:.5 G4:3 G4 F4:.5 E4 F4:.5 G4 E4:2.5 C4:1.5 C4 D4:.5 E4:3 E4 D4:.5 C4 D4:.5 E4 C4:2.5 G3:.5 G3:.5 C4 C4:.5 C4 D4:.5 E4 E4:.5 E4 D4:.5 C4 D4:.5 E4 C4:2.5' },
-  { t: 'London Bridge', e: '🌉', bpm: 120, n: 'G4:1.5 A4:.5 G4 F4 E4 F4 G4:2 D4 E4 F4:2 E4 F4 G4:2 G4:1.5 A4:.5 G4 F4 E4 F4 G4:2 D4:2 G4:2 E4 C4:3' },
-  { t: 'Are You Sleeping', e: '🔔', bpm: 120, n: 'C4 D4 E4 C4 C4 D4 E4 C4 E4 F4 G4:2 E4 F4 G4:2 G4:.5 A4:.5 G4:.5 F4:.5 E4 C4 G4:.5 A4:.5 G4:.5 F4:.5 E4 C4 C4 G3 C4:2 C4 G3 C4:2' },
-  { t: 'Hot Cross Buns', e: '🍞', bpm: 110, n: 'E4 D4 C4:2 E4 D4 C4:2 C4:.5 C4:.5 C4:.5 C4:.5 D4:.5 D4:.5 D4:.5 D4:.5 E4 D4 C4:2' },
-  { t: 'B-I-N-G-O', e: '🐶', bpm: 132, n: 'G4 C5 C5 G4 G4 A4 A4 G4:2 G4 C5 C5 D5 D5 E5 C5:2 E5 E5 F5 F5 F5:2 D5 D5 E5 E5 E5:2 C5 C5 D5 D5 D5:2 C5 B4 G4 A4 B4 C5:2 C5:2' },
-  { t: 'Pop Goes the Weasel', e: '🐒', bpm: 120, n: 'C4 C4:.5 D4 D4:.5 E4:.5 G4:.5 E4:.5 C4:1.5 G3:.5 C4 C4:.5 D4 D4:.5 E4:1.5 C4:1.5 C4 C4:.5 D4 D4:.5 E4:.5 G4:.5 E4:.5 C4:1.5 A4:3! D4 F4:.5 E4:1.5 C4:1.5' },
-  { t: 'This Old Man', e: '👴', bpm: 132, n: 'G4 E4 G4:2 G4 E4 G4:2 A4 G4 F4 E4 D4 E4 F4:2 E4:.5 F4:.5 G4 C4 C4:.5 C4:.5 C4:.5 C4:.5 C4:.5 D4:.5 E4:.5 F4:.5 G4:2 G4 D4 D4 F4 E4 D4 C4:2' }
-].map(s => Object.assign(s, { notes: parseSong(s.n) }));
-const noteHue = midi => (midi % 12) * 30;
-function songNote(f, dur, when = 0) { tone(f, Math.max(.28, dur * 1.15), 'triangle', .26, when); tone(f * 2, Math.min(.5, dur), 'sine', .06, when); }
+  { t: 'Twinkle Twinkle', e: '⭐', bpm: 100, n: 'C4 C4 G4 G4 A4 A4 G4:2 F4 F4 E4 E4 D4 D4 C4:2 G4 G4 F4 F4 E4 E4 D4:2 G4 G4 F4 F4 E4 E4 D4:2 C4 C4 G4 G4 A4 A4 G4:2 F4 F4 E4 E4 D4 D4 C4:2' },
+  { t: "Mary's Little Lamb", e: '🐑', bpm: 116, n: 'E4 D4 C4 D4 E4 E4 E4:2 D4 D4 D4:2 E4 G4 G4:2 E4 D4 C4 D4 E4 E4 E4 E4 D4 D4 E4 D4 C4:4' },
+  { t: 'Old MacDonald', e: '🐮', bpm: 126, key: 7, n: 'G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3 D4 G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:3 D4:.5 D4:.5 G4 G4 G4:2 D4:.5 D4:.5 G4 G4 G4:2 G4:.5 G4:.5 G4 G4:.5 G4:.5 G4 G4:.5 G4:.5 G4:.5 G4:.5 G4 G4 G4 G4 G4 D4 E4 E4 D4:2 B4 B4 A4 A4 G4:4' },
+  { t: 'Wheels on the Bus', e: '🚌', bpm: 126, key: 5, pickup: 1, n: 'C4 F4 F4:.5 F4:.5 F4 A4 C5 A4 F4:2 G4 E4 C4:2 C5 A4 F4 C4 F4 F4:.5 F4:.5 F4 A4 C5 A4 F4:2 G4:2 C4 C4 F4:4' },
+  { t: 'Row Your Boat', e: '🚣', bpm: 104, bar: 3, n: 'C4:1.5 C4:1.5 C4 D4:.5 E4:1.5 E4 D4:.5 E4 F4:.5 G4:3 C5:.5 C5:.5 C5:.5 G4:.5 G4:.5 G4:.5 E4:.5 E4:.5 E4:.5 C4:.5 C4:.5 C4:.5 G4 F4:.5 E4 D4:.5 C4:3' },
+  { t: 'Itsy Bitsy Spider', e: '🕷️', bpm: 104, bar: 3, pickup: .5, n: 'G3:.5 C4 C4:.5 C4 D4:.5 E4 E4:.5 E4 D4:.5 C4 D4:.5 E4:1.5 C4:3 E4:1.5 E4 F4:.5 G4:3 G4 F4:.5 E4 F4:.5 G4 E4:2 C4:1.5 C4 D4:.5 E4:3 E4 D4:.5 C4 D4:.5 E4 C4 G3:.5 G3:.5 C4 C4:.5 C4 D4:.5 E4 E4:.5 E4 D4:.5 C4 D4:.5 E4:1.5 C4:3' },
+  { t: 'London Bridge', e: '🌉', bpm: 116, n: 'G4:1.5 A4:.5 G4 F4 E4 F4 G4:2 D4 E4 F4:2 E4 F4 G4:2 G4:1.5 A4:.5 G4 F4 E4 F4 G4:2 D4:2 G4:2 E4 C4:3' },
+  { t: 'Are You Sleeping', e: '🔔', bpm: 112, n: 'C4 D4 E4 C4 C4 D4 E4 C4 E4 F4 G4:2 E4 F4 G4:2 G4:.5 A4:.5 G4:.5 F4:.5 E4 C4 G4:.5 A4:.5 G4:.5 F4:.5 E4 C4 C4 G3 C4:2 C4 G3 C4:2' },
+  { t: 'Hot Cross Buns', e: '🍞', bpm: 108, n: 'E4 D4 C4:2 E4 D4 C4:2 C4:.5 C4:.5 C4:.5 C4:.5 D4:.5 D4:.5 D4:.5 D4:.5 E4 D4 C4:2' },
+  { t: 'B-I-N-G-O', e: '🐶', bpm: 126, pickup: 1, n: 'G4 C5 C5 G4 G4 A4 A4 G4 G4 C5 C5 D5 D5 E5 C5:3 E5 E5 F5 F5 F5:2 D5 D5 E5 E5 E5:2 C5 C5 D5 D5 D5:2 C5 B4 G4 A4 B4 C5 C5:4' },
+  { t: 'Pop Goes the Weasel', e: '🐒', bpm: 116, bar: 3, n: 'C4 C4:.5 D4 D4:.5 E4:.5 G4:.5 E4:.5 C4 G3:.5 C4 C4:.5 D4 D4:.5 E4:1.5 C4:1.5 C4 C4:.5 D4 D4:.5 E4:.5 G4:.5 E4:.5 C4:1.5 A4:3! D4 F4:.5 E4:1.5 C4:3' },
+  { t: 'This Old Man', e: '👴', bpm: 126, n: 'G4 E4 G4:2 G4 E4 G4:2 A4 G4 F4 E4 D4 E4 F4:2 E4:.5 F4:.5 G4 C4 C4:.5 C4:.5 C4 C4:.5 D4:.5 E4:.5 F4:.5 G4 G4 D4 D4 F4 E4 D4 C4:2' }
+].map(s => { s.notes = parseSong(s.n); arrange(s); return s; });
+
+// Pick chords (I, IV, V, vi) that fit the melody, then lay out bass, chords and drums.
+function arrange(s) {
+  const CH = [{ deg: 0, pcs: [0, 4, 7], w: .3 }, { deg: 5, pcs: [5, 9, 0], w: .15 }, { deg: 7, pcs: [7, 11, 2], w: .2 }, { deg: 9, pcs: [9, 0, 4], w: 0 }];
+  const bar = s.bar || 4, pk = s.pickup || 0, KEY = s.key || 0, win = bar === 3 ? 3 : 2;
+  let t = 0; const mel = s.notes.map(n => { const o = Object.assign({}, n, { t }); t += n.beats; return o; });
+  const nb = Math.ceil((t - pk) / bar - 1e-6), wins = []; let prev = CH[0];
+  for (let w0 = pk; w0 < pk + nb * bar - 1e-6; w0 += win) {
+    const w1 = w0 + win; let best = prev, bs = -1;
+    for (const c of CH) {
+      let sc = c.w;
+      for (const m of mel) {
+        const ov = Math.min(w1, m.t + m.beats) - Math.max(w0, m.t); if (ov <= 0) continue;
+        if (c.pcs.includes((((m.midi - KEY) % 12) + 12) % 12)) sc += ov + (Math.abs(m.t - w0) < .01 ? .5 : 0);
+      }
+      if (sc > bs) { bs = sc; best = c; }
+    }
+    wins.push({ t: w0, c: best }); prev = best;
+  }
+  wins[wins.length - 1].c = CH[0];
+  const ev = [], passLen = nb * bar;
+  const groove = (D, n) => { for (let b = 0; b < n; b++) { const b0 = D + b * bar;
+    if (bar === 4) { ev.push({ b: b0, k: 'kick' }, { b: b0 + 2, k: 'kick' }, { b: b0 + 1, k: 'snare' }, { b: b0 + 3, k: 'snare' }); for (let h = 0; h < 8; h++) ev.push({ b: b0 + h * .5, k: 'hat', acc: h % 2 === 0 }); }
+    else { ev.push({ b: b0, k: 'kick' }, { b: b0 + 1.5, k: 'snare' }); for (let h = 0; h < 6; h++) ev.push({ b: b0 + h * .5, k: 'hat', acc: h % 3 === 0 }); } } };
+  const backing = (D, c) => {
+    if (win === 2) ev.push({ b: D, k: 'bass', pc: c.deg, d: .9 }, { b: D + 1, k: 'bass', pc: c.deg + 7, d: .9 }, { b: D + .5, k: 'chord', c, d: .35 }, { b: D + 1.5, k: 'chord', c, d: .35 });
+    else { ev.push({ b: D, k: 'bass', pc: c.deg, d: 1.4 }, { b: D + 1.5, k: 'bass', pc: c.deg + 7, d: 1.4 }); [.5, 1, 2, 2.5].forEach(o => ev.push({ b: D + o, k: 'chord', c, d: .3 })); }
+  };
+  groove(0, 1); for (let o = 0; o < bar; o += win) backing(o, CH[0]);   // one-bar intro
+  let li = 0; const passes = clamp(Math.round(45 / (passLen * 60 / s.bpm)), 2, 4);
+  for (let p = 0; p < passes; p++) {                                    // short songs repeat so each lasts ~45-60s
+    const D = bar + p * passLen; groove(D, nb);
+    for (const w of wins) backing(D + w.t - pk, w.c);
+    for (const m of mel) ev.push({ b: D - pk + m.t, k: 'lead', m, d: m.beats, i: li++ });
+  }
+  ev.push({ b: bar + passes * passLen, k: 'end', c: CH[0] });          // big finish
+  ev.sort((a, b) => a.b - b.b);
+  Object.assign(s, { mel, wins, win, key: KEY, events: ev, leadCount: li });
+}
+
+/* ---- the band (all synthesized) ---- */
+const band = {
+  osc(out, type, f, t, end, detune = 0) { const o = ac.createOscillator(); o.type = type; o.frequency.value = f; o.detune.value = detune; o.connect(out); o.start(t); o.stop(end + .05); return o; },
+  env(out, t, peak, dur, sus = .7, a = .012) {
+    const g = ac.createGain(), d = Math.min(.12, dur * .4), end = t + Math.max(dur, d + .02);
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(peak, t + a);
+    g.gain.exponentialRampToValueAtTime(peak * sus, t + a + d); g.gain.setValueAtTime(peak * sus, end); g.gain.exponentialRampToValueAtTime(.0001, end + .09);
+    g.connect(out); return { g, end: end + .1 };
+  },
+  lead(out, f, t, dur) {   // bright, held "singing" lead + a glockenspiel sparkle on top
+    const { g, end } = this.env(out, t, .16, dur * .92, .75), lp = ac.createBiquadFilter();
+    lp.type = 'lowpass'; lp.frequency.value = Math.min(6000, f * 7); lp.Q.value = 1.5; lp.connect(g);
+    const a = this.osc(lp, 'sawtooth', f, t, end, -8), b = this.osc(lp, 'square', f, t, end, 8);
+    const lfo = ac.createOscillator(), lg = ac.createGain(); lfo.frequency.value = 5.5; lg.gain.setValueAtTime(0, t); lg.gain.linearRampToValueAtTime(f * .007, t + .25);
+    lfo.connect(lg); lg.connect(a.frequency); lg.connect(b.frequency); lfo.start(t); lfo.stop(end);
+    const gl = ac.createGain(); gl.gain.setValueAtTime(.09, t); gl.gain.exponentialRampToValueAtTime(.0001, t + .35); gl.connect(out); this.osc(gl, 'sine', f * 2, t, t + .36);
+  },
+  bass(out, midi, t, dur) {
+    const { g, end } = this.env(out, t, .22, dur, .45, .008), lp = ac.createBiquadFilter();
+    lp.type = 'lowpass'; lp.frequency.setValueAtTime(1400, t); lp.frequency.exponentialRampToValueAtTime(500, t + .2); lp.connect(g);
+    this.osc(lp, 'sawtooth', mtof(midi), t, end); this.osc(g, 'sine', mtof(midi), t, end);
+  },
+  chord(out, key, c, t, dur, vol = .05) {
+    for (const p of c.pcs) {
+      const abs = key + p, midi = 55 + ((((abs - 55) % 12) + 12) % 12);
+      const { g, end } = this.env(out, t, vol, dur, .5, .006), lp = ac.createBiquadFilter();
+      lp.type = 'lowpass'; lp.frequency.value = 2600; lp.connect(g);
+      this.osc(lp, 'square', mtof(midi), t, end); this.osc(g, 'triangle', mtof(midi), t, end, 6);
+    }
+  },
+  noise(out, t, dur, vol, type, freq, q = 1) {
+    const s = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
+    s.buffer = noiseBuf; f.type = type; f.frequency.value = freq; f.Q.value = q;
+    g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.0001, t + dur);
+    s.connect(f); f.connect(g); g.connect(out); s.start(t, rand(.5)); s.stop(t + dur + .02);
+  },
+  kick(out, t) {
+    const o = ac.createOscillator(), g = ac.createGain(); o.frequency.setValueAtTime(170, t); o.frequency.exponentialRampToValueAtTime(48, t + .13);
+    g.gain.setValueAtTime(.7, t); g.gain.exponentialRampToValueAtTime(.0001, t + .3); o.connect(g); g.connect(out); o.start(t); o.stop(t + .32);
+    this.noise(out, t, .02, .25, 'highpass', 2500);   // click so it's heard on phone speakers
+  },
+  snare(out, t) {
+    this.noise(out, t, .18, .45, 'bandpass', 1900, .7);
+    const o = ac.createOscillator(), g = ac.createGain(); o.type = 'triangle'; o.frequency.setValueAtTime(220, t); o.frequency.exponentialRampToValueAtTime(150, t + .08);
+    g.gain.setValueAtTime(.3, t); g.gain.exponentialRampToValueAtTime(.0001, t + .1); o.connect(g); g.connect(out); o.start(t); o.stop(t + .12);
+  },
+  hat(out, t, acc) { this.noise(out, t, acc ? .06 : .035, acc ? .14 : .08, 'highpass', 7500); },
+  shaker(out, t) { this.noise(out, t, .09, .25, 'highpass', 5500); this.osc((() => { const g = ac.createGain(); g.gain.setValueAtTime(.05, t); g.gain.exponentialRampToValueAtTime(.0001, t + .15); g.connect(out); return g; })(), 'triangle', 2637, t, t + .16); },
+  crash(out, t) { this.noise(out, t, 1.6, .3, 'highpass', 4500); }
+};
 
 MODES.songs = {
-  icon: '🎤', tiles: [], playing: null, along: null, myself: false,
+  icon: '🎤', tiles: [], P: null, stage: null, myself: false,
   enter() { this.layout(); },
-  exit() { this.stop(); this.along = null; },
-  stop() { this.playing = null; },
+  exit() { this.stopAudio(); this.stage = null; },
+  stop() { this.stopAudio(); if (this.stage && this.stage.kind === 'listen') this.stage = null; },
+  stopAudio() {
+    const P = this.P; this.P = null; if (!P || !ac) return;
+    try { P.bus.gain.setTargetAtTime(0, ac.currentTime, .04); setTimeout(() => { try { P.bus.disconnect(); } catch {} }, 500); } catch {}
+  },
   pill() { const w = 230, h = 46; return { x: (W - w) / 2, y: 66, w, h }; },
   backBtn() { return { x: 12, y: 66, w: 132, h: 46 }; },
   layout() {
     const top = 124, bottom = H - 104, land = W > H, cols = land ? 4 : 3, rows = land ? 3 : 4, gap = 10;
     const tw = (W - gap * (cols + 1)) / cols, th = (bottom - top - gap * (rows - 1)) / rows;
-    this.tiles = SONGS.map((s, n) => ({ x: gap + (n % cols) * (tw + gap), y: top + Math.floor(n / cols) * (th + gap), w: tw, h: th, color: HEXES[n % HEXES.length], bounce: 0 }));
+    this.tiles = SONGS.map((s, n) => ({ x: gap + (n % cols) * (tw + gap), y: top + Math.floor(n / cols) * (th + gap), w: tw, h: th, color: HEXES[n % HEXES.length] }));
   },
   start(i) {
-    initAudio(); if (!ac) return;
-    this.playing = { i, idx: 0, played: 0, next: ac.currentTime + .08, events: [] };
-    this.tiles[i].bounce = 1;
+    initAudio(); if (!ac) return; this.stopAudio();
+    const bus = ac.createGain(); bus.connect(master);
+    this.P = { s: SONGS[i], bus, t0: ac.currentTime + .12, spb: 60 / SONGS[i].bpm, ptr: 0, vis: [], played: 0 };
+  },
+  play(P, e, at) {
+    const o = P.bus, s = P.s;
+    switch (e.k) {
+      case 'lead': band.lead(o, e.m.f, at, e.d * P.spb); break;
+      case 'bass': band.bass(o, 40 + ((((s.key + e.pc - 40) % 12) + 12) % 12), at, e.d * P.spb); break;
+      case 'chord': band.chord(o, s.key, e.c, at, e.d * P.spb); break;
+      case 'kick': band.kick(o, at); break;
+      case 'snare': band.snare(o, at); break;
+      case 'hat': band.hat(o, at, e.acc); break;
+      case 'end': band.kick(o, at); band.crash(o, at); band.chord(o, s.key, e.c, at, 2.2, .08); band.bass(o, 40 + ((s.key - 40) % 12 + 12) % 12 + 12, at, 2.2); band.lead(o, mtof(60 + s.key + (s.key > 4 ? 0 : 12)), at, 2); break;
+    }
   },
   update(dt) {
     if (!this.tiles.length) this.layout();
-    for (const t of this.tiles) t.bounce = Math.max(0, t.bounce - dt * 4);
-    if (this.along) this.along.bounce = Math.max(0, this.along.bounce - dt * 4);
-    const P = this.playing; if (!P || !ac) return;
-    const s = SONGS[P.i], spb = 60 / s.bpm;
-    if (P.next < ac.currentTime - .25) P.next = ac.currentTime + .05; // resumed after a pause
-    while (P.idx < s.notes.length && P.next < ac.currentTime + .15) {
-      const n = s.notes[P.idx]; songNote(n.f, n.beats * spb, P.next - ac.currentTime);
-      P.events.push({ at: P.next, n, idx: P.idx }); P.next += n.beats * spb; P.idx++;
+    const A = this.stage;
+    if (A) { A.beat = Math.max(0, A.beat - dt * 5); A.bounce = Math.max(0, A.bounce - dt * 4); if (A.endAt && now > A.endAt) this.stage = null; }
+    const P = this.P; if (!P || !ac) return;
+    const ahead = ac.currentTime + .2, ev = P.s.events;
+    while (P.ptr < ev.length) {
+      const e = ev[P.ptr], at = P.t0 + e.b * P.spb; if (at > ahead) break;
+      P.ptr++; if (at < ac.currentTime - .1) continue;   // skip anything we slept through
+      this.play(P, e, at); P.vis.push({ at, e });
     }
-    while (P.events.length && P.events[0].at <= ac.currentTime) {
-      const ev = P.events.shift(), t = this.tiles[P.i]; P.played = ev.idx + 1; t.bounce = 1;
-      const cx = t.x + t.w / 2, cy = t.y + t.h * .4;
-      texts.push({ txt: pick(['♪', '♫', '♬']), x: cx + rand(-t.w * .35, t.w * .35), y: cy - t.h * .1, size: clamp(U * .06, 20, 40), life: 1, t: 0, color: `hsl(${noteHue(ev.n.midi)},100%,75%)` });
-      if (ev.n.pop) { sfx.pop(); burst(cx, cy, 40, { star: .6 }); floatText('POP!', cx, cy - t.h * .3, clamp(U * .12, 36, 80), 1.2, '#ffd60a'); }
-    }
-    if (P.idx >= s.notes.length && !P.events.length && ac.currentTime > P.next) {
-      const t = this.tiles[P.i]; burst(t.x + t.w / 2, t.y + t.h / 2, 30, { star: .8 }); this.playing = null;
+    while (P.vis.length && P.vis[0].at <= ac.currentTime) this.visual(P, P.vis.shift().e);
+  },
+  visual(P, e) {
+    const A = this.stage; if (!A) return;
+    const cx = W / 2, cy = H * .47;
+    if (e.k === 'kick' || e.k === 'snare') { A.beat = 1; A.side = -(A.side || 1); if (e.k === 'kick') bgTarget = (bgTarget + 25) % 360; }
+    else if (e.k === 'lead') {
+      P.played = e.i + 1;
+      texts.push({ txt: pick(['♪', '♫', '♬']), x: cx + rand(-U * .3, U * .3), y: cy - U * .1, size: clamp(U * .07, 22, 46), life: 1.2, t: 0, color: `hsl(${(e.m.midi % 12) * 30},100%,75%)` });
+      if (e.m.pop) { sfx.pop(); burst(cx, cy, 50, { star: .6 }); floatText('POP!', cx, H * .3, clamp(U * .16, 40, 100), 1.2, '#ffd60a'); }
+    } else if (e.k === 'end') {
+      confetti(); floatText('Yay! 🎉', W / 2, H * .3, clamp(U * .13, 40, 90), 2.2, '#ffd60a'); addBoop(3); A.endAt = now + 2.6; this.P = null;
+      const bus = P.bus; setTimeout(() => { try { bus.disconnect(); } catch {} }, 4000);
     }
   },
   button(r, label, on) {
@@ -676,17 +795,13 @@ MODES.songs = {
     ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(label, r.x + r.w / 2, r.y + r.h / 2 + 1); ctx.restore();
   },
   draw() {
-    if (this.along) return this.drawAlong();
+    if (this.stage) return this.drawStage();
     this.button(this.pill(), this.myself ? '👆 Play it myself: ON' : '👆 Play it myself', this.myself);
-    const P = this.playing;
     this.tiles.forEach((t, i) => {
-      const on = P && P.i === i, s = SONGS[i];
-      ctx.save(); ctx.globalAlpha = on ? 1 : .6; ctx.fillStyle = t.color;
-      if (on) { ctx.shadowColor = t.color; ctx.shadowBlur = 30; }
+      const s = SONGS[i];
+      ctx.save(); ctx.globalAlpha = .65; ctx.fillStyle = t.color;
       ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(t.x, t.y, t.w, t.h, 18); else ctx.rect(t.x, t.y, t.w, t.h); ctx.fill(); ctx.restore();
-      const es = Math.min(t.w, t.h) * .5, bob = on ? -t.bounce * 10 : 0;
-      drawEmoji(s.e, t.x + t.w / 2, t.y + t.h * .42 + bob, es * (1 + t.bounce * .12), on ? Math.sin(now * 6) * .12 : 0);
-      // title (wraps to two lines if needed)
+      drawEmoji(s.e, t.x + t.w / 2, t.y + t.h * .42 + Math.sin(now * 2 + i) * 3, Math.min(t.w, t.h) * .5);
       const fs = clamp(Math.min(t.w * .1, t.h * .11), 11, 19);
       ctx.save(); ctx.font = `800 ${fs}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       ctx.fillStyle = '#fff'; ctx.shadowColor = 'rgba(0,0,0,.45)'; ctx.shadowBlur = 4;
@@ -694,59 +809,69 @@ MODES.songs = {
       if (ctx.measureText(s.t).width > t.w - 12) { const w = s.t.split(' '), h = Math.ceil(w.length / 2); lines = [w.slice(0, h).join(' '), w.slice(h).join(' ')]; }
       lines.forEach((l, k) => ctx.fillText(l, t.x + t.w / 2, t.y + t.h * .82 + (k - (lines.length - 1) / 2) * fs * 1.1));
       ctx.restore();
-      if (on) { ctx.fillStyle = 'rgba(255,255,255,.9)'; ctx.fillRect(t.x + 10, t.y + t.h - 9, (t.w - 20) * (P.played / s.notes.length), 4); }
     });
   },
-  drawAlong() {
-    const A = this.along, s = SONGS[A.i];
+  drawStage() {
+    const A = this.stage, s = SONGS[A.i], listen = A.kind === 'listen';
     this.button(this.backBtn(), '⬅ Songs', false);
     ctx.save(); ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillStyle = '#fff';
-    ctx.font = `900 ${clamp(U * .075, 24, 48)}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`;
-    ctx.fillText(s.t, W / 2, H * .22);
-    ctx.restore();
-    const size = clamp(U * .38, 120, 320);
-    drawEmoji(s.e, W / 2, H * .47 - A.bounce * 24, size * (1 + A.bounce * .15), Math.sin(A.bounce * 8) * .1 * A.bounce);
-    if (A.idx === 0) {
-      const a = .5 + Math.sin(now * 4) * .5;
-      ctx.save(); ctx.globalAlpha = .5 + a * .5; ctx.fillStyle = '#ffd60a'; ctx.textAlign = 'center';
-      ctx.font = `800 ${clamp(U * .055, 18, 32)}px ui-rounded, system-ui, sans-serif`; ctx.fillText('Tap anywhere to play the song!', W / 2, H * .7); ctx.restore();
+    ctx.font = `900 ${clamp(U * .075, 24, 48)}px ui-rounded, "SF Pro Rounded", system-ui, sans-serif`; ctx.fillText(s.t, W / 2, H * .22); ctx.restore();
+    // the star of the show dances to the drums
+    const size = clamp(U * .38, 120, 320), b = Math.max(A.beat, A.bounce);
+    drawEmoji(s.e, W / 2, H * .47 - b * 26, size, (A.side || 1) * .14 * (listen ? 1 : b), 1, 1 + b * .1, 1 - b * .08);
+    const hint = listen ? (this.P ? 'Tap along to the beat! 👏' : '') : (A.idx === 0 ? 'Tap anywhere to play the song!' : '');
+    if (hint) {
+      ctx.save(); ctx.globalAlpha = .55 + Math.sin(now * 4) * .3; ctx.fillStyle = '#ffd60a'; ctx.textAlign = 'center';
+      ctx.font = `800 ${clamp(U * .05, 17, 30)}px ui-rounded, system-ui, sans-serif`; ctx.fillText(hint, W / 2, H * .7); ctx.restore();
     }
-    // progress: a road of note dots
-    const n = s.notes.length, bw = Math.min(W * .8, 700), x0 = (W - bw) / 2, y = H * .78;
-    for (let i = 0; i < n; i++) {
-      const x = x0 + bw * (i + .5) / n, done = i < A.idx;
-      ctx.fillStyle = done ? `hsl(${noteHue(s.notes[i].midi)},100%,70%)` : 'rgba(255,255,255,.18)';
-      ctx.beginPath(); ctx.arc(x, y - (done ? (s.notes[i].midi - 60) * 1.6 : 0), Math.min(7, bw / n * .4), 0, TAU); ctx.fill();
-    }
+    // progress
+    const bw = Math.min(W * .8, 700), x0 = (W - bw) / 2, y = H * .78;
+    const prog = listen ? (this.P ? this.P.played / s.leadCount : (A.endAt ? 1 : 0)) : A.idx / s.notes.length;
+    ctx.fillStyle = 'rgba(255,255,255,.15)'; ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x0, y - 6, bw, 12, 6); else ctx.rect(x0, y - 6, bw, 12); ctx.fill();
+    const g = ctx.createLinearGradient(x0, 0, x0 + bw, 0); HEXES.forEach((c, k) => g.addColorStop(k / (HEXES.length - 1), c));
+    ctx.fillStyle = g; ctx.beginPath(); if (ctx.roundRect) ctx.roundRect(x0, y - 6, Math.max(12, bw * prog), 12, 6); else ctx.rect(x0, y - 6, bw * prog, 12); ctx.fill();
+    drawEmoji('🎵', x0 + bw * prog, y - 2, 30, 0);
   },
-  alongTap(p) {
-    const A = this.along, s = SONGS[A.i], n = s.notes[A.idx];
-    songNote(n.f, Math.min(n.beats * 60 / s.bpm, .7));
-    const col = `hsl(${noteHue(n.midi)},100%,70%)`;
+  tapMyself(p) {
+    const A = this.stage, s = SONGS[A.i], n = s.mel[A.idx], spb = 60 / s.bpm, out = master, t = ac ? ac.currentTime : 0;
+    if (ac && settings.vol) {
+      band.lead(out, n.f, t, Math.min(n.beats * spb, .9));
+      const w = s.wins.slice().reverse().find(w => w.t <= n.t + 1e-6) || s.wins[0];
+      if (w !== A.lastWin) { band.bass(out, 40 + ((((s.key + w.c.deg - 40) % 12) + 12) % 12), t, s.win * spb * .9); band.chord(out, s.key, w.c, t, s.win * spb * .8, .045); band.kick(out, t); A.lastWin = w; }
+      else band.hat(out, t, true);
+    }
+    const col = `hsl(${(n.midi % 12) * 30},100%,70%)`;
     burst(p.x, p.y, 14, { colors: [col, '#fff'], speed: 220, size: 6, g: 120, star: .7, life: .8 });
     texts.push({ txt: pick(['♪', '♫', '♬']), x: p.x, y: p.y - 30, size: clamp(U * .08, 26, 50), life: .9, t: 0, color: col });
-    if (n.pop) { sfx.pop(); confetti(); floatText('POP!', W / 2, H * .35, U * .16, 1.2, '#ffd60a'); }
-    A.bounce = 1; A.idx++;
+    if (n.pop) { sfx.pop(); confetti(); floatText('POP!', W / 2, H * .3, U * .16, 1.2, '#ffd60a'); }
+    A.bounce = 1; A.side = -(A.side || 1); A.idx++;
     if (A.idx >= s.notes.length) {
-      A.idx = 0; texts = texts.filter(t => t.txt !== 'POP!'); confetti(); sfx.chime(); floatText('You played it!', W / 2, H * .35, clamp(U * .1, 32, 70), 2.4, '#ffd60a'); say('You played it!'); addBoop(5);
+      A.idx = 0; A.lastWin = null; texts = texts.filter(t => t.txt !== 'POP!'); confetti();
+      if (ac && settings.vol) { band.crash(master, ac.currentTime + .05); band.kick(master, ac.currentTime + .05); }
+      floatText('You played it!', W / 2, H * .3, clamp(U * .1, 32, 70), 2.4, '#ffd60a'); say('You played it!'); addBoop(5);
     }
   },
   inRect: (p, r) => p.x >= r.x && p.x <= r.x + r.w && p.y >= r.y && p.y <= r.y + r.h,
   down(p) {
-    if (this.along) {
-      if (this.inRect(p, this.backBtn())) { this.along = null; sfx.thud(); return; }
-      return this.alongTap(p);
+    initAudio();
+    const A = this.stage;
+    if (A) {
+      if (this.inRect(p, this.backBtn())) { this.exit(); sfx.thud(); return; }
+      if (A.kind === 'myself') return this.tapMyself(p);
+      if (ac && settings.vol) band.shaker(master, ac.currentTime);   // tap along: shaker + sparkles, always in time-ish
+      burst(p.x, p.y, 16, { star: .8, speed: 240, g: 100 }); A.bounce = .7; addBoop(); return;
     }
-    if (this.inRect(p, this.pill())) { this.myself = !this.myself; this.stop(); tone(noteFreq(this.myself ? 9 : 4), .2, 'triangle', .15); return; }
+    if (this.inRect(p, this.pill())) { this.myself = !this.myself; tone(noteFreq(this.myself ? 9 : 4), .2, 'triangle', .15); return; }
     const i = this.tiles.findIndex(t => this.inRect(p, t));
     if (i < 0) { ring(p.x, p.y, '#fff', 40, .3); return; }
-    if (this.myself) { this.stop(); this.along = { i, idx: 0, bounce: 1 }; addBoop(); return; }
-    if (this.playing && this.playing.i === i) { this.stop(); return; }
-    this.start(i); addBoop(); burst(p.x, p.y, 12, { star: .8, speed: 200, g: 100 });
+    this.stage = { i, kind: this.myself ? 'myself' : 'listen', idx: 0, beat: 0, bounce: 1, side: 1 };
+    addBoop();
+    if (!this.myself) this.start(i);
   },
   key() {
-    if (this.along) return this.alongTap({ x: rand(W * .2, W * .8), y: rand(H * .3, H * .7) });
-    if (!this.playing) this.start(rand(SONGS.length) | 0);
+    const A = this.stage, p = { x: rand(W * .2, W * .8), y: rand(H * .3, H * .7) };
+    if (A) return A.kind === 'myself' ? this.tapMyself(p) : this.down(p);
+    const t = this.tiles[rand(SONGS.length) | 0]; if (t) this.down({ x: t.x + t.w / 2, y: t.y + t.h / 2 });
   }
 };
 
@@ -851,7 +976,7 @@ function play() {
   initAudio(); enterFullscreen(); requestWake(); trapBack();
   window.addEventListener('beforeunload', beforeUnload);
   $('#start').classList.add('hidden'); $('#hud').classList.remove('hidden');
-  playing = true; lastInput = now; modeSince = 0; setMode(mode); startTimer(); nextShuffle = now + 180;
+  items = []; playing = true; lastInput = now; modeSince = 0; setMode(mode); startTimer(); nextShuffle = now + 180;
   floatText('Tap anywhere!', W / 2, H / 2, clamp(U * .1, 30, 64), 2.2, '#ffd60a');
 }
 function openParent() {
@@ -888,7 +1013,7 @@ function refreshSegs() {
 document.querySelectorAll('.seg').forEach(seg => seg.addEventListener('click', e => {
   const b = e.target.closest('button'); if (!b) return;
   const key = seg.dataset.setting, v = Number(b.dataset.v); settings[key] = v; save(); refreshSegs();
-  if (key === 'sound') { initAudio(); setSound(!!v); if (v) sfx.chime(); }
+  if (key === 'vol') { initAudio(); setVol(v); if (v) sfx.chime(); }
   if (key === 'voice' && v) { settings.voice = 1; lastSay = 0; say('Hello!'); }
   if (key === 'timer') { startTimer(); updateTimerLabel(); }
   if (key === 'shuffle') nextShuffle = now + 180;
