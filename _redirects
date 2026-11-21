@@ -1,0 +1,7 @@
+# The whole Seedscale site now lives at Rebecca.Builds.
+# This file does not touch DNS. Email for rebecca@seedscale.agency stays where it is.
+# Force (the !) so an existing file cannot shadow the redirect.
+# The path and query string are kept. /members/ and PDFs such as /the-ai-playbook.pdf
+# land on the same path. A path with no page on Rebecca.Builds 404s there.
+https://seedscale.agency/*        https://rebeccabuilds.pages.dev/:splat  301!
+https://www.seedscale.agency/*    https://rebeccabuilds.pages.dev/:splat  301!
